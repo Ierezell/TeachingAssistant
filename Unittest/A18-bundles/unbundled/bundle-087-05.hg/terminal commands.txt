@@ -1,0 +1,10 @@
+hg commit -m "[ Notes ici... ]"
+hg push https://RECHE23@bitbucket.org/RECHE23/projet1.py
+
+hg bundle --all fichier.hg
+
+python3 -m pylint projet1.py
+python3 -m pycodestyle projet1.py
+python3 -m flake8 projet1.py
+python3 -m pep257 projet1.py
+python3 -m prospector
