@@ -4,7 +4,6 @@
 -d=2018-09-24 -f=2018-09-24 goog
 -v=volume -f=2018-09-24 goog
 -v=volume -d=2018-09-24 goog
--h
 goog
 -v=min -d=2018-09-21 -f=2018-09-24 goog
 -v=fermeture -f=2018-09-24 goog
@@ -13,3 +12,4 @@ goog
 -v=max -f=2018-09-24 goog
 -v=volume -f=2018-09-24 goog
 --valeur=volume --fin=2018-09-24 --début=2018-09-21 goog
+-v volume goog aapl msft
