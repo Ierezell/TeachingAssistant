@@ -1,4 +1,2 @@
-# Ignorez tous les logs
-unbundled/
 Unittest/A18-bundles/
 *.hg
