@@ -1,2 +1,4 @@
-Unittest/A18-bundles/
+Unittest/A18-bundles/*
+Unittest/A18-bundles/*/*
+Unittest/A18-bundles/*/*/*
 *.hg
