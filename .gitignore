@@ -1,3 +1,4 @@
 # Ignorez tous les logs
 unbundled/
+A18-bundles/
 *.hg
