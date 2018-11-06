@@ -7,7 +7,7 @@ $ git clone https://github.com/Ierezell/TeachingAssistant
 ```
 Ou télécharger le [**FichierZip**](https://github.com/Ierezell/TeachingAssistant/archive/master.zip) et unziper le. 
 
-Ensuite, copier le répertoire Unittest/ScriptCorrection dans le dossier avec tout les bundles mercurials. 
+Ensuite, copier le répertoire ScriptCorrection dans le dossier avec tout les bundles mercurials. 
 ```
 $ cp ScriptCorrection /Chemin/Vers/Le/Dossier/Des/Bundles
 ```
