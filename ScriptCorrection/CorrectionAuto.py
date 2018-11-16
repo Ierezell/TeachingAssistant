@@ -96,25 +96,27 @@ class CorrectionTp1Critere3(unittest.TestCase):
         self.assertTrue(self.reSymValDate.match(reponse[0]))
         self.assertTrue(self.reDateVal.match(reponse[1]))
         self.assertTrue(reponse[0] == truereponse[0])
-        self.assertTrue(reponse[1][0:len(truereponse[1])] == truereponse[1][
-            0:len(truereponse[1])])
+        self.assertTrue(
+            reponse[1][:len(truereponse[1])] == truereponse[1][:len(
+                truereponse[1])])
 
 
 try:
-    with open("./params.txt") as f:
+    with open("../../ScriptCorrection/params.txt") as f:
         comment = re.compile("#.+")
         params = f.readlines()
     params = [x.strip() for x in params if not comment.match(x)]
 except FileNotFoundError:
     print("Veuillez mettre un fichier param.txt dans le dossier du script !")
-    print("Fichier non trouvé ! Veuillez mettre un fichier param.txt dans le \
-          dossier du script !", file=sys.stderr)
+    print("""Fichier non trouvé ! Veuillez mettre un fichier params.txt dans le
+          dossier du script !""", file=sys.stderr)
+    raise FileNotFoundError
 
 testFonctionement = unittest.TestSuite()
 testFonctionement.addTest(CorrectionTp1Critere3('test_formatDateVal', None))
 checkFonctionement = unittest.TextTestRunner(
     verbosity=2).run(testFonctionement)
-if checkFonctionement.wasSuccessful():
+if not checkFonctionement.errors:
     allTest = unittest.TestSuite()
     for param in params:
         allTest.addTest(CorrectionTp1Critere3('test_params', param))
