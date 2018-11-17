@@ -96,9 +96,7 @@ class CorrectionTp1Critere3(unittest.TestCase):
         self.assertTrue(self.reSymValDate.match(reponse[0]))
         self.assertTrue(self.reDateVal.match(reponse[1]))
         self.assertTrue(reponse[0] == truereponse[0])
-        self.assertTrue(
-            reponse[1][:len(truereponse[1])] == truereponse[1][:len(
-                truereponse[1])])
+        self.assertTrue(reponse[1] == truereponse[1])
 
 
 try:

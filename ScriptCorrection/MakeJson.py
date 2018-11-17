@@ -54,7 +54,7 @@ for folder in dirsDepth1:
                 "Vous avez passé {} tests sur {}\n\n".format(int(Note[0])-int(Note[2]), Note[0]))
             fileresults.write("Vous avez échoué les test suivants : \n\n")
             for ind, res in enumerate(resulteleve):
-                if res[1] == 'FAIL' or 'ERROR':
+                if res[1] == 'FAIL' or res[1] == 'ERROR':
                     fileresults.write(res[0])
                     fileresults.write("\n")
                     fileresults.write("\tVotre réponse:\t\t {}\n\tLa réponse attendue: {}\n\n".format(
