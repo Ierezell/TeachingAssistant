@@ -24,6 +24,6 @@ echo ""
 cd ..;
 done
 
-echo "Correction terminée ! Veuillez lancer moulinetteMakeTxt pour créer les fichiers de résultats."
+echo "Correction terminée ! Veuillez lancer moulinetteMakeJson pour créer le fichiers de résultats."
 
 # TODO Check si file

@@ -73,26 +73,27 @@ class CorrectionTp1Critere3(unittest.TestCase):
             count += 1
         return (trueResult, trueErr)
 
-    def test_formatDateVal(self):
+    def test_fonctionnement(self):
         param = "-v=volume -d=2018-09-21 -f=2018-09-24 goog"
         reponse, err = self.get_reponse(param)
         truereponse, trueErr = self.get_true_reponse(param)
-        print("\nRéponse de l'élève :\n", reponse)
-        print("Réponse Attendue :\n", truereponse)
-        print("Erreur de l'élève :\n", err)
-        print("Erreur Attendue :\n", trueErr)
+        if err:
+            print("Votre erreur est : ", err)
         self.assertTrue(self.reDateVal.match(reponse[1]))
 
     def test_params(self):
-        print("\narg:", self._arg)
-        print("\narg : ", self._arg, file=sys.stderr)
         param = self._arg
         reponse, err = self.get_reponse(param)
         truereponse, trueErr = self.get_true_reponse(param)
-        print("Réponse de l'élève :\n", reponse)
-        print("Réponse Attendue :\n", truereponse)
-        print("Erreur de l'élève :\n", err)
-        print("Erreur Attendue :\n", trueErr)
+        if (reponse != truereponse):
+            print("Vous avez échoué le test : ", self._arg)
+            print("La bonne réponse était : \n", truereponse)
+            print("Votre réponse était : \n", reponse)
+            if trueErr:
+                print("L'erreur permise de correction était :")
+                print(trueErr)
+            if err:
+                print("Votre erreur est : ", err)
         self.assertTrue(self.reSymValDate.match(reponse[0]))
         self.assertTrue(self.reDateVal.match(reponse[1]))
         self.assertTrue(reponse[0] == truereponse[0])
@@ -111,7 +112,7 @@ except FileNotFoundError:
     raise FileNotFoundError
 
 testFonctionement = unittest.TestSuite()
-testFonctionement.addTest(CorrectionTp1Critere3('test_formatDateVal', None))
+testFonctionement.addTest(CorrectionTp1Critere3('test_fonctionnement', None))
 checkFonctionement = unittest.TextTestRunner(
     verbosity=2).run(testFonctionement)
 if not checkFonctionement.errors:
@@ -120,9 +121,6 @@ if not checkFonctionement.errors:
         allTest.addTest(CorrectionTp1Critere3('test_params', param))
     unittest.TextTestRunner(verbosity=2).run(allTest)
 else:
-    print("\nLe premier test à échoué,\nIl y à peut-être une boucle infinie\
-            ou une erreur d'implémentation sur le fonctionement basique.\
-            \n Code à vérifier manuellement", file=sys.stderr)
     parent_id = os.getpid()
     ps_command = Popen("ps -o pid --ppid %d --noheaders" %
                        parent_id, shell=True, stdout=PIPE, encoding='utf-8')

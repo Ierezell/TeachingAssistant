@@ -6,7 +6,7 @@ from datetime import date, timedelta
 
 url = 'https://www.alphavantage.co/query'
 function = 'TIME_SERIES_DAILY'
-apikey = '7IHXSHXVOW27EAT6'
+apikey = 'D87IJDIV3FDG0G0S'
 
 VALUES = {
     'ouverture': '1. open',
