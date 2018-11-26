@@ -1,4 +1,8 @@
 # Commentaires pour desactiver un parametre posssible
+#
+# LE PREMIER EST LE PARAMETRE DE TEST DU PROGRAMME !
+# ceux d'après sont les paramètres normaux.
+-v=volume -d=2018-09-21 -f=2018-09-24 goog
 #-v=volume goog
 #-d=2018-09-24 goog
 #-f=2018-09-24 goog

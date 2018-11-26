@@ -74,7 +74,7 @@ class CorrectionTp1Critere3(unittest.TestCase):
         return (trueResult, trueErr)
 
     def test_fonctionnement(self):
-        param = "-v=volume -d=2018-09-21 -f=2018-09-24 goog"
+        param = self._arg
         reponse, err = self.get_reponse(param)
         truereponse, trueErr = self.get_true_reponse(param)
         if err:
@@ -86,14 +86,17 @@ class CorrectionTp1Critere3(unittest.TestCase):
         reponse, err = self.get_reponse(param)
         truereponse, trueErr = self.get_true_reponse(param)
         if (reponse != truereponse):
-            print("Vous avez échoué le test : ", self._arg)
-            print("La bonne réponse était : \n", truereponse)
-            print("Votre réponse était : \n", reponse)
+            print("\nVous avez échoué le test : ", self._arg)
+            print("La bonne réponse était :")
+            print(truereponse[0])
+            print(truereponse[1])
+            print("Votre réponse était :")
+            print(reponse[0])
+            print(reponse[1])
             if trueErr:
-                print("L'erreur permise de correction était :")
-                print(trueErr)
+                print("L'erreur permise de correction était :\n", trueErr)
             if err:
-                print("Votre erreur est : ", err)
+                print("Votre erreur est : \n", err)
         self.assertTrue(self.reSymValDate.match(reponse[0]))
         self.assertTrue(self.reDateVal.match(reponse[1]))
         self.assertTrue(reponse[0] == truereponse[0])
@@ -102,7 +105,7 @@ class CorrectionTp1Critere3(unittest.TestCase):
 
 try:
     with open("../../ScriptCorrection/params.txt") as f:
-        comment = re.compile("#.+")
+        comment = re.compile("^#.+")
         params = f.readlines()
     params = [x.strip() for x in params if not comment.match(x)]
 except FileNotFoundError:
@@ -112,18 +115,22 @@ except FileNotFoundError:
     raise FileNotFoundError
 
 testFonctionement = unittest.TestSuite()
-testFonctionement.addTest(CorrectionTp1Critere3('test_fonctionnement', None))
+testFonctionement.addTest(CorrectionTp1Critere3(
+    'test_fonctionnement', params[0]))
 checkFonctionement = unittest.TextTestRunner(
     verbosity=2).run(testFonctionement)
 if not checkFonctionement.errors:
     allTest = unittest.TestSuite()
-    for param in params:
+    for param in params[1:]:
         allTest.addTest(CorrectionTp1Critere3('test_params', param))
     unittest.TextTestRunner(verbosity=2).run(allTest)
 else:
-    print("""
-    Le premier test (-v=volume -d=2018-09-21 -f=2018-09-24 goog) à échoué.
-Il y à peut-être une boucle infinie ou une erreur d'implémentation sur le fonctionement basique""")
+    print(
+        """
+Le premier test ({}) à échoué.
+Il y à peut-être une boucle infinie ou une erreur d'implémentation sur le fonctionement basique
+""".format(params[0]))
+
     parent_id = os.getpid()
     ps_command = Popen("ps -o pid --ppid %d --noheaders" %
                        parent_id, shell=True, stdout=PIPE, encoding='utf-8')
@@ -132,3 +139,6 @@ Il y à peut-être une boucle infinie ou une erreur d'implémentation sur le fon
     for pid_str in ps_output.strip().split("\n")[:-1]:
         os.kill(int(pid_str), signal.SIGTERM)
     sys.exit()
+
+
+# "-v=volume -d=2018-09-21 -f=2018-09-24 goog"
