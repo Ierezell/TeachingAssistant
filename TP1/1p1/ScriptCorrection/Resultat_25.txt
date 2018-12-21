@@ -1,0 +1,18 @@
+test_fonctionnement (__main__.CorrectionTp1Critere3) ... Traceback (most recent call last):
+  File "CorrectionAuto2.py", line 140, in <module>
+    verbosity=2).run(testFonctionement)
+  File "/home/pedro/.conda/envs/lol/lib/python3.4/unittest/runner.py", line 168, in run
+    test(result)
+  File "/home/pedro/.conda/envs/lol/lib/python3.4/unittest/suite.py", line 84, in __call__
+    return self.run(*args, **kwds)
+  File "/home/pedro/.conda/envs/lol/lib/python3.4/unittest/suite.py", line 122, in run
+    test(result)
+  File "/home/pedro/.conda/envs/lol/lib/python3.4/unittest/case.py", line 628, in __call__
+    return self.run(*args, **kwds)
+  File "/home/pedro/.conda/envs/lol/lib/python3.4/unittest/case.py", line 580, in run
+    testMethod()
+  File "CorrectionAuto2.py", line 61, in test_fonctionnement
+    reponse, err, truereponse, trueErr = self.get_reponse(param)
+  File "CorrectionAuto2.py", line 42, in get_reponse
+    sleep(60.0)
+KeyboardInterrupt

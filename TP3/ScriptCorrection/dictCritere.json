@@ -1,0 +1,273 @@
+[
+    {
+        "critere": "1",
+        "command": [
+            "-h",
+            "déposer -h",
+            "acheter -h",
+            "vendre -h",
+            "solde -h",
+            "titres -h",
+            "valeur -h",
+            "projection -h"
+        ],
+        "nom": "<h3>Commande Help</h3>",
+        "erreurAttendu": [],
+        "attendu": ["usage:"],
+        "description": "<p>Vérifie l'existence de la commande <code>help</code></p>",
+        "commentaire": "<p>La commande <code>help</code> n'existe pas'</p>",
+        "erreur": [],
+        "resultat": "",
+        "ponderation": "60"
+    },
+    {
+        "critere": "1",
+        "command": [
+            "déposer","acheter","vendre","solde","titres","valeur","projection",
+            "déposer --portefeuille","déposer --quantité","déposer --date",
+            "déposer -q","déposer -d","déposer -p",
+            "acheter --portefeuille","acheter --quantité","acheter --titres","acheter --date",
+            "acheter -q","acheter -t","acheter -d","acheter -p",
+            "vendre --portefeuille","vendre --quantité","vendre --titres","vendre --date",
+            "vendre -q","vendre -t","vendre -d","vendre -p",
+            "solde --graphique","solde --portefeuille","solde --date",
+            "solde -d","solde -p","solde -g",
+            "titres --graphique","titres --portefeuille","titres --titres","titres --date",
+            "titres -t","titres -d","titres -p","titres -g",
+            "valeur --graphique","valeur --portefeuille","valeur --date","valeur --titres",
+            "valeur -t","valeur -d","valeur -p","valeur -g",
+            "projection --graphique","projection --portefeuille","projection --titres","projection --date","projection --rendement","projection --volatilité",
+            "projection -t","projection -d","projection -r","projection -v","projection -p","projection -g"
+        ],
+        "nom": "<h3>Nomenclature</h3>",
+        "erreurAttendu": [
+            "expected one argument",
+            "expected at least one argument"
+        ],
+        "attendu" : [],
+        "description": "<p>Vérifie la nomenclature des arguments et actions</p>",
+        "commentaire": "<p>Les arguments et/ou actions suivants sont mal nommés : </p>",
+        "erreur": [],
+        "resultat": "",
+        "ponderation": "10"
+    },
+    {
+        "critere": "1",
+        "command": [
+            "-v","-d","-q","-t","-g","-r","-p",
+            "déposer -v","déposer -t","déposer -g","déposer -r",
+            "acheter -v","acheter -g","acheter -r",
+            "vendre -v","vendre -g","vendre -r",
+            "solde -v","solde -q","solde -t","solde -r",
+            "titres -v","titres -q","titres -r",
+            "valeur -v","valeur -q","valeur -r",
+            "projection -q"
+        ],
+        "nom": "<h3>Trop d'arguments</h3>",
+        "erreurAttendu": [
+            "unrecognized arguments",
+            "following arguments are required"
+        ],
+        "attendu": [],
+        "description": "<p>Vérifie que les actions n'ont pas d'arguments superflus</p>",
+        "commentaire": "<p>Les actions suivantes ont des arguments superflus : </p>",
+        "erreur": [],
+        "resultat": "",
+        "ponderation": "10"
+    },
+    {
+        "critere": "1",
+        "command": [
+            "déposer","acheter","vendre","solde","titres","valeur","projection",
+            "déposer -q","déposer -d","déposer -p",
+            "acheter -q","acheter -t","acheter -d","acheter -p",
+            "vendre -q","vendre -t","vendre -d","vendre -p",
+            "solde -d","solde -p","solde -g",
+            "titres -t","titres -d","titres -p","titres -g",
+            "valeur -t","valeur -d","valeur -p","valeur -g",
+            "projection -t","projection -d","projection -r","projection -v","projection -p","projection -g"
+        ],
+        "nom": "<h3>Manque d'argument</h3>",
+        "erreurAttendu": [
+            "expected one argument",
+            "expected at least one argument"
+        ],
+        "attendu": [],
+        "description": "<p>Vérifie que les actions n'ont pas d'arguments manquants</p>",
+        "commentaire": "<p>Les actions suivantes ont des arguments manquants : </p>",
+        "erreur": [],
+        "resultat": "",
+        "ponderation": "10"
+    },
+    {
+        "critere": "1",
+        "command": [
+            "déposer -q","déposer -d","déposer -p",
+            "acheter -q","acheter -t","acheter -d","acheter -p",
+            "vendre -q","vendre -t","vendre -d","vendre -p",
+            "solde -d","solde -p","solde -g",
+            "titres -t","titres -d","titres -p","titres -g",
+            "valeur -t","valeur -d","valeur -p","valeur -g",
+            "projection -t","projection -d","projection -r","projection -v","projection -p","projection -g"
+        ],
+        "nom": "<h3>Metavar</h3>",
+        "erreurAttendu": [],
+        "attendu": [],
+        "description": "<p>Vérifie que vos arguments ont les bons metavar</p>",
+        "commentaire": "<p>Les arguments suivants n'ont pas les bons metavar : </p>",
+        "erreur": [],
+        "resultat": "",
+        "ponderation": "10"
+    },
+    {
+        "critere": "2",
+        "command": [
+            "déposer -q 1000000000 -d 2018-09-17 -p PorteFeuilleTest",
+            "déposer -q 500 -d 2018-09-17",
+            "déposer -d 2018-09-17 -p PorteFeuilleTest",
+            "déposer -q 500 -p PorteFeuilleTest"
+        ],
+        "nom": "<h3>Déposer</h3>",
+        "erreurAttendu": ["LiquiditéInsuffisante","ErreurDate"],
+        "attendu": [],
+        "description": "<p>Vérifie l'action <code>déposer</code></p>",
+        "commentaire": "<p>Les erreurs suivantes ont été détectées : </p>",
+        "erreur": [],
+        "resultat": "",
+        "ponderation": "8"
+    },
+    {
+        "critere": "2",
+        "command": [
+            "acheter -q 10000 -t goog -d 2018-09-17 -p PorteFeuilleTest",
+            "acheter -q 500 -t goog -d 2018-09-17",
+            "acheter -t goog -d 2018-09-17 -p PorteFeuilleTest",
+            "acheter -q 500 -t goog -p PorteFeuilleTest"
+        ],
+        "nom": "<h3>Acheter</h3>",
+        "erreurAttendu": ["LiquiditéInsuffisante","ErreurDate"],
+        "attendu": [],
+        "description": "<p>Vérifie l'action <code>acheter</code></p>",
+        "commentaire": "<p>Les erreurs suivantes ont été détectées : </p>", 
+        "erreur": [],
+        "resultat": "",
+        "ponderation": "8"
+    },
+    {
+        "critere": "2",
+        "command": [
+            "vendre -q 500 -t goog -d 2018-09-17 -p PorteFeuilleTest",
+            "vendre -q 500 -t goog -d 2018-09-17",
+            "vendre -q 500 -d 2018-09-17 -p PorteFeuilleTest",
+            "vendre -t goog -d 2018-09-17 -p PorteFeuilleTest",
+            "vendre -q 500 -t goog -p PorteFeuilleTest"
+        ],
+        "nom": "<h3>Vendre</h3>",
+        "erreurAttendu": ["LiquiditéInsuffisante","ErreurDate"],
+        "attendu": [],
+        "description": "<p>Vérifie l'action <code>vendre</code></p>",
+        "commentaire": "<p>Les erreurs suivantes ont été détectées : </p>", 
+        "erreur": [],
+        "resultat": "",
+        "ponderation": "10"
+    },
+    {
+        "critere": "2",
+        "command": [
+            "solde -d 2018-09-17 -p PorteFeuilleTest",
+            "solde -d 2018-09-17",
+            "solde -p PorteFeuilleTest"
+        ],
+        "nom": "<h3>Solde</h3>",
+        "erreurAttendu": ["LiquiditéInsuffisante","ErreurDate"],
+        "attendu": ["\\d+\\.\\d{2}$"],
+        "description": "<p>Vérifie l'action <code>solde</code></p>",
+        "commentaire": "<p>Les erreurs suivantes ont été détectées : </p>", 
+        "erreur": [],
+        "resultat": "",
+        "ponderation": "6"
+    },
+    {
+        "critere": "2",
+        "command": [
+            "titres -t goog -d 2018-09-17 -p PorteFeuilleTest",
+            "titres -t goog -d 2018-09-17",
+            "titres -d 2018-09-17 -p PorteFeuilleTest",
+            "titres -t goog -p PorteFeuilleTest"
+        ],
+        "nom": "<h3>Titres</h3>",
+        "erreurAttendu": ["LiquiditéInsuffisante","ErreurDate"],
+        "attendu": ["[G|g][O|o][O|o][G|g]=\\d"],
+        "description": "<p>Vérifie l'action <code>titres</code></p>",
+        "commentaire": "<p>Les erreurs suivantes ont été détectées : </p>", 
+        "erreur": [],
+        "resultat": "",
+        "ponderation": "8"
+    },
+    {
+        "critere": "2",
+        "command": [
+            "valeur -t goog -d 2018-09-17 -p PorteFeuilleTest",
+            "valeur -t goog -d 2018-09-17",
+            "valeur -t goog -p PorteFeuilleTest",
+            "valeur -d 2018-09-17 -p PorteFeuilleTest"
+        ],
+        "nom": "<h3>Valeur</h3>",
+        "erreurAttendu": ["LiquiditéInsuffisante","ErreurDate"],
+        "attendu": [],
+        "description": "<p>Vérifie l'action <code>valeur</code></p>",
+        "commentaire": "<p>Les erreurs suivantes ont été détectées : </p>", 
+        "erreur": [],
+        "resultat": "",
+        "ponderation": "8"
+    },
+    {
+        "critere": "2",
+        "command": [
+            "projection -t goog -d 2018-09-17 -r -v 0.10 0.10 -p PorteFeuilleTest",
+            "projection -d 2018-09-17 -r -v 0.10 -p PorteFeuilleTest",
+            "projection -t goog -r -v 0.10 -p PorteFeuilleTest",
+            "projection -t goog -d 2018-09-17 -v 0.10 -p PorteFeuilleTest",
+            "projection -t goog -d 2018-09-17 -r -p PorteFeuilleTest",
+            "projection -t goog -d 2018-09-17 -r -v 0.10"
+        ],
+        "nom": "<h3>Projection</h3>",
+        "erreurAttendu": ["LiquiditéInsuffisante","ErreurDate"],
+        "attendu": [],
+        "description": "<p>Vérifie l'action <code>projection</code></p>",
+        "commentaire": "<p>Les erreurs suivantes ont été détectées : </p>", 
+        "erreur": [],
+        "resultat": "",
+        "ponderation": "6"
+    },
+    {
+        "critere": "2",
+        "command": [
+            "projection -t goog -d 2018-09-17 -r -v 0.10 -p PorteFeuilleTest -g",
+            "projection -d 2018-09-17 -r -v 0.10 -p PorteFeuilleTest -g",
+            "projection -t goog -r -v 0.10 -p PorteFeuilleTest -g",
+            "projection -t goog -d 2018-09-17 -v 0.10 -p PorteFeuilleTest -g",
+            "projection -t goog -d 2018-09-17 -r -p PorteFeuilleTest -g",
+            "projection -t goog -d 2018-09-17 -r -v 0.10 -g",
+            "valeur -t goog -d 2018-09-17 -p PorteFeuilleTest -g",
+            "valeur -t goog -d 2018-09-17 -g",
+            "valeur -t goog -p PorteFeuilleTest -g",
+            "valeur -d 2018-09-17 -p PorteFeuilleTest -g",
+            "titres -t goog -d 2018-09-17 -p PorteFeuilleTest -g",
+            "titres -t goog -d 2018-09-17 -g",
+            "titres -d 2018-09-17 -p PorteFeuilleTest -g",            
+            "titres -t goog -p PorteFeuilleTest -g",
+            "solde -d 2018-09-17 -p PorteFeuilleTest -g",
+            "solde -d 2018-09-17 -g",
+            "solde -p PorteFeuilleTest -g"
+        ],
+        "nom": "<h3>Mode Graphique</h3>",
+        "erreurAttendu": ["LiquiditéInsuffisante","ErreurDate"],
+        "attendu": [],
+        "description": "<p>Vérification du mode graphique</p>",
+        "commentaire": "<p>Les erreurs suivantes ont été détectées : </p>", 
+        "erreur": [],
+        "resultat": "",
+        "ponderation": "34"
+    }
+]
