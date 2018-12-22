@@ -16,8 +16,9 @@
         "attendu": ["usage:"],
         "description": "<p>Vérifie l'existence de la commande <code>help</code></p>",
         "commentaire": "<p>La commande <code>help</code> n'existe pas'</p>",
+        "sortie": [],
         "erreur": [],
-        "succes": "",
+        "nbEchecs": "",
         "nbTests": "8"
     },
     {
@@ -47,8 +48,9 @@
         "attendu" : [],
         "description": "<p>Vérifie la nomenclature des arguments et actions</p>",
         "commentaire": "<p>Les arguments et/ou actions suivants sont mal nommés : </p>",
+        "sortie": [],
         "erreur": [],
-        "succes": "",
+        "nbEchecs": "",
         "nbTests": "63"
     },
     {
@@ -71,8 +73,9 @@
         "attendu": [],
         "description": "<p>Vérifie que les actions n'ont pas d'arguments superflus</p>",
         "commentaire": "<p>Les actions suivantes ont des arguments superflus : </p>",
+        "sortie": [],
         "erreur": [],
-        "succes": "",
+        "nbEchecs": "",
         "nbTests": "28"
     },
     {
@@ -95,8 +98,9 @@
         "attendu": [],
         "description": "<p>Vérifie que les actions n'ont pas d'arguments manquants</p>",
         "commentaire": "<p>Les actions suivantes ont des arguments manquants : </p>",
+        "sortie": [],
         "erreur": [],
-        "succes": "",
+        "nbEchecs": "",
         "nbTests": "35"
     },
     {
@@ -115,8 +119,9 @@
         "attendu": [],
         "description": "<p>Vérifie que vos arguments ont les bons metavar</p>",
         "commentaire": "<p>Les arguments suivants n'ont pas les bons metavar : </p>",
+        "sortie": [],
         "erreur": [],
-        "succes": "",
+        "nbEchecs": "",
         "nbTests": "28"
     },
     {
@@ -132,8 +137,9 @@
         "attendu": [],
         "description": "<p>Vérifie l'action <code>déposer</code></p>",
         "commentaire": "<p> tests ont été exécutés, vous en avez réussi </p>",
+        "sortie": [],
         "erreur": [],
-        "succes": "",
+        "nbEchecs": "",
         "nbTests": "4"
     },
     {
@@ -149,8 +155,9 @@
         "attendu": [],
         "description": "<p>Vérifie l'action <code>acheter</code></p>",
         "commentaire": "<p> tests ont été exécutés, vous en avez réussi </p>", 
+        "sortie": [],
         "erreur": [],
-        "succes": "",
+        "nbEchecs": "",
         "nbTests": "4"
     },
     {
@@ -167,8 +174,9 @@
         "attendu": [],
         "description": "<p>Vérifie l'action <code>vendre</code></p>",
         "commentaire": "<p> tests ont été exécutés, vous en avez réussi </p>", 
+        "sortie": [],
         "erreur": [],
-        "succes": "",
+        "nbEchecs": "-1",
         "nbTests": "5"
     },
     {
@@ -184,8 +192,9 @@
         "attendu": ["989595550.00","6531.85","1.00","6971.77"],
         "description": "<p>Vérifie l'action <code>solde</code></p>",
         "commentaire": "<p> tests ont été exécutés, vous en avez réussi </p>", 
+        "sortie": [],
         "erreur": [],
-        "succes": "",
+        "nbEchecs": "",
         "nbTests": "4"
     },
     {
@@ -198,11 +207,12 @@
         ],
         "nom": "<h3>Titres</h3>",
         "erreurAttendu": [],
-        "attendu": ["[G|g][O|o][O|o][G|g]=9000","[G|g][O|o][O|o][G|g]=3","[G|g][O|o][O|o][G|g]=3",""],
+        "attendu": ["[G|g][O|o][O|o][G|g]=9000","[G|g][O|o][O|o][G|g]=3","[G|g][O|o][O|o][G|g]=3"],
         "description": "<p>Vérifie l'action <code>titres</code></p>",
         "commentaire": "<p> tests ont été exécutés, vous en avez réussi </p>", 
+        "sortie": [],
         "erreur": [],
-        "succes": "",
+        "nbEchecs": "",
         "nbTests": "4"
     },
     {
@@ -218,8 +228,9 @@
         "attendu": ["10404450.00","3468.15","0.00","0.00"],
         "description": "<p>Vérifie l'action <code>valeur</code></p>",
         "commentaire": "<p> tests ont été exécutés, vous en avez réussi </p>", 
+        "sortie": [],
         "erreur": [],
-        "succes": "",
+        "nbEchecs": "",
         "nbTests": "4"
     }
 ]

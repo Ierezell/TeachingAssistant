@@ -21,21 +21,44 @@ def fillJson(pathJson: str, projetpath: str) -> dict:
             proc = Popen(options, stdout=PIPE, stderr=PIPE, encoding='utf-8')
             result, err = proc.communicate(timeout=2)
             print("err\n", err)
-            if err:
-                testEchoue = True
-                for regArg in reErrAttendue:
-                    if not regArg.findall(err):
-                        testEchoue = False
-                if testEchoue:
-                    critere["erreur"].append(f"<li><code>{err}</code></li>")
-            if result:
-                testEchoue = True
-                for regArg in reAttendu:
-                    if regArg.findall(result):
-                        testEchoue = False
-                if testEchoue and reAttendu != []:
-                    critere["erreur"].append(
-                        ("""<p>Votre code ne soulève pas d'erreur"""
-                         """mais ce n'est pas le résultat attendu.<p>"""
-                         f"""<li><code>{result}</code></li>"""))
+            critere["sortie"].append(f"RESULT : {result}")
+            critere["sortie"].append(f"ERREUR : {err}")
+            if critere["critere"] == "1":
+                if err:
+                    testEchoue = True
+                    for regArg in reErrAttendue:
+                        if not regArg.findall(err):
+                            testEchoue = False
+                    if testEchoue:
+                        critere["erreur"].append(f"<li><code>{err}</code></li>")
+                if result:
+                    testEchoue = True
+                    for regArg in reAttendu:
+                        if regArg.findall(result):
+                            testEchoue = False
+                    if testEchoue and reAttendu != []:
+                        critere["erreur"].append(
+                            ("""<p>Votre code ne soulève pas d'erreur """
+                            """mais ce n'est pas le résultat attendu.<p>"""
+                            f"""<li><code>{result}</code></li>"""))
+            if critere["critere"] == "2":
+                if err:
+                    testEchoue = True
+                    for regArg in reErrAttendue:
+                        if not regArg.findall(err):
+                            print(regArg)
+                            testEchoue = False
+                    if testEchoue:
+                        critere["erreur"].append(f"<li><code>{err}</code></li>")
+                if result:
+                    testEchoue = True
+                    for regArg in reAttendu:
+                        if regArg.findall(result):
+                            print(regArg)
+                            testEchoue = False
+                    if testEchoue and reAttendu != []:
+                        critere["erreur"].append(
+                            ("""<p>Votre code ne soulève pas d'erreur """
+                            """mais ce n'est pas le résultat attendu.<p>"""
+                            f"""<li><code>{result}</code></li>"""))
     return dictCritere
