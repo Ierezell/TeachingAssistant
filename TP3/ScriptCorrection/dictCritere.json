@@ -17,8 +17,8 @@
         "description": "<p>Vérifie l'existence de la commande <code>help</code></p>",
         "commentaire": "<p>La commande <code>help</code> n'existe pas'</p>",
         "erreur": [],
-        "resultat": "",
-        "ponderation": "60"
+        "succes": "",
+        "nbTests": "8"
     },
     {
         "critere": "1",
@@ -48,8 +48,8 @@
         "description": "<p>Vérifie la nomenclature des arguments et actions</p>",
         "commentaire": "<p>Les arguments et/ou actions suivants sont mal nommés : </p>",
         "erreur": [],
-        "resultat": "",
-        "ponderation": "10"
+        "succes": "",
+        "nbTests": "63"
     },
     {
         "critere": "1",
@@ -72,8 +72,8 @@
         "description": "<p>Vérifie que les actions n'ont pas d'arguments superflus</p>",
         "commentaire": "<p>Les actions suivantes ont des arguments superflus : </p>",
         "erreur": [],
-        "resultat": "",
-        "ponderation": "10"
+        "succes": "",
+        "nbTests": "28"
     },
     {
         "critere": "1",
@@ -96,8 +96,8 @@
         "description": "<p>Vérifie que les actions n'ont pas d'arguments manquants</p>",
         "commentaire": "<p>Les actions suivantes ont des arguments manquants : </p>",
         "erreur": [],
-        "resultat": "",
-        "ponderation": "10"
+        "succes": "",
+        "nbTests": "35"
     },
     {
         "critere": "1",
@@ -116,158 +116,110 @@
         "description": "<p>Vérifie que vos arguments ont les bons metavar</p>",
         "commentaire": "<p>Les arguments suivants n'ont pas les bons metavar : </p>",
         "erreur": [],
-        "resultat": "",
-        "ponderation": "10"
+        "succes": "",
+        "nbTests": "28"
     },
     {
         "critere": "2",
         "command": [
-            "déposer -q 1000000000 -d 2018-09-17 -p PorteFeuilleTest",
-            "déposer -q 500 -d 2018-09-17",
-            "déposer -d 2018-09-17 -p PorteFeuilleTest",
-            "déposer -q 500 -p PorteFeuilleTest"
+            "déposer -q 1000000000 -d 2018-09-17 -p PF1",
+            "déposer -q 10000 -d 2018-09-17",
+            "déposer -d 2018-09-17 -p PF0",
+            "déposer -q 10000 -p PF2"
         ],
         "nom": "<h3>Déposer</h3>",
-        "erreurAttendu": ["LiquiditéInsuffisante","ErreurDate"],
+        "erreurAttendu": [],
         "attendu": [],
         "description": "<p>Vérifie l'action <code>déposer</code></p>",
-        "commentaire": "<p>Les erreurs suivantes ont été détectées : </p>",
+        "commentaire": "<p> tests ont été exécutés, vous en avez réussi </p>",
         "erreur": [],
-        "resultat": "",
-        "ponderation": "8"
+        "succes": "",
+        "nbTests": "4"
     },
     {
         "critere": "2",
         "command": [
-            "acheter -q 10000 -t goog -d 2018-09-17 -p PorteFeuilleTest",
-            "acheter -q 500 -t goog -d 2018-09-17",
-            "acheter -t goog -d 2018-09-17 -p PorteFeuilleTest",
-            "acheter -q 500 -t goog -p PorteFeuilleTest"
+            "acheter -q 10000 -t goog -d 2018-09-17 -p PF1",
+            "acheter -q 5 -t goog -d 2018-09-17",
+            "acheter -t goog -d 2018-09-17 -p PF0",
+            "acheter -q 5 -t goog -p PF2"
         ],
         "nom": "<h3>Acheter</h3>",
-        "erreurAttendu": ["LiquiditéInsuffisante","ErreurDate"],
+        "erreurAttendu": ["LiquiditéInsuffisante"],
         "attendu": [],
         "description": "<p>Vérifie l'action <code>acheter</code></p>",
-        "commentaire": "<p>Les erreurs suivantes ont été détectées : </p>", 
+        "commentaire": "<p> tests ont été exécutés, vous en avez réussi </p>", 
         "erreur": [],
-        "resultat": "",
-        "ponderation": "8"
+        "succes": "",
+        "nbTests": "4"
     },
     {
         "critere": "2",
         "command": [
-            "vendre -q 500 -t goog -d 2018-09-17 -p PorteFeuilleTest",
-            "vendre -q 500 -t goog -d 2018-09-17",
-            "vendre -q 500 -d 2018-09-17 -p PorteFeuilleTest",
-            "vendre -t goog -d 2018-09-17 -p PorteFeuilleTest",
-            "vendre -q 500 -t goog -p PorteFeuilleTest"
+            "vendre -q 500 -t goog -d 2018-09-17 -p PF1",
+            "vendre -q 2 -t goog -d 2018-09-17",
+            "vendre -q 500 -d 2018-09-17 -p PF1",
+            "vendre -t goog -d 2018-09-17 -p PF0",
+            "vendre -q 2 -t goog -p PF2"
         ],
         "nom": "<h3>Vendre</h3>",
-        "erreurAttendu": ["LiquiditéInsuffisante","ErreurDate"],
+        "erreurAttendu": ["ErreurQuantité"],
         "attendu": [],
         "description": "<p>Vérifie l'action <code>vendre</code></p>",
-        "commentaire": "<p>Les erreurs suivantes ont été détectées : </p>", 
+        "commentaire": "<p> tests ont été exécutés, vous en avez réussi </p>", 
         "erreur": [],
-        "resultat": "",
-        "ponderation": "10"
+        "succes": "",
+        "nbTests": "5"
     },
     {
         "critere": "2",
         "command": [
-            "solde -d 2018-09-17 -p PorteFeuilleTest",
+            "solde -d 2018-09-17 -p PF1",
             "solde -d 2018-09-17",
-            "solde -p PorteFeuilleTest"
+            "solde -p PF0",
+            "solde -p PF2"
         ],
         "nom": "<h3>Solde</h3>",
-        "erreurAttendu": ["LiquiditéInsuffisante","ErreurDate"],
-        "attendu": ["\\d+\\.\\d{2}$"],
+        "erreurAttendu": [],
+        "attendu": ["989595550.00","6531.85","1.00","6971.77"],
         "description": "<p>Vérifie l'action <code>solde</code></p>",
-        "commentaire": "<p>Les erreurs suivantes ont été détectées : </p>", 
+        "commentaire": "<p> tests ont été exécutés, vous en avez réussi </p>", 
         "erreur": [],
-        "resultat": "",
-        "ponderation": "6"
+        "succes": "",
+        "nbTests": "4"
     },
     {
         "critere": "2",
         "command": [
-            "titres -t goog -d 2018-09-17 -p PorteFeuilleTest",
+            "titres -t goog -d 2018-09-17 -p PF1",
             "titres -t goog -d 2018-09-17",
-            "titres -d 2018-09-17 -p PorteFeuilleTest",
-            "titres -t goog -p PorteFeuilleTest"
+            "titres -d 2018-09-17 -p PF0",
+            "titres -t goog -p PF2"
         ],
         "nom": "<h3>Titres</h3>",
-        "erreurAttendu": ["LiquiditéInsuffisante","ErreurDate"],
-        "attendu": ["[G|g][O|o][O|o][G|g]=\\d"],
+        "erreurAttendu": [],
+        "attendu": ["[G|g][O|o][O|o][G|g]=9000","[G|g][O|o][O|o][G|g]=3","[G|g][O|o][O|o][G|g]=3",""],
         "description": "<p>Vérifie l'action <code>titres</code></p>",
-        "commentaire": "<p>Les erreurs suivantes ont été détectées : </p>", 
+        "commentaire": "<p> tests ont été exécutés, vous en avez réussi </p>", 
         "erreur": [],
-        "resultat": "",
-        "ponderation": "8"
+        "succes": "",
+        "nbTests": "4"
     },
     {
         "critere": "2",
         "command": [
-            "valeur -t goog -d 2018-09-17 -p PorteFeuilleTest",
+            "valeur -t goog -d 2018-09-17 -p PF1",
             "valeur -t goog -d 2018-09-17",
-            "valeur -t goog -p PorteFeuilleTest",
-            "valeur -d 2018-09-17 -p PorteFeuilleTest"
+            "valeur -t goog -p PF0",
+            "valeur -d 2018-09-17 -p PF2"
         ],
         "nom": "<h3>Valeur</h3>",
-        "erreurAttendu": ["LiquiditéInsuffisante","ErreurDate"],
-        "attendu": [],
+        "erreurAttendu": [],
+        "attendu": ["10404450.00","3468.15","0.00","0.00"],
         "description": "<p>Vérifie l'action <code>valeur</code></p>",
-        "commentaire": "<p>Les erreurs suivantes ont été détectées : </p>", 
+        "commentaire": "<p> tests ont été exécutés, vous en avez réussi </p>", 
         "erreur": [],
-        "resultat": "",
-        "ponderation": "8"
-    },
-    {
-        "critere": "2",
-        "command": [
-            "projection -t goog -d 2018-09-17 -r -v 0.10 0.10 -p PorteFeuilleTest",
-            "projection -d 2018-09-17 -r -v 0.10 -p PorteFeuilleTest",
-            "projection -t goog -r -v 0.10 -p PorteFeuilleTest",
-            "projection -t goog -d 2018-09-17 -v 0.10 -p PorteFeuilleTest",
-            "projection -t goog -d 2018-09-17 -r -p PorteFeuilleTest",
-            "projection -t goog -d 2018-09-17 -r -v 0.10"
-        ],
-        "nom": "<h3>Projection</h3>",
-        "erreurAttendu": ["LiquiditéInsuffisante","ErreurDate"],
-        "attendu": [],
-        "description": "<p>Vérifie l'action <code>projection</code></p>",
-        "commentaire": "<p>Les erreurs suivantes ont été détectées : </p>", 
-        "erreur": [],
-        "resultat": "",
-        "ponderation": "6"
-    },
-    {
-        "critere": "2",
-        "command": [
-            "projection -t goog -d 2018-09-17 -r -v 0.10 -p PorteFeuilleTest -g",
-            "projection -d 2018-09-17 -r -v 0.10 -p PorteFeuilleTest -g",
-            "projection -t goog -r -v 0.10 -p PorteFeuilleTest -g",
-            "projection -t goog -d 2018-09-17 -v 0.10 -p PorteFeuilleTest -g",
-            "projection -t goog -d 2018-09-17 -r -p PorteFeuilleTest -g",
-            "projection -t goog -d 2018-09-17 -r -v 0.10 -g",
-            "valeur -t goog -d 2018-09-17 -p PorteFeuilleTest -g",
-            "valeur -t goog -d 2018-09-17 -g",
-            "valeur -t goog -p PorteFeuilleTest -g",
-            "valeur -d 2018-09-17 -p PorteFeuilleTest -g",
-            "titres -t goog -d 2018-09-17 -p PorteFeuilleTest -g",
-            "titres -t goog -d 2018-09-17 -g",
-            "titres -d 2018-09-17 -p PorteFeuilleTest -g",            
-            "titres -t goog -p PorteFeuilleTest -g",
-            "solde -d 2018-09-17 -p PorteFeuilleTest -g",
-            "solde -d 2018-09-17 -g",
-            "solde -p PorteFeuilleTest -g"
-        ],
-        "nom": "<h3>Mode Graphique</h3>",
-        "erreurAttendu": ["LiquiditéInsuffisante","ErreurDate"],
-        "attendu": [],
-        "description": "<p>Vérification du mode graphique</p>",
-        "commentaire": "<p>Les erreurs suivantes ont été détectées : </p>", 
-        "erreur": [],
-        "resultat": "",
-        "ponderation": "34"
+        "succes": "",
+        "nbTests": "4"
     }
 ]
