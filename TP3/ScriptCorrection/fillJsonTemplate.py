@@ -4,7 +4,14 @@ from math import ceil
 from subprocess import PIPE, Popen
 from time import sleep
 
-
+"""
+TODO: S'assurer que tous les de sauvegarde de l'équipe 
+      sont supprimé une fois le test terminé pour cette équipe.
+TODO: Garder une copie du dictionnaire par équipe pour 
+      faciliter la révision de note.
+TODO: Créer une nouvelle moulinette pour créer un JSON pour le téléversement.
+      La moulinette séparé de préférence pour facilité la modularité dans le futur.
+"""
 def fillJson(pathJson: str, projetpath: str) -> dict:
     with open(pathJson) as jsonFile:
         dictCritere = json.load(jsonFile)
