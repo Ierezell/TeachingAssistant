@@ -88,7 +88,6 @@ def fillJson(pathJson: str, projetpath: str) -> dict:
                             """<p>L'erreur suivante a été soulevé : </p>"""
                             """<pre class="line-numbers  language-python">"""
                             f"""<code>{err}</code></pre></li>"""))
-                        critere[nbEchec]
                 if result:
                     testEchoue = True
                     for regArg in reAttendu:
