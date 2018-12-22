@@ -11,15 +11,15 @@
             "valeur -h",
             "projection -h"
         ],
-        "nom": "<h3>Commande Help</h3>",
+        "nom": "<p><h3>Commande Help",
         "erreurAttendu": [],
         "attendu": ["usage:"],
-        "description": "<p>Vérifie l'existence de la commande <code>help</code></p>",
-        "commentaire": "<p>La commande <code>help</code> n'existe pas'</p>",
+        "description": "<p><strong>Vérifier l'existence de la commande <code>help</code>.</strong></p>",
+        "commentaire": "<p>La commande <code>help</code> n'existe pas dans un ou plusieurs cas.</p>",
         "sortie": [],
         "erreur": [],
-        "nbEchecs": "",
-        "nbTests": "8"
+        "note": 0,
+        "ponderation": 60
     },
     {
         "critere": "1",
@@ -40,18 +40,18 @@
             "projection --graphique","projection --portefeuille","projection --titres","projection --date","projection --rendement","projection --volatilité",
             "projection -t","projection -d","projection -r","projection -v","projection -p","projection -g"
         ],
-        "nom": "<h3>Nomenclature</h3>",
+        "nom": "<p><h3>Nomenclature",
         "erreurAttendu": [
             "expected one argument",
             "expected at least one argument"
         ],
         "attendu" : [],
-        "description": "<p>Vérifie la nomenclature des arguments et actions</p>",
-        "commentaire": "<p>Les arguments et/ou actions suivants sont mal nommés : </p>",
+        "description": "<p>Vérifer la nomenclature des arguments et actions.</p>",
+        "commentaire": "<p>Des actions et/ou arguments sont mal nommés.</p>",
         "sortie": [],
         "erreur": [],
-        "nbEchecs": "",
-        "nbTests": "63"
+        "note": 0,
+        "ponderation": 10
     },
     {
         "critere": "1",
@@ -65,18 +65,18 @@
             "valeur -v","valeur -q","valeur -r",
             "projection -q"
         ],
-        "nom": "<h3>Trop d'arguments</h3>",
+        "nom": "<p><h3>Trop d'arguments",
         "erreurAttendu": [
             "unrecognized arguments",
             "following arguments are required"
         ],
         "attendu": [],
-        "description": "<p>Vérifie que les actions n'ont pas d'arguments superflus</p>",
-        "commentaire": "<p>Les actions suivantes ont des arguments superflus : </p>",
+        "description": "<p>Vérifier que les actions n'ont pas d'arguments superflus.</p>",
+        "commentaire": "<p>Des actions ont des arguments superflus.</p>",
         "sortie": [],
         "erreur": [],
-        "nbEchecs": "",
-        "nbTests": "28"
+        "note": 0,
+        "ponderation": 10
     },
     {
         "critere": "1",
@@ -90,39 +90,34 @@
             "valeur -t","valeur -d","valeur -p","valeur -g",
             "projection -t","projection -d","projection -r","projection -v","projection -p","projection -g"
         ],
-        "nom": "<h3>Manque d'argument</h3>",
+        "nom": "<p><h3>Manque d'argument",
         "erreurAttendu": [
             "expected one argument",
             "expected at least one argument"
         ],
         "attendu": [],
-        "description": "<p>Vérifie que les actions n'ont pas d'arguments manquants</p>",
-        "commentaire": "<p>Les actions suivantes ont des arguments manquants : </p>",
+        "description": "<p>Vérifier que les actions n'ont pas d'arguments manquants.</p>",
+        "commentaire": "<p>Des actions ont des arguments manquants.</p>",
         "sortie": [],
         "erreur": [],
-        "nbEchecs": "",
-        "nbTests": "35"
+        "note": 0,
+        "ponderation": 10
     },
     {
         "critere": "1",
         "command": [
-            "déposer -q","déposer -d","déposer -p",
-            "acheter -q","acheter -t","acheter -d","acheter -p",
-            "vendre -q","vendre -t","vendre -d","vendre -p",
-            "solde -d","solde -p","solde -g",
-            "titres -t","titres -d","titres -p","titres -g",
-            "valeur -t","valeur -d","valeur -p","valeur -g",
-            "projection -t","projection -d","projection -r","projection -v","projection -p","projection -g"
+            "déposer -h",
+            "projection -h"
         ],
-        "nom": "<h3>Metavar</h3>",
+        "nom": "<h3>Metavar",
         "erreurAttendu": [],
-        "attendu": [],
-        "description": "<p>Vérifie que vos arguments ont les bons metavar</p>",
-        "commentaire": "<p>Les arguments suivants n'ont pas les bons metavar : </p>",
+        "attendu": ["SOIT AVOIR EN REGEX : 1 x 'STRING,' 2 x 'FLOAT,' 1 x 'BOOL,' 1 x 'DATE,' 1 x 'STRING [STRING'","OU D'AVOIR : 1 x 'INT,'"],
+        "description": "<p>Vérifier que les arguments ont le bon metavar.</p>",
+        "commentaire": "<p>Des arguments n'ont pas le bon <code>metavar</code>.</p>",
         "sortie": [],
         "erreur": [],
-        "nbEchecs": "",
-        "nbTests": "28"
+        "note": 0,
+        "ponderation": 10
     },
     {
         "critere": "2",
@@ -132,15 +127,15 @@
             "déposer -d 2018-09-17 -p PF0",
             "déposer -q 10000 -p PF2"
         ],
-        "nom": "<h3>Déposer</h3>",
+        "nom": "<p><h3>Déposer",
         "erreurAttendu": [],
         "attendu": [],
-        "description": "<p>Vérifie l'action <code>déposer</code></p>",
-        "commentaire": "<p> tests ont été exécutés, vous en avez réussi </p>",
+        "description": "<p>Vérifier l'action <code>déposer</code>.</p>",
+        "commentaire": "<p>L'action <code>déposer</code> n'a pas le comportement attendu.</p>",
         "sortie": [],
         "erreur": [],
-        "nbEchecs": "",
-        "nbTests": "4"
+        "note": 0,
+        "ponderation": 16
     },
     {
         "critere": "2",
@@ -150,15 +145,15 @@
             "acheter -t goog -d 2018-09-17 -p PF0",
             "acheter -q 5 -t goog -p PF2"
         ],
-        "nom": "<h3>Acheter</h3>",
+        "nom": "<p><h3>Acheter",
         "erreurAttendu": ["LiquiditéInsuffisante"],
         "attendu": [],
-        "description": "<p>Vérifie l'action <code>acheter</code></p>",
-        "commentaire": "<p> tests ont été exécutés, vous en avez réussi </p>", 
+        "description": "<p>Vérifier l'action <code>acheter</code>.</p>",
+        "commentaire": "<p>L'action <code>acheter</code> n'a pas le comportement attendu.</p>", 
         "sortie": [],
         "erreur": [],
-        "nbEchecs": "",
-        "nbTests": "4"
+        "note": 0,
+        "ponderation": 16
     },
     {
         "critere": "2",
@@ -169,15 +164,15 @@
             "vendre -t goog -d 2018-09-17 -p PF0",
             "vendre -q 2 -t goog -p PF2"
         ],
-        "nom": "<h3>Vendre</h3>",
+        "nom": "<p><h3>Vendre",
         "erreurAttendu": ["ErreurQuantité"],
         "attendu": [],
-        "description": "<p>Vérifie l'action <code>vendre</code></p>",
-        "commentaire": "<p> tests ont été exécutés, vous en avez réussi </p>", 
+        "description": "<p>Vérifier l'action <code>vendre</code>.</p>",
+        "commentaire": "<p>L'action <code>vendre</code> n'a pas le comportement attendu.</p>", 
         "sortie": [],
         "erreur": [],
-        "nbEchecs": "-1",
-        "nbTests": "5"
+        "note": 0,
+        "ponderation": 20
     },
     {
         "critere": "2",
@@ -187,15 +182,15 @@
             "solde -p PF0",
             "solde -p PF2"
         ],
-        "nom": "<h3>Solde</h3>",
+        "nom": "<p><h3>Solde",
         "erreurAttendu": [],
         "attendu": ["989595550.00","6531.85","1.00","6971.77"],
-        "description": "<p>Vérifie l'action <code>solde</code></p>",
-        "commentaire": "<p> tests ont été exécutés, vous en avez réussi </p>", 
+        "description": "<p>Vérifier l'action <code>solde</code>.</p>",
+        "commentaire": "<p>>L'action <code>solde</code> n'a pas le comportement attendu.</p>", 
         "sortie": [],
         "erreur": [],
-        "nbEchecs": "",
-        "nbTests": "4"
+        "note": 0,
+        "ponderation": 16
     },
     {
         "critere": "2",
@@ -205,15 +200,15 @@
             "titres -d 2018-09-17 -p PF0",
             "titres -t goog -p PF2"
         ],
-        "nom": "<h3>Titres</h3>",
+        "nom": "<p><h3>Titres",
         "erreurAttendu": [],
-        "attendu": ["[G|g][O|o][O|o][G|g]=9000","[G|g][O|o][O|o][G|g]=3","[G|g][O|o][O|o][G|g]=3"],
-        "description": "<p>Vérifie l'action <code>titres</code></p>",
-        "commentaire": "<p> tests ont été exécutés, vous en avez réussi </p>", 
+        "attendu": ["[G|g][O|o][O|o][G|g]=9000","[G|g][O|o][O|o][G|g]=3","[G|g][O|o][O|o][G|g]=3","[G|g][O|o][O|o][G|g]=3"],
+        "description": "<p>Vérifier l'action <code>titres</code></p>.",
+        "commentaire": "<p>>L'action <code>titres</code> n'a pas le comportement attendu.</p>", 
         "sortie": [],
         "erreur": [],
-        "nbEchecs": "",
-        "nbTests": "4"
+        "note": 0,
+        "ponderation": 16
     },
     {
         "critere": "2",
@@ -223,14 +218,14 @@
             "valeur -t goog -p PF0",
             "valeur -d 2018-09-17 -p PF2"
         ],
-        "nom": "<h3>Valeur</h3>",
+        "nom": "<p><h3>Valeur",
         "erreurAttendu": [],
         "attendu": ["10404450.00","3468.15","0.00","0.00"],
-        "description": "<p>Vérifie l'action <code>valeur</code></p>",
-        "commentaire": "<p> tests ont été exécutés, vous en avez réussi </p>", 
+        "description": "<p>Vérifier l'action <code>valeur</code>.</p>",
+        "commentaire": "<p>>L'action <code>valeur</code> n'a pas le comportement attendu.</p>", 
         "sortie": [],
         "erreur": [],
-        "nbEchecs": "",
-        "nbTests": "4"
+        "note": 0,
+        "ponderation": 16
     }
 ]
