@@ -5,20 +5,22 @@ from subprocess import PIPE, Popen
 from time import sleep
 
 """
-TODO: S'assurer que tous les de sauvegarde de l'équipe 
+TODO: S'assurer que tous les de sauvegarde de l'équipe
       sont supprimé une fois le test terminé pour cette équipe.
-TODO: Garder une copie du dictionnaire par équipe pour 
+TODO: Garder une copie du dictionnaire par équipe pour
       faciliter la révision de note.
 TODO: Créer une nouvelle moulinette pour créer un JSON pour le téléversement.
       La moulinette séparé de préférence pour facilité la modularité dans le futur.
 """
+
+
 def fillJson(pathJson: str, projetpath: str) -> dict:
     with open(pathJson) as jsonFile:
         dictCritere = json.load(jsonFile)
     for critere in dictCritere:
         commandesToTest = critere["command"]
         reAttendu = [re.compile(resAtt, flags=re.MULTILINE)
-                     for resAtt in critere["attendu"] if resAtt != '']
+                     for resAtt in critere["attendu"]]
         reErrAttendue = [re.compile(errAtt, flags=re.MULTILINE)
                          for errAtt in critere["erreurAttendu"]]
         print(f"\n\n{critere['nom'][4:-5]}\n\n")
@@ -49,11 +51,11 @@ def fillJson(pathJson: str, projetpath: str) -> dict:
                     if testEchoue:
                         critere["erreur"].append(
                             ("""<li><p>Dans le contexte suivant :</p>"""
-                            """<pre class="line-numbers  language-python">"""
-                            f"""<code>{options}</code></pre>"""
-                            """<p>L'erreur suivante a été soulevé : </p>"""
-                            """<pre class="line-numbers  language-python">"""
-                            f"""<code>{err}</code></pre></li>"""))
+                             """<pre class="line-numbers  language-python">"""
+                             f"""<code>{options}</code></pre>"""
+                             """<p>L'erreur suivante a été soulevé : </p>"""
+                             """<pre class="line-numbers  language-python">"""
+                             f"""<code>{err}</code></pre></li>"""))
                 if result:
                     testEchoue = True
                     for regArg in reAttendu:
@@ -62,12 +64,12 @@ def fillJson(pathJson: str, projetpath: str) -> dict:
                     if testEchoue and reAttendu != []:
                         critere["erreur"].append(
                             ("""<li><p>Dans le contexte suivant :</p>"""
-                            f"""<pre class="line-numbers  language-python">"""
-                            f"""<code>{options}</code></pre>"""
-                            """<p>Votre code ne soulève pas d'erreur """
-                            """mais ceci n'était pas le résultat attendu :<p>"""
-                            f"""<pre class="line-numbers  language-python">"""
-                            f"""<code>{result}</code></pre></li>"""))
+                             f"""<pre class="line-numbers  language-python">"""
+                             f"""<code>{options}</code></pre>"""
+                             """<p>Votre code ne soulève pas d'erreur """
+                             """mais ceci n'était pas le résultat attendu :<p>"""
+                             f"""<pre class="line-numbers  language-python">"""
+                             f"""<code>{result}</code></pre></li>"""))
             if critere["critere"] == "2":
                 if err:
                     testEchoue = True
@@ -83,11 +85,11 @@ def fillJson(pathJson: str, projetpath: str) -> dict:
                     if testEchoue:
                         critere["erreur"].append(
                             ("""<li><p>Dans le contexte suivant :</p>"""
-                            """<li><pre class="line-numbers  language-python">"""
-                            f"""<code>{options}</code></pre>"""
-                            """<p>L'erreur suivante a été soulevé : </p>"""
-                            """<pre class="line-numbers  language-python">"""
-                            f"""<code>{err}</code></pre></li>"""))
+                             """<li><pre class="line-numbers  language-python">"""
+                             f"""<code>{options}</code></pre>"""
+                             """<p>L'erreur suivante a été soulevé : </p>"""
+                             """<pre class="line-numbers  language-python">"""
+                             f"""<code>{err}</code></pre></li>"""))
                 if result:
                     testEchoue = True
                     for regArg in reAttendu:
@@ -104,18 +106,19 @@ def fillJson(pathJson: str, projetpath: str) -> dict:
                     if testEchoue and reAttendu != []:
                         critere["erreur"].append(
                             ("""<li><p>Dans le contexte suivant :</p>"""
-                            f"""<pre class="line-numbers  language-python">"""
-                            f"""<code>{options}</code></pre>"""
-                            """<p>Votre code ne soulève pas d'erreur """
-                            """mais ceci n'était pas le résultat attendu :<p>"""
-                            f"""<pre class="line-numbers  language-python">"""
-                            f"""<code>{result}</code></pre></li>"""))
+                             f"""<pre class="line-numbers  language-python">"""
+                             f"""<code>{options}</code></pre>"""
+                             """<p>Votre code ne soulève pas d'erreur """
+                             """mais ceci n'était pas le résultat attendu :<p>"""
+                             f"""<pre class="line-numbers  language-python">"""
+                             f"""<code>{result}</code></pre></li>"""))
         """
         Une pondération à été fait pour chaque critère
         La note est évalué selon la pondération
         La note est ensuite majoré à l'entier près (correction mode gentil)
         """
-        note = (len(critere["command"]) - len(critere["erreur"])) / len(critere["command"]) * critere["ponderation"]
+        note = (len(critere["command"]) - len(critere["erreur"])
+                ) / len(critere["command"]) * critere["ponderation"]
         print(note)
         critere["note"] = int(ceil(note))
 
