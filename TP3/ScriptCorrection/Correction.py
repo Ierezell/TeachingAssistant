@@ -8,7 +8,13 @@ from fillJsonTemplate import fillJson
 bundlesEleves = glob.glob('../unbundled/*')
 filesCorrection = glob.glob('./*')
 print(f"""Nombre de bundles au total : {len(bundlesEleves)}""")
-ResultSiteWeb = []
+with open('./dictCritere.json') as templateJson:
+    criteres = sorted(list(set([d['critere'] for d in dictResultEleve])))
+
+ResultSiteWeb = {}
+for c in criteres:
+    ResultSiteWeb[c] = []
+
 correctfile = 0
 for bundle in bundlesEleves:
     filesAvecPortefeuilleEleve = glob.glob('./*')
@@ -41,7 +47,8 @@ for bundle in bundlesEleves:
             f"""<p>Il n'y a pas de fichier gesport.py dans le dossier de votre bundle.</p>"""
             f"""<p>Les seuls fichiers trouvés sont :</p>"""
             f"""<p>{listFilesFound}</p>""")
-        ResultSiteWeb.append(dicEquipeCritereFail)
+        for c in criteres:
+            ResultSiteWeb[c].append(dicEquipeCritereFail)
         print(f"Aucun fichier gesport.py pour le groupe : {GroupNb}")
         with open('./ResultatsSiteWeb.json', 'w') as outfile:
             json.dump(ResultSiteWeb, outfile)
