@@ -158,9 +158,9 @@ class SuperCorrecteur2000:
             result, err = [], []
             proc = Popen(options, stdout=PIPE, stderr=PIPE, encoding='utf-8')
             try:
-                result, err = proc.communicate(timeout=10)
+                result, err = proc.communicate(timeout=1)
             except TimeoutExpired:
-                err = "Votre programme a mis plus que 10s à s'executer"
+                err = "Votre programme a mis plus que 5s à s'executer"
             finally:
                 self._fillCritere(critere, result, err, options)
 
@@ -170,25 +170,40 @@ class SuperCorrecteur2000:
 
     def _createResultatsSiteWeb(self):
         folderJsonDetail = glob.glob("./Resultats/Details/*")
-        for pathJsonEleve in folderJsonDetail:
-            groupNb = pathJsonEleve[-6:-8]
-            with open(pathJsonEleve) as infile:
-                jsonEleve = json.load(infile)
-            dictResult = {'équipe': groupNb, 'score': 0, 'commentaires': []}
-            note = 0
-            for test in jsonEleve:
-                note += test["note"]*test["ponderation"]
-                dictResult["commentaires"].append(
-                    (f'Nous avons effectué un test pour : {test["nom"]}'
-                     f'son but était de : {test["description"]}'))
-                if test["erreur"]:
+        for c in self.criteres:
+            Resultat = []
+            for pathJsonEleve in folderJsonDetail:
+                groupNb = pathJsonEleve[-6:-8]
+                with open(pathJsonEleve) as infile:
+                    jsonEleve = json.load(infile)
+                dictResult = {'équipe': groupNb,
+                              'score': 0, 'commentaires': []}
+                note = 0
+                for test in jsonEleve:
+                    note += test["note"]*test["ponderation"]
                     dictResult["commentaires"].append(
-                        (f'{test["commentaire"]}'
-                         f'Un exemple de vos erreurs : {test["erreur"][0]}'))
-            dictResult['score'] = note
+                        (f'Nous avons effectué un test pour : {test["nom"]}'
+                         f'son but était de : {test["description"]}'))
+                    if test["erreur"]:
+                        dictResult["commentaires"].append(
+                            (f'{test["commentaire"]}'
+                             f'Un exemple de vos erreurs : {test["erreur"][0]}'))
+                dictResult['score'] = note
+                Resultat.append(dictResult)
+            with open(f'./ResultatCritere_{c}.json', 'w') as outfile:
+                json.dump(Resultat, outfile)
+
+    def _cleanAvantNouvelEleve(self):
+        for files in glob.glob('./*'):
+            if files not in self.filesCorrection:
+                try:
+                    os.remove(files)
+                except IsADirectoryError:
+                    shutil.rmtree(files)
 
     def correctGoodBundles(self, nomCritere: str = 'All') -> None:
         for pathEleve in self.getCorrectGroupsPath():
+            self._cleanAvantNouvelEleve
             templateEleve = self.templateJson.copy()
             groupNb = pathEleve[-9:-6]
             for critere in templateEleve:
@@ -200,8 +215,6 @@ class SuperCorrecteur2000:
             pathDetailsEleve = f"./Resultats/Details/Details_{groupNb}.json"
             with open(pathDetailsEleve, 'w') as outfile:
                 json.dump(templateEleve, outfile)
-
-            self._createResultatsSiteWeb()
 
     def correctAll(self, nomCritere: str = 'All') -> None:
         self.correctBadBundles(nomCritere)
