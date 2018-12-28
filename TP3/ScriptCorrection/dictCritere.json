@@ -20,6 +20,7 @@
         "commentaire": "<p>La commande <code>help</code> n'existe pas dans un ou plusieurs cas.</p>",
         "sortie": [],
         "erreur": [],
+        "mauvaisResultat": [],
         "note": 0,
         "ponderation": 60
     },
@@ -100,6 +101,7 @@
         "commentaire": "<p>Des actions et/ou arguments sont mal nommés.</p>",
         "sortie": [],
         "erreur": [],
+        "mauvaisResultat": [],
         "note": 0,
         "ponderation": 10
     },
@@ -145,6 +147,7 @@
         "commentaire": "<p>Des actions ont des arguments superflus.</p>",
         "sortie": [],
         "erreur": [],
+        "mauvaisResultat": [],
         "note": 0,
         "ponderation": 10
     },
@@ -197,6 +200,7 @@
         "commentaire": "<p>Des actions ont des arguments manquants.</p>",
         "sortie": [],
         "erreur": [],
+        "mauvaisResultat": [],
         "note": 0,
         "ponderation": 10
     },
@@ -213,6 +217,7 @@
         "commentaire": "<p>Des arguments n'ont pas le bon <code>metavar</code>.</p>",
         "sortie": [],
         "erreur": [],
+        "mauvaisResultat": [],
         "note": 0,
         "ponderation": 10
     },
@@ -231,6 +236,7 @@
         "commentaire": "<p>L'action <code>déposer</code> n'a pas le comportement attendu.</p>",
         "sortie": [],
         "erreur": [],
+        "mauvaisResultat": [],
         "note": 0,
         "ponderation": 16
     },
@@ -251,6 +257,7 @@
         "commentaire": "<p>L'action <code>acheter</code> n'a pas le comportement attendu.</p>",
         "sortie": [],
         "erreur": [],
+        "mauvaisResultat": [],
         "note": 0,
         "ponderation": 16
     },
@@ -272,6 +279,7 @@
         "commentaire": "<p>L'action <code>vendre</code> n'a pas le comportement attendu.</p>",
         "sortie": [],
         "erreur": [],
+        "mauvaisResultat": [],
         "note": 0,
         "ponderation": 20
     },
@@ -295,6 +303,7 @@
         "commentaire": "<p>L'action <code>solde</code> n'a pas le comportement attendu.</p>",
         "sortie": [],
         "erreur": [],
+        "mauvaisResultat": [],
         "note": 0,
         "ponderation": 16
     },
@@ -318,6 +327,7 @@
         "commentaire": "<p>L'action <code>titres</code> n'a pas le comportement attendu.</p>",
         "sortie": [],
         "erreur": [],
+        "mauvaisResultat": [],
         "note": 0,
         "ponderation": 16
     },
@@ -341,6 +351,7 @@
         "commentaire": "<p>L'action <code>valeur</code> n'a pas le comportement attendu.</p>",
         "sortie": [],
         "erreur": [],
+        "mauvaisResultat": [],
         "note": 0,
         "ponderation": 16
     }

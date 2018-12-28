@@ -9,6 +9,7 @@ bundlesEleves = glob.glob('../unbundled/*')
 filesCorrection = glob.glob('./*')
 print(f"""Nombre de bundles au total : {len(bundlesEleves)}""")
 with open('./dictCritere.json') as templateJson:
+    dictResultEleve = json.load(templateJson)
     criteres = sorted(list(set([d['critere'] for d in dictResultEleve])))
 
 ResultSiteWeb = {}

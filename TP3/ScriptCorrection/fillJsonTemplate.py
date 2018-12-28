@@ -1,7 +1,7 @@
 import json
 import re
 from math import ceil
-from subprocess import PIPE, Popen
+from subprocess import PIPE, Popen, TimeoutExpired
 from time import sleep
 
 """
@@ -38,8 +38,11 @@ def fillJson(pathJson: str, projetpath: str) -> dict:
             """
             Timeout augmenté à 10 car causait problème
             """
-            result, err = proc.communicate(timeout=10)
-            print("err\n", err)
+            try:
+                result, err = proc.communicate(timeout=1)
+            except TimeoutExpired:
+                err = "Votre programme a mis plus que 1s à s'executer"
+            # print("err\n", err)
             critere["sortie"].append(f"RESULT : {result}")
             critere["sortie"].append(f"ERREUR : {err}")
             if critere["critere"] == "1":

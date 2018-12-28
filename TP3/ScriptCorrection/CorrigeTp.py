@@ -126,7 +126,7 @@ class SuperCorrecteur2000:
             for regArg in reErrAttendue:
                 if not regArg.findall(err):
                     testEchoue = False
-            if testEchoue:
+            if testEchoue and reErrAttendue != []:
                 critere["erreur"].append(
                     ("""<li><p>Dans le contexte suivant :</p>"""
                         """<pre class="line-numbers  language-python">"""
@@ -140,7 +140,7 @@ class SuperCorrecteur2000:
                 if regArg.findall(result):
                     testEchoue = False
             if testEchoue and reAttendu != []:
-                critere["erreur"].append(
+                critere["mauvaisResultat"].append(
                     ("""<li><p>Dans le contexte suivant :</p>"""
                         """<pre class="line-numbers  language-python">"""
                         f"""<code>{options}</code></pre>"""
@@ -160,7 +160,7 @@ class SuperCorrecteur2000:
             try:
                 result, err = proc.communicate(timeout=1)
             except TimeoutExpired:
-                err = "Votre programme a mis plus que 5s à s'executer"
+                err = "Votre programme a mis plus que 1s à s'executer"
             finally:
                 self._fillCritere(critere, result, err, options)
 
@@ -202,19 +202,19 @@ class SuperCorrecteur2000:
                     shutil.rmtree(files)
 
     def correctGoodBundles(self, nomCritere: str = 'All') -> None:
+        if not os.path.exists("./Resultats/Details"):
+            os.makedirs("./Resultats/Details")
         for pathEleve in self.getCorrectGroupsPath():
-            self._cleanAvantNouvelEleve
+            self._cleanAvantNouvelEleve()
             templateEleve = self.templateJson.copy()
             groupNb = pathEleve[-9:-6]
             for critere in templateEleve:
                 pythonEleve = pathEleve+'/'+self.nomFichierElevePython
                 self._correctCritere(pythonEleve, critere)
-
-            if not os.path.exists("./Resultats/Details"):
-                os.makedirs("./Resultats/Details")
             pathDetailsEleve = f"./Resultats/Details/Details_{groupNb}.json"
             with open(pathDetailsEleve, 'w') as outfile:
                 json.dump(templateEleve, outfile)
+        self._cleanAvantNouvelEleve()
 
     def correctAll(self, nomCritere: str = 'All') -> None:
         self.correctBadBundles(nomCritere)
@@ -228,7 +228,7 @@ cor = SuperCorrecteur2000('./dictCritere.json', '../unbundled', 'gesport.py')
 # print(cor.ResultSiteWeb)
 # print(cor.getAllGroups())
 # cor.getIncorrectGroups()
+cor.cleanToutResultats()
 cor.correctGoodBundles()
-cor.showResultCritere()
-cor.critereToJson()
-# cor.cleanToutResultats()
+# cor.showResultCritere()
+# cor.critereToJson()
