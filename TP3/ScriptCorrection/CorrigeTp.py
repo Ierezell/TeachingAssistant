@@ -8,12 +8,61 @@ from math import ceil
 
 
 class SuperCorrecteur2000:
+    """Correcteur qui lance le programme de l'élève situé en pathToUnbundled
+    et le compare au résultat noté dans le Json (arg pathToJsonTemplate).
+
+    Doc Json :
+        str Critère : nom du critère
+        list[str] command : commandes à executer pour obtenir le résultat à vérfier
+        str nom : nom donné au test (sera utilisé pour rédiger les commentaires)
+        list[str] erreurAttendu : erreur permise ou voulue pendant la correction (regex)
+        list[str] attendu : résultat que l'élève est censé retourner
+        str description : Description du test (pour rédiger les commentaires)
+        str commentaire : Commentaire de base pour le test (sert à rédiger les commentaires)
+        list[str] sortie : Sortie du programme de l'élève (Resultat & erreurs)
+        list[str] erreur : erreurs soulevées par le programme de l'élève
+        list[str] mauvaisResultat : sortie console du programme de l'élève
+        int note : Note pour le test
+        int pondération : pondération du test
+
+    Fonctions :
+        __init__ : initialise les variables et fichiers utilisés dans le reste de la classe
+        cleanResultatsEleves : supprime le dossier des résultats des élèves
+        cleanResultatsSiteWeb : supprime les json à televerser sur le siteweb
+        cleanToutResultats : supprime tout les résultats
+        getAllGroupsNumber : renvoie une liste de tout les groupes ayant soumis
+        getIncorrectGroupsNumber : renvoie une liste de tout les groupes ayant soumis un bundle incorrect
+        getIncorrectGroupsPath :  renvoie une liste des chemins vers les bundles des élèves ayant soumis un bundle incorrect
+        getCorrectGroupsNumber : renvoie une liste des bundles corrects
+        getCorrectGroupsPath : renvoie une liste des chemins vers les bundles corrects
+        getNumberSubmissions : renvoie le nombre de bundles (total)
+        createResultatsSiteWeb : crée le Json pour tout les critères à téléverser sur le site
+        critereToJson : crée le Json pour un seul critères
+        correctBadBundles : corrige les mauvais bundle et crée un detail.json pour chaque eleve
+        correctGoodBundles : corrige les bons bundle et crée un detail.json pour chaque eleve
+        correctAll : corrige tout les bundles
+    """
+
     def __init__(self, pathToJsonTemplate: str, pathToUnbundled: str,
                  nomFichierElevePython: str) -> None:
+        """[summary]
+
+        Arguments:
+            pathToJsonTemplate {str} -- chemin vers le json détaillé des critères
+            pathToUnbundled {str} -- chemin vers le dossier des soumissions
+            nomFichierElevePython {str} -- nom du fichier à corriger pour tout les élèves
+
+        Attributs :
+            filesCorrection : liste des fichiers de correction (pour supprime ceux crée par les élèves durant la correction)
+            templateJson : dictionnaire des critères
+            criteres : nom des critères
+            ResultSiteWeb : dictionnaire : clée critère / valeur : liste de résultats des élèves
+        """
 
         self.pathBundlesEleves = glob.glob(f"{pathToUnbundled}/*")
         self.filesCorrection = glob.glob('./*')
         self.nomFichierElevePython = nomFichierElevePython
+        self.pathToJsonTemplate = pathToJsonTemplate
         with open(pathToJsonTemplate) as file:
             self.templateJson = json.load(file)
         self.criteres = sorted(
@@ -23,21 +72,6 @@ class SuperCorrecteur2000:
             self.ResultSiteWeb[c] = []
         if not os.path.exists("./Resultats"):
             os.makedirs("./Resultats")
-
-    def showResultCritere(self, nomCritere: str = 'All'):
-        if nomCritere == 'All':
-            print(self.ResultSiteWeb)
-        else:
-            print(self.ResultSiteWeb[nomCritere])
-
-    def critereToJson(self, nomCritere: str = 'All'):
-        if nomCritere == 'All':
-            for c in self.criteres:
-                with open(f"./ResultatsSiteWeb_{c}.json", 'w') as outfile:
-                    json.dump(self.ResultSiteWeb[c], outfile)
-        else:
-            with open(f"./ResultatsSiteWeb_{nomCritere}.json", 'w') as outfile:
-                json.dump(self.ResultSiteWeb[nomCritere], outfile)
 
     def cleanResultatsEleves(self):
         shutil.rmtree('./Resultats')
@@ -92,6 +126,68 @@ class SuperCorrecteur2000:
 
     def getNumberSubmissions(self) -> int:
         return len(self.pathBundlesEleves)
+
+    def createResultatsSiteWeb(self):
+        folderJsonDetail = glob.glob("./Resultats/Details/*")
+        for c in self.criteres:
+            Resultat = []
+            for pathJsonEleve in folderJsonDetail:
+                groupNb = pathJsonEleve[-6:-8]
+                with open(pathJsonEleve) as infile:
+                    jsonEleve = json.load(infile)
+                dictResult = {'équipe': groupNb,
+                              'score': 0, 'commentaires': []}
+                note = 0
+                for test in jsonEleve:
+                    if test['critere'] == c:
+                        note += test["note"]*test["ponderation"]
+                        dictResult["commentaires"].append(
+                            (f'Nous avons effectué un test pour : {test["nom"]}'
+                             f'son but était de : {test["description"]}'))
+                        if test["erreur"]:
+                            dictResult["commentaires"].append(
+                                (f'{test["commentaire"]}'
+                                 f'Un exemple de vos erreurs : {test["erreur"][0]}'))
+                        if test["mauvaisResultat"]:
+                            dictResult["commentaires"].append(
+                                (f'{test["commentaire"]}'
+                                 f'Un exemple de votre sortie incorrecte : {test["mauvaisResultat"][0]}'))
+                dictResult['score'] = note
+                Resultat.append(dictResult)
+            with open(f'./ResultatCritere_{c}.json', 'w') as outfile:
+                json.dump(Resultat, outfile)
+
+    def critereToJson(self, critere: str = 'All'):
+        if critere == 'All':
+            self.createResultatsSiteWeb()
+        else:
+            folderJsonDetail = glob.glob("./Resultats/Details/*")
+            Resultat = []
+            for pathJsonEleve in folderJsonDetail:
+                groupNb = pathJsonEleve[-6:-8]
+                with open(pathJsonEleve) as infile:
+                    jsonEleve = json.load(infile)
+                dictResult = {'équipe': groupNb,
+                              'score': 0, 'commentaires': []}
+                note = 0
+                for test in jsonEleve:
+                    if test['critere'] == critere:
+                        note += test["note"]*test["ponderation"]
+                        dictResult["commentaires"].append(
+                            (f'Nous avons effectué un test pour : {test["nom"]}'
+                             f'son but était de : {test["description"]}'))
+                        if test["erreur"]:
+                            dictResult["commentaires"].append(
+                                (f'{test["commentaire"]}'
+                                 f'Un exemple de vos erreurs : {test["erreur"][0]}'))
+                        if test["mauvaisResultat"]:
+                            dictResult["commentaires"].append(
+                                (f'{test["commentaire"]}'
+                                 f'Un exemple de votre sortie incorrecte : {test["mauvaisResultat"][0]}'))
+                dictResult['score'] = note
+                Resultat.append(dictResult)
+            with open(f'./ResultatCritere_{critere}.json', 'w') as outfile:
+                json.dump(Resultat, outfile)
 
     def correctBadBundles(self, nomCritere: str = 'All') -> None:
         for bundle in self.getIncorrectGroupsPath():
@@ -168,31 +264,6 @@ class SuperCorrecteur2000:
                 ) / len(critere["command"]) * critere["ponderation"]
         critere["note"] = int(ceil(note))
 
-    def _createResultatsSiteWeb(self):
-        folderJsonDetail = glob.glob("./Resultats/Details/*")
-        for c in self.criteres:
-            Resultat = []
-            for pathJsonEleve in folderJsonDetail:
-                groupNb = pathJsonEleve[-6:-8]
-                with open(pathJsonEleve) as infile:
-                    jsonEleve = json.load(infile)
-                dictResult = {'équipe': groupNb,
-                              'score': 0, 'commentaires': []}
-                note = 0
-                for test in jsonEleve:
-                    note += test["note"]*test["ponderation"]
-                    dictResult["commentaires"].append(
-                        (f'Nous avons effectué un test pour : {test["nom"]}'
-                         f'son but était de : {test["description"]}'))
-                    if test["erreur"]:
-                        dictResult["commentaires"].append(
-                            (f'{test["commentaire"]}'
-                             f'Un exemple de vos erreurs : {test["erreur"][0]}'))
-                dictResult['score'] = note
-                Resultat.append(dictResult)
-            with open(f'./ResultatCritere_{c}.json', 'w') as outfile:
-                json.dump(Resultat, outfile)
-
     def _cleanAvantNouvelEleve(self):
         for files in glob.glob('./*'):
             if files not in self.filesCorrection:
@@ -206,7 +277,8 @@ class SuperCorrecteur2000:
             os.makedirs("./Resultats/Details")
         for pathEleve in self.getCorrectGroupsPath():
             self._cleanAvantNouvelEleve()
-            templateEleve = self.templateJson.copy()
+            with open(self.pathToJsonTemplate) as infile:
+                templateEleve = json.load(infile)
             groupNb = pathEleve[-9:-6]
             for critere in templateEleve:
                 pythonEleve = pathEleve+'/'+self.nomFichierElevePython
@@ -219,7 +291,7 @@ class SuperCorrecteur2000:
     def correctAll(self, nomCritere: str = 'All') -> None:
         self.correctBadBundles(nomCritere)
         self.correctGoodBundles(nomCritere)
-        self._createResultatsSiteWeb()
+        self.createResultatsSiteWeb()
 
 
 cor = SuperCorrecteur2000('./dictCritere.json', '../unbundled', 'gesport.py')
@@ -230,5 +302,6 @@ cor = SuperCorrecteur2000('./dictCritere.json', '../unbundled', 'gesport.py')
 # cor.getIncorrectGroups()
 cor.cleanToutResultats()
 cor.correctGoodBundles()
+cor._cleanAvantNouvelEleve()
 # cor.showResultCritere()
 # cor.critereToJson()
