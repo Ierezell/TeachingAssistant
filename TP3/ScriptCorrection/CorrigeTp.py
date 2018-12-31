@@ -132,7 +132,7 @@ class SuperCorrecteur2000:
         for c in self.criteres:
             Resultat = []
             for pathJsonEleve in folderJsonDetail:
-                groupNb = pathJsonEleve[-6:-8]
+                groupNb = pathJsonEleve[-8:-5]
                 with open(pathJsonEleve) as infile:
                     jsonEleve = json.load(infile)
                 dictResult = {'équipe': groupNb,
@@ -164,7 +164,7 @@ class SuperCorrecteur2000:
             folderJsonDetail = glob.glob("./Resultats/Details/*")
             Resultat = []
             for pathJsonEleve in folderJsonDetail:
-                groupNb = pathJsonEleve[-6:-8]
+                groupNb = pathJsonEleve[-8:-5]
                 with open(pathJsonEleve) as infile:
                     jsonEleve = json.load(infile)
                 dictResult = {'équipe': groupNb,
