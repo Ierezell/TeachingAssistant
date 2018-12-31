@@ -1,7 +1,7 @@
 import glob
 import json
 import os
-CRITERE = 2
+CRITERE = 1
 if not os.path.exists("./Resultats"):
     os.makedirs("./Resultats")
 folderJsonDetail = glob.glob("./*.json")
@@ -26,7 +26,6 @@ for pathJsonEleve in folderJsonDetail:
             dictResult["commentaires"].append(
                 f'[{test["note"]}/{test["ponderation"]}]')
             dictResult["commentaires"].append('</h3></p>')
-            dictResult["commentaires"].append('\n')
             dictResult["commentaires"].append(
                 f'{test["description"]}')
             if test["erreur"]:
