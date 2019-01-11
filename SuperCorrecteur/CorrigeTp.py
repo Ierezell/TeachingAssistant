@@ -8,6 +8,7 @@ from math import ceil
 
 
 class SuperCorrecteur2000:
+
     """Correcteur qui lance le programme de l'élève situé en pathToUnbundled
     et le compare au résultat noté dans le Json (arg pathToJsonTemplate).
 
@@ -84,6 +85,17 @@ class SuperCorrecteur2000:
         self.cleanResultatsSiteWeb()
         self.cleanResultatsEleves()
 
+    def _cleanAvantNouvelEleve(self):
+        """ Supprime les fichiers crées par le code de l'élève
+            afin de ne pas interferer avec le suivant
+        """
+        for files in glob.glob('./*'):
+            if files not in self.filesCorrection:
+                try:
+                    os.remove(files)
+                except IsADirectoryError:
+                    shutil.rmtree(files)
+
     def getAllGroupsNumber(self) -> list:
         return list(map(lambda x: x[-9:-6], self.pathBundlesEleves))
 
@@ -99,6 +111,10 @@ class SuperCorrecteur2000:
                 incorrectGroups.append(bundle[-9:-6])
         return incorrectGroups
 
+    def getCorrectGroupsNumber(self) -> list:
+        return sorted(set(self.getAllGroupsNumber()) -
+                      set(self.getIncorrectGroupsNumber()))
+
     def getIncorrectGroupsPath(self) -> list:
         incorrectGroups = []
         for bundle in self.pathBundlesEleves:
@@ -111,10 +127,6 @@ class SuperCorrecteur2000:
                 incorrectGroups.append(bundle)
         return incorrectGroups
 
-    def getCorrectGroupsNumber(self) -> list:
-        return sorted(set(self.getAllGroupsNumber()) -
-                      set(self.getIncorrectGroupsNumber()))
-
     def getCorrectGroupsPath(self) -> list:
         correctGroups = []
         for bundle in self.pathBundlesEleves:
@@ -124,70 +136,57 @@ class SuperCorrecteur2000:
                     correctGroups.append(bundle)
         return correctGroups
 
-    def getNumberSubmissions(self) -> int:
+    def getNumberOfStudents(self) -> int:
         return len(self.pathBundlesEleves)
 
+    def _correctAllTests(self, jsonEleve, groupNb, critere):
+        dictResult = {'équipe': groupNb,
+                      'score': 0, 'commentaires': []}
+        note = 0
+        for test in jsonEleve:
+            if test['critere'] == critere:
+                note += test["note"]*test["ponderation"]
+                dictResult["commentaires"].append(f'{test["nom"]}: ')
+                dictResult["commentaires"].append(
+                    f'[{test["note"]}/{test["ponderation"]}]')
+                dictResult["commentaires"].append('</h3></p>')
+                dictResult["commentaires"].append(
+                    f'{test["description"]}')
+                if test["erreur"]:
+                    dictResult["commentaires"].append(
+                        f'{test["commentaire"]}')
+                    dictResult["commentaires"].append('<ul>')
+                    for err in test["erreur"]:
+                        dictResult["commentaires"].append(
+                            f'<li>{err}</li>')
+                    dictResult["commentaires"].append('</ul>')
+                if test["mauvaisResultat"]:
+                    dictResult["commentaires"].append(
+                        (f'{test["commentaire"]}'
+                         f'Un exemple de votre sortie incorrecte : {test["mauvaisResultat"][0]}'))
+        dictResult["commentaires"] = str.join(
+            '', dictResult["commentaires"])
+        dictResult['score'] = note
+        dictResult["commentaires"] = f"<p><h2>Évaluation du critère {str(CRITERE)} [{note}/100]</h2></p>" + \
+            dictResult["commentaires"]
+        return dictResult
+
     def createResultatsSiteWeb(self):
+        """Parse tout les résultats détaillés des élèves et crée un résumé sous la forme voulue
+           pour le site
+        """
         folderJsonDetail = glob.glob("./Resultats/Details/*")
         for c in self.criteres:
-            Resultat = []
+            ResultatSiteWeb = []
             for pathJsonEleve in folderJsonDetail:
                 groupNb = pathJsonEleve[-8:-5]
                 with open(pathJsonEleve) as infile:
                     jsonEleve = json.load(infile)
-                dictResult = {'équipe': groupNb,
-                              'score': 0, 'commentaires': []}
-                note = 0
-                for test in jsonEleve:
-                    if test['critere'] == c:
-                        note += test["note"]*test["ponderation"]
-                        dictResult["commentaires"].append(
-                            (f'Nous avons effectué un test pour : {test["nom"]}'
-                             f'son but était de : {test["description"]}'))
-                        if test["erreur"]:
-                            dictResult["commentaires"].append(
-                                (f'{test["commentaire"]}'
-                                 f'Un exemple de vos erreurs : {test["erreur"][0]}'))
-                        if test["mauvaisResultat"]:
-                            dictResult["commentaires"].append(
-                                (f'{test["commentaire"]}'
-                                 f'Un exemple de votre sortie incorrecte : {test["mauvaisResultat"][0]}'))
-                dictResult['score'] = note
-                Resultat.append(dictResult)
-            with open(f'./ResultatCritere_{c}.json', 'w') as outfile:
-                json.dump(Resultat, outfile)
+                dictResult = self._correctAllTests(jsonEleve, groupNb, c)
 
-    def critereToJson(self, critere: str = 'All'):
-        if critere == 'All':
-            self.createResultatsSiteWeb()
-        else:
-            folderJsonDetail = glob.glob("./Resultats/Details/*")
-            Resultat = []
-            for pathJsonEleve in folderJsonDetail:
-                groupNb = pathJsonEleve[-8:-5]
-                with open(pathJsonEleve) as infile:
-                    jsonEleve = json.load(infile)
-                dictResult = {'équipe': groupNb,
-                              'score': 0, 'commentaires': []}
-                note = 0
-                for test in jsonEleve:
-                    if test['critere'] == critere:
-                        note += test["note"]*test["ponderation"]
-                        dictResult["commentaires"].append(
-                            (f'Nous avons effectué un test pour : {test["nom"]}'
-                             f'son but était de : {test["description"]}'))
-                        if test["erreur"]:
-                            dictResult["commentaires"].append(
-                                (f'{test["commentaire"]}'
-                                 f'Un exemple de vos erreurs : {test["erreur"][0]}'))
-                        if test["mauvaisResultat"]:
-                            dictResult["commentaires"].append(
-                                (f'{test["commentaire"]}'
-                                 f'Un exemple de votre sortie incorrecte : {test["mauvaisResultat"][0]}'))
-                dictResult['score'] = note
-                Resultat.append(dictResult)
-            with open(f'./ResultatCritere_{critere}.json', 'w') as outfile:
-                json.dump(Resultat, outfile)
+                ResultatSiteWeb.append(dictResult)
+            with open(f'./ResultatCritere_{c}.json', 'w') as outfile:
+                json.dump(ResultatSiteWeb, outfile)
 
     def correctBadBundles(self, nomCritere: str = 'All') -> None:
         for bundle in self.getIncorrectGroupsPath():
@@ -195,7 +194,7 @@ class SuperCorrecteur2000:
             filesFound = glob.glob(f"{bundle}/*")
             dictResult = {'équipe': groupNb, 'score': 0,
                           'commentaires': (f"""<h4>Résultat critère 1</h4>"""
-                                           f"""<p>Il n'y a pas de fichier gesport.py dans le dossier de votre bundle."""
+                                           f"""<p>Il n'y a pas de fichier {self.nomFichierElevePython} dans le dossier de votre bundle."""
                                            f"""<p>Les seuls fichiers trouvés sont :</p>"""
                                            f"""<p>{filesFound}</p>""")}
             if nomCritere == 'All':
@@ -263,14 +262,6 @@ class SuperCorrecteur2000:
         note = (len(critere["command"]) - len(critere["erreur"])
                 ) / len(critere["command"]) * critere["ponderation"]
         critere["note"] = int(ceil(note))
-
-    def _cleanAvantNouvelEleve(self):
-        for files in glob.glob('./*'):
-            if files not in self.filesCorrection:
-                try:
-                    os.remove(files)
-                except IsADirectoryError:
-                    shutil.rmtree(files)
 
     def correctGoodBundles(self, nomCritere: str = 'All') -> None:
         if not os.path.exists("./Resultats/Details"):
