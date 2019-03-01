@@ -2,6 +2,6 @@
 # Vscode
 .vscode
 unbundled/
-A18-bundles
-A18-bundles.zip
+./*/A18-bundles
+./*/A18-bundles.zip
 ./*/unbundled
