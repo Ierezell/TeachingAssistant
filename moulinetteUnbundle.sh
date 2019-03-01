@@ -1,7 +1,7 @@
 # TP à unbundler
-TP=TP1/
+TP=TP1/ ;
 # Nom du dossier ou se trouve les bundles ex : H19-P1-bundles format:`Session Année-no du TP-bundles`
-BUNDLE=H19-P1-bundles/
+BUNDLE=H19-P1-bundles/ ;
 cd $TP
 mkdir unbundled
 cd $BUNDLE
