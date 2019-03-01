@@ -47,7 +47,7 @@ for bundle in bundlesEleves:
         if filename == PROJECTNAME:
             correctfile += 1
             noProject = False
-            pathcall = os.path.join("..", "unbundled", subdir, PROJECTNAME)
+            pathcall = os.path.join(".", TP, "unbundled", subdir, PROJECTNAME)
             dictDetail = fillJson(f'./{TP}/dictCritere.json', pathcall)
             pathSaveEleve = f"./{TP}/Resultats/Resultat_{GroupNb}.json"
             with open(pathSaveEleve, 'w') as outfile:
