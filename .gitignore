@@ -1,7 +1,15 @@
-.pytest_cache/
+
 # Vscode
-# .vscode
-# unbundled/
-# ./*/A18-bundles
-# ./*/A18-bundles.zip
-# ./*/unbundled
+ .vscode
+
+# Bundle, Zip et Resultat
+ ./*/A18-bundles
+ ./*/A18-bundles.zip
+ ./*/unbundled
+ ./*/Resultats
+
+# Cache Python
+ .__pycache__
+ .pytest_cache/
+  ./*/__pycache__
+ ./*/pytest_cache/
