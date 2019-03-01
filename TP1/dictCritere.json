@@ -1,0 +1,92 @@
+[
+    {
+        "critere": "1",
+        "command": [
+            "-h",
+            "--help"
+        ],
+        "nom": "<h3>Commande Help",
+        "erreurAttendu": [],
+        "attendu": [
+            "usage:",
+            "usage:"
+        ],
+        "description": "<p><strong>Vérifier l'existence de la commande <code>help</code>.</strong></p>",
+        "commentaire": "<p>La commande <code>help</code> n'existe pas dans un ou plusieurs cas.</p>",
+        "sortie": [],
+        "erreur": [],
+        "note": 0,
+        "ponderation": 40
+    },
+    {
+        "critere": "1",
+        "command": [
+            "symbole",
+            "--help",
+            "--début",
+            "--fin",
+            "--valeur"
+        ],
+        "nom": "<h3>Nomenclature",
+        "erreurAttendu": [
+            "expected one argument",
+            "expected at least one argument"
+        ],
+        "attendu": [
+            "symbole.[F|f]",
+            "usage:"
+        ],
+        "description": "<p><strong>Vérifier la nomenclature des arguments et actions.</strong></p>",
+        "commentaire": "<p>Des arguments sont mal nommés.</p>",
+        "sortie": [],
+        "erreur": [],
+        "note": 0,
+        "ponderation": 40
+    },
+    {
+        "critere": "1",
+        "command": [
+            "-h",
+            "-h",
+            "-h",
+            "-h",
+            "-h"
+        ],
+        "nom": "<h3>Arguments manquants",
+        "erreurAttendu": [],
+        "attendu": [
+            "--[H|h]g[E|e][L|l][P|p]",
+            "[S|s]g[Y|y|I|i][M|m][B|b][O|o][L|l]",
+            "--[D|d][E|e|É|é][B|b][U|u][T|t]",
+            "--[F|f]g[I|i][N|n]",
+            "--[V|v][A|a][L|l][E|e][U|u][R|r]"
+        ],
+        "description": "<p><strong>Vérifier que tous les arguments existent.</strong></p>",
+        "commentaire": "<p>Des arguments sont manquant.</p>",
+        "sortie": [],
+        "erreur": [],
+        "note": 0,
+        "ponderation": 10
+    },
+    {
+        "critere": "1",
+        "command": [
+            "-h",
+            "-h",
+            "-h"
+        ],
+        "nom": "<h3>Metavar",
+        "erreurAttendu": [],
+        "attendu": [
+            "-[D|d] DATE,.*--.*DATE",
+            "-[F|f] DATE,.*--.*DATE",
+            "-[V|v] {fermeture,ouverture,min,max,volume},.*--.*{fermeture,ouverture,min,max,volume}"
+        ],
+        "description": "<p><strong>Vérifier que les arguments ont le bon metavar.</p>",
+        "commentaire": "<p>Des arguments n'ont pas le bon <code>metavar</code>.</p>",
+        "sortie": [],
+        "erreur": [],
+        "note": 0,
+        "ponderation": 10
+    }
+]

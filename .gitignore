@@ -1,7 +1,7 @@
 .pytest_cache/
 # Vscode
-.vscode
-unbundled/
-./*/A18-bundles
-./*/A18-bundles.zip
-./*/unbundled
+# .vscode
+# unbundled/
+# ./*/A18-bundles
+# ./*/A18-bundles.zip
+# ./*/unbundled
