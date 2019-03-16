@@ -41,6 +41,5 @@ class Team:
         else:
             self.erreur["NoMain"] = "No alternate valid file found"
 
-    def nothing_To_Correct_Comment(self):
-        for commentaire in self.commentaires.ke():
-            comm
+    def nothing_To_Correct_Comment(self, critere):
+        self.commentaires[critere] =

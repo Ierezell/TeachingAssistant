@@ -11,6 +11,10 @@ from Correcteur2000 import Correcteur
 from Team import Team
 from Unbundler import Unbundled
 
+# TODO Finir linker Correction.
+# TODO Finir linker quand pas de fichiers
+# TODO
+
 # TODO request pour get le zip directement depuis le site
 # TODO override si précisé dans le argparse.
 # TODO Check nom de fichier mal nommé avec la commande help
@@ -91,3 +95,18 @@ class AssistantCorrection:
                 CorrecteurTeam = Correcteur(team)
                 Correcteur._cleanAvantNouvelEleve()
                 CorrecteurTeam.corrige()
+
+# TODO : transformer ça en méthode pour AssistantCorrection
+    # if noProject:
+    #     critereJSON = f'<h4>Résultat critère {NOCRITERE}</h4>'
+    #     dicEquipeCritereFail = {'équipe': GroupNb, 'score': 0,
+    #                             'commentaires': critereJSON}
+    #     dicEquipeCritereFail['commentaires'] += (
+    #         f"<p>Il n'y a pas de fichier {PROJECTNAME}"
+    #         f"dans le dossier de votre bundle.</p>"
+    #         f"<p>Les seuls fichiers trouvés sont :</p>"
+    #         f"<p>{listFilesFound}</p>")
+    #     ResultSiteWeb.append(dicEquipeCritereFail)
+    #     print(f"Aucun fichier {PROJECTNAME} pour le groupe : {GroupNb}")
+    #     with open(f'./{TP}/ResultatsSiteWeb.json', 'w') as outfile:
+    #         json.dump(ResultSiteWeb, outfile, ensure_ascii=False)
