@@ -9,55 +9,67 @@ from math import ceil
 
 class SuperCorrecteur2000:
 
-    """Correcteur qui lance le programme de l'élève situé en pathToUnbundled
-    et le compare au résultat noté dans le Json (arg pathToJsonTemplate).
+    """
+    Correcteur qui lance le programme de l'élève situé en pathToUnbundled
+        et le compare au résultat noté dans le Json (arg pathToJsonTemplate).
 
-    Doc Json :
-        str Critère : nom du critère
-        list[str] command : commandes à executer pour obtenir le résultat à vérfier
-        str nom : nom donné au test (sera utilisé pour rédiger les commentaires)
-        list[str] erreurAttendu : erreur permise ou voulue pendant la correction (regex)
-        list[str] attendu : résultat que l'élève est censé retourner
-        str description : Description du test (pour rédiger les commentaires)
-        str commentaire : Commentaire de base pour le test (sert à rédiger les commentaires)
-        list[str] sortie : Sortie du programme de l'élève (Resultat & erreurs)
-        list[str] erreur : erreurs soulevées par le programme de l'élève
-        list[str] mauvaisResultat : sortie console du programme de l'élève
-        int note : Note pour le test
-        int pondération : pondération du test
+Doc Json :
+    critère {str} -- nom du critère
+    command {list[str]} -- commandes à executer pour avoir le résultat à vérfier
+    nom {str} -- nom donné au test (sera utilisé pour rédiger les commentaires)
+    erreurAttendu {list[str]} -- erreur permise ou voulue pendant la correction
+                            peut être du plain text ou une regex
+    attendu {list[str]} -- résultat que l'élève est censé retourner
+    description {str} -- Description du test (pour rédiger les commentaires)
+    commentaire {str} -- Commentaire de base pour le test
+                        (sert à rédiger les commentaires)
+    sortie {list[str]} -- Sortie du programme de l'élève (Resultat & erreurs)
+    erreur {list[str]} -- erreurs soulevées par le programme de l'élève
+    mauvaisResultat {list[str]} -- sortie console du programme de l'élève
+    note {int} -- Note pour le test
+    pondération {int} -- pondération du test
 
-    Fonctions :
-        __init__ : initialise les variables et fichiers utilisés dans le reste de la classe
-        cleanResultatsEleves : supprime le dossier des résultats des élèves
-        cleanResultatsSiteWeb : supprime les json à televerser sur le siteweb
-        cleanToutResultats : supprime tout les résultats
-        getAllGroupsNumber : renvoie une liste de tout les groupes ayant soumis
-        getIncorrectGroupsNumber : renvoie une liste de tout les groupes ayant soumis un bundle incorrect
-        getIncorrectGroupsPath :  renvoie une liste des chemins vers les bundles des élèves ayant soumis un bundle incorrect
-        getCorrectGroupsNumber : renvoie une liste des bundles corrects
-        getCorrectGroupsPath : renvoie une liste des chemins vers les bundles corrects
-        getNumberSubmissions : renvoie le nombre de bundles (total)
-        createResultatsSiteWeb : crée le Json pour tout les critères à téléverser sur le site
-        critereToJson : crée le Json pour un seul critères
-        correctBadBundles : corrige les mauvais bundle et crée un detail.json pour chaque eleve
-        correctGoodBundles : corrige les bons bundle et crée un detail.json pour chaque eleve
-        correctAll : corrige tout les bundles
+Fonctions --
+    __init__ -- initialise les variables utilisés dans le reste de la classe
+    cleanResultatsEleves -- supprime le dossier des résultats des élèves
+    cleanResultatsSiteWeb -- supprime les json à televerser sur le siteweb
+    cleanToutResultats -- supprime tout les résultats
+    getAllGroupsNumber -- renvoie une liste de tout les groupes ayant soumis
+    getIncorrectGroupsNumber -- renvoie une liste de tout les groupes ayant
+                                soumis un bundle incorrect
+    getIncorrectGroupsPath --  renvoie une liste des chemins vers les
+                                bundles des élèves ayant soumis un bundle
+                                incorrect
+    getCorrectGroupsNumber -- renvoie une liste des bundles corrects
+    getCorrectGroupsPath -- renvoie une liste des chemins vers les bundles
+                            corrects
+    getNumberSubmissions -- renvoie le nombre de bundles (total)
+    createResultatsSiteWeb -- crée le Json pour tout les critères à
+                            téléverser sur le site
+    critereToJson -- crée le Json pour un seul critères
+    correctBadBundles -- corrige les mauvais bundle et crée un detail.json
+                        pour chaque eleve
+    correctGoodBundles -- corrige les bons bundle et crée un detail.json
+                        pour chaque eleve
+    correctAll -- corrige tout les bundles
     """
 
     def __init__(self, pathToJsonTemplate: str, pathToUnbundled: str,
                  nomFichierElevePython: str) -> None:
-        """[summary]
-
+        """
         Arguments:
-            pathToJsonTemplate {str} -- chemin vers le json détaillé des critères
+            pathToJsonTemplate {str} -- path vers le json détaillé des critères
             pathToUnbundled {str} -- chemin vers le dossier des soumissions
-            nomFichierElevePython {str} -- nom du fichier à corriger pour tout les élèves
+            nomFichierElevePython {str} -- nom du fichier à corriger
 
         Attributs :
-            filesCorrection : liste des fichiers de correction (pour supprime ceux crée par les élèves durant la correction)
-            templateJson : dictionnaire des critères
-            criteres : nom des critères
-            ResultSiteWeb : dictionnaire : clée critère / valeur : liste de résultats des élèves
+            filesCorrection {list} : liste des fichiers de correction
+            templateJson {dict} : cf docstring de la classe --> Doc Json
+            criteres {list[str]} : nom des critères
+            ResultSiteWeb {dict} : clée : critère,
+                                valeur : liste de dictionnaires des résultats
+                            {'équipe': 000, 'score': 0, 'commentaires': []}
+
         """
 
         self.pathBundlesEleves = glob.glob(f"{pathToUnbundled}/*")
@@ -167,7 +179,7 @@ class SuperCorrecteur2000:
         dictResult["commentaires"] = str.join(
             '', dictResult["commentaires"])
         dictResult['score'] = note
-        dictResult["commentaires"] = f"<p><h2>Évaluation du critère {str(CRITERE)} [{note}/100]</h2></p>" + \
+        dictResult["commentaires"] = f"<p><h2>Évaluation du critère {critere} [{note}/100]</h2></p>" + \
             dictResult["commentaires"]
         return dictResult
 
