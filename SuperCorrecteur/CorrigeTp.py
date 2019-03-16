@@ -15,7 +15,7 @@ class SuperCorrecteur2000:
 
 Doc Json :
     critère {str} -- nom du critère
-    command {list[str]} -- commandes à executer pour avoir le résultat à vérfier
+    command {list[str]} -- commandes à executer pour avoir le résultat à vérifier
     nom {str} -- nom donné au test (sera utilisé pour rédiger les commentaires)
     erreurAttendu {list[str]} -- erreur permise ou voulue pendant la correction
                             peut être du plain text ou une regex

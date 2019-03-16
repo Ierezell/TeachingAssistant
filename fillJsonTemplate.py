@@ -18,6 +18,7 @@ TODO: Créer une nouvelle moulinette pour créer un JSON pour le téléversement
 # ex : py, python, python3.7
 PYENVNAME = "python3.7"
 
+
 def fillJson(pathJson: str, projetpath: str) -> dict:
     with open(pathJson) as jsonFile:
         dictCritere = json.load(jsonFile)
@@ -67,10 +68,11 @@ def fillJson(pathJson: str, projetpath: str) -> dict:
 
                         if regArg.findall(result):
                             """
-                            Il y a un seul résultat attendu pour chaque commande testé
-                            Si le résultat pour une commande est trouvé nous le modifions
-                            de la liste au cas ou il puisse apparaître en double et nous
-                            marquons le test comme non échoué.
+                            Il y a un seul résultat attendu pour chaque
+                            commande testé. Si le résultat pour une commande
+                            est trouvé nous le modifions de la liste au cas ou
+                            il puisse apparaître en double et nous marquons le
+                            test comme non échoué.
                             """
                             reAttendu[index] = re.compile('@PASS@', re.MULTILINE)
                             testEchoue = False
@@ -79,12 +81,12 @@ def fillJson(pathJson: str, projetpath: str) -> dict:
                     if testEchoue and reAttendu != []:
                         critere["erreur"].append(
                             ("""<li><p>Dans le contexte suivant :</p>"""
-                            f"""<p>"""
-                            f"""<code>python3 {options[1]} {options[2]}</code></p>"""
-                            """<p>Votre code ne soulève pas d'erreur """
-                            """mais ceci n'était pas le résultat attendu :<p>"""
-                            f"""<pre class="language-python">"""
-                            f"""<code>{result}</code></pre></li>"""))
+                             f"""<p>"""
+                             f"""<code>python3 {options[1]} {options[2]}</code></p>"""
+                             """<p>Votre code ne soulève pas d'erreur """
+                             """mais ceci n'était pas le résultat attendu :<p>"""
+                             f"""<pre class="language-python">"""
+                             f"""<code>{result}</code></pre></li>"""))
             # if critere["critere"] == "2":
             #     if err:
             #         testEchoue = True
@@ -112,7 +114,8 @@ def fillJson(pathJson: str, projetpath: str) -> dict:
             #                 testEchoue = False
             #                 """
             #                 Retire le succès de la liste des attendu
-            #                 Est important pour le critère 2 puisque l'ont compare à des résultat précis
+            #                 Est important pour le critère 2 puisque l'ont
+            #                   compare à des résultat précis
             #                 2 commandes pourrait donc avoir le même resultat tel que "0.00"
             #                 """
             #                 if len(regArg.pattern) > 2:
@@ -130,7 +133,8 @@ def fillJson(pathJson: str, projetpath: str) -> dict:
         """
         Une pondération à été fait pour chaque critère
         La note est évalué selon la pondération
-        La note est ensuite majoré à l'entier près supérieur (correction mode gentil)
+        La note est ensuite majoré à l'entier près supérieur
+        (correction mode gentil)
         """
         note = (len(critere["command"]) - len(critere["erreur"])
                 ) / len(critere["command"]) * critere["ponderation"]

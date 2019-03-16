@@ -1,15 +1,20 @@
 
 # Vscode
- .vscode
+.vscode
 
-# Bundle, Zip et Resultat
- ./*/H19-P1-bundles
- ./*/H19-P1-bundles.zip
- ./*/unbundled
- ./*/Resultats
+# Bundle,
+H19-P1-bundles
+A18-P2-bundles
+*/unbundled
+
+# Zip
+*.zip
+
+# Resultat
+*/Resultats
 
 # Cache Python
- .__pycache__
- .pytest_cache
- ./*/__pycache__
- ./*/pytest_cache
+.__pycache__
+.pytest_cache
+ */__pycache__
+ */pytest_cache

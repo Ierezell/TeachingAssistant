@@ -21,7 +21,7 @@ for pathJsonEleve in folderJsonDetail:
 
     dictResult = {"équipe": groupNb,
                   'score': 0, 'commentaires': []}
-    
+
     note = 0
     for test in jsonEleve:
         if test['critere'] == str(NOCRITERE):
@@ -53,21 +53,21 @@ with open(f'./{TP}/Resultats/ResultatsCompiles/ResultatCritere_{str(NOCRITERE)}.
     json.dump(Resultat, outfile, ensure_ascii=False)
 
 
-#"<p><h2>Évaluation du critère 1 [96/100]</h2></p>",
-#"<p><h3>Commande Help : [60/60]</h3></p>",
-#"<p><strong>V�rifier l'existence de la commande <code>help</code>.</strong></p>",
-#"<p><h3>Nomenclature : [8/10]</h3></p>",
-#"<p><strong>V�rifer la nomenclature des arguments et actions.</strong></p>",
-#"<p>Des actions et/ou arguments sont mal nomm�s.</p>",
-#"<ul>",
-#"<li><code>portefeuille</code> manquant donc mal nomm�e.</li>",
-#"</ul>",
-#"<p><h3>Arguments superflus : [10/10]</h3></p>",
-#"<p><strong>V�rifier que les actions n'ont pas d'arguments superflus.</strong></p>",
-#"<p><h3>Arguments manquants : [8/10]</h3></p>",
-#"<p><strong>V�rifier que les actions n'ont pas d'arguments manquants.</strong></p>",
-#"<p>Des actions ont des arguments manquants.</p>",
-#"<ul>",
-#"<li><code>argument <code>--portefeuille</code> manquant.</li>",
-#"</ul><p><h3>Metavar : [10/10]</h3></p>",
-#"<p><strong>V�rifier que les arguments ont le bon metavar.</strong></p>"
+# "<p><h2>Évaluation du critère 1 [96/100]</h2></p>",
+# "<p><h3>Commande Help : [60/60]</h3></p>",
+# "<p><strong>V�rifier l'existence de la commande <code>help</code>.</strong></p>",
+# "<p><h3>Nomenclature : [8/10]</h3></p>",
+# "<p><strong>V�rifer la nomenclature des arguments et actions.</strong></p>",
+# "<p>Des actions et/ou arguments sont mal nomm�s.</p>",
+#  "<ul>",
+# "<li><code>portefeuille</code> manquant donc mal nomm�e.</li>",
+#  "</ul>",
+# "<p><h3>Arguments superflus : [10/10]</h3></p>",
+# "<p><strong>V�rifier que les actions n'ont pas d'arguments superflus.</strong></p>",
+# "<p><h3>Arguments manquants : [8/10]</h3></p>",
+# "<p><strong>V�rifier que les actions n'ont pas d'arguments manquants.</strong></p>",
+# "<p>Des actions ont des arguments manquants.</p>",
+#  "<ul>",
+# "<li><code>argument <code>--portefeuille</code> manquant.</li>",
+# "</ul><p><h3>Metavar : [10/10]</h3></p>",
+# "<p><strong>V�rifier que les arguments ont le bon metavar.</strong></p>"

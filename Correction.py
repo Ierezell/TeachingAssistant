@@ -9,17 +9,17 @@ from fillJsonTemplate import fillJson
 TP = 'TP1'
 
 # Nom du fichier principale du projet à tester
-PROJECTNAME = "projet1.py" 
+PROJECTNAME = "projet1.py"
 
 # Modifier le numéro du critère au besoin
 NOCRITERE = 1
 
 if not os.path.exists(f"./{TP}/Resultats"):
     os.makedirs(f"./{TP}/Resultats")
-    
+
 bundlesEleves = glob.glob(f'./{TP}/unbundled/*')
 filesCorrection = glob.glob(f'./{TP}/*')
-print(f"""Nombre de bundles au total : {len(bundlesEleves)}""")
+print(f"Nombre de bundles au total : {len(bundlesEleves)}")
 ResultSiteWeb = []
 correctfile = 0
 
@@ -58,9 +58,10 @@ for bundle in bundlesEleves:
         dicEquipeCritereFail = {'équipe': GroupNb, 'score': 0,
                                 'commentaires': critereJSON}
         dicEquipeCritereFail['commentaires'] += (
-            f"""<p>Il n'y a pas de fichier {PROJECTNAME} dans le dossier de votre bundle.</p>"""
-            f"""<p>Les seuls fichiers trouvés sont :</p>"""
-            f"""<p>{listFilesFound}</p>""")
+            f"<p>Il n'y a pas de fichier {PROJECTNAME}"
+            f"dans le dossier de votre bundle.</p>"
+            f"<p>Les seuls fichiers trouvés sont :</p>"
+            f"<p>{listFilesFound}</p>")
         ResultSiteWeb.append(dicEquipeCritereFail)
         print(f"Aucun fichier {PROJECTNAME} pour le groupe : {GroupNb}")
         with open(f'./{TP}/ResultatsSiteWeb.json', 'w') as outfile:
