@@ -80,7 +80,7 @@ class AssistantCorrection:
 
     def initialise_Teams(self, projectName):
         pathList = f'{self.projectBasePath}/unbundled/'
-        teamList = glob.glob(pathList)
+        teamList = glob.iglob(pathList)
         for team in teamList:
             noTeam = int(team[-9:-6])
             pathTeam = f'{pathList}{team}'
@@ -89,7 +89,7 @@ class AssistantCorrection:
 
     def correct_Good_Bundles(self):
         for team in self.Teams:
-            Correcteur.filesCorrection = glob.glob(self.projectBasePath)
+            Correcteur.filesCorrection = glob.iglob(self.projectBasePath)
             Correcteur.projectBasePath = self.projectBasePath
             if team.isProjectNameValid:
                 CorrecteurTeam = Correcteur(team)

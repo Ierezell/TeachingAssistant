@@ -14,7 +14,7 @@ class Correcteur:
         """ Supprime les fichiers crées par le code de l'élève
             afin de ne pas interferer avec le suivant
         """
-        for files in glob.glob(Correcteur.projectBasePath):
+        for files in glob.iglob(Correcteur.projectBasePath):
             if files not in Correcteur.fileCorrection:
                 try:
                     os.remove(files)

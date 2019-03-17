@@ -40,8 +40,7 @@ class Unbundled:
     def unbundle_One_Bundle(self, No_equipe):
         self.check_And_Create_Unbundled_One_Dir(No_equipe)
         pathBundleFolder = f"./{self.folderName}/unbundled/"
-        bundleList = glob.glob(pathBundleFolder)
-        for bundle in bundleList:
+        for bundle in glob.iglob(pathBundleFolder):
             if int(bundle[7:10]) == int(No_equipe):
                 options = ['hg init', f"{pathBundleFolder}/{bundle}"]
                 proc = Popen(options, stdout=PIPE, stderr=PIPE,
@@ -76,9 +75,8 @@ class Unbundled:
 
     def unbundle_All_Bundles(self):
         self.check_And_Create_Unbundled_Dirs()
-        pathBundleFolder = f"./{self.folderName}/unbundled/"
-        bundleList = glob.glob(pathBundleFolder)
-        for bundle in bundleList:
+        pathBundleFolder = f"./{self.folderName}/unbundled/" 
+        for bundle in glob.iglob(pathBundleFolder):
             options = ['hg init', f"{pathBundleFolder}/{bundle}"]
             proc = Popen(options, stdout=PIPE, stderr=PIPE,
                          encoding='utf-8')
