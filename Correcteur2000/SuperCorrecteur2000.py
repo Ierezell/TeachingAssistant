@@ -7,9 +7,11 @@ import zipfile
 
 import numpy
 
-from Correcteur2000 import Correcteur
+from Correcteur import Correcteur
+from Jsonizer import Jsonizer
 from Team import Team
-from Unbundler import Unbundled
+from Unbundler import Unbundler
+from WebJsonizer import WebJsonizer
 
 # TODO Finir linker Correction.
 # TODO Finir linker quand pas de fichiers
@@ -74,10 +76,6 @@ class AssistantCorrection:
             if not os.path.exists(self.projectBasePath+folder):
                 os.makedirs(self.projectBasePath+folder)
 
-    def unbundle(self):
-        unbundler = Unbundled(self.projectBasePath[2:])
-        unbundler.unbundle_All_Bundles()
-
     def initialise_Teams(self, projectName):
         pathList = f'{self.projectBasePath}/unbundled/'
         teamList = glob.iglob(pathList)
@@ -87,26 +85,37 @@ class AssistantCorrection:
             self.Teams[noTeam] = Team(noTeam, pathTeam)
             self.Teams[noTeam].check_If_Project_Valide(projectName)
 
-    def correct_Good_Bundles(self):
-        for team in self.Teams:
-            Correcteur.filesCorrection = glob.iglob(self.projectBasePath)
-            Correcteur.projectBasePath = self.projectBasePath
-            if team.isProjectNameValid:
-                CorrecteurTeam = Correcteur(team)
-                Correcteur._cleanAvantNouvelEleve()
-                CorrecteurTeam.corrige()
+    def unbundle(self):
+        unbundler = Unbundler(self.projectBasePath[2:])
+        unbundler.unbundle_All_Bundles()
 
-# TODO : transformer ça en méthode pour AssistantCorrection
-    # if noProject:
-    #     critereJSON = f'<h4>Résultat critère {NOCRITERE}</h4>'
-    #     dicEquipeCritereFail = {'équipe': GroupNb, 'score': 0,
-    #                             'commentaires': critereJSON}
-    #     dicEquipeCritereFail['commentaires'] += (
-    #         f"<p>Il n'y a pas de fichier {PROJECTNAME}"
-    #         f"dans le dossier de votre bundle.</p>"
-    #         f"<p>Les seuls fichiers trouvés sont :</p>"
-    #         f"<p>{listFilesFound}</p>")
-    #     ResultSiteWeb.append(dicEquipeCritereFail)
-    #     print(f"Aucun fichier {PROJECTNAME} pour le groupe : {GroupNb}")
-    #     with open(f'./{TP}/ResultatsSiteWeb.json', 'w') as outfile:
-    #         json.dump(ResultSiteWeb, outfile, ensure_ascii=False)
+    def corrige(self, pathJson):
+        correcteur8000 = Correcteur(self.projectBasePath)
+        correcteur8000.loadJson(pathJson)
+        for team in self.Teams:
+            if team.main:
+                correcteur8000.corrige(team)
+
+    def makeRapports(self):
+        webJsonMaker = WebJsonizer()
+        for team in self.Teams:
+            webJsonMaker.makeRapport(team)
+
+    def groupAndJsonize(self):
+        webJsonMaker = WebJsonizer()
+        webJsonMaker.jsonizeResults(self.Teams)
+
+    def sendToWebsite(self):
+        # request blabla url python post data json
+        pass
+
+
+if __name__ == "main":
+    Assistant = AssistantCorrection(noTP, session, year)
+    Assistant.initialize_Directory()
+    Assistant.unbundle()
+    Assistant.initialise_Teams("projet1.py")
+    Assistant.corrige("./dictCritere.json")
+    Assistant.makeRapport()
+    Assistant.groupAndJsonize()
+    Assistant.sendToWebsite()

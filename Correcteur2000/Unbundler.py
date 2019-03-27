@@ -6,7 +6,7 @@ import glob
 from subprocess import PIPE, Popen, TimeoutExpired
 
 
-class Unbundled:
+class Unbundler:
     def __init__(self, folderName):
         self.folderName = folderName
         self.allBundlesPath = f"./{self.folderName}/{self.folderName}-bundles"
@@ -75,7 +75,7 @@ class Unbundled:
 
     def unbundle_All_Bundles(self):
         self.check_And_Create_Unbundled_Dirs()
-        pathBundleFolder = f"./{self.folderName}/unbundled/" 
+        pathBundleFolder = f"./{self.folderName}/unbundled/"
         for bundle in glob.iglob(pathBundleFolder):
             options = ['hg init', f"{pathBundleFolder}/{bundle}"]
             proc = Popen(options, stdout=PIPE, stderr=PIPE,
