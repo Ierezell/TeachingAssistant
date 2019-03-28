@@ -32,7 +32,10 @@ class Correcteur:
             {"Nom Test1":
                 {"description " : "Description du test pour le rapport"
                  "commentaireEchec" : "Description de l'echec"
-                 "Arguments":[Liste d'arguments à faire en ligne de commandes]
+                 "Arguments":
+                    {
+                    [Liste d'arguments à faire en ligne de commandes]
+                    }
                  "resultatAttendu": "Un mot que l'on veut matcher ou une regex"
                  "erreurAttendu": "Un mot que l'on veut matcher ou une regex"
                  "pondération" : int ou [int] pour pondérer le resultat.
@@ -61,19 +64,19 @@ class Correcteur:
             nomCommandeTeam["ponderation"] = critere["ponderation"]
             nomCommandeTeam["description"] = critere["description"]
 
-            for args in commandesToTest:
-                options = [pyEnv, team.main] + args.strip().split(" ")
+            for command in commandesToTest:
+                options = [pyEnv, team.main] + command.strip().split(" ")
 
                 proc = Popen(options, stdout=PIPE, stderr=PIPE,
                              encoding='utf-8')
                 result, err = proc.communicate(timeout=10)
-                nomCommandeTeam[args]["resultat"] = result
-                nomCommandeTeam[args]["erreur"] = err
+                nomCommandeTeam[command]["resultat"] = result
+                nomCommandeTeam[command]["erreur"] = err
                 #
                 # TODO La logique de si le test est réussi ou pas
                 #
                 if "reussi":
-                    nomCommandeTeam[args]["estReussi"] = True
+                    nomCommandeTeam[command]["estReussi"] = True
                 else:
-                    nomCommandeTeam[args]["estReussi"] = False
+                    nomCommandeTeam[command]["estReussi"] = False
                     nomCommandeTeam["commentaireEchec"] = critere["commentaireEchec"]

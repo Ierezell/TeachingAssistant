@@ -1,0 +1,196 @@
+{
+    "1": {
+        "1": {
+            "nom": "Commande Help",
+            "ponderation": 40,
+            "description": "Vérifier l'existence de la commande <code>help</code>.",
+            "commandes": [
+                {
+                    "cmd": "-h",
+                    "erreurAttendu": "",
+                    "resultatAttendu": "usage:",
+                    "commentaire": "<p>La commande <code>-h</code> n'est pas fonctionelle.</p>"
+                },
+                {
+                    "cmd": "--help",
+                    "erreurAttendu": "",
+                    "resultatAttendu": "usage:",
+                    "commentaire": "<p>La commande <code>--help</code> n'est pas fonctionelle.</p>"
+                }
+            ]
+        },
+        "2": {
+            "nom": "Commande Help",
+            "ponderation": 40,
+            "description": "<p><strong>Vérifier l'existence de la commande <code>help</code>.</strong></p>",
+            "commandes": [
+                {
+                    "cmd": "-h",
+                    "erreurAttendu": [],
+                    "resultatAttendu": "usage:",
+                    "commentaire": "<p>La commande <code>-h</code> n'est pas fonctionelle.</p>",
+                },
+                {
+                    "cmd": "--help",
+                    "erreurAttendu": [],
+                    "resultatAttendu": "usage:",
+                    "commentaire": "<p>La commande <code>--help</code> n'est pas fonctionelle.</p>",
+                },
+            ],
+        },
+        "Test1": {
+            "nom": "Commande Help",
+            "ponderation": 40,
+            "description": "<p><strong>Vérifier l'existence de la commande <code>help</code>.</strong></p>",
+            "commandes": [
+                {
+                    "cmd": "-h",
+                    "erreurAttendu": [],
+                    "resultatAttendu": "usage:",
+                    "commentaire": "<p>La commande <code>-h</code> n'est pas fonctionelle.</p>",
+                },
+                {
+                    "cmd": "--help",
+                    "erreurAttendu": [],
+                    "resultatAttendu": "usage:",
+                    "commentaire": "<p>La commande <code>--help</code> n'est pas fonctionelle.</p>",
+                },
+            ],
+        },
+        "Test1": {
+            "nom": "Commande Help",
+            "ponderation": 40,
+            "description": "<p><strong>Vérifier l'existence de la commande <code>help</code>.</strong></p>",
+            "commandes": [
+                {
+                    "cmd": "-h",
+                    "erreurAttendu": [],
+                    "resultatAttendu": "usage:",
+                    "commentaire": "<p>La commande <code>-h</code> n'est pas fonctionelle.</p>",
+                },
+                {
+                    "cmd": "--help",
+                    "erreurAttendu": [],
+                    "resultatAttendu": "usage:",
+                    "commentaire": "<p>La commande <code>--help</code> n'est pas fonctionelle.</p>",
+                },
+            ],
+        },
+        "Test1": {
+            "nom": "Commande Help",
+            "ponderation": 40,
+            "description": "<p><strong>Vérifier l'existence de la commande <code>help</code>.</strong></p>",
+            "commandes": [
+                {
+                    "cmd": "-h",
+                    "erreurAttendu": [],
+                    "resultatAttendu": "usage:",
+                    "commentaire": "<p>La commande <code>-h</code> n'est pas fonctionelle.</p>",
+                },
+                {
+                    "cmd": "--help",
+                    "erreurAttendu": [],
+                    "resultatAttendu": "usage:",
+                    "commentaire": "<p>La commande <code>--help</code> n'est pas fonctionelle.</p>",
+                },
+            ],
+        }
+    },
+    "critere2": {
+        "Test1": {
+            "nom": "Commande Help",
+            "ponderation": 40,
+            "description": "<p><strong>Vérifier l'existence de la commande <code>help</code>.</strong></p>",
+            "commandes": [
+                {
+                    "cmd": "-h",
+                    "erreurAttendu": [],
+                    "resultatAttendu": "usage:",
+                    "commentaire": "<p>La commande <code>-h</code> n'est pas fonctionelle.</p>",
+                },
+                {
+                    "cmd": "--help",
+                    "erreurAttendu": [],
+                    "resultatAttendu": "usage:",
+                    "commentaire": "<p>La commande <code>--help</code> n'est pas fonctionelle.</p>",
+                },
+            ],
+        },
+        "Test1": {
+            "nom": "Commande Help",
+            "ponderation": 40,
+            "description": "<p><strong>Vérifier l'existence de la commande <code>help</code>.</strong></p>",
+            "commandes": [
+                {
+                    "cmd": "-h",
+                    "erreurAttendu": [],
+                    "resultatAttendu": "usage:",
+                    "commentaire": "<p>La commande <code>-h</code> n'est pas fonctionelle.</p>",
+                },
+                {
+                    "cmd": "--help",
+                    "erreurAttendu": [],
+                    "resultatAttendu": "usage:",
+                    "commentaire": "<p>La commande <code>--help</code> n'est pas fonctionelle.</p>",
+                },
+            ],
+        },
+        "Test1": {
+            "nom": "Commande Help",
+            "ponderation": 40,
+            "description": "<p><strong>Vérifier l'existence de la commande <code>help</code>.</strong></p>",
+            "commandes": [
+                {
+                    "cmd": "-h",
+                    "erreurAttendu": [],
+                    "resultatAttendu": "usage:",
+                    "commentaire": "<p>La commande <code>-h</code> n'est pas fonctionelle.</p>",
+                },
+                {
+                    "cmd": "--help",
+                    "erreurAttendu": [],
+                    "resultatAttendu": "usage:",
+                    "commentaire": "<p>La commande <code>--help</code> n'est pas fonctionelle.</p>",
+                },
+            ],
+        },
+        "Test1": {
+            "nom": "Commande Help",
+            "ponderation": 40,
+            "description": "<p><strong>Vérifier l'existence de la commande <code>help</code>.</strong></p>",
+            "commandes": [
+                {
+                    "cmd": "-h",
+                    "erreurAttendu": [],
+                    "resultatAttendu": "usage:",
+                    "commentaire": "<p>La commande <code>-h</code> n'est pas fonctionelle.</p>",
+                },
+                {
+                    "cmd": "--help",
+                    "erreurAttendu": [],
+                    "resultatAttendu": "usage:",
+                    "commentaire": "<p>La commande <code>--help</code> n'est pas fonctionelle.</p>",
+                },
+            ],
+        },
+        "Test1": {
+            "nom": "Commande Help",
+            "ponderation": 40,
+            "description": "<p><strong>Vérifier l'existence de la commande <code>help</code>.</strong></p>",
+            "commandes": [
+                {
+                    "cmd": "-h",
+                    "erreurAttendu": [],
+                    "resultatAttendu": "usage:",
+                    "commentaire": "<p>La commande <code>-h</code> n'est pas fonctionelle.</p>",
+                },
+                {
+                    "cmd": "--help",
+                    "erreurAttendu": [],
+                    "resultatAttendu": "usage:",
+                    "commentaire": "<p>La commande <code>--help</code> n'est pas fonctionelle.</p>",
+                },
+            ],
+        }
+    },
+}

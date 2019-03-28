@@ -20,15 +20,12 @@ class Team:
         [
         {"Critère1":
             {"Nom Test1":
-                {"description " : "Description du test pour le rapport"
-                 ?"commentaireEchec" : "Description de l'echec"
-                 "pondération" : int ou [int] pour pondérer le resultat.
-                 "Arguments1":
+                {"Commande1":
                     {"estReussi" : bool pour savoir si l'élève à passé
                      "resultat": Sortie (stdout) du test
                      "erreur": "Sortie (stderr) du test"
                     }
-                "Arguments2":
+                "commande2":
                     {......}
                 }
             }
@@ -50,6 +47,7 @@ class Team:
         self.commentaires = {}
         self.erreurs = {}
         self.main = None
+        self.penalites = None
         self.sorties = {}
         self.rapport = []
 
