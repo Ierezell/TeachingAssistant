@@ -5,7 +5,8 @@ import re
 import shutil
 from subprocess import PIPE, Popen
 
-from SuperCorrecteur2000 import AssistantCorrection.PYENVNAME as pyEnv
+# pyEnv = __import__('SuperCorrecteur2000').AssistantCorrection.PYENVNAME
+pyEnv = "python"
 
 
 class Correcteur:

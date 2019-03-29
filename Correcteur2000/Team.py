@@ -1,7 +1,7 @@
 import glob
 from subprocess import PIPE, Popen, TimeoutExpired
 
-from SuperCorrecteur2000 import AssistantCorrection.PYENVNAME as pyEnv
+# from SuperCorrecteur2000 import AssistantCorrection.PYENVNAME as pyEnv
 
 
 class Team:

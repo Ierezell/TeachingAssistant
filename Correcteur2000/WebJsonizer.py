@@ -15,7 +15,7 @@ class WebJsonizer:
                 noteTest = 0
                 for args in critere[nomTest]["arguments"]:
                     if args["erreur"]:
-                        coms.append(f"<p>{args["comErreur"]}</p>")
+                        coms.append(f"<p>{args['comErreur']}</p>")
                     #
                     #
                     # TODO faire la logique de l'ajout des commentaires
