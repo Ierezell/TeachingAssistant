@@ -1,0 +1,114 @@
+Nom fichier :
+    - marche_boursier.py (ou marcheboursier.py car erreur dans les critères)
+    - portefeuille.py
+
+Nomenclature :
+        - MarchéBoursier
+            - prix(symbole, [date|date=.*]):
+                - symbole
+                - date 
+        - Portefeuille
+            - déposer(self, montant, [date|date=.*]):
+                - montant
+                - date
+            - solde(date):
+                - date
+            - acheter(self, symbole, quantite, [date|date=.*]):
+                - symbole
+                - quantite
+                - date
+            - vendre(self, symbole, quantite, [date|date=.*]):
+                - symbole
+                - quantite
+                - date
+            - valeur_totale(self, [date|date=.*]):
+                - date
+            - valeur_des_titres(self, symbole):
+                - symboles
+                - date
+            - titres(self):
+                - date
+            - valeur_projetée(self, [date|date=.*], rendement):
+                - date
+                - rendement
+    - Erreur :
+        - ErreurDate
+        - LiquiditéInsufissante
+        - ErreurQuantité
+
+Typage :
+    - Argument :
+        - date = datetime.date
+        - montant = float
+        - symbole = string
+        - quantite = float
+        - rendement = float || {'symbole': float}
+        - symbole = list string
+    - Méthode :
+        - prix() = float
+        - déposer() = RIEN
+        - solde() = float
+        - acheter() = RIEN
+        - vendre() = RIEN
+        - valeur_totale() = float
+        - valeur_des_titres() = float
+        - titres() = dict {'symbole': int}
+        - valeur_projetée() = RIEN
+
+Erreur :
+    - ErreurDate [SI date est dans le futur SAUF pour valeur_projetée()]
+    - LiquiditéInsuffisante [UNIQUEMENT pour méthode acheter()]
+    - ErreurQuantité [UNIQUEMENT pour la méthode vendre()]
+
+Format d'affichage :
+    - prix() :
+        - Rien
+    - déposer() :
+        - RIEN
+    - solde() :
+        - RIEN
+    - acheter() :
+        - RIEN
+    - vendre() :
+        - RIEN
+    - valeur_totale() :
+        - RIEN
+    - valeur_des_titres() :
+        - RIEN
+    - titres() :
+        - RIEN
+    - valeur_projetée() :
+        - RIEN
+
+Valeur par Défaut :
+        - MarchéBoursier
+            - prix(symbole, date):
+                - symbole = OBLIGATOIRE
+                - date = dt.today()
+        - Portefeuille
+            - déposer(self, montant, date):
+                - montant = OBLIGATOIRE
+                - date = dt.today()
+            - solde(date):
+                - date = dt.today()
+            - acheter(self, symbole, quantite, date):
+                - symbole = OBLIGATOIRE
+                - quantite = OBLIGATOIRE
+                - date = dt.today()
+            - vendre(self, symbole, quantite, date):
+                - symbole = OBLIGATOIRE
+                - quantite = OBLIGATOIRE
+                - date = dt.today()
+            - valeur_totale(self, date):
+                - date = dt.today()
+            - valeur_des_titres(self, symbole):
+                - symboles = OBLIGATOIRE
+                - date = dt.today()
+            - titres(self):
+                - date = dt.today()
+            - valeur_projetée(self, date, rendement):
+                - date = OBLIGATOIRE
+                - rendement = OBLIGATOIRE
+
+Fonctionnement :
+    validation des valeurs
