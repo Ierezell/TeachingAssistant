@@ -5,8 +5,8 @@
 # Bundle,
 H19-P1-bundles
 A18-P2-bundles
-*/unbundled
-
+unbundled
+*-bundles
 # Zip
 *.zip
 
@@ -18,3 +18,4 @@ A18-P2-bundles
 .pytest_cache
  */__pycache__
  */pytest_cache
+*/__pycache__/*

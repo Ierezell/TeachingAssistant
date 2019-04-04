@@ -2,7 +2,7 @@ import os
 import zipfile
 import shutil
 import glob
-
+import tqdm
 from subprocess import PIPE, Popen, TimeoutExpired
 
 HEADER = '\033[95m'
@@ -18,6 +18,7 @@ UNDERLINE = '\033[4m'
 class Unbundler:
     def __init__(self, folderName):
         self.folderName = folderName
+        self.numberOfBundles = 0
 
     def check_Zip_Or_Folder(self):
         if not os.path.exists(f"{self.folderName}-bundles"):
@@ -27,8 +28,10 @@ class Unbundler:
 
     def check_And_Create_Unbundled_Dirs(self):
         self.check_Zip_Or_Folder()
+        self.numberOfBundles = 0
         bundleFolder = f"{self.folderName}/{self.folderName}-bundles"
         for bundle in os.listdir(bundleFolder):
+            self.numberOfBundles += 1
             fromBundle = f"./{bundleFolder}/{bundle}"
             destPath = f"./{self.folderName}/unbundled/{bundle[:-3]}"
             if not os.path.exists(destPath):
@@ -41,16 +44,17 @@ class Unbundler:
         print(f"\tzip file or folder {PASS}ok{ENDC}\n")
         print("\tInit / Unbundling / Updating...")
         pathBundleFolder = f"{self.folderName}/unbundled/"
-        for bundle in glob.iglob(f"{pathBundleFolder}/*"):
+        for bundle in tqdm.tqdm(glob.iglob(f"{pathBundleFolder}/*"),
+                                total=self.numberOfBundles):
             nomFichierHg = bundle.split('/')[-1]
             optionsInit = ['hg', 'init', f"{bundle}"]
             procInit = Popen(optionsInit, stdout=PIPE, stderr=PIPE,
                              encoding='utf-8')
             resultInit, errInit = procInit.communicate()
             if errInit:
-                print(f"{FAIL}Problème avec hg init !{ENDC}")
-                print(f"{bundle}")
-                print(f"Erreur : \n {WARNING}{errInit}{ENDC}")
+                tqdm.tqdm.write(f"{FAIL}Problème avec hg init !{ENDC}")
+                tqdm.tqdm.write(f"{bundle}")
+                tqdm.tqdm.write(f"Erreur : \n {WARNING}{errInit}{ENDC}")
                 continue
             # Pas d'erreur avec le init on continue
             else:
@@ -78,5 +82,5 @@ class Unbundler:
                 print(f"{bundle}")
                 print(f"Erreur : \n {WARNING}{errUpdate}{ENDC}")
                 raise EnvironmentError('update')
-            print(f"\t\t{bundle} {PASS}ok{ENDC}")
+            #print(f"\t\t{bundle} {PASS}ok{ENDC}")
         print(f"\tInit / Unbundling / Updating {PASS}ok{ENDC}")

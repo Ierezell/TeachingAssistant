@@ -6,12 +6,14 @@ import shutil
 import zipfile
 import re
 import numpy
+import tqdm
 
 from Correctioneur import Correcteur
 from WebJsonizer import WebJsonizer
 from Team import Team
 from Unbundler import Unbundler
 from WebJsonizer import WebJsonizer
+from subprocess import PIPE, Popen
 
 # TODO Finir linker Correction.
 # TODO Finir linker quand pas de fichiers
@@ -60,10 +62,11 @@ UNDERLINE = '\033[4m'
                 team-002.json
 """
 
+PYENVNAME = "python3.7"  # ex : py, python, python3.7
+
 
 class AssistantCorrection:
     # Modifier le nom utilisé par votre environnement pour python
-    PYENVNAME = "python3.7"  # ex : py, python, python3.7
 
     def __init__(self, noTP, session, year):
         self.noTP = noTP
@@ -75,6 +78,7 @@ class AssistantCorrection:
             "/result"
         ]
         self.Teams = {}
+        self.goodTeams = {}
 
     def initialize_Directory(self):
         if not os.path.exists(self.projectBasePath):
@@ -85,12 +89,14 @@ class AssistantCorrection:
 
     def initialise_Teams(self, projectName):
         pathList = f'{self.projectBasePath}/unbundled/'
-        teamList = glob.iglob(pathList)
-        for team in teamList:
-            noTeam = int(team[-9:-6])
-            pathTeam = f'{pathList}{team}'
+        teamList = glob.iglob(f"{pathList}/*")
+        print("\nCreating Teams...")
+        print("\nLooking for project file...\n")
+        for pathTeam in teamList:
+            noTeam = int(pathTeam[-6:-3])
             self.Teams[noTeam] = Team(noTeam, pathTeam)
-            self.Teams[noTeam].check_If_Project_Valide(projectName)
+            if self.Teams[noTeam].check_If_Project_Valide(projectName) != 0:
+                self.goodTeams[noTeam] = self.Teams[noTeam]
 
     def unbundle(self, path=""):
         if path != "":
@@ -109,18 +115,36 @@ class AssistantCorrection:
                 correcteur8000.corrige(team)
 
     def show_functions(self):
-        pathUnbundled = f'{self.projectBasePath}/unbundled/'
-        for folder in glob.iglob(f"{pathUnbundled}/*"):
-            groupNb = folder.split('/')[-1][7:10]
-            print(f"Fonctions du groupe : {PASS}{groupNb}{ENDC}\n")
-            for file in glob.iglob(f"{folder}/*"):
+        for noTeam, team in self.goodTeams:
+            print(f"Fonctions du groupe : {PASS}{noTeam}{ENDC}\n")
+            for file in team.files:
                 if file[-3:] == ".py":
                     print(f"\tFichier : {WARNING}{file.split('/')[-1]}{ENDC}\n")
                     with open(file) as file_Python:
                         for lineNb, line in enumerate(file_Python):
                             if re.compile(r"def\s").findall(line):
                                 print(f"Line {lineNb}: {BOLD}{line}{ENDC}")
+            input("Press enter for next group")
             print("\n\n")
+
+    def show_similarity(self, fileName, percent=80):
+        list_Teams = list(self.goodTeams.copy().items())
+        for noTeam1, group1 in tqdm.tqdm(list_Teams):
+            file_group1 = f"{group1.pathTeam}/{fileName}"
+            for noTeam2, group2 in list_Teams:
+                file_group2 = f"{group2.pathTeam}/{fileName}"
+                options = ['pycode_similar', file_group1, file_group2]
+                proc = Popen(options, stdout=PIPE, stderr=PIPE,
+                             encoding='utf-8')
+                result, err = proc.communicate(timeout=10)
+                try:
+                    r = float(re.compile(r"\d?\d?\d\.\d\d").findall(result)[0])
+                except IndexError:
+                    continue
+                if r >= percent and noTeam1 != noTeam2:
+                    tqdm.tqdm.write(
+                        f"{BOLD}ÉQUIPE{ENDC} {PASS}{noTeam1}{ENDC} {BOLD}Et{ENDC} {PASS}{noTeam2}{ENDC} {FAIL} {r} %{ENDC}")
+            list_Teams.remove((noTeam1, group1))
 
     def makeRapports(self):
         webJsonMaker = WebJsonizer()
@@ -139,9 +163,10 @@ class AssistantCorrection:
 if __name__ == "__main__":
     Assistant = AssistantCorrection(1, "H", 19)
     Assistant.initialize_Directory()
-    # Assistant.unbundle()
-    Assistant.show_functions()
-    # Assistant.initialise_Teams("projet1.py")
+    Assistant.unbundle()
+    Assistant.initialise_Teams("projet1.py")
+    # Assistant.show_functions()
+    Assistant.show_similarity("projet1.py")
     # Assistant.corrige("./dictCritere.json")
     # Assistant.makeRapport()
     # Assistant.groupAndJsonize()
