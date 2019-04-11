@@ -68,7 +68,7 @@ PYENVNAME = "python3.7"  # ex : py, python, python3.7
 class AssistantCorrection:
     # Modifier le nom utilisé par votre environnement pour python
 
-    def __init__(self, noTP, session, year):
+    def __init__(self, session, year, noTP):
         self.noTP = noTP
         self.session = session.upper()
         self.year = year
@@ -161,7 +161,7 @@ class AssistantCorrection:
 
 
 if __name__ == "__main__":
-    Assistant = AssistantCorrection(1, "H", 19)
+    Assistant = AssistantCorrection("H", 19, 2)
     Assistant.initialize_Directory()
     Assistant.unbundle()
     Assistant.initialise_Teams("projet1.py")
