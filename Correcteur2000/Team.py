@@ -3,6 +3,7 @@ import re
 from subprocess import PIPE, Popen, TimeoutExpired
 from Log import *
 import pickle
+from difflib import SequenceMatcher
 
 pyEnv = "python3.7"  # ex : py, python, python3.7
 
@@ -54,7 +55,7 @@ class Team:
         self.noTeam = noTeam
         self.pathTeam = pathTeam
         self.files = []
-        self.validProjectName = False
+        self.validProjectName = True
         self.noteTot = 0
         self.notes = {}
         self.commentaires = {}
@@ -82,54 +83,83 @@ class Team:
             equipe(self.noTeam)
             titre("Fichier trouvé :")
             for file in self.files:
-                warning(f"- {file}")
+                warning(f"        - {file}")
+    
+    def similar_name(self, string1, string2, percent=0.7):
+        print(f'Équipe {self.noTeam} {string1} {string2}')
+        if string2[-2] == 'py' and SequenceMatcher(None, string1.lower(), string2.lower()).ratio() >= percent:
+            print('POTATO')
+            return True
+        return False
 
     def check_If_Project_Valide(self, projectName):
         # Verifie si le projet est présent
+        tempBool = False
+        similarFound = True
         for f in glob.iglob(f'{self.pathTeam}/*'):
             self.files.append(f.split('/')[-1])
             if f.split('/')[-1] == projectName:
-                self.validProjectName = True
-                #print(f"\tTeam : {f.split('/')[-2][-6:-3]} {PASS}ok{ENDC}")
-        # Sinon, cherche un fichier fonctionnel
-        potentialMainFiles = []
-        if not self.validProjectName:
-            print(f"\tNo {projectName} for team : {FAIL}{self.noTeam}{ENDC}")
-            for file in self.files:
-                if file[-2:] == "py":
-                    options = [pyEnv, f'{self.pathTeam}/{file}', '-h']
-                    # result, err = [], []
+                tempBool = True    
+            else:
+                if self.similar_name(projectName, f.split('/')[-1]):
+                    print(f"""\t{f.split('/')[-1]} found for team :""",
+                        f"""{WARNING}{self.noTeam}{ENDC}""")
+                    print(f"\tMoving {self.pathTeam}/{WARNING}{f.split('/')[-1]}{ENDC}",
+                        f"to {self.pathTeam}/{PASS}{projectName}{ENDC}\n")
+                    options = ["mv", f"{self.pathTeam}/{f.split('/')[-1]}", f'{self.pathTeam}/{projectName}']
                     proc = Popen(options, stdout=PIPE, stderr=PIPE, encoding='utf-8')
                     result, err = proc.communicate(timeout=10)
-                    if result and (re.compile("usage: ").findall(result)):
-                        potentialMainFiles.append(file)
-            # Si plus d'un fichier sort une aide
-            if len(potentialMainFiles) > 1:
-                print(f"""\tToo many working files found for team :""",
-                      f"""{FAIL}{self.noTeam}{ENDC}"""
-                      f"""{potentialMainFiles}\n""")
-                self.TooManyMainFiles = True
-            # Si un seul fichier est mauvais, renomme le
-            elif len(potentialMainFiles) == 1:
-                print(f"""\t{potentialMainFiles[0]} found for team :""",
-                      f"""{WARNING}{self.noTeam}{ENDC}""")
-                print(
-                    f"\tMoving {self.pathTeam}/{WARNING}{potentialMainFiles[0]}{ENDC}",
-                    f"to {self.pathTeam}/{PASS}{projectName}{ENDC}\n")
-                self.BadMainFile = True
-                options = ["mv", f'{self.pathTeam}/{potentialMainFiles[0]}',
-                           f'{self.pathTeam}/{projectName}']
-                # result, err = [], []
-                proc = Popen(options, stdout=PIPE, stderr=PIPE, encoding='utf-8')
-                result, err = proc.communicate(timeout=10)
-                if err:
-                    print(
-                        f"Impossible de changer le nom de fichier de l'équipe",
-                        f" {self.noTeam}",
-                        "\nÀ faire manuellement pour pouvoir run d'autre tests\n")
+                    if err:
+                            print(
+                                f"Impossible de changer le nom de fichier de l'équipe",
+                                f" {self.noTeam}",
+                                "\nÀ faire manuellement pour pouvoir run d'autre tests\n")
+                else:
+                    similarFound = False
+
+        if not similarFound and not tempBool:
+            print(f"""\tNo working files found for team :""",
+                    f"""{FAIL}{self.noTeam}{ENDC}\n""")
+            self.NoMainFile = True
+            self.BadMainFile = True
+            return 0
+            # self.validProjectName = tempBool
+                #print(f"\tTeam : {f.split('/')[-2][-6:-3]} {PASS}ok{ENDC}")
+        # Sinon, cherche un fichier fonctionnel
+        # potentialMainFiles = []
+        # if not tempBool:
+        #     print(f"\tNo {projectName} for team : {FAIL}{self.noTeam}{ENDC}")
+        #     for file in self.files:
+        #         if file[-2:] == "py":
+        #             options = [pyEnv, f'{self.pathTeam}/{file}', '-h']
+        #             # result, err = [], []
+        #             proc = Popen(options, stdout=PIPE, stderr=PIPE, encoding='utf-8')
+        #             result, err = proc.communicate(timeout=10)
+        #             if result and (re.compile("usage: ").findall(result)):
+        #                 potentialMainFiles.append(file)
+        #     # Si plus d'un fichier sort une aide
+        #     if len(potentialMainFiles) > 1:
+        #         print(f"""\tToo many working files found for team :""",
+        #               f"""{FAIL}{self.noTeam}{ENDC}"""
+        #               f"""{potentialMainFiles}\n""")
+        #         self.TooManyMainFiles = True
+        #     # Si un seul fichier est mauvais, renomme le
+        #     elif len(potentialMainFiles) == 1:
+        #         print(f"""\t{potentialMainFiles[0]} found for team :""",
+        #               f"""{WARNING}{self.noTeam}{ENDC}""")
+        #         print(
+        #             f"\tMoving {self.pathTeam}/{WARNING}{potentialMainFiles[0]}{ENDC}",
+        #             f"to {self.pathTeam}/{PASS}{projectName}{ENDC}\n")
+        #         self.BadMainFile = True
+        #         options = ["mv", f'{self.pathTeam}/{potentialMainFiles[0]}',
+        #                    f'{self.pathTeam}/{projectName}']
+        #         # result, err = [], []
+        #         proc = Popen(options, stdout=PIPE, stderr=PIPE, encoding='utf-8')
+        #         result, err = proc.communicate(timeout=10)
+        #         if err:
+        #             print(
+        #                 f"Impossible de changer le nom de fichier de l'équipe",
+        #                 f" {self.noTeam}",
+        #                 "\nÀ faire manuellement pour pouvoir run d'autre tests\n")
             # Aucun fichier runnable
-            else:
-                print(f"""\tNo working files found for team :""",
-                      f"""{FAIL}{self.noTeam}{ENDC}\n""")
-                self.NoMainFile = True
-                return 0
+            # else:
