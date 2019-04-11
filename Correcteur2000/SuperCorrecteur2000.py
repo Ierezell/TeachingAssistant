@@ -7,6 +7,7 @@ import zipfile
 import re
 import numpy
 import tqdm
+import pickle
 
 from Correctioneur import Correcteur
 from WebJsonizer import WebJsonizer
@@ -79,6 +80,7 @@ class AssistantCorrection:
         ]
         self.Teams = {}
         self.goodTeams = {}
+        self.checkSave()
 
     def initialize_Directory(self):
         if not os.path.exists(self.projectBasePath):
@@ -87,7 +89,7 @@ class AssistantCorrection:
             if not os.path.exists(self.projectBasePath+folder):
                 os.makedirs(self.projectBasePath+folder)
 
-    def initialise_Teams(self, projectName):
+    def initialise_Teams(self, *projectName):
         pathList = f'{self.projectBasePath}/unbundled/'
         teamList = glob.iglob(f"{pathList}/*")
         print("\nCreating Teams...")
@@ -95,8 +97,20 @@ class AssistantCorrection:
         for pathTeam in teamList:
             noTeam = int(pathTeam[-6:-3])
             self.Teams[noTeam] = Team(noTeam, pathTeam)
-            if self.Teams[noTeam].check_If_Project_Valide(projectName) != 0:
+            boolValidation = False
+            for project in projectName:
+                if self.Teams[noTeam].check_If_Project_Valide(project) != 0:
+                    boolValidation = True
+                else:
+                    boolValidation = False
+            if boolValidation:
                 self.goodTeams[noTeam] = self.Teams[noTeam]
+            else:
+                self.Teams[noTeam].validProjectName = False
+
+    def fileNameReport(self):
+        for team in self.Teams.values():
+            team.fileNameReport()
 
     def unbundle(self, path=""):
         if path != "":
@@ -159,15 +173,44 @@ class AssistantCorrection:
         # request blabla url python post data json
         pass
 
+    def checkSave(self):
+        if os.path.exists(f'{self.projectBasePath}{self.projectBasePath[1:]}.save'):
+            self.loadState()
+
+    def saveState(self):
+        savePath = f'{self.projectBasePath}{self.projectBasePath[1:]}.save'
+        for no, team in self.Teams.items():
+            team.saveTeamState(f'{savePath[:-5]}-Team{no}.save')
+        with open(savePath, 'wb') as save_state_file:
+            pickle.dump(self, save_state_file)
+
+    def loadState(self):
+        loadPath = f'{self.projectBasePath}{self.projectBasePath[1:]}.save'
+        with open(loadPath, 'rb') as saved_state_file:
+            self = pickle.load(saved_state_file)
+        for noTeam in self.Teams.keys():
+            self.Teams[noTeam] = Team(0, "a").loadTeamState(f'{loadPath[:-5]}-Team{noTeam}.save')
+            # print(f'{self.Teams[noTeam].noTeam}')
+
+    # def saveTeamState(self, team, teamSavePath):
+    #     with open(f'{teamSavePath}', 'wb') as save_team_file:
+    #         pickle.dump(team, save_team_file)
+
+    # def loadTeamState(self, teamSavedPath):
+    #     with open(f'{teamSavedPath}', 'rb') as saved_team_file:
+    #         return pickle.load(saved_team_file)
+
 
 if __name__ == "__main__":
     Assistant = AssistantCorrection("H", 19, 2)
-    Assistant.initialize_Directory()
-    Assistant.unbundle()
-    Assistant.initialise_Teams("projet1.py")
+    # Assistant.initialize_Directory()
+    # Assistant.unbundle()
+    # Assistant.initialise_Teams("marche_boursier.py", "portefeuille.py")
+    Assistant.fileNameReport()
     # Assistant.show_functions()
-    Assistant.show_similarity("projet1.py")
+    # Assistant.show_similarity("projet1.py")
     # Assistant.corrige("./dictCritere.json")
     # Assistant.makeRapport()
     # Assistant.groupAndJsonize()
     # Assistant.sendToWebsite()
+    Assistant.saveState()

@@ -1,6 +1,9 @@
 import glob
 import re
 from subprocess import PIPE, Popen, TimeoutExpired
+from Log import *
+import pickle
+
 pyEnv = "python3.7"  # ex : py, python, python3.7
 
 HEADER = '\033[95m'
@@ -61,6 +64,25 @@ class Team:
         self.penalites = None
         self.sorties = {}
         self.rapport = []
+
+    def saveTeamState(self, teamSavePath):
+        with open(f'{teamSavePath}', 'wb') as save_team_file:
+            pickle.dump(self, save_team_file)
+
+    def loadTeamState(self, teamSavedPath):
+        with open(f'{teamSavedPath}', 'rb') as saved_team_file:
+            self = pickle.load(saved_team_file)
+            self.fileNameReport()
+            print(f'{self.validProjectName}')
+            return self
+
+    def fileNameReport(self):
+        if not self.validProjectName:
+            print()
+            equipe(self.noTeam)
+            titre("Fichier trouvé :")
+            for file in self.files:
+                warning(f"- {file}")
 
     def check_If_Project_Valide(self, projectName):
         # Verifie si le projet est présent
