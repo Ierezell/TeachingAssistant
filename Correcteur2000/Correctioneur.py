@@ -6,6 +6,7 @@ import shutil
 import tqdm
 import traceback
 import sys
+import inspect
 from Log import *
 import time
 import importlib
@@ -142,61 +143,66 @@ class CorrecteurTeam:
         team.saveTeamState(False)
         return team_dico
 
-    def corrigeFromModules(self, team, modules):
-        # Remove old Team if necessary
+    def corrigeFromModules(self, team, modules, classes):
+        # Prend le nom des élèves
+        modules = tuple(team.dictNomencalture[module] for module in modules)
         init_modules = sys.modules.keys()
         os.chdir(team.pathTeam)
         sys.path.insert(0, os.getcwd())
         modules_to_remove = []
-        mod = [None]*len(modules)
+        loaded_modules = list([None]*len(modules))
         equipeOk = True
         print(team.noTeam)
+        missing_module_name = None
         missing_module = None
-        miss_mod = None
         for i, module in enumerate(modules):
             try:
-                mod[i] = importlib.import_module(module)
-                mod[i] = importlib.reload(mod[i])
+                loaded_modules[i] = importlib.import_module(module)
+                loaded_modules[i] = importlib.reload(loaded_modules[i])
             except ModuleNotFoundError:
                 print(f"No module {module} for team {team.noTeam}")
                 equipeOk = False
             except ImportError:
-                missing_module = traceback.format_exc().split('\n')[-2].split()[6][1:-1]
-                if missing_module == module:
+                missing_module_name = traceback.format_exc().split('\n')[-2].split()[6][1:-1]
+                if missing_module_name == module:
                     print("Import circulaire !")
                     equipeOk = False
                 else:
-                    modules_to_remove.append(missing_module)
-                    miss_mod = importlib.import_module(missing_module)
-                    miss_mod = importlib.reload(miss_mod)
-                    mod[i] = importlib.import_module(module)
-                    mod[i] = importlib.reload(mod[i])
-
+                    modules_to_remove.append(missing_module_name)
+                    missing_module = importlib.import_module(missing_module_name)
+                    missing_module = importlib.reload(missing_module)
+                    loaded_modules[i] = importlib.import_module(module)
+                    loaded_modules[i] = importlib.reload(loaded_modules[i])
             except Exception:
                 print(traceback.format_exc())
                 equipeOk = False
 
         if equipeOk:
-            try:
-                m = mod[0].MarchéBoursier()
-                # m = mod[0].MarcheBoursier()
-                # m = mod[0].Marcheboursier()
-                # m = mod[0].Marchéboursier()
-                # m = mod[0].MarcherBoursier()
-                # m = mod[0].Marcherboursier()
-                p = mod[1].Portefeuille(m)
-            except AttributeError as e:
-                print(e)
-                print("Impossible d'initialiser un marché")
-                if input("Afficher le fichier ?") == 'y':
-                    with open(f"marche_boursier.py", "r") as file:
-                        print(file.read())
-            except TypeError as e:
-                print(e)
-                print("Le constructeur n'accepte pas une instance de marché")
-                if input("Afficher le fichier ?") == 'y':
-                    with open(f"portefeuille.py", "r") as file:
-                        print(file.read())
+            instances = []
+            for i, mod in enumerate(loaded_modules):
+                classes = (team.dictNomencalture[classe] for classe in classes[i])
+                for cl in classes:
+                    instances.append(getattr(mod, cl))
+            instances[0].prix()
+
+            # print(classes_of_module)
+
+            # try:
+
+            #     #p = mod[1].Portefeuille(m)
+            # except AttributeError as e:
+            #     print(e)
+            #     print("Impossible d'initialiser un marché")
+            #     if input("Afficher le fichier ?") == 'y':
+            #         with open(f"marche_boursier.py", "r") as file:
+            #             print(file.read())
+            # except TypeError as e:
+            #     print(e)
+            #     print("Le constructeur n'accepte pas une instance de marché")
+            #     if input("Afficher le fichier ?") == 'y':
+            #         with open(f"portefeuille.py", "r") as file:
+            #             print(file.read())
+            # print("aaaaaaaaaaaaaaaa: ", a)
         for module in modules_to_remove:
             del sys.modules[module]
         for module in modules:
@@ -204,7 +210,7 @@ class CorrecteurTeam:
                 del sys.modules[module]
         for modulilou in sys.modules.keys():
             if not modulilou in init_modules:
-                del(sys.modules[m])
+                del(sys.modules[modulilou])
         # sys.path.remove(os.path.join(os.getcwd(), team.pathTeam[2:]))
 <<<<<<< HEAD
         sys.path.remove(team.pathTeam)
