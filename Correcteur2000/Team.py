@@ -5,7 +5,7 @@ from Log import *
 import pickle
 from difflib import SequenceMatcher
 
-pyEnv = "python3.7"  # ex : py, python, python3.7
+pyEnv = "python"  # ex : py, python, python3.7
 
 HEADER = '\033[95m'
 OK = '\033[94m'
@@ -87,7 +87,7 @@ class Team:
 #             for file in self.files:
 #                 warning(f"        - {file}")
 
-    def similar_name(self, string1, string2, percent=0.7):
+     def similar_name(self, string1, string2, percent=0.7):
         #print(f'Équipe {self.noTeam} {string1} {string2}')
         if (string2[-2] == 'py' and
                 SequenceMatcher(None,

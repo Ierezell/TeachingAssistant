@@ -84,14 +84,12 @@ class CorrecteurTeam:
                     nomCommandeTeam[command]["estReussi"] = False
                     nomCommandeTeam["commentaireEchec"] = critere["commentaireEchec"]
 
-    def correction_commit(self, pathJson, team, no_critere):
+    def correction_commit(self, team, no_critere):
         nb_commits = team.nbCommites
         no_team = team.noTeam
         team_dico = {}
         note = 0.0
         list_comment = []
-        with open(pathJson) as jsonFile:
-            self.dictCritere = json.load(jsonFile)
         for t in selfdictCritere:
             if t["equipe"] == no_team:
                 team_dico = t
@@ -109,8 +107,13 @@ class CorrecteurTeam:
             team.commentaire[f"{no_critere}"] = list_comment
             team.commentaire[f"{note}"] = note
             return False
+<<<<<<< HEAD
+        titre(f"""Membre contributeur [{team_dico['nb_membres']}]""")
+        for membre, commit in team.membersCommits:
+=======
         titre(f"Membre contributeur [{team_dico['nb_membres']}]")
         for membre, commit in team.members:
+>>>>>>> 558f3669783bf003f2a4767a322bbf2639c14ded
             command(f"- {membre}", f"{commit} commits")
             list_comment.append(f"""{membre} à fait {commit} commits""")
         real = float(input("Nombre réel de membre : "))
