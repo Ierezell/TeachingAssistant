@@ -128,7 +128,7 @@ class AssistantCorrection:
             correcteur8000.loadJson(pathJson)
         else:
             correcteur8000.loadJson(f'./{self.session}{self.year}-P{self.noTP}.json')
-        for team in self.Teams:
+        for team in self.Teams.values():
             if team.main:
                 correcteur8000.corrige(team)
 
@@ -137,8 +137,8 @@ class AssistantCorrection:
             correcteurModules = CorrecteurTeam(pathFolder)
         else:
             correcteurModules = CorrecteurTeam(self.projectBasePath)
-        for team in self.Teams:
-            if team.main:
+        for team in self.Teams.values():
+            if team.NoMainFile:
                 correcteurModules.corrigeFromModules(team, modules)
 
     def corrigeCommit(self, noCritere, pathJson="", pathFolder=""):
@@ -147,12 +147,11 @@ class AssistantCorrection:
         else:
             correcteur8000 = CorrecteurTeam(self.projectBasePath)
         if pathJson != "":
-            correcteur8000.loadJson(pathJson)
+            correcteur8000.load_correction_dict(pathJson)
         else:
-            correcteur8000.loadJson(
-                f'./{self.session}{self.year}-P{self.noTP}.json')
-        for team in self.Teams:
-            if team.main:
+            correcteur8000.load_correction_dict('./critere1.json')
+        for team in self.Teams.values():
+            if not team.NoMainFile:
                 correcteur8000.correction_commit(team, noCritere)
 
     def show_functions(self):
@@ -203,15 +202,16 @@ class AssistantCorrection:
         pass
 
     def show_commits(self):
-        for noTeam in self.Teams.keys():
-            self.Teams[noTeam].countMemberComit()
-            print(f"Team : {noTeam}, {self.Teams[noTeam].nbCommits} comits")
-            print(self.Teams[noTeam].membersCommits)
+        for noTeam, team in self.Teams.items():
+            team.countMemberComit()
+            team.saveTeamState()
+            print(f"Team : {noTeam}, {team.nbCommits} comits")
+            print(team.membersCommits)
             print()
 
     def not_show_commits(self):
-        for noTeam in self.Teams.keys():
-            self.Teams[noTeam].countMemberComit()
+        for team in self.Teams.values():
+            team.countMemberComit()
 
     def loadAssistant(self):
         loadPath = f'{self.projectBasePath}{self.projectBasePath[1:]}.save'
@@ -234,8 +234,9 @@ if __name__ == "__main__":
     # Assistant.unbundle()
     Assistant.initialise_Teams("marche_boursier.py", "portefeuille.py")
 
-    Assistant.show_commits()
-    Assistant.corrigeCommit(1)
+    # Assistant.show_commits()
+    # Assistant.corrigeCommit(1)
+    Assistant.corrigeFromModules()
     # Assistant.show_functions()
     # Assistant.show_similarity("marche_boursier.py")
     # Assistant.show_similarity("portefeuille.py")

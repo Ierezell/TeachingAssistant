@@ -85,15 +85,15 @@ class CorrecteurTeam:
                     nomCommandeTeam["commentaireEchec"] = critere["commentaireEchec"]
 
     def correction_commit(self, team, no_critere):
-        nb_commits = team.nbCommites
+        nb_commits = team.nbCommits
         no_team = team.noTeam
         team_dico = {}
         note = 0.0
         list_comment = []
-        for t in selfdictCritere:
+        for t in self.dictCritere:
             if t["equipe"] == no_team:
                 team_dico = t
-        strip()
+        barre()
         equipe(no_team)
         titre("Vérification des commits")
         if nb_commits >= 5:
@@ -104,16 +104,12 @@ class CorrecteurTeam:
             team.notes[str(no_critere)] = 0.0
             list_comment.append(
                 f"""Vous avez fait <span style="color:  # ff0000;">{nb_commits}</span> alors que le critère exigeait un minimum de 5 commits.""")
-            team.commentaire[f"{no_critere}"] = list_comment
-            team.commentaire[f"{note}"] = note
+            team.commentaires[f"{no_critere}"] = list_comment
+            team.commentaires[f"{note}"] = note
+            note(note, 100)
             return False
-<<<<<<< HEAD
         titre(f"""Membre contributeur [{team_dico['nb_membres']}]""")
         for membre, commit in team.membersCommits:
-=======
-        titre(f"Membre contributeur [{team_dico['nb_membres']}]")
-        for membre, commit in team.members:
->>>>>>> 558f3669783bf003f2a4767a322bbf2639c14ded
             command(f"- {membre}", f"{commit} commits")
             list_comment.append(f"""{membre} à fait {commit} commits""")
         real = float(input("Nombre réel de membre : "))
@@ -126,8 +122,10 @@ class CorrecteurTeam:
         else:
             list_comment.append(
                 f"""Vous avez tous fait au moins 1 commit.""")
-        team.commentaire[f"{no_critere}"] = list_comment
-        team.commentaire[f"{note}"] = note
+        team.commentaires[f"{no_critere}"] = list_comment
+        team.commentaires[f"{note}"] = note
+        note(note, 100)
+        team.saveTeamState()
 
     def corrigeFromModules(self, team, *modules):
         # Remove old Team if necessary

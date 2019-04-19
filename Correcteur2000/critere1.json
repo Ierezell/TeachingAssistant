@@ -1,0 +1,527 @@
+[
+    {
+        "equipe": 1,
+        "nb_membres": 3,
+        "nb_commit": 0,
+        "commentaire": "",
+        "note": 0
+    },
+    {
+        "equipe": 2,
+        "nb_membres": 3,
+        "nb_commit": 0,
+        "commentaire": "",
+        "note": 0
+    },
+    {
+        "equipe": 3,
+        "nb_membres": 1,
+        "nb_commit": 0,
+        "commentaire": "",
+        "note": 0
+    },
+    {
+        "equipe": 4,
+        "nb_membres": 3,
+        "nb_commit": 0,
+        "commentaire": "",
+        "note": 0
+    },
+    {
+        "equipe": 5,
+        "nb_membres": 3,
+        "nb_commit": 0,
+        "commentaire": "",
+        "note": 0
+    },
+    {
+        "equipe": 6,
+        "nb_membres": 3,
+        "nb_commit": 0,
+        "commentaire": "",
+        "note": 0
+    },
+    {
+        "equipe": 7,
+        "nb_membres": 3,
+        "nb_commit": 0,
+        "commentaire": "",
+        "note": 0
+    },
+    {
+        "equipe": 8,
+        "nb_membres": 3,
+        "nb_commit": 0,
+        "commentaire": "",
+        "note": 0
+    },
+    {
+        "equipe": 9,
+        "nb_membres": 3,
+        "nb_commit": 0,
+        "commentaire": "",
+        "note": 0
+    },
+    {
+        "equipe": 10,
+        "nb_membres": 1,
+        "nb_commit": 0,
+        "commentaire": "",
+        "note": 0
+    },
+    {
+        "equipe": 11,
+        "nb_membres": 3,
+        "nb_commit": 0,
+        "commentaire": "",
+        "note": 0
+    },
+    {
+        "equipe": 12,
+        "nb_membres": 1,
+        "nb_commit": 0,
+        "commentaire": "",
+        "note": 0
+    },
+    {
+        "equipe": 13,
+        "nb_membres": 1,
+        "nb_commit": 0,
+        "commentaire": "",
+        "note": 0
+    },
+    {
+        "equipe": 14,
+        "nb_membres": 3,
+        "nb_commit": 0,
+        "commentaire": "",
+        "note": 0
+    },
+    {
+        "equipe": 15,
+        "nb_membres": 2,
+        "nb_commit": 0,
+        "commentaire": "",
+        "note": 0
+    },
+    {
+        "equipe": 16,
+        "nb_membres": 3,
+        "nb_commit": 0,
+        "commentaire": "",
+        "note": 0
+    },
+    {
+        "equipe": 17,
+        "nb_membres": 3,
+        "nb_commit": 0,
+        "commentaire": "",
+        "note": 0
+    },
+    {
+        "equipe": 18,
+        "nb_membres": 3,
+        "nb_commit": 0,
+        "commentaire": "",
+        "note": 0
+    },
+    {
+        "equipe": 19,
+        "nb_membres": 3,
+        "nb_commit": 0,
+        "commentaire": "",
+        "note": 0
+    },
+    {
+        "equipe": 20,
+        "nb_membres": 1,
+        "nb_commit": 0,
+        "commentaire": "",
+        "note": 0
+    },
+    {
+        "equipe": 21,
+        "nb_membres": 3,
+        "nb_commit": 0,
+        "commentaire": "",
+        "note": 0
+    },
+    {
+        "equipe": 22,
+        "nb_membres": 3,
+        "nb_commit": 0,
+        "commentaire": "",
+        "note": 0
+    },
+    {
+        "equipe": 23,
+        "nb_membres": 3,
+        "nb_commit": 0,
+        "commentaire": "",
+        "note": 0
+    },
+    {
+        "equipe": 24,
+        "nb_membres": 1,
+        "nb_commit": 0,
+        "commentaire": "",
+        "note": 0
+    },
+    {
+        "equipe": 25,
+        "nb_membres": 1,
+        "nb_commit": 0,
+        "commentaire": "",
+        "note": 0
+    },
+    {
+        "equipe": 26,
+        "nb_membres": 3,
+        "nb_commit": 0,
+        "commentaire": "",
+        "note": 0
+    },
+    {
+        "equipe": 27,
+        "nb_membres": 2,
+        "nb_commit": 0,
+        "commentaire": "",
+        "note": 0
+    },
+    {
+        "equipe": 28,
+        "nb_membres": 3,
+        "nb_commit": 0,
+        "commentaire": "",
+        "note": 0
+    },
+    {
+        "equipe": 29,
+        "nb_membres": 2,
+        "nb_commit": 0,
+        "commentaire": "",
+        "note": 0
+    },
+    {
+        "equipe": 30,
+        "nb_membres": 3,
+        "nb_commit": 0,
+        "commentaire": "",
+        "note": 0
+    },
+    {
+        "equipe": 31,
+        "nb_membres": 3,
+        "nb_commit": 0,
+        "commentaire": "",
+        "note": 0
+    },
+    {
+        "equipe": 32,
+        "nb_membres": 1,
+        "nb_commit": 0,
+        "commentaire": "",
+        "note": 0
+    },
+    {
+        "equipe": 33,
+        "nb_membres": 2,
+        "nb_commit": 0,
+        "commentaire": "",
+        "note": 0
+    },
+    {
+        "equipe": 34,
+        "nb_membres": 3,
+        "nb_commit": 0,
+        "commentaire": "",
+        "note": 0
+    },
+    {
+        "equipe": 35,
+        "nb_membres": 3,
+        "nb_commit": 0,
+        "commentaire": "",
+        "note": 0
+    },
+    {
+        "equipe": 36,
+        "nb_membres": 3,
+        "nb_commit": 0,
+        "commentaire": "",
+        "note": 0
+    },
+    {
+        "equipe": 37,
+        "nb_membres": 3,
+        "nb_commit": 0,
+        "commentaire": "",
+        "note": 0
+    },
+    {
+        "equipe": 38,
+        "nb_membres": 1,
+        "nb_commit": 0,
+        "commentaire": "",
+        "note": 0
+    },
+    {
+        "equipe": 39,
+        "nb_membres": 3,
+        "nb_commit": 0,
+        "commentaire": "",
+        "note": 0
+    },
+    {
+        "equipe": 40,
+        "nb_membres": 1,
+        "nb_commit": 0,
+        "commentaire": "",
+        "note": 0
+    },
+    {
+        "equipe": 41,
+        "nb_membres": 2,
+        "nb_commit": 0,
+        "commentaire": "",
+        "note": 0
+    },
+    {
+        "equipe": 42,
+        "nb_membres": 3,
+        "nb_commit": 0,
+        "commentaire": "",
+        "note": 0
+    },
+    {
+        "equipe": 43,
+        "nb_membres": 3,
+        "nb_commit": 0,
+        "commentaire": "",
+        "note": 0
+    },
+    {
+        "equipe": 44,
+        "nb_membres": 1,
+        "nb_commit": 0,
+        "commentaire": "",
+        "note": 0
+    },
+    {
+        "equipe": 45,
+        "nb_membres": 1,
+        "nb_commit": 0,
+        "commentaire": "",
+        "note": 0
+    },
+    {
+        "equipe": 46,
+        "nb_membres": 2,
+        "nb_commit": 0,
+        "commentaire": "",
+        "note": 0
+    },
+    {
+        "equipe": 48,
+        "nb_membres": 3,
+        "nb_commit": 0,
+        "commentaire": "",
+        "note": 0
+    },
+    {
+        "equipe": 49,
+        "nb_membres": 1,
+        "nb_commit": 0,
+        "commentaire": "",
+        "note": 0
+    },
+    {
+        "equipe": 51,
+        "nb_membres": 3,
+        "nb_commit": 0,
+        "commentaire": "",
+        "note": 0
+    },
+    {
+        "equipe": 52,
+        "nb_membres": 2,
+        "nb_commit": 0,
+        "commentaire": "",
+        "note": 0
+    },
+    {
+        "equipe": 53,
+        "nb_membres": 3,
+        "nb_commit": 0,
+        "commentaire": "",
+        "note": 0
+    },
+    {
+        "equipe": 54,
+        "nb_membres": 3,
+        "nb_commit": 0,
+        "commentaire": "",
+        "note": 0
+    },
+    {
+        "equipe": 56,
+        "nb_membres": 2,
+        "nb_commit": 0,
+        "commentaire": "",
+        "note": 0
+    },
+    {
+        "equipe": 57,
+        "nb_membres": 1,
+        "nb_commit": 0,
+        "commentaire": "",
+        "note": 0
+    },
+    {
+        "equipe": 58,
+        "nb_membres": 2,
+        "nb_commit": 0,
+        "commentaire": "",
+        "note": 0
+    },
+    {
+        "equipe": 59,
+        "nb_membres": 1,
+        "nb_commit": 0,
+        "commentaire": "",
+        "note": 0
+    },
+    {
+        "equipe": 60,
+        "nb_membres": 1,
+        "nb_commit": 0,
+        "commentaire": "",
+        "note": 0
+    },
+    {
+        "equipe": 61,
+        "nb_membres": 2,
+        "nb_commit": 0,
+        "commentaire": "",
+        "note": 0
+    },
+    {
+        "equipe": 62,
+        "nb_membres": 3,
+        "nb_commit": 0,
+        "commentaire": "",
+        "note": 0
+    },
+    {
+        "equipe": 63,
+        "nb_membres": 1,
+        "nb_commit": 0,
+        "commentaire": "",
+        "note": 0
+    },
+    {
+        "equipe": 65,
+        "nb_membres": 1,
+        "nb_commit": 0,
+        "commentaire": "",
+        "note": 0
+    },
+    {
+        "equipe": 67,
+        "nb_membres": 3,
+        "nb_commit": 0,
+        "commentaire": "",
+        "note": 0
+    },
+    {
+        "equipe": 68,
+        "nb_membres": 3,
+        "nb_commit": 0,
+        "commentaire": "",
+        "note": 0
+    },
+    {
+        "equipe": 69,
+        "nb_membres": 2,
+        "nb_commit": 0,
+        "commentaire": "",
+        "note": 0
+    },
+    {
+        "equipe": 70,
+        "nb_membres": 1,
+        "nb_commit": 0,
+        "commentaire": "",
+        "note": 0
+    },
+    {
+        "equipe": 71,
+        "nb_membres": 1,
+        "nb_commit": 0,
+        "commentaire": "",
+        "note": 0
+    },
+    {
+        "equipe": 72,
+        "nb_membres": 1,
+        "nb_commit": 0,
+        "commentaire": "",
+        "note": 0
+    },
+    {
+        "equipe": 73,
+        "nb_membres": 1,
+        "nb_commit": 0,
+        "commentaire": "",
+        "note": 0
+    },
+    {
+        "equipe": 76,
+        "nb_membres": 1,
+        "nb_commit": 0,
+        "commentaire": "",
+        "note": 0
+    },
+    {
+        "equipe": 77,
+        "nb_membres": 1,
+        "nb_commit": 0,
+        "commentaire": "",
+        "note": 0
+    },
+    {
+        "equipe": 78,
+        "nb_membres": 1,
+        "nb_commit": 0,
+        "commentaire": "",
+        "note": 0
+    },
+    {
+        "equipe": 79,
+        "nb_membres": 1,
+        "nb_commit": 0,
+        "commentaire": "",
+        "note": 0
+    },
+    {
+        "equipe": 80,
+        "nb_membres": 2,
+        "nb_commit": 0,
+        "commentaire": "",
+        "note": 0
+    },
+    {
+        "equipe": 81,
+        "nb_membres": 1,
+        "nb_commit": 0,
+        "commentaire": "",
+        "note": 0
+    },
+    {
+        "equipe": 82,
+        "nb_membres": 1,
+        "nb_commit": 0,
+        "commentaire": "",
+        "note": 0
+    }
+]

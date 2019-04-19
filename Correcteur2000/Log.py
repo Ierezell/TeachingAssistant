@@ -76,5 +76,5 @@ def final(critere, resultat, ponderation):
         print(f'{show(f"  Critère {critere} :", f=WHITE)} {show(resultat, f=YELLOW)}{show("/", f=WHITE)}{show(ponderation, f=GREEN)}\n')
 
 
-def strip():
-    print(show('                                                                                                    \n', b=WHITE))
+def barre():
+    print(show(' '*100+'\n', b=WHITE))
