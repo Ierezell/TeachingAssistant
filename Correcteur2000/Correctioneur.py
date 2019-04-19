@@ -3,6 +3,7 @@ import json
 import os
 import re
 import shutil
+import sys
 from Log import *
 from subprocess import PIPE, Popen
 
@@ -10,7 +11,7 @@ from subprocess import PIPE, Popen
 pyEnv = "python"
 
 
-class Correcteur:
+class CorrecteurTeam:
     def __init__(self, projectPath):
         self.projectPath = projectPath
         self.filesCorrecteur = glob.iglob(self.projectPath)
@@ -124,3 +125,23 @@ class Correcteur:
                 f"""Vous avez tous fait au moins 1 commit.""")
         team.commentaire[f"{no_critere}"] = list_comment
         team.commentaire[f"{note}"] = note
+
+    def corrigeFromModules(self, team, *modules):
+        # Remove old Team if necessary
+        # if team.pathTeam in sys.path:
+        #     sys.path.remove(team.pathTeam)
+        # for module in modules:
+        #     try:
+        #         del sys.modules[module]
+        #     except KeyError:
+        #         pass
+        sys.path.insert(team.pathTeam)
+        for module in modules:
+            try:
+                import module
+            except ModuleNotFoundError:
+                print(f"No module {module} for team {team.noTeam}")
+
+        for module in modules:
+            del sys.modules[module]
+        sys.path = sys.path[1:]

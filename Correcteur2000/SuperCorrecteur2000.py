@@ -9,7 +9,7 @@ import numpy
 import tqdm
 import pickle
 
-from Correctioneur import Correcteur
+from Correctioneur import CorrecteurTeam
 from WebJsonizer import WebJsonizer
 from Team import Team
 from Unbundler import Unbundler
@@ -119,11 +119,11 @@ class AssistantCorrection:
         unbundler.unbundle_All_Bundles()
         print(f"Unbundling {PASS}ok{ENDC}")
 
-    def corrige(self, pathJson="", pathFolder=""):
+    def corrigeFromJson(self, pathJson="", pathFolder=""):
         if pathFolder != "":
-            correcteur8000 = Correcteur(pathFolder)
+            correcteur8000 = CorrecteurTeam(pathFolder)
         else:
-            correcteur8000 = Correcteur(self.projectBasePath)
+            correcteur8000 = CorrecteurTeam(self.projectBasePath)
         if pathJson != "":
             correcteur8000.loadJson(pathJson)
         else:
@@ -131,6 +131,15 @@ class AssistantCorrection:
         for team in self.Teams:
             if team.main:
                 correcteur8000.corrige(team)
+
+    def corrigeFromModules(self, *modules):
+        if pathFolder != "":
+            correcteurModules = CorrecteurTeam(pathFolder)
+        else:
+            correcteurModules = CorrecteurTeam(self.projectBasePath)
+        for team in self.Teams:
+            if team.main:
+                correcteurModules.corrigeFromModules(team, modules)
 
     def show_functions(self):
         for noTeam in self.goodTeams.keys():
@@ -182,8 +191,7 @@ class AssistantCorrection:
     def show_commits(self):
         for noTeam in self.Teams.keys():
             self.Teams[noTeam].countMemberComit()
-            print(f"noTeam")
-            print(self.Teams[noTeam].nbCommits)
+            print(f"Team : {noTeam}, {self.Teams[noTeam].nbCommits} comits")
             print(self.Teams[noTeam].membersCommits)
             print()
 
@@ -204,8 +212,8 @@ class AssistantCorrection:
 
 if __name__ == "__main__":
     Assistant = AssistantCorrection("H", 19, 2)
-    Assistant.initialize_Directory()
-    Assistant.unbundle()
+    # Assistant.initialize_Directory()
+    # Assistant.unbundle()
     Assistant.initialise_Teams("marche_boursier.py", "portefeuille.py")
 
     Assistant.show_commits()

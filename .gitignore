@@ -1,6 +1,7 @@
 
 # Vscode
 .vscode
+*/.vscode
 
 # Fichier de sauvegarde de la correction
 *.save
@@ -13,6 +14,9 @@ A18-P2-bundles
 unbundled
 *-bundles
 
+#unbundled
+*/H*
+*/A*
 #Resultats
 result
 
