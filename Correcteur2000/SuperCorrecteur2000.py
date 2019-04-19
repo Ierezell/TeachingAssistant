@@ -206,13 +206,9 @@ if __name__ == "__main__":
     Assistant = AssistantCorrection("H", 19, 2)
     # Assistant.initialize_Directory()
     # Assistant.unbundle()
-<<<<<<< HEAD
-    Assistant.initialise_Teams(".py")
-    Assistant.show_commits()
-=======
     Assistant.initialise_Teams("marche_boursier.py", "portefeuille.py")
+    Assistant.show_commits()
     # Assistant.fileNameReport()
->>>>>>> b7ebe7ce367e61594e92a723a811d86648dca737
     # Assistant.show_functions()
     # Assistant.show_similarity("marche_boursier.py")
     # Assistant.show_similarity("portefeuille.py")
@@ -220,9 +216,6 @@ if __name__ == "__main__":
     # Assistant.makeRapport()
     # Assistant.groupAndJsonize()
     # Assistant.sendToWebsite()
-<<<<<<< HEAD
     # Assistant.saveAssistant()
     # Assistant.loadAssistant()
-=======
     # Assistant.saveState()
->>>>>>> b7ebe7ce367e61594e92a723a811d86648dca737
