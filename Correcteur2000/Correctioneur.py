@@ -3,8 +3,10 @@ import json
 import os
 import re
 import shutil
+import traceback
 import sys
 from Log import *
+import time
 from subprocess import PIPE, Popen
 
 # pyEnv = __import__('SuperCorrecteur2000').AssistantCorrection.PYENVNAME
@@ -127,7 +129,7 @@ class CorrecteurTeam:
         note(note, 100)
         team.saveTeamState()
 
-    def corrigeFromModules(self, team, *modules):
+    def corrigeFromModules(self, team, modules):
         # Remove old Team if necessary
         # if team.pathTeam in sys.path:
         #     sys.path.remove(team.pathTeam)
@@ -136,13 +138,35 @@ class CorrecteurTeam:
         #         del sys.modules[module]
         #     except KeyError:
         #         pass
-        sys.path.insert(team.pathTeam)
+        # print(sys.path)
+        # sys.path.insert(0, os.path.join(os.getcwd(), team.pathTeam[2:]))
+        sys.path.insert(0, team.pathTeam)
+        # print(sys.path)
+        modules_to_remove = []
+        print(team.noTeam)
         for module in modules:
+            print(f"Module : {module}")
             try:
-                import module
+                __import__(module)
             except ModuleNotFoundError:
                 print(f"No module {module} for team {team.noTeam}")
+            except ImportError as e:
+                missing_module = traceback.format_exc().split('\n')[-2].split()[6][1:-1]
+                modules_to_remove.append(missing_module)
+                if missing_module == module:
+                    print("Import circulaire !")
+                else:
+                    print(f"Missing_module : {missing_module}")
+                    __import__(missing_module)
+            except Exception:
+                print(traceback.format_exc())
 
-        for module in modules:
+        for module in modules_to_remove:
             del sys.modules[module]
-        sys.path = sys.path[1:]
+        for module in modules:
+            try:
+                del sys.modules[module]
+            except KeyError:
+                pass
+        # sys.path.remove(os.path.join(os.getcwd(), team.pathTeam[2:]))
+        sys.path.remove(team.pathTeam)

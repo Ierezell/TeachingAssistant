@@ -133,12 +133,10 @@ class AssistantCorrection:
                 correcteur8000.corrige(team)
 
     def corrigeFromModules(self, *modules):
-        if pathFolder != "":
-            correcteurModules = CorrecteurTeam(pathFolder)
-        else:
-            correcteurModules = CorrecteurTeam(self.projectBasePath)
+        correcteurModules = CorrecteurTeam(self.projectBasePath)
+        print(modules)
         for team in self.Teams.values():
-            if team.NoMainFile:
+            if not team.NoMainFile:
                 correcteurModules.corrigeFromModules(team, modules)
 
     def corrigeCommit(self, noCritere, pathJson="", pathFolder=""):
@@ -236,8 +234,8 @@ if __name__ == "__main__":
 
     # Assistant.show_commits()
     # Assistant.corrigeCommit(1)
-    Assistant.corrigeFromModules()
-    # Assistant.show_functions()
+    # Assistant.corrigeFromModules("marche_boursier", "portefeuille")
+    Assistant.show_functions()
     # Assistant.show_similarity("marche_boursier.py")
     # Assistant.show_similarity("portefeuille.py")
     # Assistant.corrige("./dictCritere.json")
