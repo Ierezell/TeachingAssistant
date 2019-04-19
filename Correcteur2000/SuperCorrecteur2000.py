@@ -132,12 +132,12 @@ class AssistantCorrection:
             if team.main:
                 correcteur8000.corrige(team)
 
-    def corrigeFromModules(self, *modules):
+    def corrigeFromModules(self, modules, classes):
         correcteurModules = CorrecteurTeam(self.projectBasePath)
         print(modules)
         for team in self.Teams.values():
             if not team.NoMainFile:
-                correcteurModules.corrigeFromModules(team, modules)
+                correcteurModules.corrigeFromModules(team, modules, classes)
 
     def corrigeCommit(self, noCritere, pathJson="", pathFolder=""):
         list_ready_to_publish = []
@@ -188,30 +188,10 @@ class AssistantCorrection:
                         f"{BOLD}ÉQUIPE{ENDC} {PASS}{noTeam1}{ENDC} {BOLD}Et{ENDC} {PASS}{noTeam2}{ENDC} {FAIL} {r} %{ENDC}")
             list_Teams.remove((noTeam1, group1))
 
-    def makeRapports(self):
-        webJsonMaker = WebJsonizer()
-        for team in self.Teams:
-            webJsonMaker.makeRapport(team)
-
-    def groupAndJsonize(self):
-        webJsonMaker = WebJsonizer()
-        webJsonMaker.jsonizeResults(self.Teams)
-
-    def sendToWebsite(self):
-        # request blabla url python post data json
-        pass
-
-    def show_commits(self):
+    def get_commits(self):
         for noTeam, team in self.Teams.items():
             team.countMemberComit()
             team.saveTeamState()
-            print(f"Team : {noTeam}, {team.nbCommits} comits")
-            print(team.membersCommits)
-            print()
-
-    def not_show_commits(self):
-        for team in self.Teams.values():
-            team.countMemberComit()
 
     def loadAssistant(self):
         loadPath = f'{self.projectBasePath}{self.projectBasePath[1:]}.save'
@@ -234,13 +214,14 @@ if __name__ == "__main__":
     # Assistant.unbundle()
     Assistant.initialise_Teams("marche_boursier.py", "portefeuille.py")
 
-    Assistant.not_show_commits()
-    Assistant.corrigeCommit(1)
+    # Assistant.not_show_commits()
+    # Assistant.corrigeCommit(1)
     # Assistant.corrigeFromModules()
     # Assistant.show_functions()
     # Assistant.show_commits()
     # Assistant.corrigeCommit(1)
-    Assistant.corrigeFromModules("marche_boursier", "portefeuille")
+    Assistant.corrigeFromModules(modules=["marche_boursier", "portefeuille"],
+                                 classes=[["MarchéBoursier"], ["Portefeuille"]])
     # Assistant.show_functions()
     # Assistant.show_similarity("marche_boursier.py")
     # Assistant.show_similarity("portefeuille.py")
