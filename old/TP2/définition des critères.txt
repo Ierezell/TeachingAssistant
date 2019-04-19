@@ -4,7 +4,7 @@ Nom fichier :
 
 Nomenclature :
         - MarchéBoursier
-            - prix(symbole, [date|date=.*]):
+            - prix(self, symbole, [date|date=.*]):
                 - symbole
                 - date 
         - Portefeuille
@@ -26,7 +26,7 @@ Nomenclature :
             - valeur_des_titres(self, symbole):
                 - symboles
                 - date
-            - titres(self):
+            - titres(self, date):
                 - date
             - valeur_projetée(self, [date|date=.*], rendement):
                 - date

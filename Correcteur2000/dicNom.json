@@ -1,0 +1,39 @@
+{
+    "classe": [
+        "MarchéBoursier", 
+        "Portefeuille", 
+        "ErreurDate", 
+        "LiquiditéInsuffisante", 
+        "ErreurQuantité"
+    ],
+    "fonction": [
+        "prix",
+        "déposer",
+        "solde",
+        "acheter",
+        "vendre",
+        "valeur_totale",
+        "valeur_des_titres",
+        "titres",
+        "valeur_projetée"
+    ],
+    "arg": [
+        "symbole", 
+        "date", 
+        "montant", 
+        "date", 
+        "date",
+        "symbole", 
+        "quantite", 
+        "date", 
+        "symbole", 
+        "quantite", 
+        "date", 
+        "date", 
+        "symboles", 
+        "date", 
+        "date",
+        "date", 
+        "rendement"
+    ]
+}

@@ -9,6 +9,7 @@ import sys
 from Log import *
 import time
 from subprocess import PIPE, Popen
+from difflib import SequenceMatcher
 
 # pyEnv = __import__('SuperCorrecteur2000').AssistantCorrection.PYENVNAME
 pyEnv = "python3.7"
@@ -137,7 +138,7 @@ class CorrecteurTeam:
         team.notes[f"{no_critere}"] = round(note, 1)
         team_dico["score"] = round(note, 1)
         team_dico["commentaires"] = comment
-        team.saveTeamState()
+        team.saveTeamState(False)
         return team_dico
 
     def corrigeFromModules(self, team, modules):
@@ -181,3 +182,137 @@ class CorrecteurTeam:
                 pass
         # sys.path.remove(os.path.join(os.getcwd(), team.pathTeam[2:]))
         sys.path.remove(team.pathTeam)
+
+    def corrige_nomenclature(self, listClass, listFunc, listArg, team):
+        liste_fonc_team, liste_classe_team, list_arg_team = self.show_functions(team)
+        print_barre()
+        print_equipe(team.noTeam)
+        comment = "<h3>Nomenclature: </h3>"
+        print_titre("Nomenclature des classes")
+        comment = "<h4>Vérification de la nomenclature des classe</h4>"
+        base = float(len(listClass) + len(listFunc) + len(listArg))
+        compteur = 0
+        first = True
+        for classe in listClass:
+            find = False
+            index = 0
+            for i, classe_team in enumerate(liste_classe_team):
+                ratio = SequenceMatcher(None, classe, classe_team).ratio()
+                if ratio == 1:
+                    print_command(f"{classe}", f"{classe_team}")
+                    team.dictNomenclature[classe] = classe_team
+                    compteur += 1
+                    find = True
+                    index = i
+                    break
+                elif 0.75 <= ratio < 1:
+                    team.dictNomenclature[classe] = classe_team
+                    print_command(f"{classe}", f"{classe_team}")
+                    print_failing(f"FAIL ratio: {round(ratio, 1)}")
+            if not find:
+                if first:
+                    first = False
+                    comment += "<p>Les classes suivantes sont mal nommée.</p><ul>"
+                comment += f"<li><code>{classe}</code></li>"
+            else:
+                del liste_classe_team[index]
+        if not first:
+            comment += "</ul>"
+            first = True
+        print_titre("Nomenclature des fonctions")
+        comment = "<h4>Vérification de la nomenclature des fonctions</h4>"
+        for fonc in listFunc:
+            find = False
+            index = 0
+            for i, fonc_team in enumerate(liste_fonc_team):
+                ratio = SequenceMatcher(None, fonc, fonc_team).ratio()
+                if ratio == 1:
+                    team.dictNomenclature[fonc] = fonc_team
+                    print_command(f"{fonc}", f"{fonc_team}")
+                    compteur += 1
+                    find = True
+                    index = i
+                    break
+                elif 0.75 <= ratio < 1:
+                    team.dictNomenclature[fonc] = fonc_team
+                    print_command(f"{fonc}", f"{fonc_team}")
+                    print_failing(f"FAIL ratio: {round(ratio, 1)}")
+            if not find:
+                if first:
+                    first = False
+                    comment += "<p>Les fonctions suivantes sont mal nommée.</p><ul>"
+                comment += f"<li><code>{fonc}</code></li>"
+            elif 0.75 <= ratio < 1:
+                del liste_fonc_team[index]
+        if not first:
+            comment += "</ul>"
+            first = True
+        print_titre("Nomenclature des arguments")
+        comment = "<h4>Vérification de la nomenclature des arguments</h4>"
+        for arg in listArg:
+            find = False
+            index = 0
+            for i, arg_team in enumerate(list_arg_team):
+                ratio = SequenceMatcher(None, arg, arg_team).ratio()
+                if ratio == 1:
+                    print_command(f"{arg}", f"{arg_team}")
+                    compteur += 1
+                    find = True
+                    index = i
+                    break
+                elif 0.75 <= ratio < 1:
+                    print_command(f"{arg}", f"{arg_team}")
+                    print_failing(f"FAIL ratio: {round(ratio, 1)}")
+            if not find:
+                if first:
+                    first = False
+                    comment += "<p>Les arguments suivantes sont mal nommée.</p><ul>"
+                comment += f"<li><code>{arg}</code></li>"
+            else:
+                del list_arg_team[index]
+        score = round((15*(compteur/base)), 1)
+        tqdm.tqdm.write(" ")
+        print_note(score, 15)
+        if not first:
+            comment += "</ul>"
+            first = True
+        comment += f"<strong>Sous-résultat: {score} </strong>"
+        team.notes["3"] = {}
+        team.commentaires["3"] = {}
+        team.notes["3"]["Nomenclature"] = score
+        team.commentaires["3"]["Nomenclature"] = comment
+        team.saveTeamState(False)
+        return {"équipe": team.noTeam, "score": score, "commentaires": comment}
+
+    def show_functions(self, team):
+        list_class = []
+        list_func = []
+        list_arg = []
+        for file in team.files:
+            if file[-3:] == ".py":
+                with open(file) as file_Python:
+                    for lineNb, line in enumerate(file_Python):
+                        if re.compile(r"def\s").findall(line):
+                            fonc = line.split('(')[0].split()[1]
+                            list_func.append(fonc)
+                            args = line.split('(')[1].split(', ')
+                            for arg in args:
+                                list_arg.append(arg.strip().split(")")[0].split("=")[0])
+                        if re.compile(r"class\s").findall(line):
+                            if len(line.split('(')) == 1:
+                                classe = line.split()[1][:-1]
+                                list_class.append(classe)
+                            else:
+                                classe = line.split('(')[0].split()[1]
+                                list_class.append(classe)
+        return (list_func, list_class, list_arg)
+
+    def similar_name(self, string1, string2, percent=1):
+        #print(f'Équipe {self.noTeam} {string1} {string2}')
+        if (string2 == string1 and
+                SequenceMatcher(None,
+                                string1,
+                                string2).ratio() == percent):
+            print('')
+            return True
+        return False

@@ -154,6 +154,23 @@ class AssistantCorrection:
                 list_ready_to_publish.append(correcteur8000.correction_commit(team, noCritere))
         print(f'{list_ready_to_publish}')
 
+    def corrigeNoms(self, pathDicNom, pathFolder=""):
+        jsonD = {}
+        with open(pathDicNom) as jsonFile:
+            jsonD = json.load(jsonFile)
+        list_ready_to_publish = []
+        if pathFolder != "":
+            correcteur8000 = CorrecteurTeam(pathFolder)
+        else:
+            correcteur8000 = CorrecteurTeam(self.projectBasePath)
+        for team in tqdm.tqdm(self.Teams.values()):
+            if not team.NoMainFile:
+                list_ready_to_publish.append(correcteur8000.corrige_nomenclature(jsonD["classe"], jsonD["fonction"], jsonD["arg"], team))
+                tqdm.tqdm.write("Enter pour continuer", end='')
+                input("")
+        with open('./ResultatsNomencature.json', 'w') as outfile:
+                json.dump(list_ready_to_publish, outfile, ensure_ascii=False)
+
     def show_functions(self):
         for noTeam in self.goodTeams.keys():
             print(f"Fonctions du groupe : {PASS}{noTeam}{ENDC}\n")
@@ -234,8 +251,9 @@ if __name__ == "__main__":
     # Assistant.unbundle()
     Assistant.initialise_Teams("marche_boursier.py", "portefeuille.py")
 
-    Assistant.not_show_commits()
-    Assistant.corrigeCommit(1)
+    Assistant.corrigeNoms("./dicNom.json")
+    # Assistant.not_show_commits()
+    # Assistant.corrigeCommit(1)
     # Assistant.corrigeFromModules()
     # Assistant.show_functions()
     # Assistant.show_commits()
