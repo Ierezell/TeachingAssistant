@@ -4,7 +4,10 @@ import os
 import re
 import shutil
 import tqdm
+import traceback
+import sys
 from Log import *
+import time
 from subprocess import PIPE, Popen
 
 # pyEnv = __import__('SuperCorrecteur2000').AssistantCorrection.PYENVNAME
@@ -92,7 +95,7 @@ class CorrecteurTeam:
         for t in self.dictCritere:
             if t["équipe"] == no_team:
                 team_dico = t
-        print(" ")
+        tqdm.tqdm.write(" ")
         print_barre()
         print_equipe(no_team)
         print_titre("Vérification des commits")
@@ -118,6 +121,7 @@ class CorrecteurTeam:
         for membre, commit in team.membersCommits:
             print_command(f"- {membre}", f"{commit} commits")
             comment += f"""<li>{membre} à fait {commit} commits</li>"""
+        tqdm.tqdm.write(" ")
         real = float(input("\nNombre réel de membre : "))
         note = 100*(real/team_dico["nb_membres"])
         if real < team_dico["nb_membres"]:
@@ -133,4 +137,47 @@ class CorrecteurTeam:
         team.notes[f"{no_critere}"] = round(note, 1)
         team_dico["score"] = round(note, 1)
         team_dico["commentaires"] = comment
+        team.saveTeamState()
         return team_dico
+
+    def corrigeFromModules(self, team, modules):
+        # Remove old Team if necessary
+        # if team.pathTeam in sys.path:
+        #     sys.path.remove(team.pathTeam)
+        # for module in modules:
+        #     try:
+        #         del sys.modules[module]
+        #     except KeyError:
+        #         pass
+        # print(sys.path)
+        # sys.path.insert(0, os.path.join(os.getcwd(), team.pathTeam[2:]))
+        sys.path.insert(0, team.pathTeam)
+        # print(sys.path)
+        modules_to_remove = []
+        print(team.noTeam)
+        for module in modules:
+            print(f"Module : {module}")
+            try:
+                __import__(module)
+            except ModuleNotFoundError:
+                print(f"No module {module} for team {team.noTeam}")
+            except ImportError as e:
+                missing_module = traceback.format_exc().split('\n')[-2].split()[6][1:-1]
+                modules_to_remove.append(missing_module)
+                if missing_module == module:
+                    print("Import circulaire !")
+                else:
+                    print(f"Missing_module : {missing_module}")
+                    __import__(missing_module)
+            except Exception:
+                print(traceback.format_exc())
+
+        for module in modules_to_remove:
+            del sys.modules[module]
+        for module in modules:
+            try:
+                del sys.modules[module]
+            except KeyError:
+                pass
+        # sys.path.remove(os.path.join(os.getcwd(), team.pathTeam[2:]))
+        sys.path.remove(team.pathTeam)
