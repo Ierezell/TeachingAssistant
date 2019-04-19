@@ -53,6 +53,8 @@ class Team:
     def __init__(self, noTeam, pathTeam):
         self.noTeam = noTeam
         self.pathTeam = pathTeam
+        self.members = []
+        self.nbCommits = 0
         self.files = []
         self.validProjectName = False
         self.noteTot = 0
@@ -65,24 +67,15 @@ class Team:
         self.sorties = {}
         self.rapport = []
 
-    def saveTeamState(self, teamSavePath):
-        with open(f'{teamSavePath}', 'wb') as save_team_file:
+    def saveTeamState(self):
+        print(f'{self.pathTeam}/{self.noTeam}.save')
+        with open(f'{self.pathTeam}/{self.noTeam}.save', 'wb') as save_team_file:
             pickle.dump(self, save_team_file)
 
-    def loadTeamState(self, teamSavedPath):
-        with open(f'{teamSavedPath}', 'rb') as saved_team_file:
+    def loadTeamState(self):
+        with open(f'{self.pathTeam}/{self.noTeam}.save', 'rb') as saved_team_file:
             self = pickle.load(saved_team_file)
-            self.fileNameReport()
-            print(f'{self.validProjectName}')
             return self
-
-    def fileNameReport(self):
-        if not self.validProjectName:
-            print()
-            equipe(self.noTeam)
-            titre("Fichier trouvé :")
-            for file in self.files:
-                warning(f"- {file}")
 
     def check_If_Project_Valide(self, projectName):
         # Verifie si le projet est présent
@@ -133,3 +126,16 @@ class Team:
                       f"""{FAIL}{self.noTeam}{ENDC}\n""")
                 self.NoMainFile = True
                 return 0
+
+    def countMemberComit(self):
+        options = [pyEnv, 'hg', 'id', f'{self.pathTeam}', '--num']
+        proc = Popen(options, stdout=PIPE, stderr=PIPE, encoding='utf-8')
+        nb_com, err = proc.communicate(timeout=10)
+        print(nb_com)
+
+        options = [pyEnv, 'hg', 'log', '--template', '"{author|person}\n"',
+                   f'{self.pathTeam}', '|', 'sort', '|', 'uniq', '-c', '|',
+                   'sort', '-nr']
+        proc = Popen(options, stdout=PIPE, stderr=PIPE, encoding='utf-8')
+        nom_et_comit, err = proc.communicate(timeout=10)
+        print(nom_et_comit)

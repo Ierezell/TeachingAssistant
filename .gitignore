@@ -2,11 +2,20 @@
 # Vscode
 .vscode
 
+# Fichier de sauvegarde de la correction
+*.save
+*/*.save
+*/*/*.save
+
 # Bundle,
 H19-P1-bundles
 A18-P2-bundles
 unbundled
 *-bundles
+
+#Resultats
+result
+
 # Zip
 *.zip
 
