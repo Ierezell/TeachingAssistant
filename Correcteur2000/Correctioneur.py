@@ -8,6 +8,7 @@ import traceback
 import sys
 from Log import *
 import time
+import importlib
 from subprocess import PIPE, Popen
 from difflib import SequenceMatcher
 
@@ -143,44 +144,69 @@ class CorrecteurTeam:
 
     def corrigeFromModules(self, team, modules):
         # Remove old Team if necessary
-        # if team.pathTeam in sys.path:
-        #     sys.path.remove(team.pathTeam)
-        # for module in modules:
-        #     try:
-        #         del sys.modules[module]
-        #     except KeyError:
-        #         pass
-        # print(sys.path)
-        # sys.path.insert(0, os.path.join(os.getcwd(), team.pathTeam[2:]))
-        sys.path.insert(0, team.pathTeam)
-        # print(sys.path)
+        init_modules = sys.modules.keys()
+        os.chdir(team.pathTeam)
+        sys.path.insert(0, os.getcwd())
         modules_to_remove = []
+        mod = [None]*len(modules)
+        equipeOk = True
         print(team.noTeam)
-        for module in modules:
-            print(f"Module : {module}")
+        missing_module = None
+        miss_mod = None
+        for i, module in enumerate(modules):
             try:
-                __import__(module)
+                mod[i] = importlib.import_module(module)
+                mod[i] = importlib.reload(mod[i])
             except ModuleNotFoundError:
                 print(f"No module {module} for team {team.noTeam}")
-            except ImportError as e:
+                equipeOk = False
+            except ImportError:
                 missing_module = traceback.format_exc().split('\n')[-2].split()[6][1:-1]
-                modules_to_remove.append(missing_module)
                 if missing_module == module:
                     print("Import circulaire !")
+                    equipeOk = False
                 else:
-                    print(f"Missing_module : {missing_module}")
-                    __import__(missing_module)
+                    modules_to_remove.append(missing_module)
+                    miss_mod = importlib.import_module(missing_module)
+                    miss_mod = importlib.reload(miss_mod)
+                    mod[i] = importlib.import_module(module)
+                    mod[i] = importlib.reload(mod[i])
+
             except Exception:
                 print(traceback.format_exc())
+                equipeOk = False
 
+        if equipeOk:
+            try:
+                m = mod[0].MarchéBoursier()
+                # m = mod[0].MarcheBoursier()
+                # m = mod[0].Marcheboursier()
+                # m = mod[0].Marchéboursier()
+                # m = mod[0].MarcherBoursier()
+                # m = mod[0].Marcherboursier()
+                p = mod[1].Portefeuille(m)
+            except AttributeError as e:
+                print(e)
+                print("Impossible d'initialiser un marché")
+                if input("Afficher le fichier ?") == 'y':
+                    with open(f"marche_boursier.py", "r") as file:
+                        print(file.read())
+            except TypeError as e:
+                print(e)
+                print("Le constructeur n'accepte pas une instance de marché")
+                if input("Afficher le fichier ?") == 'y':
+                    with open(f"portefeuille.py", "r") as file:
+                        print(file.read())
         for module in modules_to_remove:
             del sys.modules[module]
         for module in modules:
-            try:
+            if module in sys.modules:
                 del sys.modules[module]
-            except KeyError:
-                pass
+        for modulilou in sys.modules.keys():
+            if not modulilou in init_modules:
+                del(sys.modules[m])
         # sys.path.remove(os.path.join(os.getcwd(), team.pathTeam[2:]))
+<<<<<<< HEAD
         sys.path.remove(team.pathTeam)
 
     def corrige_nomenclature(self, listClass, listFunc, listArg, team):
@@ -316,3 +342,8 @@ class CorrecteurTeam:
             print('')
             return True
         return False
+=======
+        sys.path.remove(os.getcwd())
+        os.chdir('../../../')
+        print()
+>>>>>>> 5ef3d4975d522b4c14f456de5bd3631acfa72bba
