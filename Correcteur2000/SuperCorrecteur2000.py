@@ -63,7 +63,7 @@ UNDERLINE = '\033[4m'
                 team-002.json
 """
 
-PYENVNAME = "python3.7"  # ex : py, python, python3.7
+PYENVNAME = "python"  # ex : py, python, python3.7
 
 
 class AssistantCorrection:
@@ -132,6 +132,20 @@ class AssistantCorrection:
             if team.main:
                 correcteur8000.corrige(team)
 
+    def corrigeCommit(self, noCritere, pathJson="", pathFolder=""):
+        if pathFolder != "":
+            correcteur8000 = Correcteur(pathFolder)
+        else:
+            correcteur8000 = Correcteur(self.projectBasePath)
+        if pathJson != "":
+            correcteur8000.loadJson(pathJson)
+        else:
+            correcteur8000.loadJson(
+                f'./{self.session}{self.year}-P{self.noTP}.json')
+        for team in self.Teams:
+            if team.main:
+                correcteur8000.correction_commit(team, noCritere)
+
     def show_functions(self):
         for noTeam, team in self.goodTeams:
             print(f"Fonctions du groupe : {PASS}{noTeam}{ENDC}\n")
@@ -184,6 +198,10 @@ class AssistantCorrection:
             print(self.Teams[noTeam].nbCommits)
             print(self.Teams[noTeam].membersCommits)
             print()
+    
+    def not_show_commits(self):
+        for noTeam in self.Teams.keys():
+            self.Teams[noTeam].countMemberComit()
 
     def loadAssistant(self):
         loadPath = f'{self.projectBasePath}{self.projectBasePath[1:]}.save'
@@ -210,10 +228,7 @@ if __name__ == "__main__":
     # Assistant.unbundle()
     Assistant.initialise_Teams("marche_boursier.py", "portefeuille.py")
     Assistant.show_commits()
-<<<<<<< HEAD
-    # Assistant.fileNameReport()
-=======
->>>>>>> c6615aaa3eff1023ed5bcb90af740cb7b77ba609
+    Assistant.corrigeCommit(1)
     # Assistant.show_functions()
     # Assistant.show_similarity("marche_boursier.py")
     # Assistant.show_similarity("portefeuille.py")
@@ -223,7 +238,3 @@ if __name__ == "__main__":
     # Assistant.sendToWebsite()
     # Assistant.saveAssistant()
     # Assistant.loadAssistant()
-<<<<<<< HEAD
-    # Assistant.saveState()
-=======
->>>>>>> c6615aaa3eff1023ed5bcb90af740cb7b77ba609
