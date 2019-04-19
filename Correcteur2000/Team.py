@@ -54,7 +54,7 @@ class Team:
     def __init__(self, noTeam, pathTeam):
         self.noTeam = noTeam
         self.pathTeam = pathTeam
-        self.members = []
+        self.membersCommits = []
         self.nbCommits = 0
         self.files = []
         self.validProjectName = True
@@ -94,7 +94,7 @@ class Team:
             return True
         return False
 
-   def check_If_Project_Valide(self, projectName):
+    def check_If_Project_Valide(self, projectName):
         # Verifie si le projet est présent
         tempBool = False
         similarFound = True
@@ -127,7 +127,7 @@ class Team:
             self.BadMainFile = True
             return 0
             # self.validProjectName = tempBool
-               # print(f"\tTeam : {f.split('/')[-2][-6:-3]} {PASS}ok{ENDC}")
+            # print(f"\tTeam : {f.split('/')[-2][-6:-3]} {PASS}ok{ENDC}")
         # Sinon, cherche un fichier fonctionnel
         # potentialMainFiles = []
         # if not tempBool:
@@ -172,14 +172,28 @@ class Team:
             #     return 0
 
     def countMemberComit(self):
-        options = [pyEnv, 'hg', 'id', f'{self.pathTeam}', '--num']
+        options = ['hg', 'id', f'{self.pathTeam}', '--num']
         proc = Popen(options, stdout=PIPE, stderr=PIPE, encoding='utf-8')
         nb_com, err = proc.communicate(timeout=10)
-        print(nb_com)
+        self.nbCommits = int(nb_com)+1
+        if err:
+            raise RuntimeError(f'Cannot compute commit number for team {self.noTeam}')
+        options1 = ["hg", "log", "--template", "{author|person}\n",
+                    f"{self.pathTeam}"]
+        options2 = ["sort"]
+        options3 = ["uniq", "-c"]
+        options4 = ["sort", "-nr"]
+        proc1 = Popen(options1, stdout=PIPE, stderr=PIPE)
+        proc2 = Popen(options2, stdin=proc1.stdout, stdout=PIPE, stderr=PIPE)
+        proc3 = Popen(options3, stdin=proc2.stdout, stdout=PIPE, stderr=PIPE)
+        proc4 = Popen(options4, stdin=proc3.stdout, stdout=PIPE, stderr=PIPE,
+                      encoding='utf-8')
+        nomcomit, err = proc4.communicate(timeout=10)
+        if err:
+            raise RuntimeError(f'Cannot do list of comits per student for team {self.noTeam}')
+        listenomcomit = [numName.strip()
+                         for numName in nomcomit.split('\n')][:-1]
 
-        options = [pyEnv, 'hg', 'log', '--template', '"{author|person}\n"',
-                   f'{self.pathTeam}', '|', 'sort', '|', 'uniq', '-c', '|',
-                   'sort', '-nr']
-        proc = Popen(options, stdout=PIPE, stderr=PIPE, encoding='utf-8')
-        nom_et_comit, err = proc.communicate(timeout=10)
-        print(nom_et_comit)
+        self.membersCommits = [(' '.join(str_comit.split()[1:]),
+                                str_comit.split()[0])
+                               for str_comit in listenomcomit]

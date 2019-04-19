@@ -178,10 +178,12 @@ class AssistantCorrection:
         pass
 
     def show_commits(self):
-        print("plop")
-        for team in self.Teams:
-            print("bidou")
-            team.countMemberComit()
+        for noTeam in self.Teams.keys():
+            self.Teams[noTeam].countMemberComit()
+            print(noTeam)
+            print(self.Teams[noTeam].nbCommits)
+            print(self.Teams[noTeam].membersCommits)
+            print()
 
     def loadAssistant(self):
         loadPath = f'{self.projectBasePath}{self.projectBasePath[1:]}.save'
@@ -208,7 +210,10 @@ if __name__ == "__main__":
     # Assistant.unbundle()
     Assistant.initialise_Teams("marche_boursier.py", "portefeuille.py")
     Assistant.show_commits()
+<<<<<<< HEAD
     # Assistant.fileNameReport()
+=======
+>>>>>>> c6615aaa3eff1023ed5bcb90af740cb7b77ba609
     # Assistant.show_functions()
     # Assistant.show_similarity("marche_boursier.py")
     # Assistant.show_similarity("portefeuille.py")
@@ -218,4 +223,7 @@ if __name__ == "__main__":
     # Assistant.sendToWebsite()
     # Assistant.saveAssistant()
     # Assistant.loadAssistant()
+<<<<<<< HEAD
     # Assistant.saveState()
+=======
+>>>>>>> c6615aaa3eff1023ed5bcb90af740cb7b77ba609
