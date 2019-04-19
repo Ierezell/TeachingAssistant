@@ -145,7 +145,7 @@ class CorrecteurTeam:
 
     def corrigeFromModules(self, team, modules, classes):
         # Prend le nom des élèves
-        modules = tuple(team.dictNomencalture[module] for module in modules)
+        modules = tuple(team.dictNomenclature[module] for module in modules)
         init_modules = sys.modules.keys()
         os.chdir(team.pathTeam)
         sys.path.insert(0, os.getcwd())
@@ -180,7 +180,7 @@ class CorrecteurTeam:
         if equipeOk:
             instances = []
             for i, mod in enumerate(loaded_modules):
-                classes = (team.dictNomencalture[classe] for classe in classes[i])
+                classes = (team.dictNomenclature[classe] for classe in classes[i])
                 for cl in classes:
                     instances.append(getattr(mod, cl))
             instances[0].prix()
@@ -211,9 +211,9 @@ class CorrecteurTeam:
         for modulilou in sys.modules.keys():
             if not modulilou in init_modules:
                 del(sys.modules[modulilou])
-        # sys.path.remove(os.path.join(os.getcwd(), team.pathTeam[2:]))
-<<<<<<< HEAD
-        sys.path.remove(team.pathTeam)
+        sys.path.remove(os.getcwd())
+        os.chdir('../../../')
+        print()
 
     def corrige_nomenclature(self, listClass, listFunc, listArg, team):
         liste_fonc_team, liste_classe_team, list_arg_team = self.show_functions(team)
@@ -348,8 +348,3 @@ class CorrecteurTeam:
             print('')
             return True
         return False
-=======
-        sys.path.remove(os.getcwd())
-        os.chdir('../../../')
-        print()
->>>>>>> 5ef3d4975d522b4c14f456de5bd3631acfa72bba
