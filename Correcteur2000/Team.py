@@ -5,7 +5,7 @@ from Log import *
 import pickle
 from difflib import SequenceMatcher
 
-pyEnv = "python"  # ex : py, python, python3.7
+pyEnv = "python3.7"  # ex : py, python, python3.7
 
 HEADER = '\033[95m'
 OK = '\033[94m'
@@ -183,7 +183,10 @@ class Team:
         nb_com, err = proc.communicate(timeout=10)
         if err:
             raise RuntimeError(f'Cannot compute commit number for team {self.noTeam}')
-        self.nbCommits = int(nb_com)+1
+        try:
+            self.nbCommits = int(nb_com)+1
+        except ValueError:
+            self.nbCommits = int(nb_com[:-3])+1
         options1 = ["hg", "log", "--template", "{author|person}\n",
                     f"{self.pathTeam}"]
         options2 = ["sort"]

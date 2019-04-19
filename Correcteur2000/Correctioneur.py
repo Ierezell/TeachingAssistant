@@ -3,6 +3,7 @@ import json
 import os
 import re
 import shutil
+import tqdm
 import traceback
 import sys
 from Log import *
@@ -11,7 +12,7 @@ import importlib
 from subprocess import PIPE, Popen
 
 # pyEnv = __import__('SuperCorrecteur2000').AssistantCorrection.PYENVNAME
-pyEnv = "python"
+pyEnv = "python3.7"
 
 
 class CorrecteurTeam:
@@ -92,43 +93,53 @@ class CorrecteurTeam:
         no_team = team.noTeam
         team_dico = {}
         note = 0.0
-        list_comment = []
         for t in self.dictCritere:
-            if t["equipe"] == no_team:
+            if t["équipe"] == no_team:
                 team_dico = t
-        barre()
-        equipe(no_team)
-        titre("Vérification des commits")
+        tqdm.tqdm.write(" ")
+        print_barre()
+        print_equipe(no_team)
+        print_titre("Vérification des commits")
+
+        comment = "<h2>Évaluation du critère 1</h2>"
+        comment += "<h3>Vérification du nombre de commits minimal</h3>"
+
         if nb_commits >= 5:
-            passing(f'{nb_commits}/5')
-            list_comment.append(f"Vous avez fait {nb_commits}")
+            print_passing(f'{nb_commits}/5')
+            comment += "<p>Vous avez le nombre de commit requis.</p>"
         else:
-            failing(f'{nb_commits}/5')
+            print_failing(f'{nb_commits}/5')
             team.notes[str(no_critere)] = 0.0
-            list_comment.append(
-                f"""Vous avez fait <span style="color:  # ff0000;">{nb_commits}</span> alors que le critère exigeait un minimum de 5 commits.""")
-            team.commentaires[f"{no_critere}"] = list_comment
-            team.commentaires[f"{note}"] = note
-            note(note, 100)
-            return False
-        titre(f"""Membre contributeur [{team_dico['nb_membres']}]""")
+            comment += f"""<p>Vous avez fait <span style="color:  # ff0000;">{nb_commits}</span> alors que le critère exigeait un minimum de 5 commits.</p>"""
+            comment += "<h4>Résultat : 0 %</h4>"
+            team.notes[f"{no_critere}"] = round(note, 1)
+            team_dico["score"] = round(note, 1)
+            team_dico["commentaires"] = comment
+            team.commentaires[f"{no_critere}"] = comment
+            return team_dico
+        print_titre(f"""Membre contributeur [{team_dico['nb_membres']}]""")
+        comment += "<h3>Vérification des contributeurs</h3><ul>"
         for membre, commit in team.membersCommits:
-            command(f"- {membre}", f"{commit} commits")
-            list_comment.append(f"""{membre} à fait {commit} commits""")
-        real = float(input("Nombre réel de membre : "))
+            print_command(f"- {membre}", f"{commit} commits")
+            comment += f"""<li>{membre} à fait {commit} commits</li>"""
+        tqdm.tqdm.write(" ")
+        real = float(input("\nNombre réel de membre : "))
         note = 100*(real/team_dico["nb_membres"])
         if real < team_dico["nb_membres"]:
-            list_comment.append(
-                f"""Seulement {real} membres sur {team_dico["nb_membres"]} on fait des commits""")
-            failing(
+            comment += f"""</ul><p>Selon les noms des contributeurs, seul <span style="color:  # ff0000;">{int(real)}</span> des {team_dico["nb_membres"]} membres de votre équipe ont contribué au projet.</p>"""
+            print_failing(
                 f"""{real} membres sur {team_dico["nb_membres"]} on fait des commits""")
         else:
-            list_comment.append(
-                f"""Vous avez tous fait au moins 1 commit.""")
-        team.commentaires[f"{no_critere}"] = list_comment
-        team.commentaires[f"{note}"] = note
-        note(note, 100)
+            comment += f"""</ul><p>Tous les membres de votre équipe ont contribué au projet.</p>"""
+            print_failing(
+                f"""{real} membres sur {team_dico["nb_membres"]} on fait des commits""")
+        comment += f"""<h4>Résultat : {round(note, 1)} %</h4>"""
+        team.commentaires[f"{no_critere}"] = comment
+        team.notes[f"{no_critere}"] = round(note, 1)
+        team_dico["score"] = round(note, 1)
+        team_dico["commentaires"] = comment
         team.saveTeamState()
+        return team_dico
 
     def corrigeFromModules(self, team, modules):
         # Remove old Team if necessary
