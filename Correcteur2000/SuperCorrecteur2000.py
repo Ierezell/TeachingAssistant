@@ -182,7 +182,7 @@ class AssistantCorrection:
     def show_commits(self):
         for noTeam in self.Teams.keys():
             self.Teams[noTeam].countMemberComit()
-            print(noTeam)
+            print(f"noTeam")
             print(self.Teams[noTeam].nbCommits)
             print(self.Teams[noTeam].membersCommits)
             print()
@@ -204,13 +204,12 @@ class AssistantCorrection:
 
 if __name__ == "__main__":
     Assistant = AssistantCorrection("H", 19, 2)
-    # Assistant.initialize_Directory()
-    # Assistant.unbundle()
+    Assistant.initialize_Directory()
+    Assistant.unbundle()
     Assistant.initialise_Teams("marche_boursier.py", "portefeuille.py")
 
-    # Assistant.show_commits()
-    Assistant.show_functions()
     Assistant.show_commits()
+    Assistant.show_functions()
     # Assistant.fileNameReport()
     # Assistant.show_functions()
     # Assistant.show_similarity("marche_boursier.py")

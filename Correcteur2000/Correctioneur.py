@@ -108,7 +108,7 @@ class Correcteur:
             team.commentaire[f"{no_critere}"] = list_comment
             team.commentaire[f"{note}"] = note
             return False
-        titre(f"Membre contributeur [{team_dico["nb_membres"]}]")
+        titre(f"Membre contributeur [{team_dico['nb_membres']}]")
         for membre, commit in team.members:
             command(f"- {membre}", f"{commit} commits")
             list_comment.append(f"""{membre} à fait {commit} commits""")
