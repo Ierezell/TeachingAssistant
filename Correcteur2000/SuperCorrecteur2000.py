@@ -234,8 +234,8 @@ if __name__ == "__main__":
 
     # Assistant.show_commits()
     # Assistant.corrigeCommit(1)
-    # Assistant.corrigeFromModules("marche_boursier", "portefeuille")
-    Assistant.show_functions()
+    Assistant.corrigeFromModules("marche_boursier", "portefeuille")
+    # Assistant.show_functions()
     # Assistant.show_similarity("marche_boursier.py")
     # Assistant.show_similarity("portefeuille.py")
     # Assistant.corrige("./dictCritere.json")
