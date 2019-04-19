@@ -200,6 +200,8 @@ class AssistantCorrection:
     #     with open(f'{teamSavedPath}', 'rb') as saved_team_file:
     #         return pickle.load(saved_team_file)
 
+def potato():
+    pass
 
 if __name__ == "__main__":
     Assistant = AssistantCorrection("H", 19, 2)
