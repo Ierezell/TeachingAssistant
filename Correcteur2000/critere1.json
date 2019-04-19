@@ -1,527 +1,527 @@
 [
     {
-        "equipe": 1,
+        "équipe": 1,
         "nb_membres": 3,
         "nb_commit": 0,
-        "commentaire": "",
-        "note": 0
+        "commentaires": "",
+        "score": 0
     },
     {
-        "equipe": 2,
+        "équipe": 2,
         "nb_membres": 3,
         "nb_commit": 0,
-        "commentaire": "",
-        "note": 0
+        "commentaires": "",
+        "score": 0
     },
     {
-        "equipe": 3,
+        "équipe": 3,
         "nb_membres": 1,
         "nb_commit": 0,
-        "commentaire": "",
-        "note": 0
+        "commentaires": "",
+        "score": 0
     },
     {
-        "equipe": 4,
+        "équipe": 4,
         "nb_membres": 3,
         "nb_commit": 0,
-        "commentaire": "",
-        "note": 0
+        "commentaires": "",
+        "score": 0
     },
     {
-        "equipe": 5,
+        "équipe": 5,
         "nb_membres": 3,
         "nb_commit": 0,
-        "commentaire": "",
-        "note": 0
+        "commentaires": "",
+        "score": 0
     },
     {
-        "equipe": 6,
+        "équipe": 6,
         "nb_membres": 3,
         "nb_commit": 0,
-        "commentaire": "",
-        "note": 0
+        "commentaires": "",
+        "score": 0
     },
     {
-        "equipe": 7,
+        "équipe": 7,
         "nb_membres": 3,
         "nb_commit": 0,
-        "commentaire": "",
-        "note": 0
+        "commentaires": "",
+        "score": 0
     },
     {
-        "equipe": 8,
+        "équipe": 8,
         "nb_membres": 3,
         "nb_commit": 0,
-        "commentaire": "",
-        "note": 0
+        "commentaires": "",
+        "score": 0
     },
     {
-        "equipe": 9,
+        "équipe": 9,
         "nb_membres": 3,
         "nb_commit": 0,
-        "commentaire": "",
-        "note": 0
+        "commentaires": "",
+        "score": 0
     },
     {
-        "equipe": 10,
+        "équipe": 10,
         "nb_membres": 1,
         "nb_commit": 0,
-        "commentaire": "",
-        "note": 0
+        "commentaires": "",
+        "score": 0
     },
     {
-        "equipe": 11,
+        "équipe": 11,
         "nb_membres": 3,
         "nb_commit": 0,
-        "commentaire": "",
-        "note": 0
+        "commentaires": "",
+        "score": 0
     },
     {
-        "equipe": 12,
+        "équipe": 12,
         "nb_membres": 1,
         "nb_commit": 0,
-        "commentaire": "",
-        "note": 0
+        "commentaires": "",
+        "score": 0
     },
     {
-        "equipe": 13,
+        "équipe": 13,
         "nb_membres": 1,
         "nb_commit": 0,
-        "commentaire": "",
-        "note": 0
+        "commentaires": "",
+        "score": 0
     },
     {
-        "equipe": 14,
+        "équipe": 14,
         "nb_membres": 3,
         "nb_commit": 0,
-        "commentaire": "",
-        "note": 0
+        "commentaires": "",
+        "score": 0
     },
     {
-        "equipe": 15,
+        "équipe": 15,
         "nb_membres": 2,
         "nb_commit": 0,
-        "commentaire": "",
-        "note": 0
+        "commentaires": "",
+        "score": 0
     },
     {
-        "equipe": 16,
+        "équipe": 16,
         "nb_membres": 3,
         "nb_commit": 0,
-        "commentaire": "",
-        "note": 0
+        "commentaires": "",
+        "score": 0
     },
     {
-        "equipe": 17,
+        "équipe": 17,
         "nb_membres": 3,
         "nb_commit": 0,
-        "commentaire": "",
-        "note": 0
+        "commentaires": "",
+        "score": 0
     },
     {
-        "equipe": 18,
+        "équipe": 18,
         "nb_membres": 3,
         "nb_commit": 0,
-        "commentaire": "",
-        "note": 0
+        "commentaires": "",
+        "score": 0
     },
     {
-        "equipe": 19,
+        "équipe": 19,
         "nb_membres": 3,
         "nb_commit": 0,
-        "commentaire": "",
-        "note": 0
+        "commentaires": "",
+        "score": 0
     },
     {
-        "equipe": 20,
+        "équipe": 20,
         "nb_membres": 1,
         "nb_commit": 0,
-        "commentaire": "",
-        "note": 0
+        "commentaires": "",
+        "score": 0
     },
     {
-        "equipe": 21,
+        "équipe": 21,
         "nb_membres": 3,
         "nb_commit": 0,
-        "commentaire": "",
-        "note": 0
+        "commentaires": "",
+        "score": 0
     },
     {
-        "equipe": 22,
+        "équipe": 22,
         "nb_membres": 3,
         "nb_commit": 0,
-        "commentaire": "",
-        "note": 0
+        "commentaires": "",
+        "score": 0
     },
     {
-        "equipe": 23,
+        "équipe": 23,
         "nb_membres": 3,
         "nb_commit": 0,
-        "commentaire": "",
-        "note": 0
+        "commentaires": "",
+        "score": 0
     },
     {
-        "equipe": 24,
+        "équipe": 24,
         "nb_membres": 1,
         "nb_commit": 0,
-        "commentaire": "",
-        "note": 0
+        "commentaires": "",
+        "score": 0
     },
     {
-        "equipe": 25,
+        "équipe": 25,
         "nb_membres": 1,
         "nb_commit": 0,
-        "commentaire": "",
-        "note": 0
+        "commentaires": "",
+        "score": 0
     },
     {
-        "equipe": 26,
+        "équipe": 26,
         "nb_membres": 3,
         "nb_commit": 0,
-        "commentaire": "",
-        "note": 0
+        "commentaires": "",
+        "score": 0
     },
     {
-        "equipe": 27,
+        "équipe": 27,
         "nb_membres": 2,
         "nb_commit": 0,
-        "commentaire": "",
-        "note": 0
+        "commentaires": "",
+        "score": 0
     },
     {
-        "equipe": 28,
+        "équipe": 28,
         "nb_membres": 3,
         "nb_commit": 0,
-        "commentaire": "",
-        "note": 0
+        "commentaires": "",
+        "score": 0
     },
     {
-        "equipe": 29,
+        "équipe": 29,
         "nb_membres": 2,
         "nb_commit": 0,
-        "commentaire": "",
-        "note": 0
+        "commentaires": "",
+        "score": 0
     },
     {
-        "equipe": 30,
+        "équipe": 30,
         "nb_membres": 3,
         "nb_commit": 0,
-        "commentaire": "",
-        "note": 0
+        "commentaires": "",
+        "score": 0
     },
     {
-        "equipe": 31,
+        "équipe": 31,
         "nb_membres": 3,
         "nb_commit": 0,
-        "commentaire": "",
-        "note": 0
+        "commentaires": "",
+        "score": 0
     },
     {
-        "equipe": 32,
+        "équipe": 32,
         "nb_membres": 1,
         "nb_commit": 0,
-        "commentaire": "",
-        "note": 0
+        "commentaires": "",
+        "score": 0
     },
     {
-        "equipe": 33,
+        "équipe": 33,
         "nb_membres": 2,
         "nb_commit": 0,
-        "commentaire": "",
-        "note": 0
+        "commentaires": "",
+        "score": 0
     },
     {
-        "equipe": 34,
+        "équipe": 34,
         "nb_membres": 3,
         "nb_commit": 0,
-        "commentaire": "",
-        "note": 0
+        "commentaires": "",
+        "score": 0
     },
     {
-        "equipe": 35,
+        "équipe": 35,
         "nb_membres": 3,
         "nb_commit": 0,
-        "commentaire": "",
-        "note": 0
+        "commentaires": "",
+        "score": 0
     },
     {
-        "equipe": 36,
+        "équipe": 36,
         "nb_membres": 3,
         "nb_commit": 0,
-        "commentaire": "",
-        "note": 0
+        "commentaires": "",
+        "score": 0
     },
     {
-        "equipe": 37,
+        "équipe": 37,
         "nb_membres": 3,
         "nb_commit": 0,
-        "commentaire": "",
-        "note": 0
+        "commentaires": "",
+        "score": 0
     },
     {
-        "equipe": 38,
+        "équipe": 38,
         "nb_membres": 1,
         "nb_commit": 0,
-        "commentaire": "",
-        "note": 0
+        "commentaires": "",
+        "score": 0
     },
     {
-        "equipe": 39,
+        "équipe": 39,
         "nb_membres": 3,
         "nb_commit": 0,
-        "commentaire": "",
-        "note": 0
+        "commentaires": "",
+        "score": 0
     },
     {
-        "equipe": 40,
+        "équipe": 40,
         "nb_membres": 1,
         "nb_commit": 0,
-        "commentaire": "",
-        "note": 0
+        "commentaires": "",
+        "score": 0
     },
     {
-        "equipe": 41,
+        "équipe": 41,
         "nb_membres": 2,
         "nb_commit": 0,
-        "commentaire": "",
-        "note": 0
+        "commentaires": "",
+        "score": 0
     },
     {
-        "equipe": 42,
+        "équipe": 42,
         "nb_membres": 3,
         "nb_commit": 0,
-        "commentaire": "",
-        "note": 0
+        "commentaires": "",
+        "score": 0
     },
     {
-        "equipe": 43,
+        "équipe": 43,
         "nb_membres": 3,
         "nb_commit": 0,
-        "commentaire": "",
-        "note": 0
+        "commentaires": "",
+        "score": 0
     },
     {
-        "equipe": 44,
+        "équipe": 44,
         "nb_membres": 1,
         "nb_commit": 0,
-        "commentaire": "",
-        "note": 0
+        "commentaires": "",
+        "score": 0
     },
     {
-        "equipe": 45,
+        "équipe": 45,
         "nb_membres": 1,
         "nb_commit": 0,
-        "commentaire": "",
-        "note": 0
+        "commentaires": "",
+        "score": 0
     },
     {
-        "equipe": 46,
+        "équipe": 46,
         "nb_membres": 2,
         "nb_commit": 0,
-        "commentaire": "",
-        "note": 0
+        "commentaires": "",
+        "score": 0
     },
     {
-        "equipe": 48,
+        "équipe": 48,
         "nb_membres": 3,
         "nb_commit": 0,
-        "commentaire": "",
-        "note": 0
+        "commentaires": "",
+        "score": 0
     },
     {
-        "equipe": 49,
+        "équipe": 49,
         "nb_membres": 1,
         "nb_commit": 0,
-        "commentaire": "",
-        "note": 0
+        "commentaires": "",
+        "score": 0
     },
     {
-        "equipe": 51,
+        "équipe": 51,
         "nb_membres": 3,
         "nb_commit": 0,
-        "commentaire": "",
-        "note": 0
+        "commentaires": "",
+        "score": 0
     },
     {
-        "equipe": 52,
+        "équipe": 52,
         "nb_membres": 2,
         "nb_commit": 0,
-        "commentaire": "",
-        "note": 0
+        "commentaires": "",
+        "score": 0
     },
     {
-        "equipe": 53,
+        "équipe": 53,
         "nb_membres": 3,
         "nb_commit": 0,
-        "commentaire": "",
-        "note": 0
+        "commentaires": "",
+        "score": 0
     },
     {
-        "equipe": 54,
+        "équipe": 54,
         "nb_membres": 3,
         "nb_commit": 0,
-        "commentaire": "",
-        "note": 0
+        "commentaires": "",
+        "score": 0
     },
     {
-        "equipe": 56,
+        "équipe": 56,
         "nb_membres": 2,
         "nb_commit": 0,
-        "commentaire": "",
-        "note": 0
+        "commentaires": "",
+        "score": 0
     },
     {
-        "equipe": 57,
+        "équipe": 57,
         "nb_membres": 1,
         "nb_commit": 0,
-        "commentaire": "",
-        "note": 0
+        "commentaires": "",
+        "score": 0
     },
     {
-        "equipe": 58,
+        "équipe": 58,
         "nb_membres": 2,
         "nb_commit": 0,
-        "commentaire": "",
-        "note": 0
+        "commentaires": "",
+        "score": 0
     },
     {
-        "equipe": 59,
+        "équipe": 59,
         "nb_membres": 1,
         "nb_commit": 0,
-        "commentaire": "",
-        "note": 0
+        "commentaires": "",
+        "score": 0
     },
     {
-        "equipe": 60,
+        "équipe": 60,
         "nb_membres": 1,
         "nb_commit": 0,
-        "commentaire": "",
-        "note": 0
+        "commentaires": "",
+        "score": 0
     },
     {
-        "equipe": 61,
+        "équipe": 61,
         "nb_membres": 2,
         "nb_commit": 0,
-        "commentaire": "",
-        "note": 0
+        "commentaires": "",
+        "score": 0
     },
     {
-        "equipe": 62,
+        "équipe": 62,
         "nb_membres": 3,
         "nb_commit": 0,
-        "commentaire": "",
-        "note": 0
+        "commentaires": "",
+        "score": 0
     },
     {
-        "equipe": 63,
+        "équipe": 63,
         "nb_membres": 1,
         "nb_commit": 0,
-        "commentaire": "",
-        "note": 0
+        "commentaires": "",
+        "score": 0
     },
     {
-        "equipe": 65,
+        "équipe": 65,
         "nb_membres": 1,
         "nb_commit": 0,
-        "commentaire": "",
-        "note": 0
+        "commentaires": "",
+        "score": 0
     },
     {
-        "equipe": 67,
+        "équipe": 67,
         "nb_membres": 3,
         "nb_commit": 0,
-        "commentaire": "",
-        "note": 0
+        "commentaires": "",
+        "score": 0
     },
     {
-        "equipe": 68,
+        "équipe": 68,
         "nb_membres": 3,
         "nb_commit": 0,
-        "commentaire": "",
-        "note": 0
+        "commentaires": "",
+        "score": 0
     },
     {
-        "equipe": 69,
+        "équipe": 69,
         "nb_membres": 2,
         "nb_commit": 0,
-        "commentaire": "",
-        "note": 0
+        "commentaires": "",
+        "score": 0
     },
     {
-        "equipe": 70,
+        "équipe": 70,
         "nb_membres": 1,
         "nb_commit": 0,
-        "commentaire": "",
-        "note": 0
+        "commentaires": "",
+        "score": 0
     },
     {
-        "equipe": 71,
+        "équipe": 71,
         "nb_membres": 1,
         "nb_commit": 0,
-        "commentaire": "",
-        "note": 0
+        "commentaires": "",
+        "score": 0
     },
     {
-        "equipe": 72,
+        "équipe": 72,
         "nb_membres": 1,
         "nb_commit": 0,
-        "commentaire": "",
-        "note": 0
+        "commentaires": "",
+        "score": 0
     },
     {
-        "equipe": 73,
+        "équipe": 73,
         "nb_membres": 1,
         "nb_commit": 0,
-        "commentaire": "",
-        "note": 0
+        "commentaires": "",
+        "score": 0
     },
     {
-        "equipe": 76,
+        "équipe": 76,
         "nb_membres": 1,
         "nb_commit": 0,
-        "commentaire": "",
-        "note": 0
+        "commentaires": "",
+        "score": 0
     },
     {
-        "equipe": 77,
+        "équipe": 77,
         "nb_membres": 1,
         "nb_commit": 0,
-        "commentaire": "",
-        "note": 0
+        "commentaires": "",
+        "score": 0
     },
     {
-        "equipe": 78,
+        "équipe": 78,
         "nb_membres": 1,
         "nb_commit": 0,
-        "commentaire": "",
-        "note": 0
+        "commentaires": "",
+        "score": 0
     },
     {
-        "equipe": 79,
+        "équipe": 79,
         "nb_membres": 1,
         "nb_commit": 0,
-        "commentaire": "",
-        "note": 0
+        "commentaires": "",
+        "score": 0
     },
     {
-        "equipe": 80,
+        "équipe": 80,
         "nb_membres": 2,
         "nb_commit": 0,
-        "commentaire": "",
-        "note": 0
+        "commentaires": "",
+        "score": 0
     },
     {
-        "equipe": 81,
+        "équipe": 81,
         "nb_membres": 1,
         "nb_commit": 0,
-        "commentaire": "",
-        "note": 0
+        "commentaires": "",
+        "score": 0
     },
     {
-        "equipe": 82,
+        "équipe": 82,
         "nb_membres": 1,
         "nb_commit": 0,
-        "commentaire": "",
-        "note": 0
+        "commentaires": "",
+        "score": 0
     }
 ]

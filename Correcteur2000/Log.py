@@ -1,6 +1,7 @@
 """REQUIRED pip install colored"""
 
 from colored import fg, bg, attr
+import tqdm
 
 
 BLACK = 0
@@ -19,62 +20,62 @@ def show(x, *, f=GRAY, b=BLACK):
     return f"""{fg(f)}{bg(b)}{x}{END}"""
 
 
-def wtf(msgWTF):
-    print(show(msgWTF, f=BLUE, b=MAGENTA))
+def print_wtf(msgWTF):
+    tqdm.tqdm.write(show(msgWTF, f=BLUE, b=MAGENTA))
 
 
-def note(resultat, ponderation):
+def print_note(resultat, ponderation):
     if resultat == ponderation:
-        print(
+        tqdm.tqdm.write(
             f'{show("    Note :", f=WHITE)} {show(resultat, f=GREEN)}{show("/", f=WHITE)}{show(ponderation, f=GREEN)}\n')
     elif resultat <= ponderation/2:
-        print(
+        tqdm.tqdm.write(
             f'{show("    Note :", f=WHITE)} {show(resultat, f=RED)}{show("/", f=WHITE)}{show(ponderation, f=GREEN)}\n')
     else:
-        print(f'{show("    Note :", f=WHITE)} {show(resultat, f=YELLOW)}{show("/", f=WHITE)}{show(ponderation, f=GREEN)}\n')
+        tqdm.tqdm.write(f'{show("    Note :", f=WHITE)} {show(resultat, f=YELLOW)}{show("/", f=WHITE)}{show(ponderation, f=GREEN)}\n')
 
 
-def failing(msg):
-    print(f'        {show(msg, f=RED)}')
+def print_failing(msg):
+    tqdm.tqdm.write(f'        {show(msg, f=RED)}')
 
 
-def passing(msg, *, limit=1000):
+def print_passing(msg, *, limit=1000):
     if len(msg) > limit:
-        print(f'        {show(" Message trop long ", b=MAGENTA, f=WHITE)}')
+        tqdm.tqdm.write(f'        {show(" Message trop long ", b=MAGENTA, f=WHITE)}')
     else:
-        print(f'        {show(msg, f=GREEN)}')
+        tqdm.tqdm.write(f'        {show(msg, f=GREEN)}')
 
 
-def warning(msg):
-    print(show(msg, f=YELLOW))
+def print_warning(msg):
+    tqdm.tqdm.write(show(msg, f=YELLOW))
 
 
-def ok(x):
-    print(show(x, f=BLUE))
+def print_ok(x):
+    tqdm.tqdm.write(show(x, f=BLUE))
 
 
-def command(nomFichier, Arguments):
-    print(f'      {show(nomFichier)} {show(Arguments, f=ORANGE)}')
+def print_command(nomFichier, Arguments):
+    tqdm.tqdm.write(f'      {show(nomFichier)} {show(Arguments, f=ORANGE)}')
 
 
-def titre(nomDuTest):
-    print(f'    {show(nomDuTest, f=MAGENTA)}')
+def print_titre(nomDuTest):
+    tqdm.tqdm.write(f'    {show(nomDuTest, f=MAGENTA)}')
 
 
-def equipe(GroupNb):
-    print(show(f'  ÉQUIPE {GroupNb}\n', f=WHITE))
+def print_equipe(GroupNb):
+    tqdm.tqdm.write(show(f'  ÉQUIPE {GroupNb}\n', f=WHITE))
 
 
-def final(critere, resultat, ponderation):
+def print_final(critere, resultat, ponderation):
     if resultat == ponderation:
-        print(
+        tqdm.tqdm.write(
             f'{show(f"  Critère {critere} :", f=WHITE)} {show(resultat, f=GREEN)}{show("/", f=WHITE)}{show(ponderation, f=GREEN)}\n')
     elif resultat <= ponderation/2:
-        print(
+        tqdm.tqdm.write(
             f'{show(f"  Critère {critere} :", f=WHITE)} {show(resultat, f=RED)}{show("/", f=WHITE)}{show(ponderation, f=GREEN)}\n')
     else:
-        print(f'{show(f"  Critère {critere} :", f=WHITE)} {show(resultat, f=YELLOW)}{show("/", f=WHITE)}{show(ponderation, f=GREEN)}\n')
+        tqdm.tqdm.write(f'{show(f"  Critère {critere} :", f=WHITE)} {show(resultat, f=YELLOW)}{show("/", f=WHITE)}{show(ponderation, f=GREEN)}\n')
 
 
-def barre():
-    print(show(' '*100+'\n', b=WHITE))
+def print_barre():
+    tqdm.tqdm.write(show(' '*100+'\n', b=WHITE))

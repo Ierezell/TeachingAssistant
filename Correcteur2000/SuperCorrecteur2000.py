@@ -63,7 +63,7 @@ UNDERLINE = '\033[4m'
                 team-002.json
 """
 
-PYENVNAME = "python"  # ex : py, python, python3.7
+PYENVNAME = "python3.7"  # ex : py, python, python3.7
 
 
 class AssistantCorrection:
@@ -142,6 +142,7 @@ class AssistantCorrection:
                 correcteurModules.corrigeFromModules(team, modules)
 
     def corrigeCommit(self, noCritere, pathJson="", pathFolder=""):
+        list_ready_to_publish = []
         if pathFolder != "":
             correcteur8000 = CorrecteurTeam(pathFolder)
         else:
@@ -150,9 +151,10 @@ class AssistantCorrection:
             correcteur8000.load_correction_dict(pathJson)
         else:
             correcteur8000.load_correction_dict('./critere1.json')
-        for team in self.Teams.values():
+        for team in tqdm.tqdm(self.Teams.values()):
             if not team.NoMainFile:
-                correcteur8000.correction_commit(team, noCritere)
+                list_ready_to_publish.append(correcteur8000.correction_commit(team, noCritere))
+        print(f'{list_ready_to_publish}')
 
     def show_functions(self):
         for noTeam in self.goodTeams.keys():
@@ -234,9 +236,9 @@ if __name__ == "__main__":
     # Assistant.unbundle()
     Assistant.initialise_Teams("marche_boursier.py", "portefeuille.py")
 
-    # Assistant.show_commits()
-    # Assistant.corrigeCommit(1)
-    Assistant.corrigeFromModules()
+    Assistant.not_show_commits()
+    Assistant.corrigeCommit(1)
+    # Assistant.corrigeFromModules()
     # Assistant.show_functions()
     # Assistant.show_similarity("marche_boursier.py")
     # Assistant.show_similarity("portefeuille.py")
