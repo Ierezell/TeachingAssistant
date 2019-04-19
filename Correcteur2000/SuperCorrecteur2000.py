@@ -79,8 +79,10 @@ class AssistantCorrection:
             "/result"
         ]
         self.Teams = {}
+        self.pathTeams = []
         self.goodTeams = {}
-        self.checkSave()
+        if os.path.exists(f'{self.projectBasePath}{self.projectBasePath[1:]}_Teams.save'):
+            self.loadAssistant()
 
     def initialize_Directory(self):
         if not os.path.exists(self.projectBasePath):
@@ -108,10 +110,6 @@ class AssistantCorrection:
             else:
                 self.Teams[noTeam].validProjectName = False
 
-    def fileNameReport(self):
-        for team in self.Teams.values():
-            team.fileNameReport()
-
     def unbundle(self, path=""):
         if path != "":
             unbundler = Unbundler(path)
@@ -121,9 +119,15 @@ class AssistantCorrection:
         unbundler.unbundle_All_Bundles()
         print(f"Unbundling {PASS}ok{ENDC}")
 
-    def corrige(self, pathJson):
-        correcteur8000 = Correcteur(self.projectBasePath)
-        correcteur8000.loadJson(pathJson)
+    def corrige(self, pathJson="", pathFolder=""):
+        if pathFolder != "":
+            correcteur8000 = Correcteur(pathFolder)
+        else:
+            correcteur8000 = Correcteur(self.projectBasePath)
+        if pathJson != "":
+            correcteur8000.loadJson(pathJson)
+        else:
+            correcteur8000.loadJson(f'./{self.session}{self.year}-P{self.noTP}.json')
         for team in self.Teams:
             if team.main:
                 correcteur8000.corrige(team)
@@ -173,32 +177,27 @@ class AssistantCorrection:
         # request blabla url python post data json
         pass
 
-    def checkSave(self):
-        if os.path.exists(f'{self.projectBasePath}{self.projectBasePath[1:]}.save'):
-            self.loadState()
+    def show_commits(self):
+        print("plop")
+        for team in self.Teams:
+            print("bidou")
+            team.countMemberComit()
 
-    def saveState(self):
-        savePath = f'{self.projectBasePath}{self.projectBasePath[1:]}.save'
-        for no, team in self.Teams.items():
-            team.saveTeamState(f'{savePath[:-5]}-Team{no}.save')
-        with open(savePath, 'wb') as save_state_file:
-            pickle.dump(self, save_state_file)
-
-    def loadState(self):
+    def loadAssistant(self):
         loadPath = f'{self.projectBasePath}{self.projectBasePath[1:]}.save'
         with open(loadPath, 'rb') as saved_state_file:
             self = pickle.load(saved_state_file)
         for noTeam in self.Teams.keys():
-            self.Teams[noTeam] = Team(0, "a").loadTeamState(f'{loadPath[:-5]}-Team{noTeam}.save')
+            self.Teams[noTeam] = Team(None, None).loadTeamState()
             # print(f'{self.Teams[noTeam].noTeam}')
 
-    # def saveTeamState(self, team, teamSavePath):
-    #     with open(f'{teamSavePath}', 'wb') as save_team_file:
-    #         pickle.dump(team, save_team_file)
-
-    # def loadTeamState(self, teamSavedPath):
-    #     with open(f'{teamSavedPath}', 'rb') as saved_team_file:
-    #         return pickle.load(saved_team_file)
+    def saveAssistant(self):
+        savePath = f'{self.projectBasePath}{self.projectBasePath[1:]}.save'
+        print("coucou")
+        for no, team in self.Teams.items():
+            team.saveTeamState()
+        with open(savePath, 'wb') as save_state_file:
+            pickle.dump(self, save_state_file)
 
 def potato():
     pass
@@ -207,8 +206,13 @@ if __name__ == "__main__":
     Assistant = AssistantCorrection("H", 19, 2)
     # Assistant.initialize_Directory()
     # Assistant.unbundle()
+<<<<<<< HEAD
+    Assistant.initialise_Teams(".py")
+    Assistant.show_commits()
+=======
     Assistant.initialise_Teams("marche_boursier.py", "portefeuille.py")
     # Assistant.fileNameReport()
+>>>>>>> b7ebe7ce367e61594e92a723a811d86648dca737
     # Assistant.show_functions()
     # Assistant.show_similarity("marche_boursier.py")
     # Assistant.show_similarity("portefeuille.py")
@@ -216,4 +220,9 @@ if __name__ == "__main__":
     # Assistant.makeRapport()
     # Assistant.groupAndJsonize()
     # Assistant.sendToWebsite()
+<<<<<<< HEAD
+    # Assistant.saveAssistant()
+    # Assistant.loadAssistant()
+=======
     # Assistant.saveState()
+>>>>>>> b7ebe7ce367e61594e92a723a811d86648dca737

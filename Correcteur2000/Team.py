@@ -54,6 +54,8 @@ class Team:
     def __init__(self, noTeam, pathTeam):
         self.noTeam = noTeam
         self.pathTeam = pathTeam
+        self.members = []
+        self.nbCommits = 0
         self.files = []
         self.validProjectName = True
         self.noteTot = 0
@@ -66,25 +68,25 @@ class Team:
         self.sorties = {}
         self.rapport = []
 
-    def saveTeamState(self, teamSavePath):
-        with open(f'{teamSavePath}', 'wb') as save_team_file:
+    def saveTeamState(self):
+        print(f'{self.pathTeam}/{self.noTeam}.save')
+        with open(f'{self.pathTeam}/{self.noTeam}.save', 'wb') as save_team_file:
             pickle.dump(self, save_team_file)
 
-    def loadTeamState(self, teamSavedPath):
-        with open(f'{teamSavedPath}', 'rb') as saved_team_file:
+    def loadTeamState(self):
+        with open(f'{self.pathTeam}/{self.noTeam}.save', 'rb') as saved_team_file:
             self = pickle.load(saved_team_file)
-            self.fileNameReport()
-            print(f'{self.validProjectName}')
             return self
 
-    def fileNameReport(self):
-        if not self.validProjectName:
-            print()
-            equipe(self.noTeam)
-            titre("Fichier trouvé :")
-            for file in self.files:
-                warning(f"        - {file}")
-    
+
+#    def fileNameReport(self):
+#         if not self.validProjectName:
+#             print()
+#             equipe(self.noTeam)
+#             titre("Fichier trouvé :")
+#             for file in self.files:
+#                 warning(f"        - {file}")
+
     def similar_name(self, string1, string2, percent=0.7):
         print(f'Équipe {self.noTeam} {string1} {string2}')
         if string2[-2] == 'py' and SequenceMatcher(None, string1.lower(), string2.lower()).ratio() >= percent:
@@ -92,39 +94,40 @@ class Team:
             return True
         return False
 
-    def check_If_Project_Valide(self, projectName):
+   def check_If_Project_Valide(self, projectName):
         # Verifie si le projet est présent
         tempBool = False
         similarFound = True
         for f in glob.iglob(f'{self.pathTeam}/*'):
             self.files.append(f.split('/')[-1])
             if f.split('/')[-1] == projectName:
-                tempBool = True    
+                tempBool = True
             else:
                 if self.similar_name(projectName, f.split('/')[-1]):
                     print(f"""\t{f.split('/')[-1]} found for team :""",
-                        f"""{WARNING}{self.noTeam}{ENDC}""")
+                          f"""{WARNING}{self.noTeam}{ENDC}""")
                     print(f"\tMoving {self.pathTeam}/{WARNING}{f.split('/')[-1]}{ENDC}",
-                        f"to {self.pathTeam}/{PASS}{projectName}{ENDC}\n")
-                    options = ["mv", f"{self.pathTeam}/{f.split('/')[-1]}", f'{self.pathTeam}/{projectName}']
+                          f"to {self.pathTeam}/{PASS}{projectName}{ENDC}\n")
+                    options = [
+                        "mv", f"{self.pathTeam}/{f.split('/')[-1]}", f'{self.pathTeam}/{projectName}']
                     proc = Popen(options, stdout=PIPE, stderr=PIPE, encoding='utf-8')
                     result, err = proc.communicate(timeout=10)
                     if err:
-                            print(
-                                f"Impossible de changer le nom de fichier de l'équipe",
-                                f" {self.noTeam}",
-                                "\nÀ faire manuellement pour pouvoir run d'autre tests\n")
+                        print(
+                            f"Impossible de changer le nom de fichier de l'équipe",
+                            f" {self.noTeam}",
+                            "\nÀ faire manuellement pour pouvoir run d'autre tests\n")
                 else:
                     similarFound = False
 
         if not similarFound and not tempBool:
             print(f"""\tNo working files found for team :""",
-                    f"""{FAIL}{self.noTeam}{ENDC}\n""")
+                  f"""{FAIL}{self.noTeam}{ENDC}\n""")
             self.NoMainFile = True
             self.BadMainFile = True
             return 0
             # self.validProjectName = tempBool
-                #print(f"\tTeam : {f.split('/')[-2][-6:-3]} {PASS}ok{ENDC}")
+               # print(f"\tTeam : {f.split('/')[-2][-6:-3]} {PASS}ok{ENDC}")
         # Sinon, cherche un fichier fonctionnel
         # potentialMainFiles = []
         # if not tempBool:
@@ -163,3 +166,20 @@ class Team:
         #                 "\nÀ faire manuellement pour pouvoir run d'autre tests\n")
             # Aucun fichier runnable
             # else:
+            #     print(f"""\tNo working files found for team :""",
+            #           f"""{FAIL}{self.noTeam}{ENDC}\n""")
+            #     self.NoMainFile = True
+            #     return 0
+
+    def countMemberComit(self):
+        options = [pyEnv, 'hg', 'id', f'{self.pathTeam}', '--num']
+        proc = Popen(options, stdout=PIPE, stderr=PIPE, encoding='utf-8')
+        nb_com, err = proc.communicate(timeout=10)
+        print(nb_com)
+
+        options = [pyEnv, 'hg', 'log', '--template', '"{author|person}\n"',
+                   f'{self.pathTeam}', '|', 'sort', '|', 'uniq', '-c', '|',
+                   'sort', '-nr']
+        proc = Popen(options, stdout=PIPE, stderr=PIPE, encoding='utf-8')
+        nom_et_comit, err = proc.communicate(timeout=10)
+        print(nom_et_comit)
