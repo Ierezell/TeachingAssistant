@@ -207,8 +207,12 @@ if __name__ == "__main__":
     # Assistant.initialize_Directory()
     # Assistant.unbundle()
     Assistant.initialise_Teams("marche_boursier.py", "portefeuille.py")
+
     # Assistant.show_commits()
     Assistant.show_functions()
+    Assistant.show_commits()
+    # Assistant.fileNameReport()
+    # Assistant.show_functions()
     # Assistant.show_similarity("marche_boursier.py")
     # Assistant.show_similarity("portefeuille.py")
     # Assistant.corrige("./dictCritere.json")
@@ -217,3 +221,4 @@ if __name__ == "__main__":
     # Assistant.sendToWebsite()
     # Assistant.saveAssistant()
     # Assistant.loadAssistant()
+    # Assistant.saveState()

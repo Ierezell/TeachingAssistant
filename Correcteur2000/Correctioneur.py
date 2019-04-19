@@ -3,6 +3,7 @@ import json
 import os
 import re
 import shutil
+from Log import *
 from subprocess import PIPE, Popen
 
 # pyEnv = __import__('SuperCorrecteur2000').AssistantCorrection.PYENVNAME
@@ -81,3 +82,45 @@ class Correcteur:
                 else:
                     nomCommandeTeam[command]["estReussi"] = False
                     nomCommandeTeam["commentaireEchec"] = critere["commentaireEchec"]
+
+    def correction_commit(self, pathJson, team, no_critere):
+        nb_commits = team.nbCommites
+        no_team = team.noTeam
+        team_dico = {}
+        note = 0.0
+        list_comment = []
+        with open(pathJson) as jsonFile:
+            self.dictCritere = json.load(jsonFile)
+        for t in selfdictCritere:
+            if t["equipe"] == no_team:
+                team_dico = t
+        strip()
+        equipe(no_team)
+        titre("Vérification des commits")
+        if nb_commits >= 5:
+            passing(f'{nb_commits}/5')
+            list_comment.append(f"Vous avez fait {nb_commits}")
+        else:
+            failing(f'{nb_commits}/5')
+            team.notes[str(no_critere)] = 0.0
+            list_comment.append(
+                f"""Vous avez fait <span style="color:  # ff0000;">{nb_commits}</span> alors que le critère exigeait un minimum de 5 commits.""")
+            team.commentaire[f"{no_critere}"] = list_comment
+            team.commentaire[f"{note}"] = note
+            return False
+        titre(f"Membre contributeur [{team_dico["nb_membres"]}]")
+        for membre, commit in team.members:
+            command(f"- {membre}", f"{commit} commits")
+            list_comment.append(f"""{membre} à fait {commit} commits""")
+        real = float(input("Nombre réel de membre : "))
+        note = 100*(real/team_dico["nb_membres"])
+        if real < team_dico["nb_membres"]:
+            list_comment.append(
+                f"""Seulement {real} membres sur {team_dico["nb_membres"]} on fait des commits""")
+            failing(
+                f"""{real} membres sur {team_dico["nb_membres"]} on fait des commits""")
+        else:
+            list_comment.append(
+                f"""Vous avez tous fait au moins 1 commit.""")
+        team.commentaire[f"{no_critere}"] = list_comment
+        team.commentaire[f"{note}"] = note
