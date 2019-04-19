@@ -93,10 +93,10 @@ class AssistantCorrection:
 
     def initialise_Teams(self, *projectName):
         pathList = f'{self.projectBasePath}/unbundled/'
-        teamList = glob.iglob(f"{pathList}/*")
+        self.pathTeams = glob.glob(f"{pathList}/*")
         print("\nCreating Teams...")
         print("\nLooking for project file...\n")
-        for pathTeam in teamList:
+        for pathTeam in self.pathTeams:
             noTeam = int(pathTeam[-6:-3])
             self.Teams[noTeam] = Team(noTeam, pathTeam)
             boolValidation = False
@@ -147,17 +147,19 @@ class AssistantCorrection:
                 correcteur8000.correction_commit(team, noCritere)
 
     def show_functions(self):
-        for noTeam, team in self.goodTeams:
+        for noTeam in self.goodTeams.keys():
             print(f"Fonctions du groupe : {PASS}{noTeam}{ENDC}\n")
-            for file in team.files:
+            for file in self.goodTeams[noTeam].files:
                 if file[-3:] == ".py":
                     print(f"\tFichier : {WARNING}{file.split('/')[-1]}{ENDC}\n")
                     with open(file) as file_Python:
                         for lineNb, line in enumerate(file_Python):
                             if re.compile(r"def\s").findall(line):
                                 print(f"Line {lineNb}: {BOLD}{line}{ENDC}")
-            input("Press enter for next group")
-            print("\n\n")
+                            if re.compile(r"class\s").findall(line):
+                                print(f"Line {lineNb}: {BOLD}{line}{ENDC}")
+            input("Press any key for next group")
+            print("\n"*3)
 
     def show_similarity(self, fileName, percent=80):
         list_Teams = list(self.goodTeams.copy().items())
@@ -194,7 +196,7 @@ class AssistantCorrection:
     def show_commits(self):
         for noTeam in self.Teams.keys():
             self.Teams[noTeam].countMemberComit()
-            print(noTeam)
+            print(f"noTeam")
             print(self.Teams[noTeam].nbCommits)
             print(self.Teams[noTeam].membersCommits)
             print()
@@ -207,28 +209,30 @@ class AssistantCorrection:
         loadPath = f'{self.projectBasePath}{self.projectBasePath[1:]}.save'
         with open(loadPath, 'rb') as saved_state_file:
             self = pickle.load(saved_state_file)
-        for noTeam in self.Teams.keys():
-            self.Teams[noTeam] = Team(None, None).loadTeamState()
-            # print(f'{self.Teams[noTeam].noTeam}')
+        for noTeam, pathTeam in zip(self.Teams.keys(), self.pathTeams):
+            self.Teams[noTeam] = Team(noTeam, pathTeam).loadTeamState()
 
     def saveAssistant(self):
         savePath = f'{self.projectBasePath}{self.projectBasePath[1:]}.save'
-        print("coucou")
         for no, team in self.Teams.items():
             team.saveTeamState()
         with open(savePath, 'wb') as save_state_file:
             pickle.dump(self, save_state_file)
 
-def potato():
-    pass
 
 if __name__ == "__main__":
     Assistant = AssistantCorrection("H", 19, 2)
-    # Assistant.initialize_Directory()
-    # Assistant.unbundle()
+    Assistant.initialize_Directory()
+    Assistant.unbundle()
     Assistant.initialise_Teams("marche_boursier.py", "portefeuille.py")
+
     Assistant.show_commits()
+<<<<<<< HEAD
     Assistant.corrigeCommit(1)
+=======
+    Assistant.show_functions()
+    # Assistant.fileNameReport()
+>>>>>>> 558f3669783bf003f2a4767a322bbf2639c14ded
     # Assistant.show_functions()
     # Assistant.show_similarity("marche_boursier.py")
     # Assistant.show_similarity("portefeuille.py")
@@ -238,3 +242,7 @@ if __name__ == "__main__":
     # Assistant.sendToWebsite()
     # Assistant.saveAssistant()
     # Assistant.loadAssistant()
+<<<<<<< HEAD
+=======
+    # Assistant.saveState()
+>>>>>>> 558f3669783bf003f2a4767a322bbf2639c14ded

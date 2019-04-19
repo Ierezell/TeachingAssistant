@@ -87,10 +87,13 @@ class Team:
 #             for file in self.files:
 #                 warning(f"        - {file}")
 
-    def similar_name(self, string1, string2, percent=0.7):
-        print(f'Équipe {self.noTeam} {string1} {string2}')
-        if string2[-2] == 'py' and SequenceMatcher(None, string1.lower(), string2.lower()).ratio() >= percent:
-            print('POTATO')
+     def similar_name(self, string1, string2, percent=0.7):
+        #print(f'Équipe {self.noTeam} {string1} {string2}')
+        if (string2[-2] == 'py' and
+                SequenceMatcher(None,
+                                string1.lower(),
+                                string2.lower()).ratio() >= percent):
+            print('')
             return True
         return False
 
@@ -98,18 +101,21 @@ class Team:
         # Verifie si le projet est présent
         tempBool = False
         similarFound = True
+        self.files = []
         for f in glob.iglob(f'{self.pathTeam}/*'):
-            self.files.append(f.split('/')[-1])
+            self.files.append(f)
             if f.split('/')[-1] == projectName:
                 tempBool = True
             else:
                 if self.similar_name(projectName, f.split('/')[-1]):
                     print(f"""\t{f.split('/')[-1]} found for team :""",
                           f"""{WARNING}{self.noTeam}{ENDC}""")
+
                     print(f"\tMoving {self.pathTeam}/{WARNING}{f.split('/')[-1]}{ENDC}",
                           f"to {self.pathTeam}/{PASS}{projectName}{ENDC}\n")
-                    options = [
-                        "mv", f"{self.pathTeam}/{f.split('/')[-1]}", f'{self.pathTeam}/{projectName}']
+
+                    options = ["mv", f"{self.pathTeam}/{f.split('/')[-1]}",
+                               f'{self.pathTeam}/{projectName}']
                     proc = Popen(options, stdout=PIPE, stderr=PIPE, encoding='utf-8')
                     result, err = proc.communicate(timeout=10)
                     if err:

@@ -106,8 +106,13 @@ class Correcteur:
             team.commentaire[f"{no_critere}"] = list_comment
             team.commentaire[f"{note}"] = note
             return False
+<<<<<<< HEAD
         titre(f"""Membre contributeur [{team_dico['nb_membres']}]""")
         for membre, commit in team.membersCommits:
+=======
+        titre(f"Membre contributeur [{team_dico['nb_membres']}]")
+        for membre, commit in team.members:
+>>>>>>> 558f3669783bf003f2a4767a322bbf2639c14ded
             command(f"- {membre}", f"{commit} commits")
             list_comment.append(f"""{membre} à fait {commit} commits""")
         real = float(input("Nombre réel de membre : "))
