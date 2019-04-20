@@ -12,6 +12,7 @@ import time
 import importlib
 from subprocess import PIPE, Popen
 from difflib import SequenceMatcher
+import datetime
 
 # pyEnv = __import__('SuperCorrecteur2000').AssistantCorrection.PYENVNAME
 pyEnv = "python3.7"
@@ -173,36 +174,26 @@ class CorrecteurTeam:
                     missing_module = importlib.reload(missing_module)
                     loaded_modules[i] = importlib.import_module(module)
                     loaded_modules[i] = importlib.reload(loaded_modules[i])
-            except Exception:
-                print(traceback.format_exc())
+            except Exception as e:
+                print(e)
                 equipeOk = False
-
+        # DEBUT DE LA TEAM
         if equipeOk:
-            instances = []
+            classes_team = []
             for i, mod in enumerate(loaded_modules):
-                classes = (team.dictNomenclature[classe] for classe in classes[i])
-                for cl in classes:
-                    instances.append(getattr(mod, cl))
-            instances[0].prix()
+                for cl in classes[i]:
+                    classes_team.append(getattr(mod, team.dictNomenclature[cl]))
 
-            # print(classes_of_module)
-
-            # try:
-
-            #     #p = mod[1].Portefeuille(m)
-            # except AttributeError as e:
-            #     print(e)
-            #     print("Impossible d'initialiser un marché")
-            #     if input("Afficher le fichier ?") == 'y':
-            #         with open(f"marche_boursier.py", "r") as file:
-            #             print(file.read())
-            # except TypeError as e:
-            #     print(e)
-            #     print("Le constructeur n'accepte pas une instance de marché")
-            #     if input("Afficher le fichier ?") == 'y':
-            #         with open(f"portefeuille.py", "r") as file:
-            #             print(file.read())
-            # print("aaaaaaaaaaaaaaaa: ", a)
+            try:
+                marche = classes_team[0]()
+            except Exception as e:
+                print(e)
+            try:
+                print(getattr(marche, team.dictNomenclature["prix"])(
+                    str("GOOG"), datetime.date.today()))
+            except Exception as e:
+                print(e)
+        # FIN DE LA TEAM
         for module in modules_to_remove:
             del sys.modules[module]
         for module in modules:
@@ -211,6 +202,7 @@ class CorrecteurTeam:
         for modulilou in sys.modules.keys():
             if not modulilou in init_modules:
                 del(sys.modules[modulilou])
+        team.saveTeamState()
         sys.path.remove(os.getcwd())
         os.chdir('../../../')
         print()
@@ -313,7 +305,7 @@ class CorrecteurTeam:
         team.commentaires["3"] = {}
         team.notes["3"]["Nomenclature"] = score
         team.commentaires["3"]["Nomenclature"] = comment
-        team.saveTeamState(False)
+        team.saveTeamState()
         return {"équipe": team.noTeam, "score": score, "commentaires": comment}
 
     def show_functions(self, team):
@@ -340,7 +332,7 @@ class CorrecteurTeam:
         return (list_func, list_class, list_arg)
 
     def similar_name(self, string1, string2, percent=1):
-        #print(f'Équipe {self.noTeam} {string1} {string2}')
+        # print(f'Équipe {self.noTeam} {string1} {string2}')
         if (string2 == string1 and
                 SequenceMatcher(None,
                                 string1,
