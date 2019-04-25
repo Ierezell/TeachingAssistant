@@ -148,7 +148,6 @@ class CorrecteurTeam:
         test = Tests(team, modules, classes)
         if test.equipeOk:
             test.test_vendre_GOOG_2018_5_8()
-
         test.cleanUp()
         team.saveTeamState()
         print()
