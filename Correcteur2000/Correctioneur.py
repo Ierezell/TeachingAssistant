@@ -147,7 +147,11 @@ class CorrecteurTeam:
     def corrigeFromModules(self, team, modules, classes):
         test = Tests(team, modules, classes)
         if test.equipeOk:
+            print(team.noTeam)
             test.test_vendre_GOOG_2018_5_8()
+            # MANY TEST
+        else:
+            print("Bad module ", team.noTeam)
         test.cleanUp()
         team.saveTeamState()
         print()

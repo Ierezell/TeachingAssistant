@@ -19,7 +19,7 @@ class Tests:
         self.modules_to_remove = []
         self.loaded_modules = list([None]*len(self.modules))
         self.equipeOk = True
-        print(team.noTeam)
+        # print(team.noTeam)
         missing_module_name = None
         missing_module = None
         for i, module in enumerate(self.modules):
@@ -27,12 +27,12 @@ class Tests:
                 self.loaded_modules[i] = importlib.import_module(module)
                 self.loaded_modules[i] = importlib.reload(self.loaded_modules[i])
             except ModuleNotFoundError:
-                print(f"No module {module} for team {team.noTeam}")
+                #print(f"No module {module} for team {team.noTeam}")
                 self.equipeOk = False
             except ImportError:
                 missing_module_name = traceback.format_exc().split('\n')[-2].split()[6][1:-1]
                 if missing_module_name == module:
-                    print("Import circulaire !")
+                    #print("Import circulaire !")
                     self.equipeOk = False
                 else:
                     self.modules_to_remove.append(missing_module_name)
@@ -61,15 +61,16 @@ class Tests:
             except Exception as e:
                 print(e)
             try:
-                self.portefeuille = classes_team[1]()
+                # self.portefeuille = classes_team[1]()
                 # Ou bien
-                # self.portefeuille = classes_team[1](self.marche)
+                self.portefeuille = classes_team[1](self.marche)
                 # Pour initialiser le portefeuille avec un marché
+
             except Exception as e:
                 print(e)
 
     def test_vendre_GOOG_2018_5_8(self):
-        print("JE FAIS LE TEST DU MARHCE OUIIIIIIIIII")
+        #print("JE FAIS LE TEST DU MARHCE OUIIIIIIIIII")
         # LOAD CLASS OBJECT PERMET DE RECHARGER A CHAQUE FOIS UN NOUVEAU MARCHE
         self.loadClassObject()
         try:
@@ -84,8 +85,8 @@ class Tests:
                   )
             # getattr(marche.prix)(args)
             # REVIENT A FAIRE marche.prix(args)
-            print("JAI PRINT LE TEST DU MARHCE WAAAAAAAAAAAAAAAA")
-
+            #print("JAI PRINT LE TEST DU MARHCE WAAAAAAAAAAAAAAAA")
+        # traceback.format_exc()
         except Exception as e:
             print(e)
 
