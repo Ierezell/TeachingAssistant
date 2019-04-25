@@ -13,7 +13,7 @@ import importlib
 from subprocess import PIPE, Popen
 from difflib import SequenceMatcher
 import datetime
-
+from tests import Tests
 # pyEnv = __import__('SuperCorrecteur2000').AssistantCorrection.PYENVNAME
 pyEnv = "python3.7"
 
@@ -145,66 +145,69 @@ class CorrecteurTeam:
         return team_dico
 
     def corrigeFromModules(self, team, modules, classes):
-        # Prend le nom des élèves
-        modules = tuple(team.dictNomenclature[module] for module in modules)
-        init_modules = sys.modules.keys()
-        os.chdir(team.pathTeam)
-        sys.path.insert(0, os.getcwd())
-        modules_to_remove = []
-        loaded_modules = list([None]*len(modules))
-        equipeOk = True
-        print(team.noTeam)
-        missing_module_name = None
-        missing_module = None
-        for i, module in enumerate(modules):
-            try:
-                loaded_modules[i] = importlib.import_module(module)
-                loaded_modules[i] = importlib.reload(loaded_modules[i])
-            except ModuleNotFoundError:
-                print(f"No module {module} for team {team.noTeam}")
-                equipeOk = False
-            except ImportError:
-                missing_module_name = traceback.format_exc().split('\n')[-2].split()[6][1:-1]
-                if missing_module_name == module:
-                    print("Import circulaire !")
-                    equipeOk = False
-                else:
-                    modules_to_remove.append(missing_module_name)
-                    missing_module = importlib.import_module(missing_module_name)
-                    missing_module = importlib.reload(missing_module)
-                    loaded_modules[i] = importlib.import_module(module)
-                    loaded_modules[i] = importlib.reload(loaded_modules[i])
-            except Exception as e:
-                print(e)
-                equipeOk = False
+        # # Prend le nom des élèves
+        # modules = tuple(team.dictNomenclature[module] for module in modules)
+        # init_modules = sys.modules.keys()
+        # os.chdir(team.pathTeam)
+        # sys.path.insert(0, os.getcwd())
+        # modules_to_remove = []
+        # loaded_modules = list([None]*len(modules))
+        # equipeOk = True
+        # print(team.noTeam)
+        # missing_module_name = None
+        # missing_module = None
+        # for i, module in enumerate(modules):
+        #     try:
+        #         loaded_modules[i] = importlib.import_module(module)
+        #         loaded_modules[i] = importlib.reload(loaded_modules[i])
+        #     except ModuleNotFoundError:
+        #         print(f"No module {module} for team {team.noTeam}")
+        #         equipeOk = False
+        #     except ImportError:
+        #         missing_module_name = traceback.format_exc().split('\n')[-2].split()[6][1:-1]
+        #         if missing_module_name == module:
+        #             print("Import circulaire !")
+        #             equipeOk = False
+        #         else:
+        #             modules_to_remove.append(missing_module_name)
+        #             missing_module = importlib.import_module(missing_module_name)
+        #             missing_module = importlib.reload(missing_module)
+        #             loaded_modules[i] = importlib.import_module(module)
+        #             loaded_modules[i] = importlib.reload(loaded_modules[i])
+        #     except Exception as e:
+        #         print(e)
+        #         equipeOk = False
         # DEBUT DE LA TEAM
-        if equipeOk:
-            classes_team = []
-            for i, mod in enumerate(loaded_modules):
-                for cl in classes[i]:
-                    classes_team.append(getattr(mod, team.dictNomenclature[cl]))
+        test = Tests(team, modules, classes)
+        if test.equipeOk:
+            test.test_vendre_GOOG_2018_5_8()
+            # classes_team = []
+            # for i, mod in enumerate(loaded_modules):
+            #     for cl in classes[i]:
+            #         classes_team.append(getattr(mod, team.dictNomenclature[cl]))
 
-            try:
-                marche = classes_team[0]()
-            except Exception as e:
-                print(e)
-            try:
-                print(getattr(marche, team.dictNomenclature["prix"])(
-                    str("GOOG"), datetime.date.today()))
-            except Exception as e:
-                print(e)
-        # FIN DE LA TEAM
-        for module in modules_to_remove:
-            del sys.modules[module]
-        for module in modules:
-            if module in sys.modules:
-                del sys.modules[module]
-        for modulilou in sys.modules.keys():
-            if not modulilou in init_modules:
-                del(sys.modules[modulilou])
+            # try:
+            #     marche = classes_team[0]()
+            # except Exception as e:
+            #     print(e)
+            # try:
+            #     print(getattr(marche, team.dictNomenclature["prix"])(
+            #         str("GOOG"), datetime.date.today()))
+            # except Exception as e:
+            #     print(e)
+            # FIN DE LA TEAM
+        # for module in modules_to_remove:
+        #     del sys.modules[module]
+        # for module in modules:
+        #     if module in sys.modules:
+        #         del sys.modules[module]
+        # for modulilou in sys.modules.keys():
+        #     if not modulilou in init_modules:
+        #         del(sys.modules[modulilou])
+        # sys.path.remove(os.getcwd())
+        # os.chdir('../../../')
+        test.cleanUp()
         team.saveTeamState()
-        sys.path.remove(os.getcwd())
-        os.chdir('../../../')
         print()
 
     def corrige_nomenclature(self, listClass, listFunc, listArg, team):
