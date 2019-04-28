@@ -69,9 +69,7 @@ class Team:
         self.sorties = {}
         self.rapport = []
 
-    def saveTeamState(self, with_print=True):
-        if with_print:
-            print(f'{self.pathTeam}/{self.noTeam}.save')
+    def saveTeamState(self):
         with open(f'{self.pathTeam}/{self.noTeam}.save', 'wb') as save_team_file:
             pickle.dump(self, save_team_file)
 
@@ -104,17 +102,17 @@ class Team:
         for f in glob.iglob(f'{self.pathTeam}/*'):
             self.files.append(f)
             if f.split('/')[-1] == projectName:
-                self.dictNomenclature[projectName] = f.split('/')[-1]
+                self.dictNomenclature[projectName[:-3]] = f.split('/')[-1][:-3]
                 exactNameBool = True
                 break
             # TODO: Les 3 ligne suivante sont du a l'erreur du prof dans l'énoncé
             elif f.split('/')[-1] == "marcheboursier.py":
-                self.dictNomenclature[projectName] = f.split('/')[-1]
+                self.dictNomenclature[projectName[:-3]] = f.split('/')[-1][:-3]
                 exactNameBool = True
                 break
             else:
                 if self.similar_name(projectName, f.split('/')[-1]):
-                    self.dictNomenclature[projectName] = f.split('/')[-1]
+                    self.dictNomenclature[projectName[:-3]] = f.split('/')[-1][:-3]
                     similarFound = True
                     break
                 else:
@@ -129,7 +127,7 @@ class Team:
             print(f"""\tBad named files found for team :""",
                   f"""{WARNING}{self.noTeam}{ENDC}\n""")
             self.NoMainFile = True
-        self.saveTeamState(False)
+        self.saveTeamState()
 
     def countMemberComit(self):
         options = ['hg', 'id', f'{self.pathTeam}', '--num']

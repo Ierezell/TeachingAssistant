@@ -11,7 +11,8 @@ import time
 import importlib
 from subprocess import PIPE, Popen
 from difflib import SequenceMatcher
-
+import datetime
+from tests import Tests
 # pyEnv = __import__('SuperCorrecteur2000').AssistantCorrection.PYENVNAME
 pyEnv = "python3.7"
 
@@ -216,6 +217,15 @@ class CorrecteurTeam:
         # sys.path.remove(os.path.join(os.getcwd(), team.pathTeam[2:]))
         sys.path.remove(os.getcwd())
         os.chdir('../../../')
+        test = Tests(team, modules, classes)
+        if test.equipeOk:
+            print(team.noTeam)
+            test.test_vendre_GOOG_2018_5_8()
+            # MANY TEST
+        else:
+            print("Bad module ", team.noTeam)
+        test.cleanUp()
+        team.saveTeamState()
         print()
 
     def corrige_nomenclature(self, listClass, listFunc, listArg, team):
@@ -316,7 +326,7 @@ class CorrecteurTeam:
         team.commentaires["3"] = {}
         team.notes["3"]["Nomenclature"] = score
         team.commentaires["3"]["Nomenclature"] = comment
-        team.saveTeamState(False)
+        team.saveTeamState()
         return {"équipe": team.noTeam, "score": score, "commentaires": comment}
 
     def show_functions(self, team):
@@ -343,7 +353,7 @@ class CorrecteurTeam:
         return (list_func, list_class, list_arg)
 
     def similar_name(self, string1, string2, percent=1):
-        #print(f'Équipe {self.noTeam} {string1} {string2}')
+        # print(f'Équipe {self.noTeam} {string1} {string2}')
         if (string2 == string1 and
                 SequenceMatcher(None,
                                 string1,

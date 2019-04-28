@@ -1,1 +1,342 @@
-[{"équipe": 1, "score": 15.0, "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><strong>Sous-résultat: 15.0 </strong>"}, {"équipe": 2, "score": 13.1, "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><strong>Sous-résultat: 13.1 </strong>"}, {"équipe": 3, "score": 14.5, "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><p>Les arguments suivantes sont mal nommée.</p><ul><li><code>symbole</code></li></ul><strong>Sous-résultat: 14.5 </strong>"}, {"équipe": 4, "score": 8.2, "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><p>Les arguments suivantes sont mal nommée.</p><ul><li><code>date</code></li><li><code>date</code></li><li><code>symbole</code></li><li><code>date</code></li><li><code>date</code></li><li><code>symboles</code></li><li><code>date</code></li><li><code>date</code></li><li><code>date</code></li><li><code>rendement</code></li></ul><strong>Sous-résultat: 8.2 </strong>"}, {"équipe": 5, "score": 15.0, "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><strong>Sous-résultat: 15.0 </strong>"}, {"équipe": 6, "score": 13.1, "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><p>Les arguments suivantes sont mal nommée.</p><ul><li><code>quantite</code></li><li><code>quantite</code></li><li><code>symboles</code></li><li><code>date</code></li></ul><strong>Sous-résultat: 13.1 </strong>"}, {"équipe": 7, "score": 10.6, "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><p>Les arguments suivantes sont mal nommée.</p><ul><li><code>date</code></li><li><code>date</code></li><li><code>date</code></li><li><code>date</code></li><li><code>date</code></li><li><code>date</code></li><li><code>date</code></li><li><code>date</code></li><li><code>date</code></li></ul><strong>Sous-résultat: 10.6 </strong>"}, {"équipe": 8, "score": 15.0, "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><strong>Sous-résultat: 15.0 </strong>"}, {"équipe": 9, "score": 11.6, "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><p>Les arguments suivantes sont mal nommée.</p><ul><li><code>date</code></li><li><code>date</code></li><li><code>date</code></li><li><code>date</code></li><li><code>date</code></li><li><code>date</code></li><li><code>date</code></li></ul><strong>Sous-résultat: 11.6 </strong>"}, {"équipe": 10, "score": 11.6, "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><p>Les arguments suivantes sont mal nommée.</p><ul><li><code>quantite</code></li><li><code>symboles</code></li></ul><strong>Sous-résultat: 11.6 </strong>"}, {"équipe": 11, "score": 15.0, "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><strong>Sous-résultat: 15.0 </strong>"}, {"équipe": 12, "score": 12.6, "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><strong>Sous-résultat: 12.6 </strong>"}, {"équipe": 13, "score": 15.0, "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><strong>Sous-résultat: 15.0 </strong>"}, {"équipe": 14, "score": 15.0, "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><strong>Sous-résultat: 15.0 </strong>"}, {"équipe": 15, "score": 1.9, "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><p>Les arguments suivantes sont mal nommée.</p><ul><li><code>date</code></li><li><code>montant</code></li><li><code>date</code></li><li><code>date</code></li><li><code>symbole</code></li><li><code>quantite</code></li><li><code>date</code></li><li><code>symbole</code></li><li><code>quantite</code></li><li><code>date</code></li><li><code>date</code></li><li><code>symboles</code></li><li><code>date</code></li><li><code>date</code></li><li><code>date</code></li><li><code>rendement</code></li></ul><strong>Sous-résultat: 1.9 </strong>"}, {"équipe": 16, "score": 15.0, "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><strong>Sous-résultat: 15.0 </strong>"}, {"équipe": 17, "score": 13.5, "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><p>Les arguments suivantes sont mal nommée.</p><ul><li><code>quantite</code></li><li><code>quantite</code></li></ul><strong>Sous-résultat: 13.5 </strong>"}, {"équipe": 18, "score": 14.0, "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><p>Les arguments suivantes sont mal nommée.</p><ul><li><code>quantite</code></li><li><code>quantite</code></li></ul><strong>Sous-résultat: 14.0 </strong>"}, {"équipe": 19, "score": 15.0, "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><strong>Sous-résultat: 15.0 </strong>"}, {"équipe": 20, "score": 14.0, "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><p>Les arguments suivantes sont mal nommée.</p><ul><li><code>symbole</code></li></ul><strong>Sous-résultat: 14.0 </strong>"}, {"équipe": 21, "score": 14.0, "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><p>Les arguments suivantes sont mal nommée.</p><ul><li><code>symboles</code></li></ul><strong>Sous-résultat: 14.0 </strong>"}, {"équipe": 22, "score": 14.5, "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><strong>Sous-résultat: 14.5 </strong>"}, {"équipe": 23, "score": 14.0, "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><strong>Sous-résultat: 14.0 </strong>"}, {"équipe": 24, "score": 14.5, "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><p>Les arguments suivantes sont mal nommée.</p><ul><li><code>symbole</code></li></ul><strong>Sous-résultat: 14.5 </strong>"}, {"équipe": 25, "score": 15.0, "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><strong>Sous-résultat: 15.0 </strong>"}, {"équipe": 26, "score": 15.0, "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><strong>Sous-résultat: 15.0 </strong>"}, {"équipe": 27, "score": 15.0, "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><strong>Sous-résultat: 15.0 </strong>"}, {"équipe": 28, "score": 8.2, "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><p>Les arguments suivantes sont mal nommée.</p><ul><li><code>date</code></li><li><code>date</code></li><li><code>date</code></li><li><code>date</code></li><li><code>date</code></li><li><code>date</code></li><li><code>date</code></li><li><code>date</code></li><li><code>date</code></li></ul><strong>Sous-résultat: 8.2 </strong>"}, {"équipe": 30, "score": 15.0, "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><strong>Sous-résultat: 15.0 </strong>"}, {"équipe": 31, "score": 15.0, "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><strong>Sous-résultat: 15.0 </strong>"}, {"équipe": 32, "score": 15.0, "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><strong>Sous-résultat: 15.0 </strong>"}, {"équipe": 33, "score": 15.0, "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><strong>Sous-résultat: 15.0 </strong>"}, {"équipe": 34, "score": 15.0, "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><strong>Sous-résultat: 15.0 </strong>"}, {"équipe": 35, "score": 13.1, "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><p>Les arguments suivantes sont mal nommée.</p><ul><li><code>quantite</code></li><li><code>date</code></li><li><code>date</code></li><li><code>date</code></li></ul><strong>Sous-résultat: 13.1 </strong>"}, {"équipe": 37, "score": 15.0, "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><strong>Sous-résultat: 15.0 </strong>"}, {"équipe": 38, "score": 15.0, "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><strong>Sous-résultat: 15.0 </strong>"}, {"équipe": 39, "score": 14.5, "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><p>Les arguments suivantes sont mal nommée.</p><ul><li><code>symboles</code></li></ul><strong>Sous-résultat: 14.5 </strong>"}, {"équipe": 40, "score": 13.5, "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><p>Les arguments suivantes sont mal nommée.</p><ul><li><code>quantite</code></li><li><code>quantite</code></li></ul><strong>Sous-résultat: 13.5 </strong>"}, {"équipe": 41, "score": 8.2, "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><p>Les arguments suivantes sont mal nommée.</p><ul><li><code>date</code></li><li><code>date</code></li><li><code>date</code></li><li><code>quantite</code></li><li><code>date</code></li><li><code>quantite</code></li><li><code>date</code></li><li><code>date</code></li><li><code>date</code></li><li><code>date</code></li><li><code>date</code></li></ul><strong>Sous-résultat: 8.2 </strong>"}, {"équipe": 42, "score": 12.1, "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><p>Les arguments suivantes sont mal nommée.</p><ul><li><code>date</code></li><li><code>date</code></li></ul><strong>Sous-résultat: 12.1 </strong>"}, {"équipe": 43, "score": 6.8, "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><p>Les arguments suivantes sont mal nommée.</p><ul><li><code>date</code></li><li><code>date</code></li><li><code>date</code></li><li><code>date</code></li><li><code>symbole</code></li><li><code>date</code></li><li><code>date</code></li><li><code>date</code></li><li><code>date</code></li><li><code>date</code></li></ul><strong>Sous-résultat: 6.8 </strong>"}, {"équipe": 44, "score": 9.7, "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><p>Les arguments suivantes sont mal nommée.</p><ul><li><code>date</code></li><li><code>date</code></li><li><code>date</code></li><li><code>date</code></li><li><code>date</code></li><li><code>date</code></li><li><code>rendement</code></li></ul><strong>Sous-résultat: 9.7 </strong>"}, {"équipe": 45, "score": 12.1, "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><p>Les arguments suivantes sont mal nommée.</p><ul><li><code>quantite</code></li><li><code>quantite</code></li></ul><strong>Sous-résultat: 12.1 </strong>"}, {"équipe": 46, "score": 15.0, "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><strong>Sous-résultat: 15.0 </strong>"}, {"équipe": 48, "score": 14.5, "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><p>Les arguments suivantes sont mal nommée.</p><ul><li><code>symboles</code></li></ul><strong>Sous-résultat: 14.5 </strong>"}, {"équipe": 49, "score": 15.0, "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><strong>Sous-résultat: 15.0 </strong>"}, {"équipe": 51, "score": 12.1, "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><strong>Sous-résultat: 12.1 </strong>"}, {"équipe": 52, "score": 10.2, "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><p>Les arguments suivantes sont mal nommée.</p><ul><li><code>date</code></li><li><code>date</code></li><li><code>date</code></li><li><code>date</code></li><li><code>date</code></li><li><code>date</code></li></ul><strong>Sous-résultat: 10.2 </strong>"}, {"équipe": 53, "score": 14.0, "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><strong>Sous-résultat: 14.0 </strong>"}, {"équipe": 54, "score": 13.1, "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><strong>Sous-résultat: 13.1 </strong>"}, {"équipe": 56, "score": 11.6, "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><p>Les arguments suivantes sont mal nommée.</p><ul><li><code>symboles</code></li><li><code>date</code></li><li><code>rendement</code></li></ul><strong>Sous-résultat: 11.6 </strong>"}, {"équipe": 57, "score": 11.1, "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><p>Les arguments suivantes sont mal nommée.</p><ul><li><code>date</code></li><li><code>date</code></li><li><code>date</code></li><li><code>date</code></li><li><code>date</code></li><li><code>date</code></li><li><code>date</code></li><li><code>date</code></li></ul><strong>Sous-résultat: 11.1 </strong>"}, {"équipe": 58, "score": 13.1, "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><p>Les arguments suivantes sont mal nommée.</p><ul><li><code>date</code></li><li><code>date</code></li><li><code>date</code></li></ul><strong>Sous-résultat: 13.1 </strong>"}, {"équipe": 59, "score": 11.1, "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><p>Les arguments suivantes sont mal nommée.</p><ul><li><code>date</code></li><li><code>date</code></li><li><code>date</code></li><li><code>date</code></li><li><code>symboles</code></li><li><code>date</code></li><li><code>date</code></li><li><code>date</code></li></ul><strong>Sous-résultat: 11.1 </strong>"}, {"équipe": 60, "score": 13.5, "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><strong>Sous-résultat: 13.5 </strong>"}, {"équipe": 61, "score": 14.0, "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><strong>Sous-résultat: 14.0 </strong>"}, {"équipe": 62, "score": 15.0, "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><strong>Sous-résultat: 15.0 </strong>"}, {"équipe": 65, "score": 9.2, "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><p>Les arguments suivantes sont mal nommée.</p><ul><li><code>date</code></li><li><code>date</code></li><li><code>date</code></li><li><code>symbole</code></li><li><code>date</code></li><li><code>date</code></li><li><code>date</code></li><li><code>date</code></li><li><code>date</code></li></ul><strong>Sous-résultat: 9.2 </strong>"}, {"équipe": 68, "score": 15.0, "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><strong>Sous-résultat: 15.0 </strong>"}, {"équipe": 69, "score": 12.6, "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><strong>Sous-résultat: 12.6 </strong>"}, {"équipe": 70, "score": 12.6, "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><strong>Sous-résultat: 12.6 </strong>"}, {"équipe": 71, "score": 8.7, "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><p>Les arguments suivantes sont mal nommée.</p><ul><li><code>montant</code></li><li><code>symbole</code></li><li><code>quantite</code></li><li><code>date</code></li><li><code>symbole</code></li><li><code>quantite</code></li><li><code>date</code></li><li><code>date</code></li><li><code>symboles</code></li><li><code>date</code></li><li><code>date</code></li><li><code>date</code></li></ul><strong>Sous-résultat: 8.7 </strong>"}, {"équipe": 72, "score": 6.3, "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><p>Les arguments suivantes sont mal nommée.</p><ul><li><code>symbole</code></li><li><code>symbole</code></li><li><code>quantite</code></li><li><code>date</code></li><li><code>date</code></li><li><code>symboles</code></li><li><code>date</code></li><li><code>date</code></li><li><code>date</code></li><li><code>rendement</code></li></ul><strong>Sous-résultat: 6.3 </strong>"}, {"équipe": 73, "score": 2.4, "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><p>Les arguments suivantes sont mal nommée.</p><ul><li><code>date</code></li><li><code>montant</code></li><li><code>date</code></li><li><code>date</code></li><li><code>quantite</code></li><li><code>date</code></li><li><code>symbole</code></li><li><code>quantite</code></li><li><code>date</code></li><li><code>date</code></li><li><code>symboles</code></li><li><code>date</code></li><li><code>date</code></li><li><code>date</code></li><li><code>rendement</code></li></ul><strong>Sous-résultat: 2.4 </strong>"}, {"équipe": 77, "score": 12.1, "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><p>Les arguments suivantes sont mal nommée.</p><ul><li><code>symboles</code></li></ul><strong>Sous-résultat: 12.1 </strong>"}, {"équipe": 78, "score": 15.0, "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><strong>Sous-résultat: 15.0 </strong>"}, {"équipe": 79, "score": 12.6, "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><p>Les arguments suivantes sont mal nommée.</p><ul><li><code>symboles</code></li></ul><strong>Sous-résultat: 12.6 </strong>"}, {"équipe": 82, "score": 15.0, "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><strong>Sous-résultat: 15.0 </strong>"}]
+[
+    {
+        "équipe": 1,
+        "score": 15.0,
+        "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><strong>Sous-résultat: 15.0 </strong>"
+    },
+    {
+        "équipe": 2,
+        "score": 13.1,
+        "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><strong>Sous-résultat: 13.1 </strong>"
+    },
+    {
+        "équipe": 3,
+        "score": 14.5,
+        "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><p>Les arguments suivantes sont mal nommée.</p><ul><li><code>symbole</code></li></ul><strong>Sous-résultat: 14.5 </strong>"
+    },
+    {
+        "équipe": 4,
+        "score": 8.2,
+        "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><p>Les arguments suivantes sont mal nommée.</p><ul><li><code>date</code></li><li><code>date</code></li><li><code>symbole</code></li><li><code>date</code></li><li><code>date</code></li><li><code>symboles</code></li><li><code>date</code></li><li><code>date</code></li><li><code>date</code></li><li><code>rendement</code></li></ul><strong>Sous-résultat: 8.2 </strong>"
+    },
+    {
+        "équipe": 5,
+        "score": 15.0,
+        "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><strong>Sous-résultat: 15.0 </strong>"
+    },
+    {
+        "équipe": 6,
+        "score": 13.1,
+        "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><p>Les arguments suivantes sont mal nommée.</p><ul><li><code>quantite</code></li><li><code>quantite</code></li><li><code>symboles</code></li><li><code>date</code></li></ul><strong>Sous-résultat: 13.1 </strong>"
+    },
+    {
+        "équipe": 7,
+        "score": 10.6,
+        "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><p>Les arguments suivantes sont mal nommée.</p><ul><li><code>date</code></li><li><code>date</code></li><li><code>date</code></li><li><code>date</code></li><li><code>date</code></li><li><code>date</code></li><li><code>date</code></li><li><code>date</code></li><li><code>date</code></li></ul><strong>Sous-résultat: 10.6 </strong>"
+    },
+    {
+        "équipe": 8,
+        "score": 15.0,
+        "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><strong>Sous-résultat: 15.0 </strong>"
+    },
+    {
+        "équipe": 9,
+        "score": 11.6,
+        "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><p>Les arguments suivantes sont mal nommée.</p><ul><li><code>date</code></li><li><code>date</code></li><li><code>date</code></li><li><code>date</code></li><li><code>date</code></li><li><code>date</code></li><li><code>date</code></li></ul><strong>Sous-résultat: 11.6 </strong>"
+    },
+    {
+        "équipe": 10,
+        "score": 11.6,
+        "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><p>Les arguments suivantes sont mal nommée.</p><ul><li><code>quantite</code></li><li><code>symboles</code></li></ul><strong>Sous-résultat: 11.6 </strong>"
+    },
+    {
+        "équipe": 11,
+        "score": 15.0,
+        "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><strong>Sous-résultat: 15.0 </strong>"
+    },
+    {
+        "équipe": 12,
+        "score": 12.6,
+        "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><strong>Sous-résultat: 12.6 </strong>"
+    },
+    {
+        "équipe": 13,
+        "score": 15.0,
+        "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><strong>Sous-résultat: 15.0 </strong>"
+    },
+    {
+        "équipe": 14,
+        "score": 15.0,
+        "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><strong>Sous-résultat: 15.0 </strong>"
+    },
+    {
+        "équipe": 15,
+        "score": 9.2,
+        "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><p>Les arguments suivantes sont mal nommée.</p><ul><li><code>date</code></li><li><code>date</code></li><li><code>date</code></li><li><code>date</code></li><li><code>date</code></li><li><code>date</code></li><li><code>date</code></li><li><code>date</code></li><li><code>date</code></li><li><code>rendement</code></li></ul><strong>Sous-résultat: 9.2 </strong>"
+    },
+    {
+        "équipe": 16,
+        "score": 15.0,
+        "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><strong>Sous-résultat: 15.0 </strong>"
+    },
+    {
+        "équipe": 17,
+        "score": 13.5,
+        "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><p>Les arguments suivantes sont mal nommée.</p><ul><li><code>quantite</code></li><li><code>quantite</code></li></ul><strong>Sous-résultat: 13.5 </strong>"
+    },
+    {
+        "équipe": 18,
+        "score": 14.0,
+        "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><p>Les arguments suivantes sont mal nommée.</p><ul><li><code>quantite</code></li><li><code>quantite</code></li></ul><strong>Sous-résultat: 14.0 </strong>"
+    },
+    {
+        "équipe": 20,
+        "score": 14.0,
+        "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><p>Les arguments suivantes sont mal nommée.</p><ul><li><code>symbole</code></li></ul><strong>Sous-résultat: 14.0 </strong>"
+    },
+    {
+        "équipe": 21,
+        "score": 14.0,
+        "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><p>Les arguments suivantes sont mal nommée.</p><ul><li><code>symboles</code></li></ul><strong>Sous-résultat: 14.0 </strong>"
+    },
+    {
+        "équipe": 22,
+        "score": 14.5,
+        "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><strong>Sous-résultat: 14.5 </strong>"
+    },
+    {
+        "équipe": 23,
+        "score": 14.0,
+        "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><strong>Sous-résultat: 14.0 </strong>"
+    },
+    {
+        "équipe": 24,
+        "score": 14.5,
+        "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><p>Les arguments suivantes sont mal nommée.</p><ul><li><code>symbole</code></li></ul><strong>Sous-résultat: 14.5 </strong>"
+    },
+    {
+        "équipe": 25,
+        "score": 15.0,
+        "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><strong>Sous-résultat: 15.0 </strong>"
+    },
+    {
+        "équipe": 26,
+        "score": 15.0,
+        "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><strong>Sous-résultat: 15.0 </strong>"
+    },
+    {
+        "équipe": 27,
+        "score": 15.0,
+        "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><strong>Sous-résultat: 15.0 </strong>"
+    },
+    {
+        "équipe": 28,
+        "score": 8.2,
+        "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><p>Les arguments suivantes sont mal nommée.</p><ul><li><code>date</code></li><li><code>date</code></li><li><code>date</code></li><li><code>date</code></li><li><code>date</code></li><li><code>date</code></li><li><code>date</code></li><li><code>date</code></li><li><code>date</code></li></ul><strong>Sous-résultat: 8.2 </strong>"
+    },
+    {
+        "équipe": 30,
+        "score": 15.0,
+        "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><strong>Sous-résultat: 15.0 </strong>"
+    },
+    {
+        "équipe": 31,
+        "score": 15.0,
+        "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><strong>Sous-résultat: 15.0 </strong>"
+    },
+    {
+        "équipe": 32,
+        "score": 15.0,
+        "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><strong>Sous-résultat: 15.0 </strong>"
+    },
+    {
+        "équipe": 33,
+        "score": 15.0,
+        "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><strong>Sous-résultat: 15.0 </strong>"
+    },
+    {
+        "équipe": 34,
+        "score": 15.0,
+        "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><strong>Sous-résultat: 15.0 </strong>"
+    },
+    {
+        "équipe": 35,
+        "score": 13.1,
+        "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><p>Les arguments suivantes sont mal nommée.</p><ul><li><code>quantite</code></li><li><code>date</code></li><li><code>date</code></li><li><code>date</code></li></ul><strong>Sous-résultat: 13.1 </strong>"
+    },
+    {
+        "équipe": 37,
+        "score": 15.0,
+        "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><strong>Sous-résultat: 15.0 </strong>"
+    },
+    {
+        "équipe": 39,
+        "score": 14.5,
+        "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><p>Les arguments suivantes sont mal nommée.</p><ul><li><code>symboles</code></li></ul><strong>Sous-résultat: 14.5 </strong>"
+    },
+    {
+        "équipe": 40,
+        "score": 13.5,
+        "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><p>Les arguments suivantes sont mal nommée.</p><ul><li><code>quantite</code></li><li><code>quantite</code></li></ul><strong>Sous-résultat: 13.5 </strong>"
+    },
+    {
+        "équipe": 41,
+        "score": 8.2,
+        "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><p>Les arguments suivantes sont mal nommée.</p><ul><li><code>date</code></li><li><code>date</code></li><li><code>date</code></li><li><code>quantite</code></li><li><code>date</code></li><li><code>quantite</code></li><li><code>date</code></li><li><code>date</code></li><li><code>date</code></li><li><code>date</code></li><li><code>date</code></li></ul><strong>Sous-résultat: 8.2 </strong>"
+    },
+    {
+        "équipe": 42,
+        "score": 12.1,
+        "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><p>Les arguments suivantes sont mal nommée.</p><ul><li><code>date</code></li><li><code>date</code></li></ul><strong>Sous-résultat: 12.1 </strong>"
+    },
+    {
+        "équipe": 43,
+        "score": 6.8,
+        "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><p>Les arguments suivantes sont mal nommée.</p><ul><li><code>date</code></li><li><code>date</code></li><li><code>date</code></li><li><code>date</code></li><li><code>symbole</code></li><li><code>date</code></li><li><code>date</code></li><li><code>date</code></li><li><code>date</code></li><li><code>date</code></li></ul><strong>Sous-résultat: 6.8 </strong>"
+    },
+    {
+        "équipe": 44,
+        "score": 9.7,
+        "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><p>Les arguments suivantes sont mal nommée.</p><ul><li><code>date</code></li><li><code>date</code></li><li><code>date</code></li><li><code>date</code></li><li><code>date</code></li><li><code>date</code></li><li><code>rendement</code></li></ul><strong>Sous-résultat: 9.7 </strong>"
+    },
+    {
+        "équipe": 45,
+        "score": 12.1,
+        "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><p>Les arguments suivantes sont mal nommée.</p><ul><li><code>quantite</code></li><li><code>quantite</code></li></ul><strong>Sous-résultat: 12.1 </strong>"
+    },
+    {
+        "équipe": 46,
+        "score": 15.0,
+        "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><strong>Sous-résultat: 15.0 </strong>"
+    },
+    {
+        "équipe": 48,
+        "score": 14.5,
+        "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><p>Les arguments suivantes sont mal nommée.</p><ul><li><code>symboles</code></li></ul><strong>Sous-résultat: 14.5 </strong>"
+    },
+    {
+        "équipe": 49,
+        "score": 15.0,
+        "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><strong>Sous-résultat: 15.0 </strong>"
+    },
+    {
+        "équipe": 51,
+        "score": 12.1,
+        "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><strong>Sous-résultat: 12.1 </strong>"
+    },
+    {
+        "équipe": 52,
+        "score": 10.2,
+        "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><p>Les arguments suivantes sont mal nommée.</p><ul><li><code>date</code></li><li><code>date</code></li><li><code>date</code></li><li><code>date</code></li><li><code>date</code></li><li><code>date</code></li></ul><strong>Sous-résultat: 10.2 </strong>"
+    },
+    {
+        "équipe": 53,
+        "score": 14.0,
+        "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><strong>Sous-résultat: 14.0 </strong>"
+    },
+    {
+        "équipe": 54,
+        "score": 13.1,
+        "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><strong>Sous-résultat: 13.1 </strong>"
+    },
+    {
+        "équipe": 56,
+        "score": 11.6,
+        "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><p>Les arguments suivantes sont mal nommée.</p><ul><li><code>symboles</code></li><li><code>date</code></li><li><code>rendement</code></li></ul><strong>Sous-résultat: 11.6 </strong>"
+    },
+    {
+        "équipe": 57,
+        "score": 11.1,
+        "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><p>Les arguments suivantes sont mal nommée.</p><ul><li><code>date</code></li><li><code>date</code></li><li><code>date</code></li><li><code>date</code></li><li><code>date</code></li><li><code>date</code></li><li><code>date</code></li><li><code>date</code></li></ul><strong>Sous-résultat: 11.1 </strong>"
+    },
+    {
+        "équipe": 58,
+        "score": 13.1,
+        "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><p>Les arguments suivantes sont mal nommée.</p><ul><li><code>date</code></li><li><code>date</code></li><li><code>date</code></li></ul><strong>Sous-résultat: 13.1 </strong>"
+    },
+    {
+        "équipe": 59,
+        "score": 11.1,
+        "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><p>Les arguments suivantes sont mal nommée.</p><ul><li><code>date</code></li><li><code>date</code></li><li><code>date</code></li><li><code>date</code></li><li><code>symboles</code></li><li><code>date</code></li><li><code>date</code></li><li><code>date</code></li></ul><strong>Sous-résultat: 11.1 </strong>"
+    },
+    {
+        "équipe": 61,
+        "score": 14.0,
+        "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><strong>Sous-résultat: 14.0 </strong>"
+    },
+    {
+        "équipe": 62,
+        "score": 15.0,
+        "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><strong>Sous-résultat: 15.0 </strong>"
+    },
+    {
+        "équipe": 65,
+        "score": 9.2,
+        "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><p>Les arguments suivantes sont mal nommée.</p><ul><li><code>date</code></li><li><code>date</code></li><li><code>date</code></li><li><code>symbole</code></li><li><code>date</code></li><li><code>date</code></li><li><code>date</code></li><li><code>date</code></li><li><code>date</code></li></ul><strong>Sous-résultat: 9.2 </strong>"
+    },
+    {
+        "équipe": 68,
+        "score": 15.0,
+        "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><strong>Sous-résultat: 15.0 </strong>"
+    },
+    {
+        "équipe": 69,
+        "score": 12.6,
+        "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><strong>Sous-résultat: 12.6 </strong>"
+    },
+    {
+        "équipe": 70,
+        "score": 12.6,
+        "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><strong>Sous-résultat: 12.6 </strong>"
+    },
+    {
+        "équipe": 71,
+        "score": 8.7,
+        "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><p>Les arguments suivantes sont mal nommée.</p><ul><li><code>montant</code></li><li><code>symbole</code></li><li><code>quantite</code></li><li><code>date</code></li><li><code>symbole</code></li><li><code>quantite</code></li><li><code>date</code></li><li><code>date</code></li><li><code>symboles</code></li><li><code>date</code></li><li><code>date</code></li><li><code>date</code></li></ul><strong>Sous-résultat: 8.7 </strong>"
+    },
+    {
+        "équipe": 72,
+        "score": 6.3,
+        "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><p>Les arguments suivantes sont mal nommée.</p><ul><li><code>symbole</code></li><li><code>symbole</code></li><li><code>quantite</code></li><li><code>date</code></li><li><code>date</code></li><li><code>symboles</code></li><li><code>date</code></li><li><code>date</code></li><li><code>date</code></li><li><code>rendement</code></li></ul><strong>Sous-résultat: 6.3 </strong>"
+    },
+    {
+        "équipe": 73,
+        "score": 2.4,
+        "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><p>Les arguments suivantes sont mal nommée.</p><ul><li><code>date</code></li><li><code>montant</code></li><li><code>date</code></li><li><code>date</code></li><li><code>quantite</code></li><li><code>date</code></li><li><code>symbole</code></li><li><code>quantite</code></li><li><code>date</code></li><li><code>date</code></li><li><code>symboles</code></li><li><code>date</code></li><li><code>date</code></li><li><code>date</code></li><li><code>rendement</code></li></ul><strong>Sous-résultat: 2.4 </strong>"
+    },
+    {
+        "équipe": 77,
+        "score": 12.1,
+        "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><p>Les arguments suivantes sont mal nommée.</p><ul><li><code>symboles</code></li></ul><strong>Sous-résultat: 12.1 </strong>"
+    },
+    {
+        "équipe": 78,
+        "score": 15.0,
+        "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><strong>Sous-résultat: 15.0 </strong>"
+    },
+    {
+        "équipe": 79,
+        "score": 12.6,
+        "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><p>Les arguments suivantes sont mal nommée.</p><ul><li><code>symboles</code></li></ul><strong>Sous-résultat: 12.6 </strong>"
+    },
+    {
+        "équipe": 82,
+        "score": 15.0,
+        "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><strong>Sous-résultat: 15.0 </strong>"
+    },
+    {
+        "équipe": 19,
+        "score": 15.0,
+        "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><strong>Sous-résultat: 15.0 </strong>"
+    },
+    {
+        "équipe": 38,
+        "score": 15.0,
+        "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><strong>Sous-résultat: 15.0 </strong>"
+    },
+    {
+        "équipe": 60,
+        "score": 13.5,
+        "commentaires": "<h4>Vérification de la nomenclature des arguments</h4><strong>Sous-résultat: 13.5 </strong>"
+    }
+]
