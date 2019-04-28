@@ -6,7 +6,9 @@ import shutil
 import tqdm
 import traceback
 import sys
-from Log import *
+import inspect
+from Log import (print_barre, print_command, print_equipe, print_failing,
+                 print_note, print_passing, print_titre)
 import time
 import importlib
 from subprocess import PIPE, Popen
@@ -219,9 +221,11 @@ class CorrecteurTeam:
         os.chdir('../../../')
         test = Tests(team, modules, classes)
         if test.equipeOk:
+            # FAIRE TOUT LES TESTS
+            test.loadClassObject()
             print(team.noTeam)
             test.test_vendre_GOOG_2018_5_8()
-            # MANY TEST
+            # FIN DE TESTS
         else:
             print("Bad module ", team.noTeam)
         test.cleanUp()

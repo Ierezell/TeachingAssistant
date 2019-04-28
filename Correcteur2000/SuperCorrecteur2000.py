@@ -137,7 +137,8 @@ class AssistantCorrection:
         print(modules)
         for team in self.Teams.values():
             if not team.NoMainFile:
-                correcteurModules.corrigeFromModules(team, modules, classes)
+                if team.noTeam == 16:
+                    correcteurModules.corrigeFromModules(team, modules, classes)
 
     def corrigeCommit(self, noCritere, pathJson="", pathFolder=""):
         list_ready_to_publish = []
