@@ -137,7 +137,8 @@ class AssistantCorrection:
         print(modules)
         for team in self.Teams.values():
             if not team.NoMainFile:
-                correcteurModules.corrigeFromModules(team, modules, classes)
+                if team.noTeam == 16:
+                    correcteurModules.corrigeFromModules(team, modules, classes)
 
     def corrigeCommit(self, noCritere, pathJson="", pathFolder=""):
         list_ready_to_publish = []
@@ -165,8 +166,9 @@ class AssistantCorrection:
             correcteur8000 = CorrecteurTeam(self.projectBasePath)
         for team in tqdm.tqdm(self.Teams.values()):
             if not team.NoMainFile:
-                list_ready_to_publish.append(correcteur8000.corrige_nomenclature(
-                    jsonD["classe"], jsonD["fonction"], jsonD["arg"], team))
+                if team.noTeam == 16:
+                    list_ready_to_publish.append(correcteur8000.corrige_nomenclature(
+                        jsonD["classe"], jsonD["fonction"], jsonD["arg"], team))
                 #tqdm.tqdm.write("Enter pour continuer", end='')
                 # input("")
         with open('./ResultatsNomencature.json', 'w') as outfile:

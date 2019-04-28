@@ -47,6 +47,20 @@ class Tests:
         # OU ALORS LEQUIPE A UN PROBLEME ET ON NE PEUT PAS CHARGER LEURS
         # MODULES AUTOMATIQUEMENT
 
+    # CLEANUP TRES IMPORTANT, IL DOIT ETRE APELLE DANS LE CORRECTIONEUR
+
+    def cleanUp(self):
+        for module in self.modules_to_remove:
+            del sys.modules[module]
+        for module in self.modules:
+            if module in sys.modules:
+                del sys.modules[module]
+        for modulilou in sys.modules.keys():
+            if modulilou not in self.init_modules:
+                del(sys.modules[modulilou])
+        sys.path.remove(os.getcwd())
+        os.chdir('../../../')
+
     def loadClassObject(self):
         if self.equipeOk:
             classes_team = []
@@ -68,6 +82,11 @@ class Tests:
 
             except Exception as e:
                 print(e)
+##############################################################################
+##############################################################################
+#                          DEFINE ALL THE TESTS BELLOW                       #
+##############################################################################
+##############################################################################
 
     def test_vendre_GOOG_2018_5_8(self):
         #print("JE FAIS LE TEST DU MARHCE OUIIIIIIIIII")
@@ -79,27 +98,13 @@ class Tests:
 
             # GETATTR PERMET DE PRENDRE LA FOCNTION PRIX MAIS QUI A PEUT ETRE
             # UN NOM DIFFERENT CHEZ LETUDIANT
-            print(getattr(self.marche,
-                          self.team.dictNomenclature["prix"])
-                  (str("GOOG"), datetime.date(2018, 5, 8))
+            print(type(getattr(self.marche,
+                               self.team.dictNomenclature["prix"])
+                       (str("GOOG")))
                   )
             # getattr(marche.prix)(args)
             # REVIENT A FAIRE marche.prix(args)
             #print("JAI PRINT LE TEST DU MARHCE WAAAAAAAAAAAAAAAA")
         # traceback.format_exc()
         except Exception as e:
-            print(e)
-
-    # CLEANUP TRES IMPORTANT, IL DOIT ETRE APELLE DANS LE CORRECTIONEUR
-
-    def cleanUp(self):
-        for module in self.modules_to_remove:
-            del sys.modules[module]
-        for module in self.modules:
-            if module in sys.modules:
-                del sys.modules[module]
-        for modulilou in sys.modules.keys():
-            if modulilou not in self.init_modules:
-                del(sys.modules[modulilou])
-        sys.path.remove(os.getcwd())
-        os.chdir('../../../')
+            return print(e)
