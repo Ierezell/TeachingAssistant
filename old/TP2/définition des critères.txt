@@ -62,7 +62,7 @@ Erreur :
 
 Format d'affichage :
     - prix() :
-        - Rien
+        - RIEN
     - déposer() :
         - RIEN
     - solde() :

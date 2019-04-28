@@ -6,7 +6,6 @@ import shutil
 import tqdm
 import traceback
 import sys
-import inspect
 from Log import *
 import time
 import importlib
@@ -116,6 +115,7 @@ class CorrecteurTeam:
             comment += "<h4>Résultat : 0 %</h4>"
             team.notes[f"{no_critere}"] = round(note, 1)
             team_dico["score"] = round(note, 1)
+            team_dico["nb_commit"] = nb_commits
             team_dico["commentaires"] = comment
             team.commentaires[f"{no_critere}"] = comment
             return team_dico
@@ -138,8 +138,10 @@ class CorrecteurTeam:
         comment += f"""<h4>Résultat : {round(note, 1)} %</h4>"""
         team.commentaires[f"{no_critere}"] = comment
         team.notes[f"{no_critere}"] = round(note, 1)
+        team_dico["nb_commit"] = nb_commits
         team_dico["score"] = round(note, 1)
         team_dico["commentaires"] = comment
+        print(f"{team_dico}")
         team.saveTeamState(False)
         return team_dico
 
@@ -212,8 +214,9 @@ class CorrecteurTeam:
             if not modulilou in init_modules:
                 del(sys.modules[modulilou])
         # sys.path.remove(os.path.join(os.getcwd(), team.pathTeam[2:]))
-<<<<<<< HEAD
-        sys.path.remove(team.pathTeam)
+        sys.path.remove(os.getcwd())
+        os.chdir('../../../')
+        print()
 
     def corrige_nomenclature(self, listClass, listFunc, listArg, team):
         liste_fonc_team, liste_classe_team, list_arg_team = self.show_functions(team)
@@ -348,8 +351,3 @@ class CorrecteurTeam:
             print('')
             return True
         return False
-=======
-        sys.path.remove(os.getcwd())
-        os.chdir('../../../')
-        print()
->>>>>>> 5ef3d4975d522b4c14f456de5bd3631acfa72bba

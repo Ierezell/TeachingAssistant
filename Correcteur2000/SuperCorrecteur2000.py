@@ -166,8 +166,8 @@ class AssistantCorrection:
         for team in tqdm.tqdm(self.Teams.values()):
             if not team.NoMainFile:
                 list_ready_to_publish.append(correcteur8000.corrige_nomenclature(jsonD["classe"], jsonD["fonction"], jsonD["arg"], team))
-                tqdm.tqdm.write("Enter pour continuer", end='')
-                input("")
+                # tqdm.tqdm.write("Enter pour continuer", end='')
+                # input("")
         with open('./ResultatsNomencature.json', 'w') as outfile:
                 json.dump(list_ready_to_publish, outfile, ensure_ascii=False)
 
@@ -231,14 +231,14 @@ if __name__ == "__main__":
     # Assistant.unbundle()
     Assistant.initialise_Teams("marche_boursier.py", "portefeuille.py")
     # Assistant.corrigeNoms("./dicNom.json")
-    # Assistant.not_show_commits()
-    # Assistant.corrigeCommit(1)
+    Assistant.get_commits()
+    Assistant.corrigeCommit(1)
     # Assistant.corrigeFromModules()
     # Assistant.show_functions()
     # Assistant.show_commits()
     # Assistant.corrigeCommit(1)
-    Assistant.corrigeFromModules(modules=["marche_boursier", "portefeuille"],
-                                 classes=[["MarchéBoursier"], ["Portefeuille"]])
+    # Assistant.corrigeFromModules(modules=["marche_boursier", "portefeuille"],
+    #                              classes=[["MarchéBoursier"], ["Portefeuille"]])
     # Assistant.show_functions()
     # Assistant.show_similarity("marche_boursier.py")
     # Assistant.show_similarity("portefeuille.py")

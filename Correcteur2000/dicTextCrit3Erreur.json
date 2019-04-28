@@ -1,0 +1,125 @@
+[
+    {
+        "classe": "MarchéBoursier",
+        "fonction": "prix",
+        "arguments": [
+            "goog",
+            "2022-3-28"
+        ],
+        "résultat": "ErreurDate",
+        "commentSuc": "<li><code>prix(goog, datetime.date(2022, 3, 28))</code> devrait retourner une erreur.</li>",
+        "commentErr": "<li><code>prix(goog, datetime.date(2022, 3, 28))</code> ne retourne pas l'erreur attendu.</li>"
+    },
+    {
+        "classe": "Portefeuille",
+        "fonction": "déposer",
+        "arguments": [
+            20000.02,
+            "2022-3-28"
+        ],
+        "résultat": "ErreurDate",
+        "commentSuc": "<li><code>déposer(20000.02, datetime.date(2022, 3, 28))</code> devrait retourner une erreur.</li>",
+        "commentErr": "<li><code>déposer(20000.02, datetime.date(2022, 3, 28))</code> ne retourne pas l'erreur attendu.</li>"
+    },
+    {
+        "classe": "Portefeuille",
+        "fonction": "déposer",
+        "arguments": [
+            1
+        ],
+        "résultat": "",
+        "commentSuc": "",
+        "commentErr": ""
+    },
+    {
+        "classe": "Portefeuille",
+        "fonction": "solde",
+        "arguments": [
+            20000.02,
+            "2020-3-28"
+        ],
+        "résultat": "20000.02",
+        "commentSuc": "<li><code>solde(20000.02, datetime.date(2020, 3, 28))</code> devrait retourner une erreur.</li>",
+        "commentErr": "<li><code>solde(20000.02, datetime.date(2020, 3, 28))</code> ne retourne pas l'erreur attendu.</li>"
+    },
+    {
+        "classe": "Portefeuille",
+        "fonction": "acheter",
+        "arguments": [
+            "goog",
+            100
+        ],
+        "résultat": "LiquiditéInsuffisante ",
+        "commentSuc": "<li><code>acheter('goog', 100)</code> devrait retourner une erreur.</li>",
+        "commentErr": "<li><code>acheter('goog', 100)</code> ne retourne pas l'erreur attendu.</li>"
+    },
+    {
+        "classe": "Portefeuille",
+        "fonction": "acheter",
+        "arguments": [
+            "goog",
+            10,
+            "2020-3-28"
+        ],
+        "résultat": "ErreurDate",
+        "commentSuc": "<li><code>acheter('goog', 10, datetime.date(2020, 3, 28))</code> devrait retourner une erreur.</li>",
+        "commentErr": "<li><code>acheter('goog', 10, datetime.date(2020, 3, 28))</code> ne retourne pas l'erreur attendu.</li>"
+    },
+    {
+        "classe": "Portefeuille",
+        "fonction": "vendre",
+        "arguments": [
+            "goog",
+            10000
+        ],
+        "résultat": "ErreurQuantité ",
+        "commentSuc": "<li><code>vendre('goog', 5)</code> devrait retourner une erreur.</li>",
+        "commentErr": "<li><code>vendre('goog', 5)</code> ne retourne pas l'erreur attendu.</li>"
+    },
+    {
+        "classe": "Portefeuille",
+        "fonction": "vendre",
+        "arguments": [
+            "aapl",
+            5,
+            "2020-3-28"
+        ],
+        "résultat": "ErreurDate",
+        "commentSuc": "<li><code>vendre('aapl', 5, datetime.date(2020, 3, 28))</code> devrait retourner une erreur.</li>",
+        "commentErr": "<li><code>vendre('aapl', 5, datetime.date(2020, 3, 28))</code> ne retourne pas l'erreur attendu.</li>"
+    },
+    {
+        "classe": "Portefeuille",
+        "fonction": "valeur_totale",
+        "arguments": [
+            "2020-3-28"
+        ],
+        "résultat": "ErreurDate",
+        "commentSuc": "<li><code>valeur_totale(datetime.date(2020, 3, 28))</code> devrait retourner une erreur.</li>",
+        "commentErr": "<li><code>valeur_totale(datetime.date(2020, 3, 28))</code> ne retourne pas l'erreur attendu.</li>"
+    },
+    {
+        "classe": "Portefeuille",
+        "fonction": "valeur_des_titres",
+        "arguments": [
+            [
+                "aapl",
+                "goog"
+            ],
+            "2020-3-28"
+        ],
+        "résultat": "ErreurDate",
+        "commentSuc": "<li><code>valeur_des_titres(['aapl', 'goog'], datetime.date(2020, 3, 28))</code> devrait retourner une erreur.</li>",
+        "commentErr": "<li><code>valeur_des_titres(['aapl', 'goog'], datetime.date(2020, 3, 28))</code> ne retourne pas l'erreur attendu.</li>"
+    }
+    {
+        "classe": "Portefeuille",
+        "fonction": "titres",
+        "arguments": [
+            "2020-3-28"
+        ],
+        "résultat": "ErreurDate",
+        "commentSuc": "<li><code>titres(datetime.date(2020, 3, 28))</code> devrait retourner une erreur.</li>",
+        "commentErr": "<li><code>titres(datetime.date(2020, 3, 28))</code> ne retourne pas l'erreur attendu.</li>"
+    }
+]
