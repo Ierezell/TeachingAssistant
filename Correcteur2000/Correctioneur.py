@@ -148,6 +148,60 @@ class CorrecteurTeam:
         team.saveTeamState(False)
         return team_dico
 
+    def correction_qualite(self, team, no_critere=4):
+        nb_commits = team.nbCommits
+        team_dico = {}
+        note = 0.0
+        tqdm.tqdm.write(" ")
+        print_barre()
+        print_equipe(team.noTeam)
+        print_titre("Vérification des fonctions")
+
+        comment = "<h2>Évaluation du critère 3</h2>"
+        comment += "<h3>Vérification de qualité de conception</h3>"
+        if len(team.functions) < 1:
+            team.notes[str(no_critere)] = 0.0
+            print_passing(f'{len(team.functions)} functions')
+            comment += "<p>Vous n'avez fait aucune fonction.</p>"
+        if len(team.classes) < 1:
+            team.notes[str(no_critere)] = 0.0
+            print_passing(f'{len(team.functions)} classes')
+            comment += "<p>Vous n'avez fait aucune classe.</p>"
+        else:
+            list_str_functions = "  \n".join(
+                f"Fichier {x[0].split('/')[-1]}, ligne {x[2]} : fonction : {x[1]}" for x in team.functions)
+            list_str_classes = "  \n".join(
+                f"Fichier {x[0].split('/')[-1]}, ligne {x[2]} : fonction : {x[1]}" for x in team.classes)
+            # print(list_str_functions)
+            # print(list_str_classes)
+            note = int(input("Note :"))
+            print("Commentaires ? (all|nom|qte| ou custom)")
+            com = input("")
+            print_barre()
+
+            if note < 80:
+                if com == 'nom':
+                    comment += f"""<p>La qualité est améliorable (nom de variables, nom de fonctions, noms d'arguments) </p>"""
+                elif com == 'qte':
+                    comment += f"""<p>Vous pourriez avoir fait plus de fonctions </p>"""
+                elif com == 'all':
+                    comment += f"""<p>La qualité est améliorable (nom de variables, nom de fonctions) </p>"""
+                    comment += f"""<p>Vous pourriez avoir fait plus de fonctions </p>"""
+                elif len(com) > 4:
+                    comment += f"""<p>{com}</p>"""
+                comment += f"""<p>Votre fichier comporte les fonctions suivante :  {list_str_classes}.</p>"""
+                comment += f"""<p>Votre fichier comporte les classes suivante :  {list_str_classes}.</p>"""
+
+        comment += f"""<h4>Résultat : {note} %</h4>"""
+        team.notes[f"{no_critere}"] = note
+        team_dico["commentaires"] = comment
+        team_dico["equipe"] = team.noTeam
+        team_dico["note"] = note
+
+        team.commentaires[f"{no_critere}"] = comment
+        team.saveTeamState()
+        return team_dico
+
     def corrigeFromModules(self, team, modules, classes):
         # Prend le nom des élèves
         modules = tuple(team.dictNomencalture[module] for module in modules)

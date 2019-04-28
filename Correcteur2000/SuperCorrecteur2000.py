@@ -168,25 +168,36 @@ class AssistantCorrection:
             if not team.NoMainFile:
                 list_ready_to_publish.append(correcteur8000.corrige_nomenclature(
                     jsonD["classe"], jsonD["fonction"], jsonD["arg"], team))
-                #tqdm.tqdm.write("Enter pour continuer", end='')
+                # tqdm.tqdm.write("Enter pour continuer", end='')
                 # input("")
         with open('./ResultatsNomencature.json', 'w') as outfile:
             json.dump(list_ready_to_publish, outfile, ensure_ascii=False)
 
-    def show_functions(self):
+    def get_functions(self):
+        correcteur8000 = CorrecteurTeam(self.projectBasePath)
+        result = []
         for noTeam in self.goodTeams.keys():
-            print(f"Fonctions du groupe : {PASS}{noTeam}{ENDC}\n")
+            # print(f"Fonctions du groupe : {PASS}{noTeam}{ENDC}\n")
             for file in self.goodTeams[noTeam].files:
                 if file[-3:] == ".py":
-                    print(f"\tFichier : {WARNING}{file.split('/')[-1]}{ENDC}\n")
+                    # print(f"\tFichier : {WARNING}{file.split('/')[-1]}{ENDC}\n")
+                    with open(file) as buff:
+                        print(" ".join(x for x in buff.readlines()))
                     with open(file) as file_Python:
                         for lineNb, line in enumerate(file_Python):
                             if re.compile(r"def\s").findall(line):
-                                print(f"Line {lineNb}: {BOLD}{line}{ENDC}")
+                                # print(f"Line {lineNb}: {BOLD}{line}{ENDC}")
+                                self.Teams[noTeam].functions.append((file, line, lineNb))
                             if re.compile(r"class\s").findall(line):
-                                print(f"Line {lineNb}: {BOLD}{line}{ENDC}")
-            input("Press any key for next group")
-            print("\n"*3)
+                                self.Teams[noTeam].classes.append((file, line, lineNb))
+                                # print(f"Line {lineNb}: {BOLD}{line}{ENDC}")
+            result.append(
+                correcteur8000.correction_qualite(self.Teams[noTeam])
+            )
+        with open("./outCritere4.json", 'w')as jsonfile:
+            json.dump(result, jsonfile, ensure_ascii=False)
+            # input("Press any key for next group")
+            # print("\n"*3)
 
     def show_similarity(self, fileName, percent=80):
         list_Teams = list(self.goodTeams.copy().items())
@@ -233,8 +244,10 @@ if __name__ == "__main__":
     # Assistant.unbundle()
     Assistant.initialise_Teams("marche_boursier.py", "portefeuille.py")
     # Assistant.corrigeNoms("./dicNom.json")
-    Assistant.get_commits()
-    Assistant.corrigeCommit(1)
+    # Assistant.get_commits()
+    # Assistant.corrigeCommit(1)
+    Assistant.get_functions()
+
     # Assistant.corrigeNoms("./dicNom.json")
     # Assistant.not_show_commits()
     # Assistant.corrigeCommit(1)
