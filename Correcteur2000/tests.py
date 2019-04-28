@@ -3,6 +3,7 @@ import importlib
 import traceback
 import os
 import datetime
+from Log import *
 
 
 class Tests:
@@ -68,27 +69,414 @@ class Tests:
 
             except Exception as e:
                 print(e)
-
-    def test_vendre_GOOG_2018_5_8(self):
-        #print("JE FAIS LE TEST DU MARHCE OUIIIIIIIIII")
-        # LOAD CLASS OBJECT PERMET DE RECHARGER A CHAQUE FOIS UN NOUVEAU MARCHE
-        self.loadClassObject()
+            
+    def test_1_prix(self):
+        command = "prix"
+        arg = "'GOOG'"
+        print_command(f"{command}", f"{arg}")
+        res = True
+        comments = ""
+        attendu = 1272.18
         try:
-            # SELF.MARCHE et SELF.PORTEFEUILLE SONT CHARGE A CHAQUE FOIS
-            # Y'A PLUS QUA DEFINIR LES TESTS QUON VEUT
-
-            # GETATTR PERMET DE PRENDRE LA FOCNTION PRIX MAIS QUI A PEUT ETRE
-            # UN NOM DIFFERENT CHEZ LETUDIANT
-            print(getattr(self.marche,
-                          self.team.dictNomenclature["prix"])
-                  (str("GOOG"), datetime.date(2018, 5, 8))
-                  )
-            # getattr(marche.prix)(args)
-            # REVIENT A FAIRE marche.prix(args)
-            #print("JAI PRINT LE TEST DU MARHCE WAAAAAAAAAAAAAAAA")
-        # traceback.format_exc()
+            assert(getattr(self.marche, self.team.dictNomenclature[command])(
+                str("GOOG")) == attendu)
+            comments += ""
+        except AssertionError as e:
+            res = False
+            comments + \
+                f"<li><code>{command}({arg})</code> la retourner devrait être <code>{attendu}</code>.</li>"
+            print_failing(f'FAIL')
         except Exception as e:
-            print(e)
+            exc_type, exc_obj, exc_tb = sys.exc_info()
+            fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
+            res = False
+            comments += f"<li><code>{command}({arg})</code> retourne une erreur de type <code>{e.__class__.__name__}</code> à la ligne {exc_tb.tb_lineno} du fichier fname.</li>"
+            print_failing(f"Error: {e.__class__.__name__}")
+        finally:
+            return (res, comments)
+
+    def test_2_prix(self):
+        command = "prix"
+        arg = "'GOOG', datetime.date(2019, 3, 28)"
+        print_command(f"{command}", f"{arg}")
+        res = True
+        comments = ""
+        attendu = 1168.685
+        try:
+            assert(getattr(self.marche, self.team.dictNomenclature[command])(
+                str("GOOG"), datetime.date(2019, 3, 28)) == attendu)
+            comments += ""
+        except AssertionError as e:
+            res = False
+            comments += f"<li><code>{command}({arg})</code> la retourner devrait être <code>{attendu}</code>.</li>"
+            print_failing(f'FAIL')
+        except Exception as e:
+            exc_type, exc_obj, exc_tb = sys.exc_info()
+            fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
+            res = False
+            comments += f"<li><code>{command}({arg})</code> retourne une erreur de type <code>{e.__class__.__name__}</code> à la ligne {exc_tb.tb_lineno} du fichier fname.</li>"
+            print_failing(f"Error: {e.__class__.__name__}")
+        finally:
+            return (res, comments)
+
+    def test_3_deposer(self):
+        command = "déposer"
+        arg = "10000.01"
+        print_command(f"{command}", f"{arg}")
+        res = True
+        comments = ""
+        attendu = None
+        try:
+            assert(getattr(self.portefeuille, self.team.dictNomenclature[command])(
+                10000.01) == attendu)
+            comments += ""
+        except AssertionError as e:
+            res = False
+            comments += f"<li><code>{command}({arg})</code> la retourner devrait être <code>{attendu}</code>.</li>"
+            print_failing(f'FAIL')
+        except Exception as e:
+            exc_type, exc_obj, exc_tb = sys.exc_info()
+            fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
+            res = False
+            comments += f"<li><code>{command}({arg})</code> retourne une erreur de type <code>{e.__class__.__name__}</code> à la ligne {exc_tb.tb_lineno} du fichier fname.</li>"
+            print_failing(f"Error: {e.__class__.__name__}")
+        finally:
+            return (res, comments)
+
+    def test_4_deposer(self):
+        command = "déposer"
+        arg = "20000.02, datetime.date(2019, 3, 28)"
+        print_command(f"{command}", f"{arg}")
+        res = True
+        comments = ""
+        attendu = None
+        try:
+            assert(getattr(self.portefeuille, self.team.dictNomenclature[command])(
+                20000.02, datetime.date(2019, 3, 28)) == attendu)
+            comments += ""
+        except AssertionError as e:
+            res = False
+            comments += f"<li><code>{command}({arg})</code> la retourner devrait être <code>{attendu}</code>.</li>"
+            print_failing(f'FAIL')
+        except Exception as e:
+            exc_type, exc_obj, exc_tb = sys.exc_info()
+            fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
+            res = False
+            comments += f"<li><code>{command}({arg})</code> retourne une erreur de type <code>{e.__class__.__name__}</code> à la ligne {exc_tb.tb_lineno} du fichier fname.</li>"
+            print_failing(f"Error: {e.__class__.__name__}")
+        finally:
+            return (res, comments)
+
+    def test_5_solde(self):
+        command = "solde"
+        arg = ""
+        print_command(f"{command}", f"{arg}")
+        res = True
+        comments = ""
+        attendu = 10000.01
+        try:
+            assert(getattr(self.portefeuille, self.team.dictNomenclature[command])() == attendu)
+            comments += ""
+        except AssertionError as e:
+            res = False
+            comments += f"<li><code>{command}({arg})</code> la retourner devrait être <code>{attendu}</code>.</li>"
+            print_failing(f'FAIL')
+        except Exception as e:
+            exc_type, exc_obj, exc_tb = sys.exc_info()
+            fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
+            res = False
+            comments += f"<li><code>{command}({arg})</code> retourne une erreur de type <code>{e.__class__.__name__}</code> à la ligne {exc_tb.tb_lineno} du fichier fname.</li>"
+            print_failing(f"Error: {e.__class__.__name__}")
+        finally:
+            return (res, comments)
+
+    def test_6_solde(self):
+        command = "solde"
+        arg = "datetime.date(2019, 3, 28)"
+        print_command(f"{command}", f"{arg}")
+        res = True
+        comments = ""
+        attendu = 20000.02
+        try:
+            assert(getattr(self.portefeuille,
+                           self.team.dictNomenclature[command])(datetime.date(2019, 3, 28)) == attendu)
+            comments += ""
+        except AssertionError as e:
+            res = False
+            comments += f"<li><code>{command}({arg})</code> la retourner devrait être <code>{attendu}</code>.</li>"
+            print_failing(f'FAIL')
+        except Exception as e:
+            exc_type, exc_obj, exc_tb = sys.exc_info()
+            fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
+            res = False
+            comments += f"<li><code>{command}({arg})</code> retourne une erreur de type <code>{e.__class__.__name__}</code> à la ligne {exc_tb.tb_lineno} du fichier fname.</li>"
+            print_failing(f"Error: {e.__class__.__name__}")
+        finally:
+            return (res, comments)
+
+    def test_6_acheter(self):
+        command = "acheter"
+        arg = "'GOOG', 10"
+        print_command(f"{command}", f"{arg}")
+        res = True
+        comments = ""
+        attendu = None
+        try:
+            assert(getattr(self.portefeuille,
+                           self.team.dictNomenclature[command])('GOOG', 10) == attendu)
+            comments += ""
+        except AssertionError as e:
+            res = False
+            comments += f"<li><code>{command}({arg})</code> la retourner devrait être <code>{attendu}</code>.</li>"
+            print_failing(f'FAIL')
+        except Exception as e:
+            exc_type, exc_obj, exc_tb = sys.exc_info()
+            fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
+            res = False
+            comments += f"<li><code>{command}({arg})</code> retourne une erreur de type <code>{e.__class__.__name__}</code> à la ligne {exc_tb.tb_lineno} du fichier fname.</li>"
+            print_failing(f"Error: {e.__class__.__name__}")
+        finally:
+            return (res, comments)
+
+    def test_7_acheter(self):
+        command = "acheter"
+        arg = "'AAPL', 10"
+        print_command(f"{command}", f"{arg}")
+        res = True
+        comments = ""
+        attendu = None
+        try:
+            assert(getattr(self.portefeuille,
+                           self.team.dictNomenclature[command])('AAPL', 10) == attendu)
+            comments += ""
+        except AssertionError as e:
+            res = False
+            comments += f"<li><code>{command}({arg})</code> la retourner devrait être <code>{attendu}</code>.</li>"
+            print_failing(f'FAIL')
+        except Exception as e:
+            exc_type, exc_obj, exc_tb = sys.exc_info()
+            fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
+            res = False
+            comments += f"<li><code>{command}({arg})</code> retourne une erreur de type <code>{e.__class__.__name__}</code> à la ligne {exc_tb.tb_lineno} du fichier fname.</li>"
+            print_failing(f"Error: {e.__class__.__name__}")
+        finally:
+            return (res, comments)
+
+    def test_8_acheter(self):
+        command = "acheter"
+        arg = "'AAPL', 10, datetime.date(2019, 3, 28)"
+        print_command(f"{command}", f"{arg}")
+        res = True
+        comments = ""
+        attendu = None
+        try:
+            assert(getattr(self.portefeuille,
+                           self.team.dictNomenclature[command])('AAPL', 10, datetime.date(2019, 3, 28)) == attendu)
+            comments += ""
+        except AssertionError as e:
+            res = False
+            comments += f"<li><code>{command}({arg})</code> la retourner devrait être <code>{attendu}</code>.</li>"
+            print_failing(f'FAIL')
+        except Exception as e:
+            exc_type, exc_obj, exc_tb = sys.exc_info()
+            fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
+            res = False
+            comments += f"<li><code>{command}({arg})</code> retourne une erreur de type <code>{e.__class__.__name__}</code> à la ligne {exc_tb.tb_lineno} du fichier fname.</li>"
+            print_failing(f"Error: {e.__class__.__name__}")
+        finally:
+            return (res, comments)
+
+    def test_9_vendre(self):
+        command = "vendre"
+        arg = "'GOOG', 5"
+        print_command(f"{command}", f"{arg}")
+        res = True
+        comments = ""
+        attendu = None
+        try:
+            assert(getattr(self.portefeuille,
+                           self.team.dictNomenclature[command])('GOOG', 5) == attendu)
+            comments += ""
+        except AssertionError as e:
+            res = False
+            comments += f"<li><code>{command}({arg})</code> la retourner devrait être <code>{attendu}</code>.</li>"
+            print_failing(f'FAIL')
+        except Exception as e:
+            exc_type, exc_obj, exc_tb = sys.exc_info()
+            fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
+            res = False
+            comments += f"<li><code>{command}({arg})</code> retourne une erreur de type <code>{e.__class__.__name__}</code> à la ligne {exc_tb.tb_lineno} du fichier fname.</li>"
+            print_failing(f"Error: {e.__class__.__name__}")
+        finally:
+            return (res, comments)
+
+    def test_10_vendre(self):
+        command = "vendre"
+        arg = "'AAPL', 5, datetime.date(2019, 3, 28)"
+        print_command(f"{command}", f"{arg}")
+        res = True
+        comments = ""
+        attendu = None
+        try:
+            assert(getattr(self.portefeuille,
+                           self.team.dictNomenclature[command])('AAPL', 5, datetime.date(2019, 3, 28)) == attendu)
+            comments += ""
+        except AssertionError as e:
+            res = False
+            comments += f"<li><code>{command}({arg})</code> la retourner devrait être <code>{attendu}</code>.</li>"
+            print_failing(f'FAIL')
+        except Exception as e:
+            exc_type, exc_obj, exc_tb = sys.exc_info()
+            fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
+            res = False
+            comments += f"<li><code>{command}({arg})</code> retourne une erreur de type <code>{e.__class__.__name__}</code> à la ligne {exc_tb.tb_lineno} du fichier fname.</li>"
+            print_failing(f"Error: {e.__class__.__name__}")
+        finally:
+            return (res, comments)
+
+    def test_11_valeur_totale(self):
+        command = "valeur_totale"
+        arg = ""
+        print_command(f"{command}", f"{arg}")
+        res = True
+        comments = ""
+        attendu = 8423.9
+        try:
+            assert(getattr(self.portefeuille,
+                           self.team.dictNomenclature[command])() == attendu)
+            comments += ""
+        except AssertionError as e:
+            res = False
+            comments += f"<li><code>{command}({arg})</code> la retourner devrait être <code>{attendu}</code>.</li>"
+            print_failing(f'FAIL')
+        except Exception as e:
+            exc_type, exc_obj, exc_tb = sys.exc_info()
+            fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
+            res = False
+            comments += f"<li><code>{command}({arg})</code> retourne une erreur de type <code>{e.__class__.__name__}</code> à la ligne {exc_tb.tb_lineno} du fichier fname.</li>"
+            print_failing(f"Error: {e.__class__.__name__}")
+        finally:
+            return (res, comments)
+
+    def test_12_valeur_totale(self):
+        command = "valeur_totale"
+        arg = "datetime.date(2019, 3, 28)"
+        print_command(f"{command}", f"{arg}")
+        res = True
+        comments = ""
+        attendu = 1883.738
+        try:
+            assert(getattr(self.portefeuille,
+                           self.team.dictNomenclature[command])(datetime.date(2019, 3, 28)) == attendu)
+            comments += ""
+        except AssertionError as e:
+            res = False
+            comments += f"<li><code>{command}({arg})</code> la retourner devrait être <code>{attendu}</code>.</li>"
+            print_failing(f'FAIL')
+        except Exception as e:
+            exc_type, exc_obj, exc_tb = sys.exc_info()
+            fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
+            res = False
+            comments += f"<li><code>{command}({arg})</code> retourne une erreur de type <code>{e.__class__.__name__}</code> à la ligne {exc_tb.tb_lineno} du fichier fname.</li>"
+            print_failing(f"Error: {e.__class__.__name__}")
+        finally:
+            return (res, comments)
+
+    def test_14_valeur_des_titres(self):
+        command = "valeur_des_titres"
+        arg = "['AAPL', 'GOOG']"
+        print_command(f"{command}", f"{arg}")
+        res = True
+        comments = ""
+        attendu = 1883.738
+        try:
+            assert(getattr(self.portefeuille,
+                           self.team.dictNomenclature[command])(['AAPL', 'GOOG']) == attendu)
+            comments += ""
+        except AssertionError as e:
+            res = False
+            comments += f"<li><code>{command}({arg})</code> la retourner devrait être <code>{attendu}</code>.</li>"
+            print_failing(f'FAIL')
+        except Exception as e:
+            exc_type, exc_obj, exc_tb = sys.exc_info()
+            fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
+            res = False
+            comments += f"<li><code>{command}({arg})</code> retourne une erreur de type <code>{e.__class__.__name__}</code> à la ligne {exc_tb.tb_lineno} du fichier fname.</li>"
+            print_failing(f"Error: {e.__class__.__name__}")
+        finally:
+            return (res, comments)
+
+    def test_15_valeur_des_titres(self):
+        command = "valeur_des_titres"
+        arg = "['AAPL'], datetime.date(2019, 3, 28)"
+        print_command(f"{command}", f"{arg}")
+        res = True
+        comments = ""
+        attendu = 1883.738
+        try:
+            assert(getattr(self.portefeuille,
+                           self.team.dictNomenclature[command])(['AAPL'], datetime.date(2019, 3, 28)) == attendu)
+            comments += ""
+        except AssertionError as e:
+            res = False
+            comments += f"<li><code>{command}({arg})</code> la retourner devrait être <code>{attendu}</code>.</li>"
+            print_failing(f'FAIL')
+        except Exception as e:
+            exc_type, exc_obj, exc_tb = sys.exc_info()
+            fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
+            res = False
+            comments += f"<li><code>{command}({arg})</code> retourne une erreur de type <code>{e.__class__.__name__}</code> à la ligne {exc_tb.tb_lineno} du fichier fname.</li>"
+            print_failing(f"Error: {e.__class__.__name__}")
+        finally:
+            return (res, comments)
+
+    def test_16_titres(self):
+        command = "titres"
+        arg = ""
+        print_command(f"{command}", f"{arg}")
+        res = True
+        comments = ""
+        attendu = {'goog': 5, 'aapl': 10}
+        try:
+            assert(getattr(self.portefeuille,
+                           self.team.dictNomenclature[command])() == attendu)
+            comments += ""
+        except AssertionError as e:
+            res = False
+            comments += f"<li><code>{command}({arg})</code> la retourner devrait être <code>{attendu}</code>.</li>"
+            print_failing(f'FAIL')
+        except Exception as e:
+            exc_type, exc_obj, exc_tb = sys.exc_info()
+            fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
+            res = False
+            comments += f"<li><code>{command}({arg})</code> retourne une erreur de type <code>{e.__class__.__name__}</code> à la ligne {exc_tb.tb_lineno} du fichier fname.</li>"
+            print_failing(f"Error: {e.__class__.__name__}")
+        finally:
+            return (res, comments)
+
+    def test_17_titres(self):
+        command = "titres"
+        arg = "datetime.date(2019, 3, 28)"
+        print_command(f"{command}", f"{arg}")
+        res = True
+        comments = ""
+        attendu = {'aapl': 5}
+        try:
+            assert(getattr(self.portefeuille,
+                           self.team.dictNomenclature[command])(datetime.date(2019, 3, 28)) == attendu)
+            comments += ""
+        except AssertionError as e:
+            res = False
+            comments += f"<li><code>{command}({arg})</code> la retourner devrait être <code>{attendu}</code>.</li>"
+            print_failing(f'FAIL')
+        except Exception as e:
+            exc_type, exc_obj, exc_tb = sys.exc_info()
+            fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
+            res = False
+            comments += f"<li><code>{command}({arg})</code> retourne une erreur de type <code>{e.__class__.__name__}</code> à la ligne {exc_tb.tb_lineno} du fichier fname.</li>"
+            print_failing(f"Error: {e.__class__.__name__}")
+        finally:
+            return (res, comments)
 
     # CLEANUP TRES IMPORTANT, IL DOIT ETRE APELLE DANS LE CORRECTIONEUR
 

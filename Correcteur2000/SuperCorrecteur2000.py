@@ -165,14 +165,9 @@ class AssistantCorrection:
             correcteur8000 = CorrecteurTeam(self.projectBasePath)
         for team in tqdm.tqdm(self.Teams.values()):
             if not team.NoMainFile:
-<<<<<<< HEAD
-                list_ready_to_publish.append(correcteur8000.corrige_nomenclature(jsonD["classe"], jsonD["fonction"], jsonD["arg"], team))
-                # tqdm.tqdm.write("Enter pour continuer", end='')
-=======
                 list_ready_to_publish.append(correcteur8000.corrige_nomenclature(
                     jsonD["classe"], jsonD["fonction"], jsonD["arg"], team))
                 #tqdm.tqdm.write("Enter pour continuer", end='')
->>>>>>> 069184a6f27a85faf041852d0f0bd17075609960
                 # input("")
         with open('./ResultatsNomencature.json', 'w') as outfile:
             json.dump(list_ready_to_publish, outfile, ensure_ascii=False)
