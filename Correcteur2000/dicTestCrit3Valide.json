@@ -1,0 +1,205 @@
+[
+    {
+        "classe": "MarchéBoursier",
+        "fonction": "prix",
+        "arguments": [
+            "goog"
+        ],
+        "résultat": "",
+        "commentSuc": "<li><code>prix(goog)</code> ne retourne pas le résultat attendu.</li>",
+        "commentErr": "<li><code>prix(goog)</code> retourne l'erreur "
+    },
+    {
+        "classe": "MarchéBoursier",
+        "fonction": "prix",
+        "arguments": [
+            "goog",
+            "2019-3-28"
+        ],
+        "résultat":"",
+        "commentSuc": "<li><code>prix(goog, datetime.date(2019, 3, 28))</code> ne retourne pas le résultat attendu.</li>",
+        "commentErr": "<li><code>prix(goog, datetime.date(2019, 3, 28))</code> retourne l'erreur "
+    },
+    {
+        "classe": "Portefeuille",
+        "fonction": "déposer",
+        "arguments": [
+            10000.01
+        ],
+        "résultat": "",
+        "commentSuc": "",
+        "commentErr": "<li><code>déposer(10000.01)</code> retourne l'erreur "
+    },
+    {
+        "classe": "Portefeuille",
+        "fonction": "déposer",
+        "arguments": [
+            20000.02,
+            "2019-3-28"
+        ],
+        "résultat": "",
+        "commentSuc": "",
+        "commentErr": "<li><code>déposer(20000.02, datetime.date(2019, 3, 28))</code> retourne l'erreur "
+    },
+    {
+        "classe": "Portefeuille",
+        "fonction": "solde",
+        "arguments": [
+
+        ],
+        "résultat": "10000.01",
+        "commentSuc": "<li><code>solde()</code> ne retourne pas le résultat attendu.</li>",
+        "commentErr": "<li><code>solde()</code> retourne l'erreur "
+    },
+    {
+        "classe": "Portefeuille",
+        "fonction": "solde",
+        "arguments": [
+            20000.02,
+            "2019-3-28"
+        ],
+        "résultat": "20000.02",
+        "commentSuc": "<li><code>solde(20000.02, datetime.date(2019, 3, 28))</code> ne retourne pas le résultat attendu.</li>",
+        "commentErr": "<li><code>solde(20000.02, datetime.date(2019, 3, 28))</code> retourne l'erreur "
+    },
+    {
+        "classe": "Portefeuille",
+        "fonction": "acheter",
+        "arguments": [
+            "goog",
+            10
+        ],
+        "résultat": "",
+        "commentSuc": "",
+        "commentErr": "<li><code>acheter('goog', 10)</code> retourne l'erreur "
+    },
+    {
+        "classe": "Portefeuille",
+        "fonction": "acheter",
+        "arguments": [
+            "aapl",
+            10
+        ],
+        "résultat": "",
+        "commentSuc": "",
+        "commentErr": "<li><code>acheter('aapl', 10)</code> retourne l'erreur "
+    },
+    {
+        "classe": "Portefeuille",
+        "fonction": "acheter",
+        "arguments": [
+            "aapl",
+            10,
+            "2019-3-28"
+        ],
+        "résultat": "",
+        "commentSuc": "",
+        "commentErr": "<li><code>acheter('aapl', 10, datetime.date(2019, 3, 28))</code> retourne l'erreur "
+    },
+    {
+        "classe": "Portefeuille",
+        "fonction": "vendre",
+        "arguments": [
+            "goog",
+            5
+        ],
+        "résultat": "",
+        "commentSuc": "<li><code>vendre('goog', 5)</code> ne retourne pas le résultat attendu.</li>",
+        "commentErr": "<li><code>vendre('goog', 5)</code> retourne l'erreur "
+    },
+    {
+        "classe": "Portefeuille",
+        "fonction": "vendre",
+        "arguments": [
+            "aapl",
+            5,
+            "2019-3-28"
+        ],
+        "résultat": "",
+        "commentSuc": "<li><code>vendre('aapl', 5, datetime.date(2019, 3, 28))</code> ne retourne pas le résultat attendu.</li>",
+        "commentErr": "<li><code>vendre('aapl', 5, datetime.date(2019, 3, 28))</code> retourne l'erreur "
+    },
+    {
+        "classe": "Portefeuille",
+        "fonction": "valeur_totale",
+        "arguments": [
+
+        ],
+        "résultat": "",
+        "commentSuc": "<li><code>valeur_totale()</code> ne retourne pas le résultat attendu.</li>",
+        "commentErr": "<li><code>valeur_totale()</code> retourne l'erreur "
+    },
+    {
+        "classe": "Portefeuille",
+        "fonction": "valeur_totale",
+        "arguments": [
+            "2019-3-28"
+        ],
+        "résultat": "",
+        "commentSuc": "<li><code>valeur_totale(datetime.date(2019, 3, 28))</code> ne retourne pas le résultat attendu.</li>",
+        "commentErr": "<li><code>valeur_totale(datetime.date(2019, 3, 28))</code> retourne l'erreur "
+    },
+    {
+        "classe": "Portefeuille",
+        "fonction": "valeur_des_titres",
+        "arguments": [
+            ["aapl", "goog"]
+        ],
+        "résultat": "",
+        "commentSuc": "<li><code>valeur_des_titres(['aapl', 'goog'])</code> ne retourne pas le résultat attendu.</li>",
+        "commentErr": "<li><code>valeur_des_titres(['aapl', 'goog'])</code> retourne l'erreur "
+    },
+    {
+        "classe": "Portefeuille",
+        "fonction": "valeur_des_titres",
+        "arguments": [
+            ["aapl"],
+            "2019-3-28"
+        ],
+        "résultat": "",
+        "commentSuc": "<li><code>valeur_des_titres(['aapl'], datetime.date(2019, 3, 28))</code> ne retourne pas le résultat attendu.</li>",
+        "commentErr": "<li><code>valeur_des_titres(['aapl'], datetime.date(2019, 3, 28))</code> retourne l'erreur "
+    },
+    {
+        "classe": "Portefeuille",
+        "fonction": "titres",
+        "arguments": [
+
+        ],
+        "résultat": "{'goog': 5, 'aapl': 10}",
+        "commentSuc": "<li><code>titres()</code> ne retourne pas le résultat attendu.</li>",
+        "commentErr": "<li><code>titres()</code> retourne l'erreur "
+    },
+    {
+        "classe": "Portefeuille",
+        "fonction": "titres",
+        "arguments": [
+            "2019-3-28"
+        ],
+        "résultat": "{'aapl': 5}",
+        "commentSuc": "<li><code>titres(datetime.date(2019, 3, 28))</code> ne retourne pas le résultat attendu.</li>",
+        "commentErr": "<li><code>titres(datetime.date(2019, 3, 28))</code> retourne l'erreur "
+    },
+    {
+        "classe": "Portefeuille",
+        "fonction": "valeur_projetée",
+        "arguments": [
+            "2021-3-28",
+            5.0
+        ],
+        "résultat": "",
+        "commentSuc": "<li><code>valeur_projetée(datetime.date(2021, 3, 28), 5.0)</code> ne retourne pas le résultat attendu.</li>",
+        "commentErr": "<li><code>valeur_projetée(datetime.date(2021, 3, 28), 5.0)</code> retourne l'erreur "
+    },
+    {
+        "classe": "Portefeuille",
+        "fonction": "valeur_projetée",
+        "arguments": [
+            "2021-3-28",
+            {"goog": 5.0}
+        ],
+        "résultat": "",
+        "commentSuc": "<li><code>valeur_projetée(datetime.date(2021, 3, 28), {'goog': 5.0})</code> ne retourne pas le résultat attendu.</li>",
+        "commentErr": "<li><code>valeur_projetée(datetime.date(2021, 3, 28), {'goog': 5.0})</code> retourne l'erreur "
+    }
+]

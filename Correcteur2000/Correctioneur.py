@@ -118,6 +118,7 @@ class CorrecteurTeam:
             comment += "<h4>Résultat : 0 %</h4>"
             team.notes[f"{no_critere}"] = round(note, 1)
             team_dico["score"] = round(note, 1)
+            team_dico["nb_commit"] = nb_commits
             team_dico["commentaires"] = comment
             team.commentaires[f"{no_critere}"] = comment
             return team_dico
@@ -140,12 +141,84 @@ class CorrecteurTeam:
         comment += f"""<h4>Résultat : {round(note, 1)} %</h4>"""
         team.commentaires[f"{no_critere}"] = comment
         team.notes[f"{no_critere}"] = round(note, 1)
+        team_dico["nb_commit"] = nb_commits
         team_dico["score"] = round(note, 1)
         team_dico["commentaires"] = comment
+        print(f"{team_dico}")
         team.saveTeamState(False)
         return team_dico
 
     def corrigeFromModules(self, team, modules, classes):
+        # Prend le nom des élèves
+        modules = tuple(team.dictNomencalture[module] for module in modules)
+        init_modules = sys.modules.keys()
+        os.chdir(team.pathTeam)
+        sys.path.insert(0, os.getcwd())
+        modules_to_remove = []
+        loaded_modules = list([None]*len(modules))
+        equipeOk = True
+        print(team.noTeam)
+        missing_module_name = None
+        missing_module = None
+        for i, module in enumerate(modules):
+            try:
+                loaded_modules[i] = importlib.import_module(module)
+                loaded_modules[i] = importlib.reload(loaded_modules[i])
+            except ModuleNotFoundError:
+                print(f"No module {module} for team {team.noTeam}")
+                equipeOk = False
+            except ImportError:
+                missing_module_name = traceback.format_exc().split('\n')[-2].split()[6][1:-1]
+                if missing_module_name == module:
+                    print("Import circulaire !")
+                    equipeOk = False
+                else:
+                    modules_to_remove.append(missing_module_name)
+                    missing_module = importlib.import_module(missing_module_name)
+                    missing_module = importlib.reload(missing_module)
+                    loaded_modules[i] = importlib.import_module(module)
+                    loaded_modules[i] = importlib.reload(loaded_modules[i])
+            except Exception:
+                print(traceback.format_exc())
+                equipeOk = False
+
+        if equipeOk:
+            instances = []
+            for i, mod in enumerate(loaded_modules):
+                classes = (team.dictNomencalture[classe] for classe in classes[i])
+                for cl in classes:
+                    instances.append(getattr(mod, cl))
+            instances[0].prix()
+
+            # print(classes_of_module)
+
+            # try:
+
+            #     #p = mod[1].Portefeuille(m)
+            # except AttributeError as e:
+            #     print(e)
+            #     print("Impossible d'initialiser un marché")
+            #     if input("Afficher le fichier ?") == 'y':
+            #         with open(f"marche_boursier.py", "r") as file:
+            #             print(file.read())
+            # except TypeError as e:
+            #     print(e)
+            #     print("Le constructeur n'accepte pas une instance de marché")
+            #     if input("Afficher le fichier ?") == 'y':
+            #         with open(f"portefeuille.py", "r") as file:
+            #             print(file.read())
+            # print("aaaaaaaaaaaaaaaa: ", a)
+        for module in modules_to_remove:
+            del sys.modules[module]
+        for module in modules:
+            if module in sys.modules:
+                del sys.modules[module]
+        for modulilou in sys.modules.keys():
+            if not modulilou in init_modules:
+                del(sys.modules[modulilou])
+        # sys.path.remove(os.path.join(os.getcwd(), team.pathTeam[2:]))
+        sys.path.remove(os.getcwd())
+        os.chdir('../../../')
         test = Tests(team, modules, classes)
         if test.equipeOk:
             # FAIRE TOUT LES TESTS
