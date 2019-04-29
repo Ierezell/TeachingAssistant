@@ -7,8 +7,7 @@ import tqdm
 import traceback
 import sys
 import inspect
-from Log import (print_barre, print_command, print_equipe, print_failing,
-                 print_note, print_passing, print_titre)
+from Log import *
 import time
 import importlib
 from subprocess import PIPE, Popen
@@ -149,88 +148,178 @@ class CorrecteurTeam:
         return team_dico
 
     def corrigeFromModules(self, team, modules, classes):
-        # Prend le nom des élèves
-        modules = tuple(team.dictNomencalture[module] for module in modules)
-        init_modules = sys.modules.keys()
-        os.chdir(team.pathTeam)
-        sys.path.insert(0, os.getcwd())
-        modules_to_remove = []
-        loaded_modules = list([None]*len(modules))
-        equipeOk = True
-        print(team.noTeam)
-        missing_module_name = None
-        missing_module = None
-        for i, module in enumerate(modules):
-            try:
-                loaded_modules[i] = importlib.import_module(module)
-                loaded_modules[i] = importlib.reload(loaded_modules[i])
-            except ModuleNotFoundError:
-                print(f"No module {module} for team {team.noTeam}")
-                equipeOk = False
-            except ImportError:
-                missing_module_name = traceback.format_exc().split('\n')[-2].split()[6][1:-1]
-                if missing_module_name == module:
-                    print("Import circulaire !")
-                    equipeOk = False
-                else:
-                    modules_to_remove.append(missing_module_name)
-                    missing_module = importlib.import_module(missing_module_name)
-                    missing_module = importlib.reload(missing_module)
-                    loaded_modules[i] = importlib.import_module(module)
-                    loaded_modules[i] = importlib.reload(loaded_modules[i])
-            except Exception:
-                print(traceback.format_exc())
-                equipeOk = False
-
-        if equipeOk:
-            instances = []
-            for i, mod in enumerate(loaded_modules):
-                classes = (team.dictNomencalture[classe] for classe in classes[i])
-                for cl in classes:
-                    instances.append(getattr(mod, cl))
-            instances[0].prix()
-
-            # print(classes_of_module)
-
-            # try:
-
-            #     #p = mod[1].Portefeuille(m)
-            # except AttributeError as e:
-            #     print(e)
-            #     print("Impossible d'initialiser un marché")
-            #     if input("Afficher le fichier ?") == 'y':
-            #         with open(f"marche_boursier.py", "r") as file:
-            #             print(file.read())
-            # except TypeError as e:
-            #     print(e)
-            #     print("Le constructeur n'accepte pas une instance de marché")
-            #     if input("Afficher le fichier ?") == 'y':
-            #         with open(f"portefeuille.py", "r") as file:
-            #             print(file.read())
-            # print("aaaaaaaaaaaaaaaa: ", a)
-        for module in modules_to_remove:
-            del sys.modules[module]
-        for module in modules:
-            if module in sys.modules:
-                del sys.modules[module]
-        for modulilou in sys.modules.keys():
-            if not modulilou in init_modules:
-                del(sys.modules[modulilou])
-        # sys.path.remove(os.path.join(os.getcwd(), team.pathTeam[2:]))
-        sys.path.remove(os.getcwd())
-        os.chdir('../../../')
+        if team.noTeam == 15:
+            return 0
+        note = 0
+        print_barre()
+        print_equipe(team.noTeam)
+        comment = "<h2>Évaluation du critère 3</h2>"
+        comment += "<h3>Fonctionnement général</h3>"
         test = Tests(team, modules, classes)
         if test.equipeOk:
             # FAIRE TOUT LES TESTS
             test.loadClassObject()
-            print(team.noTeam)
-            test.test_vendre_GOOG_2018_5_8()
+            print_titre("Prix")
+            comment += "<h4>Vérification de la méthode prix</h4><ul>"
+            res = test.test_2_prix()
+            if res[0]:
+                note += 1
+            comment += res[1]
+            print_titre("Déposer")
+            comment += "</ul><h4>Vérification de la méthode déposer</h4><ul>"
+            res = test.test_3_deposer()
+            if res[0]:
+                note += 1
+            comment += res[1]
+            res = test.test_4_deposer()
+            if res[0]:
+                note += 1
+            comment += res[1]
+            print_titre("Solde")
+            comment += "</ul><h4>Vérification de la méthode solde</h4<ul>>"
+            res = test.test_5_solde()
+            if res[0]:
+                note += 1
+            comment += res[1]
+            res = test.test_6_solde()
+            if res[0]:
+                note += 1
+            comment += res[1]
+            print_titre("Acheter")
+            comment += "</ul><h4>Vérification de la méthode acheter</h4><ul>"
+            res = test.test_7_acheter()
+            if res[0]:
+                note += 1
+            comment += res[1]
+            res = test.test_8_acheter()
+            if res[0]:
+                note += 1
+            comment += res[1]
+            res = test.test_9_acheter()
+            if res[0]:
+                note += 1
+            comment += res[1]
+            print_titre("Vendre")
+            comment += "</ul><h4>Vérification de la méthode vendre</h4><ul>"
+            res = test.test_10_vendre()
+            if res[0]:
+                note += 1
+            comment += res[1]
+            res = test.test_11_vendre()
+            if res[0]:
+                note += 1
+            comment += res[1]
+            print_titre("Valeur totale")
+            comment += "</ul><h4>Vérification de la méthode valeur totale</h4><ul>"
+            res = test.test_12_valeur_totale()
+            if res[0]:
+                note += 1
+            comment += res[1]
+            res = test.test_13_valeur_totale()
+            if res[0]:
+                note += 1
+            comment += res[1]
+            print_titre("Valeur des titres")
+            comment += "</ul><h4>Vérification de la méthode valeur des titres</h4><ul>"
+            res = test.test_14_valeur_des_titres()
+            if res[0]:
+                note += 1
+            comment += res[1]
+            res = test.test_15_valeur_des_titres()
+            if res[0]:
+                note += 1
+            comment += res[1]
+            res = test.test_16_valeur_des_titres()
+            if res[0]:
+                note += 1
+            comment += res[1]
+            print_titre("Titre")
+            comment += "</ul><h4>Vérification de la méthode titre</h4><ul>"
+            res = test.test_17_titres()
+            if res[0]:
+                note += 1
+            comment += res[1]
+            res = test.test_18_titres()
+            if res[0]:
+                note += 1
+            comment += res[1]
+            print_titre("Valeur projetée")
+            comment += "</ul><h4>Vérification de la méthode valeur projetée</h4><ul>"
+            res = test.test_19_valeur_projetee()
+            if res[0]:
+                note += 1
+            comment += res[1]
+            res = test.test_20_valeur_projetee()
+            if res[0]:
+                note += 1
+            comment += res[1]
             # FIN DE TESTS
+            print_note(note, 19)
+            note_temp = note
+            test.cleanUp()
+            test.loadClassObject()
+            tqdm.tqdm.write("\n")
+            print_titre("LiquiditéInsuffisante")
+            comment += "</ul><h4>Vérification de l'erreur LiquiditéInsuffisante</h4><ul>"
+            test.erreur_0_1_depot()
+            res = test.erreur_0_liquid_acheter()
+            if res[0]:
+                note += 1
+            comment += res[1]
+            print_titre("ErreurDate")
+            comment += "</ul><h4>Vérification de l'erreur ErreurDate</h4><ul>"
+            res = test.erreur_1_date_prix()
+            if res[0]:
+                note += 1
+            comment += res[1]
+            res = test.erreur_2_date_déposer()
+            if res[0]:
+                note += 1
+            comment += res[1]
+            res = test.erreur_3_date_solde()
+            if res[0]:
+                note += 1
+            comment += res[1]
+            res = test.erreur_4_date_acheter()
+            if res[0]:
+                note += 1
+            comment += res[1]
+            test.erreur_4_1_depot()
+            test.erreur_4_2_achat()
+            res = test.erreur_5_date_vendre()
+            if res[0]:
+                note += 1
+            comment += res[1]
+            res = test.erreur_6_date_valeur_totale()
+            if res[0]:
+                note += 1
+            comment += res[1]
+            res = test.erreur_7_date_valeur_titres()
+            if res[0]:
+                note += 1
+            comment += res[1]
+            res = test.erreur_8_date_titres()
+            if res[0]:
+                note += 1
+            comment += res[1]
+            print_titre("ErreurQuantité")
+            comment += "</ul><h4>Vérification de l'erreur ErreurQuantité</h4><ul>"
+            res = test.erreur_9_quantite_vendre()
+            if res[0]:
+                note += 1
+            comment += res[1]
+            comment += "</ul>"
+            print_note(note-note_temp, 10)
+            print_final(3, note, 29)
+            test.cleanUp()
         else:
-            print("Bad module ", team.noTeam)
-        test.cleanUp()
-        team.saveTeamState()
-        print()
+            print_warning(f"FAIL : Programme non fonctionnel")
+            comment += "<p>Votre code n'est pas fonctionnel</p>"
+            test.cleanUp()
+        return (note, comment)
+        # input()
+        # team.saveTeamState()
+        # print()
 
     def corrige_nomenclature(self, listClass, listFunc, listArg, team):
         liste_fonc_team, liste_classe_team, list_arg_team = self.show_functions(team)
