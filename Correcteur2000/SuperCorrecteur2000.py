@@ -243,10 +243,10 @@ if __name__ == "__main__":
     # Assistant.initialize_Directory()
     # Assistant.unbundle()
     Assistant.initialise_Teams("marche_boursier.py", "portefeuille.py")
-    # Assistant.corrigeNoms("./dicNom.json")
+    Assistant.corrigeNoms("./dicNom.json")
     # Assistant.get_commits()
     # Assistant.corrigeCommit(1)
-    Assistant.get_functions()
+    # Assistant.get_functions()
 
     # Assistant.corrigeNoms("./dicNom.json")
     # Assistant.not_show_commits()
@@ -255,8 +255,8 @@ if __name__ == "__main__":
     # Assistant.show_functions()
     # Assistant.show_commits()
     # Assistant.corrigeCommit(1)
-    # Assistant.corrigeFromModules(modules=["marche_boursier", "portefeuille"],
-    #                              classes=[["MarchéBoursier"], ["Portefeuille"]])
+    Assistant.corrigeFromModules(modules=["marche_boursier", "portefeuille"],
+                                 classes=[["MarchéBoursier"], ["Portefeuille"]])
     # Assistant.show_functions()
     # Assistant.show_similarity("marche_boursier.py")
     # Assistant.show_similarity("portefeuille.py")

@@ -204,7 +204,7 @@ class CorrecteurTeam:
 
     def corrigeFromModules(self, team, modules, classes):
         # Prend le nom des élèves
-        modules = tuple(team.dictNomencalture[module] for module in modules)
+        modules = tuple(team.dictNomenclature[module] for module in modules)
         init_modules = sys.modules.keys()
         os.chdir(team.pathTeam)
         sys.path.insert(0, os.getcwd())
@@ -239,7 +239,7 @@ class CorrecteurTeam:
         if equipeOk:
             instances = []
             for i, mod in enumerate(loaded_modules):
-                classes = (team.dictNomencalture[classe] for classe in classes[i])
+                classes = (team.dictNomenclature[classe] for classe in classes[i])
                 for cl in classes:
                     instances.append(getattr(mod, cl))
             instances[0].prix()
