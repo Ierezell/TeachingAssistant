@@ -1,227 +1,377 @@
 [
     {
-        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><h4>Résultat : 654 %</h4>"
+        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><h4>Résultat : 90 %</h4>",
+        "équipe": 1,
+        "score": 90
     },
     {
-        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><p>Votre fichier comporte les fonctions suivante :  Fichier marche_boursier.py, ligne 18 : fonction : class ErreurDate(Exception):\n  \nFichier marche_boursier.py, ligne 56 : fonction : class MarchéBoursier:  # pylint: disable=too-few-public-methods, C0103\n  \nFichier portefeuille.py, ligne 21 : fonction : class ErreurDate(Exception):\n  \nFichier portefeuille.py, ligne 40 : fonction : class LiquiditeInsuffisante(Exception):\n  \nFichier portefeuille.py, ligne 54 : fonction : class ErreurQuantite(Exception):\n  \nFichier portefeuille.py, ligne 63 : fonction : class ErreurSymbole(Exception):\n  \nFichier portefeuille.py, ligne 64 : fonction :     \"\"\" La class ErreurSymbole \"\"\"\n  \nFichier portefeuille.py, ligne 72 : fonction : class ErreurHistDate(Exception):\n  \nFichier portefeuille.py, ligne 73 : fonction :     \"\"\" La class ErreurhistDate \"\"\"\n  \nFichier portefeuille.py, ligne 81 : fonction : class ErrorTypeRendement(Exception):\n  \nFichier portefeuille.py, ligne 97 : fonction : class Portefeuille:\n.</p><p>Votre fichier comporte les classes suivante :  Fichier marche_boursier.py, ligne 18 : fonction : class ErreurDate(Exception):\n  \nFichier marche_boursier.py, ligne 56 : fonction : class MarchéBoursier:  # pylint: disable=too-few-public-methods, C0103\n  \nFichier portefeuille.py, ligne 21 : fonction : class ErreurDate(Exception):\n  \nFichier portefeuille.py, ligne 40 : fonction : class LiquiditeInsuffisante(Exception):\n  \nFichier portefeuille.py, ligne 54 : fonction : class ErreurQuantite(Exception):\n  \nFichier portefeuille.py, ligne 63 : fonction : class ErreurSymbole(Exception):\n  \nFichier portefeuille.py, ligne 64 : fonction :     \"\"\" La class ErreurSymbole \"\"\"\n  \nFichier portefeuille.py, ligne 72 : fonction : class ErreurHistDate(Exception):\n  \nFichier portefeuille.py, ligne 73 : fonction :     \"\"\" La class ErreurhistDate \"\"\"\n  \nFichier portefeuille.py, ligne 81 : fonction : class ErrorTypeRendement(Exception):\n  \nFichier portefeuille.py, ligne 97 : fonction : class Portefeuille:\n.</p><h4>Résultat : 54 %</h4>"
+        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><h4>Résultat : 95 %</h4>",
+        "équipe": 2,
+        "score": 95
     },
     {
-        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><h4>Résultat : 98 %</h4>"
+        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><h4>Résultat : 95 %</h4>",
+        "équipe": 3,
+        "score": 95
     },
     {
-        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><h4>Résultat : 564 %</h4>"
+        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><h4>Résultat : 80 %</h4>",
+        "équipe": 4,
+        "score": 80
     },
     {
-        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><h4>Résultat : 231 %</h4>"
+        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><h4>Résultat : 86 %</h4>",
+        "équipe": 5,
+        "score": 86
     },
     {
-        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><h4>Résultat : 321 %</h4>"
+        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><h4>Résultat : 95 %</h4>",
+        "équipe": 6,
+        "score": 95
     },
     {
-        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><p>Votre fichier comporte les fonctions suivante :  Fichier marche_boursier.py, ligne 6 : fonction : class ErreurDate(Exception):\n  \nFichier marche_boursier.py, ligne 10 : fonction : class MarchéBoursier:\n  \nFichier portefeuille.py, ligne 5 : fonction : class ErreurDate(Exception):\n  \nFichier portefeuille.py, ligne 9 : fonction : class ErreurQuantité(Exception):\n  \nFichier portefeuille.py, ligne 13 : fonction : class LiquiditéInsuffisante(Exception):\n  \nFichier portefeuille.py, ligne 17 : fonction : class Portefeuille:\n.</p><p>Votre fichier comporte les classes suivante :  Fichier marche_boursier.py, ligne 6 : fonction : class ErreurDate(Exception):\n  \nFichier marche_boursier.py, ligne 10 : fonction : class MarchéBoursier:\n  \nFichier portefeuille.py, ligne 5 : fonction : class ErreurDate(Exception):\n  \nFichier portefeuille.py, ligne 9 : fonction : class ErreurQuantité(Exception):\n  \nFichier portefeuille.py, ligne 13 : fonction : class LiquiditéInsuffisante(Exception):\n  \nFichier portefeuille.py, ligne 17 : fonction : class Portefeuille:\n.</p><h4>Résultat : 51 %</h4>"
+        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><h4>Résultat : 95 %</h4>",
+        "équipe": 7,
+        "score": 95
     },
     {
-        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><p>Votre fichier comporte les fonctions suivante :  Fichier marche_boursier.py, ligne 9 : fonction : class ErreurDate(Exception):\n  \nFichier marche_boursier.py, ligne 23 : fonction : class MarchéBoursier:\n  \nFichier portefeuille.py, ligne 9 : fonction : class LiquiditéInsuffisante(Exception):\n  \nFichier portefeuille.py, ligne 13 : fonction : class ErreurQuantité(Exception):\n  \nFichier portefeuille.py, ligne 19 : fonction : class Portefeuille:\n  \nFichier portefeuille.py, ligne 129 : fonction : class Test(unittest.TestCase):\n.</p><p>Votre fichier comporte les classes suivante :  Fichier marche_boursier.py, ligne 9 : fonction : class ErreurDate(Exception):\n  \nFichier marche_boursier.py, ligne 23 : fonction : class MarchéBoursier:\n  \nFichier portefeuille.py, ligne 9 : fonction : class LiquiditéInsuffisante(Exception):\n  \nFichier portefeuille.py, ligne 13 : fonction : class ErreurQuantité(Exception):\n  \nFichier portefeuille.py, ligne 19 : fonction : class Portefeuille:\n  \nFichier portefeuille.py, ligne 129 : fonction : class Test(unittest.TestCase):\n.</p><h4>Résultat : 54 %</h4>"
+        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><h4>Résultat : 92 %</h4>",
+        "équipe": 8,
+        "score": 92
     },
     {
-        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><p>Votre fichier comporte les fonctions suivante :  Fichier erreur_date.py, ligne 2 : fonction : class ErreurDate(Exception):\n  \nFichier marche_boursier.py, ligne 8 : fonction : class MarchéBoursier:\n  \nFichier portefeuille.py, ligne 4 : fonction : class ErreurQuantité(Exception):\n  \nFichier portefeuille.py, ligne 7 : fonction : class LiquiditéInsuffisante(Exception):\n  \nFichier portefeuille.py, ligne 10 : fonction : class Portefeuille:\n.</p><p>Votre fichier comporte les classes suivante :  Fichier erreur_date.py, ligne 2 : fonction : class ErreurDate(Exception):\n  \nFichier marche_boursier.py, ligne 8 : fonction : class MarchéBoursier:\n  \nFichier portefeuille.py, ligne 4 : fonction : class ErreurQuantité(Exception):\n  \nFichier portefeuille.py, ligne 7 : fonction : class LiquiditéInsuffisante(Exception):\n  \nFichier portefeuille.py, ligne 10 : fonction : class Portefeuille:\n.</p><h4>Résultat : 54 %</h4>"
+        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><h4>Résultat : 88 %</h4>",
+        "équipe": 9,
+        "score": 88
     },
     {
-        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><p>Votre fichier comporte les fonctions suivante :  Fichier marche_boursier.py, ligne 5 : fonction : class MarchéBoursier:\n  \nFichier portefeuille.py, ligne 6 : fonction : class Portefeuille:\n.</p><p>Votre fichier comporte les classes suivante :  Fichier marche_boursier.py, ligne 5 : fonction : class MarchéBoursier:\n  \nFichier portefeuille.py, ligne 6 : fonction : class Portefeuille:\n.</p><h4>Résultat : 54 %</h4>"
+        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><h4>Résultat : 84 %</h4>",
+        "équipe": 10,
+        "score": 84
     },
     {
-        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><p>Votre fichier comporte les fonctions suivante :  Fichier marche_boursier.py, ligne 7 : fonction : class MarchéBoursier:\n  \nFichier portefeuille.py, ligne 9 : fonction : class LiquiditéInsuffisante(Exception):\n  \nFichier portefeuille.py, ligne 16 : fonction : class ErreurQuantité(Exception):\n  \nFichier portefeuille.py, ligne 23 : fonction : class ErreurDate(Exception):\n  \nFichier portefeuille.py, ligne 30 : fonction : class Portefeuille:\n  \nFichier portefeuille.py, ligne 185 : fonction : class TestPortefeuille(unittest.TestCase):\n.</p><p>Votre fichier comporte les classes suivante :  Fichier marche_boursier.py, ligne 7 : fonction : class MarchéBoursier:\n  \nFichier portefeuille.py, ligne 9 : fonction : class LiquiditéInsuffisante(Exception):\n  \nFichier portefeuille.py, ligne 16 : fonction : class ErreurQuantité(Exception):\n  \nFichier portefeuille.py, ligne 23 : fonction : class ErreurDate(Exception):\n  \nFichier portefeuille.py, ligne 30 : fonction : class Portefeuille:\n  \nFichier portefeuille.py, ligne 185 : fonction : class TestPortefeuille(unittest.TestCase):\n.</p><h4>Résultat : 8 %</h4>"
+        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><h4>Résultat : 92 %</h4>",
+        "équipe": 11,
+        "score": 92
     },
     {
-        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><h4>Résultat : 321 %</h4>"
+        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><h4>Résultat : 85 %</h4>",
+        "équipe": 12,
+        "score": 85
     },
     {
-        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><h4>Résultat : 231 %</h4>"
+        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><h4>Résultat : 93 %</h4>",
+        "équipe": 13,
+        "score": 93
     },
     {
-        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><h4>Résultat : 231 %</h4>"
+        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><h4>Résultat : 92 %</h4>",
+        "équipe": 14,
+        "score": 92
     },
     {
-        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><h4>Résultat : 231 %</h4>"
+        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><h4>Résultat : 93 %</h4>",
+        "équipe": 15,
+        "score": 93
     },
     {
-        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><h4>Résultat : 321 %</h4>"
+        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><h4>Résultat : 90 %</h4>",
+        "équipe": 16,
+        "score": 90
     },
     {
-        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><h4>Résultat : 5123 %</h4>"
+        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><h4>Résultat : 86 %</h4>",
+        "équipe": 17,
+        "score": 86
     },
     {
-        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><h4>Résultat : 512 %</h4>"
+        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><h4>Résultat : 94 %</h4>",
+        "équipe": 18,
+        "score": 94
     },
     {
-        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><h4>Résultat : 5621 %</h4>"
+        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><h4>Résultat : 80 %</h4>",
+        "équipe": 20,
+        "score": 80
     },
     {
-        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><h4>Résultat : 564231 %</h4>"
+        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><h4>Résultat : 87 %</h4>",
+        "équipe": 21,
+        "score": 87
     },
     {
-        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><h4>Résultat : 5641 %</h4>"
+        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><h4>Résultat : 97 %</h4>",
+        "équipe": 22,
+        "score": 97
     },
     {
-        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><h4>Résultat : 5641 %</h4>"
+        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><h4>Résultat : 98 %</h4>",
+        "équipe": 23,
+        "score": 98
     },
     {
-        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><h4>Résultat : 5641 %</h4>"
+        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><h4>Résultat : 97 %</h4>",
+        "équipe": 24,
+        "score": 97
     },
     {
-        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><h4>Résultat : 561 %</h4>"
+        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><h4>Résultat : 86 %</h4>",
+        "équipe": 25,
+        "score": 86
     },
     {
-        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><h4>Résultat : 5641 %</h4>"
+        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><h4>Résultat : 82 %</h4>",
+        "équipe": 26,
+        "score": 82
     },
     {
-        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><h4>Résultat : 564 %</h4>"
+        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><p>Il faudrait documenter vos fonction. Vous n'avez fait aucun (ni Unittest ni de vous meme)</p><p>Votre fichier comporte les fonctions suivante :  Fichier marche_boursier.py, ligne 6 : fonction : class ErreurDate(Exception):\n  \nFichier marche_boursier.py, ligne 15 : fonction : class MarchéBoursier:\n  \nFichier portefeuille.py, ligne 5 : fonction : class LiquiditéInsuffisante(Exception):\n  \nFichier portefeuille.py, ligne 14 : fonction : class ErreurQuantité(Exception):\n  \nFichier portefeuille.py, ligne 23 : fonction : class Portefeuille:\n.</p><p>Votre fichier comporte les classes suivante :  Fichier marche_boursier.py, ligne 6 : fonction : class ErreurDate(Exception):\n  \nFichier marche_boursier.py, ligne 15 : fonction : class MarchéBoursier:\n  \nFichier portefeuille.py, ligne 5 : fonction : class LiquiditéInsuffisante(Exception):\n  \nFichier portefeuille.py, ligne 14 : fonction : class ErreurQuantité(Exception):\n  \nFichier portefeuille.py, ligne 23 : fonction : class Portefeuille:\n.</p><h4>Résultat : 78 %</h4>",
+        "équipe": 27,
+        "score": 78
     },
     {
-        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><h4>Résultat : 654 %</h4>"
+        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><h4>Résultat : 85 %</h4>",
+        "équipe": 28,
+        "score": 85
     },
     {
-        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><h4>Résultat : 561 %</h4>"
+        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><p>Vous ne faites aucun test. Certaines conditions sont améliorables</p><p>Votre fichier comporte les fonctions suivante :  Fichier marche_boursier.py, ligne 6 : fonction : class ErreurDate(Exception):\n  \nFichier marche_boursier.py, ligne 10 : fonction : class MarchéBoursier:\n  \nFichier Portefeuille.py, ligne 6 : fonction : class ErreurDate(Exception):\n  \nFichier Portefeuille.py, ligne 10 : fonction : class LiquiditéInsuffisante(Exception):\n  \nFichier Portefeuille.py, ligne 14 : fonction : class ErreurQuantité(Exception):\n  \nFichier Portefeuille.py, ligne 18 : fonction : class Portefeuille:\n.</p><p>Votre fichier comporte les classes suivante :  Fichier marche_boursier.py, ligne 6 : fonction : class ErreurDate(Exception):\n  \nFichier marche_boursier.py, ligne 10 : fonction : class MarchéBoursier:\n  \nFichier Portefeuille.py, ligne 6 : fonction : class ErreurDate(Exception):\n  \nFichier Portefeuille.py, ligne 10 : fonction : class LiquiditéInsuffisante(Exception):\n  \nFichier Portefeuille.py, ligne 14 : fonction : class ErreurQuantité(Exception):\n  \nFichier Portefeuille.py, ligne 18 : fonction : class Portefeuille:\n.</p><h4>Résultat : 78 %</h4>",
+        "équipe": 29,
+        "score": 78
     },
     {
-        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><h4>Résultat : 564231 %</h4>"
+        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><h4>Résultat : 92 %</h4>",
+        "équipe": 30,
+        "score": 92
     },
     {
-        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><h4>Résultat : 564123 %</h4>"
+        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><h4>Résultat : 95 %</h4>",
+        "équipe": 31,
+        "score": 95
     },
     {
-        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><h4>Résultat : 64581 %</h4>"
+        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><h4>Résultat : 99 %</h4>",
+        "équipe": 32,
+        "score": 99
     },
     {
-        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><h4>Résultat : 8465 %</h4>"
+        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><h4>Résultat : 98 %</h4>",
+        "équipe": 33,
+        "score": 98
     },
     {
-        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><h4>Résultat : 6541 %</h4>"
+        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><h4>Résultat : 83 %</h4>",
+        "équipe": 34,
+        "score": 83
     },
     {
-        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><h4>Résultat : 64851 %</h4>"
+        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><h4>Résultat : 97 %</h4>",
+        "équipe": 35,
+        "score": 97
     },
     {
-        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><h4>Résultat : 6584 %</h4>"
+        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><p>Que font les fichiers projet1 et MarcherBoursier dans votre bundle ? Vous pourriez aussi rajouter des tests et de la docstring</p><p>Votre fichier comporte les fonctions suivante :  Fichier MarcheBoursier.py, ligne 5 : fonction : class ErreurDate(Exception):pass\n  \nFichier MarcheBoursier.py, ligne 9 : fonction : class MarcheBoursier:\n  \nFichier Portefeuille.py, ligne 4 : fonction : class ErreurQuantite(Exception): pass\n  \nFichier Portefeuille.py, ligne 7 : fonction : class LiquiditeInsufissante(Exception): pass\n  \nFichier Portefeuille.py, ligne 10 : fonction : class Dicto(dict):\n  \nFichier Portefeuille.py, ligne 17 : fonction : class Portefeuille:\n.</p><p>Votre fichier comporte les classes suivante :  Fichier MarcheBoursier.py, ligne 5 : fonction : class ErreurDate(Exception):pass\n  \nFichier MarcheBoursier.py, ligne 9 : fonction : class MarcheBoursier:\n  \nFichier Portefeuille.py, ligne 4 : fonction : class ErreurQuantite(Exception): pass\n  \nFichier Portefeuille.py, ligne 7 : fonction : class LiquiditeInsufissante(Exception): pass\n  \nFichier Portefeuille.py, ligne 10 : fonction : class Dicto(dict):\n  \nFichier Portefeuille.py, ligne 17 : fonction : class Portefeuille:\n.</p><h4>Résultat : 75 %</h4>",
+        "équipe": 36,
+        "score": 75
     },
     {
-        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><h4>Résultat : 6541 %</h4>"
+        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><h4>Résultat : 97 %</h4>",
+        "équipe": 37,
+        "score": 97
     },
     {
-        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><h4>Résultat : 5641 %</h4>"
+        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><h4>Résultat : 89 %</h4>",
+        "équipe": 39,
+        "score": 89
     },
     {
-        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><h4>Résultat : 8456 %</h4>"
+        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><h4>Résultat : 88 %</h4>",
+        "équipe": 40,
+        "score": 88
     },
     {
-        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><h4>Résultat : 8654 %</h4>"
+        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><p>Vous n'avez pas de documentation (docstring ou commentaires), pas de tests, et vos noms de variables pourraient etre plus explicites</p><p>Votre fichier comporte les fonctions suivante :  Fichier marche_boursier.py, ligne 6 : fonction : class ErreurDate(Exception):\n  \nFichier marche_boursier.py, ligne 10 : fonction : class MarcherBoursier:\n  \nFichier portefeuille.py, ligne 5 : fonction : class LiquiditéInsuffisante(Exception):\n  \nFichier portefeuille.py, ligne 9 : fonction : class ErreurQuantité(Exception):\n  \nFichier portefeuille.py, ligne 13 : fonction : class ErreurRendement(Exception):\n  \nFichier portefeuille.py, ligne 17 : fonction : class Portefeuille(MarcherBoursier):\n.</p><p>Votre fichier comporte les classes suivante :  Fichier marche_boursier.py, ligne 6 : fonction : class ErreurDate(Exception):\n  \nFichier marche_boursier.py, ligne 10 : fonction : class MarcherBoursier:\n  \nFichier portefeuille.py, ligne 5 : fonction : class LiquiditéInsuffisante(Exception):\n  \nFichier portefeuille.py, ligne 9 : fonction : class ErreurQuantité(Exception):\n  \nFichier portefeuille.py, ligne 13 : fonction : class ErreurRendement(Exception):\n  \nFichier portefeuille.py, ligne 17 : fonction : class Portefeuille(MarcherBoursier):\n.</p><h4>Résultat : 75 %</h4>",
+        "équipe": 41,
+        "score": 75
     },
     {
-        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><h4>Résultat : 5641 %</h4>"
+        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><h4>Résultat : 83 %</h4>",
+        "équipe": 42,
+        "score": 83
     },
     {
-        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><h4>Résultat : 546123 %</h4>"
+        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><p>Les fichiers projet1.py et nom_de_fichier n'ont rien a faire dans votre bundle. Les docstrings doivent etre des strings. Attention à certains nom de variables qui pourraient etre plus explicites</p><p>Votre fichier comporte les fonctions suivante :  Fichier marche_boursier.py, ligne 11 : fonction : class MarchéBoursier:\n  \nFichier portefeuille.py, ligne 4 : fonction : class portefeuille:\n.</p><p>Votre fichier comporte les classes suivante :  Fichier marche_boursier.py, ligne 11 : fonction : class MarchéBoursier:\n  \nFichier portefeuille.py, ligne 4 : fonction : class portefeuille:\n.</p><h4>Résultat : 79 %</h4>",
+        "équipe": 43,
+        "score": 79
     },
     {
-        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><h4>Résultat : 56841 %</h4>"
+        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><p>Vous n'avez pas les erreurs demandées. Votre classe de test ne teste rien...</p><p>Votre fichier comporte les fonctions suivante :  Fichier marche_boursier.py, ligne 6 : fonction : class MarchéBoursier:\n  \nFichier portefeuille.py, ligne 5 : fonction : class Portefeuille:\n.</p><p>Votre fichier comporte les classes suivante :  Fichier marche_boursier.py, ligne 6 : fonction : class MarchéBoursier:\n  \nFichier portefeuille.py, ligne 5 : fonction : class Portefeuille:\n.</p><h4>Résultat : 79 %</h4>",
+        "équipe": 44,
+        "score": 79
     },
     {
-        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><h4>Résultat : 4512 %</h4>"
+        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><p>Vous n'avez pas de documentation (docstring ou commentaires). Vous n'avez pas non plus de tests. Le fichier projet1.py ne devrait pas etre dans votre bundle</p><p>Votre fichier comporte les fonctions suivante :  Fichier marche_boursier.py, ligne 3 : fonction : class MarchéBoursier:\n  \nFichier portefeuille.py, ligne 3 : fonction : class Portefeuille(MarchéBoursier):\n.</p><p>Votre fichier comporte les classes suivante :  Fichier marche_boursier.py, ligne 3 : fonction : class MarchéBoursier:\n  \nFichier portefeuille.py, ligne 3 : fonction : class Portefeuille(MarchéBoursier):\n.</p><h4>Résultat : 78 %</h4>",
+        "équipe": 45,
+        "score": 78
     },
     {
-        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><h4>Résultat : 4561 %</h4>"
+        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><h4>Résultat : 92 %</h4>",
+        "équipe": 46,
+        "score": 92
     },
     {
-        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><h4>Résultat : 5412 %</h4>"
+        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><h4>Résultat : 93 %</h4>",
+        "équipe": 48,
+        "score": 93
     },
     {
-        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><h4>Résultat : 4561 %</h4>"
+        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><h4>Résultat : 95 %</h4>",
+        "équipe": 49,
+        "score": 95
     },
     {
-        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><h4>Résultat : 5461 %</h4>"
+        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><h4>Résultat : 90 %</h4>",
+        "équipe": 51,
+        "score": 90
     },
     {
-        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><h4>Résultat : 54612 %</h4>"
+        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><p>Vous n'avez pas fait de documentation (docstring ou commentaires) et votre fichier de test est vide</p><p>Votre fichier comporte les fonctions suivante :  Fichier marche_boursier.py, ligne 5 : fonction : class MarcheBoursier:\n  \nFichier portefeuille.py, ligne 4 : fonction : class Portefeuille:\n.</p><p>Votre fichier comporte les classes suivante :  Fichier marche_boursier.py, ligne 5 : fonction : class MarcheBoursier:\n  \nFichier portefeuille.py, ligne 4 : fonction : class Portefeuille:\n.</p><h4>Résultat : 78 %</h4>",
+        "équipe": 52,
+        "score": 78
     },
     {
-        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><h4>Résultat : 564231 %</h4>"
+        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><h4>Résultat : 85 %</h4>",
+        "équipe": 53,
+        "score": 85
     },
     {
-        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><h4>Résultat : 546231 %</h4>"
+        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><p>Vous n'avez pas de tests. Vous n'avez pas de documentation (commentaires ou docstrings)</p><p>Votre fichier comporte les fonctions suivante :  Fichier marche_boursier.py, ligne 5 : fonction : class Marchéboursier:\n  \nFichier portefeuille.py, ligne 4 : fonction : class Portefeuille:\n.</p><p>Votre fichier comporte les classes suivante :  Fichier marche_boursier.py, ligne 5 : fonction : class Marchéboursier:\n  \nFichier portefeuille.py, ligne 4 : fonction : class Portefeuille:\n.</p><h4>Résultat : 77 %</h4>",
+        "équipe": 54,
+        "score": 77
     },
     {
-        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><p>Votre fichier comporte les fonctions suivante :  Fichier marche_boursier.py, ligne 5 : fonction : class ErreurDate(Exception):\n  \nFichier marche_boursier.py, ligne 9 : fonction : class MarchéBoursier:\n  \nFichier portefeuille.py, ligne 6 : fonction : class ErreurDate(Exception):\n  \nFichier portefeuille.py, ligne 8 : fonction : class ErreurQuantite(Exception):\n  \nFichier portefeuille.py, ligne 10 : fonction : class QuantiteInsuffisante(Exception):\n  \nFichier portefeuille.py, ligne 14 : fonction : class Portefeuille(MarchéBoursier):\n.</p><p>Votre fichier comporte les classes suivante :  Fichier marche_boursier.py, ligne 5 : fonction : class ErreurDate(Exception):\n  \nFichier marche_boursier.py, ligne 9 : fonction : class MarchéBoursier:\n  \nFichier portefeuille.py, ligne 6 : fonction : class ErreurDate(Exception):\n  \nFichier portefeuille.py, ligne 8 : fonction : class ErreurQuantite(Exception):\n  \nFichier portefeuille.py, ligne 10 : fonction : class QuantiteInsuffisante(Exception):\n  \nFichier portefeuille.py, ligne 14 : fonction : class Portefeuille(MarchéBoursier):\n.</p><h4>Résultat : 51 %</h4>"
+        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><p>On peut voir sans lancer votre code qu'il ne fonctionera pas... Vos fonctions ne font rien sauf lever des erreurs. Vous n'avez aucuns tests</p><p>Votre fichier comporte les fonctions suivante :  Fichier marche_boursier.py, ligne 5 : fonction : class ErreurDate(Exception):\n  \nFichier marche_boursier.py, ligne 9 : fonction : class MarchéBoursier:\n  \nFichier portefeuille.py, ligne 6 : fonction : class ErreurDate(Exception):\n  \nFichier portefeuille.py, ligne 8 : fonction : class ErreurQuantite(Exception):\n  \nFichier portefeuille.py, ligne 10 : fonction : class QuantiteInsuffisante(Exception):\n  \nFichier portefeuille.py, ligne 14 : fonction : class Portefeuille(MarchéBoursier):\n.</p><p>Votre fichier comporte les classes suivante :  Fichier marche_boursier.py, ligne 5 : fonction : class ErreurDate(Exception):\n  \nFichier marche_boursier.py, ligne 9 : fonction : class MarchéBoursier:\n  \nFichier portefeuille.py, ligne 6 : fonction : class ErreurDate(Exception):\n  \nFichier portefeuille.py, ligne 8 : fonction : class ErreurQuantite(Exception):\n  \nFichier portefeuille.py, ligne 10 : fonction : class QuantiteInsuffisante(Exception):\n  \nFichier portefeuille.py, ligne 14 : fonction : class Portefeuille(MarchéBoursier):\n.</p><h4>Résultat : 75 %</h4>",
+        "équipe": 56,
+        "score": 75
     },
     {
-        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><h4>Résultat : 541 %</h4>"
+        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><h4>Résultat : 85 %</h4>",
+        "équipe": 57,
+        "score": 85
     },
     {
-        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><h4>Résultat : 8456 %</h4>"
+        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><h4>Résultat : 80 %</h4>",
+        "équipe": 58,
+        "score": 80
     },
     {
-        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><p>Votre fichier comporte les fonctions suivante :  Fichier marche_boursier.py, ligne 8 : fonction : class MarchéBoursier():\n  \nFichier marche_boursier.py, ligne 35 : fonction : class ErreurDate(Exception):\n  \nFichier portefeuille.py, ligne 7 : fonction : class Portefeuille:\n  \nFichier portefeuille.py, ligne 206 : fonction : class LiquiditéInsuffisante(Exception):\n  \nFichier portefeuille.py, ligne 209 : fonction : class ErreurQuantité(Exception):\n.</p><p>Votre fichier comporte les classes suivante :  Fichier marche_boursier.py, ligne 8 : fonction : class MarchéBoursier():\n  \nFichier marche_boursier.py, ligne 35 : fonction : class ErreurDate(Exception):\n  \nFichier portefeuille.py, ligne 7 : fonction : class Portefeuille:\n  \nFichier portefeuille.py, ligne 206 : fonction : class LiquiditéInsuffisante(Exception):\n  \nFichier portefeuille.py, ligne 209 : fonction : class ErreurQuantité(Exception):\n.</p><h4>Résultat : 51 %</h4>"
+        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><h4>Résultat : 82 %</h4>",
+        "équipe": 59,
+        "score": 82
     },
     {
-        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><h4>Résultat : 541 %</h4>"
+        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><h4>Résultat : 81 %</h4>",
+        "équipe": 61,
+        "score": 81
     },
     {
-        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><h4>Résultat : 5461 %</h4>"
+        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><h4>Résultat : 91 %</h4>",
+        "équipe": 62,
+        "score": 91
     },
     {
-        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><h4>Résultat : 564 %</h4>"
+        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><p>Ce n'est pas le code du tp2 ! le pyenv.cfg n'a rien a faire la. Vous n'avez aucun test ni documentation</p><p>Votre fichier comporte les fonctions suivante :  Fichier marche_boursier.py, ligne 38 : fonction : class MarchéBoursier:\n.</p><p>Votre fichier comporte les classes suivante :  Fichier marche_boursier.py, ligne 38 : fonction : class MarchéBoursier:\n.</p><h4>Résultat : 25 %</h4>",
+        "équipe": 63,
+        "score": 25
     },
     {
-        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><h4>Résultat : 58461 %</h4>"
+        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><h4>Résultat : 82 %</h4>",
+        "équipe": 65,
+        "score": 82
     },
     {
-        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><h4>Résultat : 5641 %</h4>"
+        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><h4>Résultat : 84 %</h4>",
+        "équipe": 67,
+        "score": 84
     },
     {
-        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><h4>Résultat : 68451 %</h4>"
+        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><h4>Résultat : 85 %</h4>",
+        "équipe": 68,
+        "score": 85
     },
     {
-        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><h4>Résultat : 654 %</h4>"
+        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><h4>Résultat : 82 %</h4>",
+        "équipe": 69,
+        "score": 82
     },
     {
-        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><p>Votre fichier comporte les fonctions suivante :  Fichier marche_boursier.py, ligne 5 : fonction : class ErreurDate(Exception):\n  \nFichier marche_boursier.py, ligne 35 : fonction : class MarcheBoursier(ErreurDate):\n  \nFichier portefeuille.py, ligne 3 : fonction : class ErreurQuantite(Exception):\n  \nFichier portefeuille.py, ligne 7 : fonction : class LiquiditeInsuffisante(Exception):\n  \nFichier portefeuille.py, ligne 11 : fonction : class Portefeuille:\n.</p><p>Votre fichier comporte les classes suivante :  Fichier marche_boursier.py, ligne 5 : fonction : class ErreurDate(Exception):\n  \nFichier marche_boursier.py, ligne 35 : fonction : class MarcheBoursier(ErreurDate):\n  \nFichier portefeuille.py, ligne 3 : fonction : class ErreurQuantite(Exception):\n  \nFichier portefeuille.py, ligne 7 : fonction : class LiquiditeInsuffisante(Exception):\n  \nFichier portefeuille.py, ligne 11 : fonction : class Portefeuille:\n.</p><p>ergth</p><h4>Résultat : 54 %</h4>"
+        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><p>Vous ne devez pas faire d'input, ce n'est pas le comportement attendu. Vous n'avez pas de documentation ni de tests. Le fichier nom_de_fichier ne devrait pas etre la ainsi que votre pycache</p><p>Votre fichier comporte les fonctions suivante :  Fichier marche_boursier.py, ligne 5 : fonction : class ErreurDate(Exception):\n  \nFichier marche_boursier.py, ligne 35 : fonction : class MarcheBoursier(ErreurDate):\n  \nFichier portefeuille.py, ligne 3 : fonction : class ErreurQuantite(Exception):\n  \nFichier portefeuille.py, ligne 7 : fonction : class LiquiditeInsuffisante(Exception):\n  \nFichier portefeuille.py, ligne 11 : fonction : class Portefeuille:\n.</p><p>Votre fichier comporte les classes suivante :  Fichier marche_boursier.py, ligne 5 : fonction : class ErreurDate(Exception):\n  \nFichier marche_boursier.py, ligne 35 : fonction : class MarcheBoursier(ErreurDate):\n  \nFichier portefeuille.py, ligne 3 : fonction : class ErreurQuantite(Exception):\n  \nFichier portefeuille.py, ligne 7 : fonction : class LiquiditeInsuffisante(Exception):\n  \nFichier portefeuille.py, ligne 11 : fonction : class Portefeuille:\n.</p><h4>Résultat : 75 %</h4>",
+        "équipe": 70,
+        "score": 75
     },
     {
-        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><p>Votre fichier comporte les fonctions suivante :  Fichier marche_boursier.py, ligne 8 : fonction : class ErreurDate(Exception):\n  \nFichier marche_boursier.py, ligne 23 : fonction : class MarchéBoursier:\n  \nFichier portefeuille.py, ligne 7 : fonction : class LiquiditéInsuffisante(Exception):\n  \nFichier portefeuille.py, ligne 14 : fonction : class ErreurQuantité(Exception):\n  \nFichier portefeuille.py, ligne 21 : fonction : class PorteFeuille:\n.</p><p>Votre fichier comporte les classes suivante :  Fichier marche_boursier.py, ligne 8 : fonction : class ErreurDate(Exception):\n  \nFichier marche_boursier.py, ligne 23 : fonction : class MarchéBoursier:\n  \nFichier portefeuille.py, ligne 7 : fonction : class LiquiditéInsuffisante(Exception):\n  \nFichier portefeuille.py, ligne 14 : fonction : class ErreurQuantité(Exception):\n  \nFichier portefeuille.py, ligne 21 : fonction : class PorteFeuille:\n.</p><h4>Résultat : 51 %</h4>"
+        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><h4>Résultat : 86 %</h4>",
+        "équipe": 71,
+        "score": 86
     },
     {
-        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><h4>Résultat : 5412 %</h4>"
+        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><h4>Résultat : 83 %</h4>",
+        "équipe": 72,
+        "score": 83
     },
     {
-        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><h4>Résultat : 84651 %</h4>"
+        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><h4>Résultat : 80 %</h4>",
+        "équipe": 73,
+        "score": 80
     },
     {
-        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><h4>Résultat : 5412 %</h4>"
+        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><h4>Résultat : 85 %</h4>",
+        "équipe": 76,
+        "score": 85
     },
     {
-        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><h4>Résultat : 45612 %</h4>"
+        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><h4>Résultat : 87 %</h4>",
+        "équipe": 77,
+        "score": 87
     },
     {
-        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><h4>Résultat : 8456 %</h4>"
+        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><h4>Résultat : 88 %</h4>",
+        "équipe": 78,
+        "score": 88
     },
     {
-        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><h4>Résultat : 84561 %</h4>"
+        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><p>Vous n'avez pas de tests ni de documentation. Le code ne produit pas le resulat attendu</p><p>Votre fichier comporte les fonctions suivante :  Fichier marche_boursier.py, ligne 3 : fonction : class MarchéBoursier():\n  \nFichier portefeuille.py, ligne 3 : fonction : class Portefeuille():\n.</p><p>Votre fichier comporte les classes suivante :  Fichier marche_boursier.py, ligne 3 : fonction : class MarchéBoursier():\n  \nFichier portefeuille.py, ligne 3 : fonction : class Portefeuille():\n.</p><h4>Résultat : 33 %</h4>",
+        "équipe": 79,
+        "score": 33
     },
     {
-        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><h4>Résultat : 5412 %</h4>"
+        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><h4>Résultat : 85 %</h4>",
+        "équipe": 80,
+        "score": 85
     },
     {
-        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><p>Vous n'avez fait aucune fonction.</p><p>Vous n'avez fait aucune classe.</p><h4>Résultat : 0.0 %</h4>"
+        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><p>Vous n'avez fait aucune fonction.</p><p>Vous n'avez fait aucune classe.</p><h4>Résultat : 0.0 %</h4>",
+        "équipe": 81,
+        "score": 0.0
     },
     {
-        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><h4>Résultat : 564213 %</h4>"
+        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><h4>Résultat : 83 %</h4>",
+        "équipe": 82,
+        "score": 83
     },
     {
-        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><h4>Résultat : 65841 %</h4>"
+        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><h4>Résultat : 86 %</h4>",
+        "équipe": 19,
+        "score": 86
     },
     {
-        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><h4>Résultat : 546123 %</h4>"
+        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><h4>Résultat : 93 %</h4>",
+        "équipe": 38,
+        "score": 93
     },
     {
-        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><h4>Résultat : 54612 %</h4>"
+        "commentaires": "<h2>Évaluation du critère 3</h2><h3>Vérification de qualité de conception</h3><p>Vous n'avez pas de documentation ni de tests</p><p>Votre fichier comporte les fonctions suivante :  Fichier marche_boursier.py, ligne 5 : fonction : class MarchéBoursier:\n  \nFichier portefeuille.py, ligne 7 : fonction : class Portefeuille(Marcheboursier):\n.</p><p>Votre fichier comporte les classes suivante :  Fichier marche_boursier.py, ligne 5 : fonction : class MarchéBoursier:\n  \nFichier portefeuille.py, ligne 7 : fonction : class Portefeuille(Marcheboursier):\n.</p><h4>Résultat : 79 %</h4>",
+        "équipe": 60,
+        "score": 79
     }
 ]
