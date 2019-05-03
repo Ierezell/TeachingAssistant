@@ -6,11 +6,8 @@ class WebJsonizer:
         pass
 
     def makeRapport(self, team):
-        dictRapport = {"équipe": team.noTeam, "score": None, "commentaires": None}
-        coms = dictSite["commentaires"]
-        for c in team.sortie.keys():
+        for critere in team.sortie.values():
             noteCritere = 0
-            critere = team.sortie[c]
             for nomTest in critere.keys():
                 noteTest = 0
                 for args in critere[nomTest]["arguments"]:
