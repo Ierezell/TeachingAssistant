@@ -430,10 +430,12 @@ class CorrecteurTeam:
             data = input("Nomenclature Score?: ")
             tns, tnp = 0, 0
             if data:
-                tns += int(data)
+                tns = int(data)
                 data = input("Nomenclature Pondération?: ")
                 if data:
-                    tnp += int(data)
+                    tnp = int(data)
+                else:
+                    tnp = tns
             if tnp > 0 and tns < tnp:
                 ns += tns
                 np += tnp
@@ -451,6 +453,8 @@ class CorrecteurTeam:
                 data = input("Nb argument Pondération?: ")
                 if data:
                     tnbap += int(data)
+                else:
+                    tnbap = tnbas
             if tnbap > 0 and tnbas < tnbap:
                 nbas += tnbas
                 nbap += tnbap
@@ -468,6 +472,8 @@ class CorrecteurTeam:
                 data = input("Metavar Pondération?: ")
                 if data:
                     tmp = int(data)
+                else:
+                    tmp = tms
             if tmp > 0 and tms < tmp:
                 mp += tmp
                 ms += tms

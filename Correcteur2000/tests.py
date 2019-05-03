@@ -83,13 +83,8 @@ class Tests:
                 # Pour initialiser le portefeuille avec un marché
 
             except Exception as e:
-<<<<<<< HEAD
                 print_failing("Magical Error with unicorn 3!")
             
-=======
-                print(e)
-
->>>>>>> c2add70f24a98f47c1a5eca7f8b53f17cf27b87c
     def test_2_prix(self):
         command = "prix"
         arg = "'goog', datetime.date(2019, 3, 28)"
@@ -99,14 +94,9 @@ class Tests:
         attendu = 1168.685
         try:
             assert(getattr(self.marche, self.team.dictNomenclature[command])(
-<<<<<<< HEAD
                 str('goog'), datetime.date(2019, 3, 28)) == attendu)
             
             print_passing('PASS')
-=======
-                str("goog"), datetime.date(2019, 3, 28)) == attendu)
-
->>>>>>> c2add70f24a98f47c1a5eca7f8b53f17cf27b87c
         except AssertionError as e:
             res = False
             comments += f"<ul><li>La valeur retournée devrait être <code>{attendu}</code>.</li></ul>"
@@ -132,12 +122,8 @@ class Tests:
         try:
             assert(getattr(self.portefeuille, self.team.dictNomenclature[command])(
                 1000000.01) == attendu)
-<<<<<<< HEAD
             
             print_passing('PASS')
-=======
-
->>>>>>> c2add70f24a98f47c1a5eca7f8b53f17cf27b87c
         except AssertionError as e:
             print_warning(f'        WARNING')
         except Exception as e:
@@ -161,12 +147,8 @@ class Tests:
         try:
             assert(getattr(self.portefeuille, self.team.dictNomenclature[command])(
                 2000000.02, datetime.date(2019, 3, 28)) == attendu)
-<<<<<<< HEAD
             
             print_passing('PASS')
-=======
-
->>>>>>> c2add70f24a98f47c1a5eca7f8b53f17cf27b87c
         except AssertionError as e:
             print_warning(f'        WARNING')
         except Exception as e:
@@ -189,12 +171,8 @@ class Tests:
         attendu = 1000000.01
         try:
             assert(round(getattr(self.portefeuille, self.team.dictNomenclature[command])()) == round(attendu))
-<<<<<<< HEAD
             
             print_passing('PASS')
-=======
-
->>>>>>> c2add70f24a98f47c1a5eca7f8b53f17cf27b87c
         except AssertionError as e:
             res = False
             test = getattr(self.portefeuille,
@@ -223,12 +201,8 @@ class Tests:
         try:
             assert(getattr(self.portefeuille,
                            self.team.dictNomenclature[command])(datetime.date(2019, 3, 28)) == attendu)
-<<<<<<< HEAD
             
             print_passing('PASS')
-=======
-
->>>>>>> c2add70f24a98f47c1a5eca7f8b53f17cf27b87c
         except AssertionError as e:
             res = False
             test = getattr(self.portefeuille,
@@ -257,12 +231,8 @@ class Tests:
         try:
             assert(getattr(self.portefeuille,
                            self.team.dictNomenclature[command])('goog', 10) == attendu)
-<<<<<<< HEAD
             
             print_passing('PASS')
-=======
-
->>>>>>> c2add70f24a98f47c1a5eca7f8b53f17cf27b87c
         except AssertionError as e:
             print_warning(f'        WARNING')
         except Exception as e:
@@ -286,12 +256,8 @@ class Tests:
         try:
             assert(getattr(self.portefeuille,
                            self.team.dictNomenclature[command])('aapl', 10) == attendu)
-<<<<<<< HEAD
             
             print_passing('PASS')
-=======
-
->>>>>>> c2add70f24a98f47c1a5eca7f8b53f17cf27b87c
         except AssertionError as e:
             print_warning(f'        WARNING')
         except Exception as e:
@@ -338,12 +304,8 @@ class Tests:
         try:
             assert(getattr(self.portefeuille,
                            self.team.dictNomenclature[command])('goog', 5) == attendu)
-<<<<<<< HEAD
             
             print_passing('PASS')
-=======
-
->>>>>>> c2add70f24a98f47c1a5eca7f8b53f17cf27b87c
         except AssertionError as e:
             print_warning(f'        WARNING')
         except Exception as e:
@@ -367,12 +329,8 @@ class Tests:
         try:
             assert(getattr(self.portefeuille,
                            self.team.dictNomenclature[command])('aapl', 5, datetime.date(2019, 3, 28)) == attendu)
-<<<<<<< HEAD
             
             print_passing('PASS')
-=======
-
->>>>>>> c2add70f24a98f47c1a5eca7f8b53f17cf27b87c
         except AssertionError as e:
             print_warning(f'        WARNING')
         except Exception as e:
@@ -396,12 +354,8 @@ class Tests:
         try:
             assert(round(getattr(self.portefeuille,
                            self.team.dictNomenclature[command])()) == round(attendu))
-<<<<<<< HEAD
             
             print_passing('PASS')
-=======
-
->>>>>>> c2add70f24a98f47c1a5eca7f8b53f17cf27b87c
         except AssertionError as e:
             res = False
             test = getattr(self.portefeuille,
@@ -430,12 +384,8 @@ class Tests:
         try:
             assert(getattr(self.portefeuille,
                            self.team.dictNomenclature[command])(datetime.date(2019, 3, 28)) == attendu)
-<<<<<<< HEAD
             
             print_passing('PASS')
-=======
-
->>>>>>> c2add70f24a98f47c1a5eca7f8b53f17cf27b87c
         except AssertionError as e:
             res = False
             test = getattr(self.portefeuille,
@@ -463,14 +413,9 @@ class Tests:
         attendu = 6348.575
         try:
             assert(round(getattr(self.portefeuille,
-<<<<<<< HEAD
                                  self.team.dictNomenclature[command])(['goog'])) == round(attendu))
             
             print_passing('PASS')
-=======
-                                 self.team.dictNomenclature[command])(['aapl', 'goog'])) == round(attendu))
-
->>>>>>> c2add70f24a98f47c1a5eca7f8b53f17cf27b87c
         except AssertionError as e:
             res = False
             test = getattr(self.portefeuille,
@@ -499,12 +444,8 @@ class Tests:
         try:
             assert(round(getattr(self.portefeuille,
                            self.team.dictNomenclature[command])(['aapl', 'goog'])) == round(attendu))
-<<<<<<< HEAD
             
             print_passing('PASS')
-=======
-
->>>>>>> c2add70f24a98f47c1a5eca7f8b53f17cf27b87c
         except AssertionError as e:
             res = False
             test = getattr(self.portefeuille,
@@ -533,12 +474,8 @@ class Tests:
         try:
             assert(round(getattr(self.portefeuille,
                            self.team.dictNomenclature[command])(['aapl'], datetime.date(2019, 3, 28))) == round(attendu))
-<<<<<<< HEAD
             
             print_passing('PASS')
-=======
-
->>>>>>> c2add70f24a98f47c1a5eca7f8b53f17cf27b87c
         except AssertionError as e:
             res = False
             test = getattr(self.portefeuille,
@@ -567,12 +504,8 @@ class Tests:
         try:
             assert(getattr(self.portefeuille,
                            self.team.dictNomenclature[command])() == attendu)
-<<<<<<< HEAD
             
             print_passing('PASS')
-=======
-
->>>>>>> c2add70f24a98f47c1a5eca7f8b53f17cf27b87c
         except AssertionError as e:
             res = False
             test = getattr(self.portefeuille,
@@ -601,12 +534,8 @@ class Tests:
         try:
             assert(getattr(self.portefeuille,
                            self.team.dictNomenclature[command])(datetime.date(2019, 3, 28))['aapl'] == 5)
-<<<<<<< HEAD
             
             print_passing('PASS')
-=======
-
->>>>>>> c2add70f24a98f47c1a5eca7f8b53f17cf27b87c
         except AssertionError as e:
             res = False
             test = getattr(self.portefeuille,
@@ -633,14 +562,8 @@ class Tests:
         comments = f"<li><code>{command}({arg})</code></li>"
         attendu = 2000103.7675154659
         try:
-<<<<<<< HEAD
             assert(round(getattr(self.portefeuille, self.team.dictNomenclature[command])(datetime.date(2021, 3, 28), 5.5)) == round(attendu))
             print_passing('PASS')
-=======
-            assert(round(getattr(self.portefeuille,
-                           self.team.dictNomenclature[command])(datetime.date(2021, 3, 28), 5.5)) == round(attendu))
-
->>>>>>> c2add70f24a98f47c1a5eca7f8b53f17cf27b87c
         except AssertionError as e:
             res = False
             test = getattr(self.portefeuille, self.team.dictNomenclature[command])(
@@ -667,14 +590,8 @@ class Tests:
         comments = f"<li><code>{command}({arg})</code></li>"
         attendu = 1000668.6975777396
         try:
-<<<<<<< HEAD
             assert(round(getattr(self.portefeuille, self.team.dictNomenclature[command])(datetime.date(2021, 3, 28), {'goog': 5.0})) == round(attendu))
             print_passing('PASS')
-=======
-            assert(round(getattr(self.portefeuille,
-                           self.team.dictNomenclature[command])(datetime.date(2021, 3, 28), {"goog": 5.0})) == round(attendu))
-
->>>>>>> c2add70f24a98f47c1a5eca7f8b53f17cf27b87c
         except AssertionError as e:
             res = False
             test = getattr(self.portefeuille, self.team.dictNomenclature[command])(datetime.date(2021, 3, 28), {'goog': 5.0})

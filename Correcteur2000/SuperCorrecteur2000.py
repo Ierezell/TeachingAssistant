@@ -300,7 +300,6 @@ if __name__ == "__main__":
     Assistant = AssistantCorrection("H", 19, 3)
     # Assistant.initialize_Directory()
     # Assistant.unbundle()
-<<<<<<< HEAD
     Assistant.initialise_Teams("gesport.py")
     # Assistant.corrigeNoms("./dicNomP3.json")
     Assistant.corrigeHelp()
@@ -308,15 +307,6 @@ if __name__ == "__main__":
     # Assistant.corrigeCommit(1)
     # Assistant.get_functions()
 
-=======
-    Assistant.initialise_Teams("marche_boursier.py", "portefeuille.py")
-    Assistant.corrigeNoms("./dicNom.json")    # Assistant.get_commits()
-    # Assistant.corrigeCommit(1)
-    # Assistant.corrigeNoms("./dicNom.json")
-    # Assistant.get_commits()
-    # Assistant.corrigeCommit(1)
-    Assistant.get_functions()
->>>>>>> c2add70f24a98f47c1a5eca7f8b53f17cf27b87c
     # Assistant.corrigeNoms("./dicNom.json")
     # Assistant.not_show_commits()
     # Assistant.corrigeCommit(1)
