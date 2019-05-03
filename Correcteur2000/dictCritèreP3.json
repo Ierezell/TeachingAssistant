@@ -14,49 +14,49 @@
                     {
                         "command": "-h",
                         "success_looking": true,
-                        "result_regex": "usage:",
+                        "result_regex": "^(usage: gesport\\.py \\[-h\\])",
                         "error_message": "<code>Help</code> inexistant pour la commande <code>gesport.py -h</code>"
                     },
                     {
-                        "command": "-h",
+                        "command": "déposer -h",
                         "success_looking": true,
-                        "result_regex": "({.*déposer.*})",
+                        "result_regex": "^(usage: gesport\\.py déposer \\[-h\\])",
                         "error_message": "<code>Help</code> inexistant pour la commande <code>gesport.py déposer -h</code>"
                     },
                     {
                         "command": "acheter -h",
                         "success_looking": true,
-                        "result_regex": "({.*acheter.*})",
+                        "result_regex": "^(usage: gesport\\.py acheter \\[-h\\])",
                         "error_message": "<code>Help</code> inexistant pour la commande <code>gesport.py acheter -h</code>"
                     },
                     {
                         "command": "vendre -h",
                         "success_looking": true,
-                        "result_regex": "({.*vendre.*})",
+                        "result_regex": "^(usage: gesport\\.py vendre \\[-h\\])",
                         "error_message": "<code>Help</code> inexistant pour la commande <code>gesport.py vendre -h</code>"
                     },
                     {
                         "command": "solde -h",
                         "success_looking": true,
-                        "result_regex": "({.*solde.*})",
+                        "result_regex": "^(usage: gesport\\.py solde \\[-h\\])",
                         "error_message": "<code>Help</code> inexistant pour la commande <code>gesport.py solde -h</code>"
                     },
                     {
                         "command": "titres -h",
                         "success_looking": true,
-                        "result_regex": "({.*titres.*})",
+                        "result_regex": "^(usage: gesport\\.py titres \\[-h\\])",
                         "error_message": "<code>Help</code> inexistant pour la commande <code>gesport.py titres -h</code>"
                     },
                     {
                         "command": "valeur -h",
                         "success_looking": true,
-                        "result_regex": "({.*valeur.*})",
+                        "result_regex": "^(usage: gesport\\.py valeur \\[-h\\])",
                         "error_message": "<code>Help</code> inexistant pour la commande <code>gesport.py valeur -h</code>"
                     },
                     {
                         "command": "projection -h",
                         "success_looking": true,
-                        "result_regex": "({.*projection.*})",
+                        "result_regex": "^(usage: gesport\\.py projection \\[-h\\])",
                         "error_message": "<code>Help</code> inexistant pour la commande <code>gesport.py projection -h</code>"
                     }
                 ]
@@ -70,43 +70,43 @@
                     {
                         "command": "-h",
                         "success_looking": true,
-                        "result_regex": "({.*déposer.*})",
+                        "result_regex": "^(\\s+déposer)",
                         "error_message": "L'action <code>déposer</code> ne respect pas la nomenclature."
                     },
                     {
                         "command": "-h",
                         "success_looking": true,
-                        "result_regex": "({.*acheter.*})",
+                        "result_regex": "^(\\s+acheter)",
                         "error_message": "L'action <code>acheter</code> ne respect pas la nomenclature."
                     },
                     {
                         "command": "-h",
                         "success_looking": true,
-                        "result_regex": "({.*vendre.*})",
+                        "result_regex": "^(\\s+vendre)",
                         "error_message": "L'action <code>vendre</code> ne respect pas la nomenclature."
                     },
                     {
                         "command": "-h",
                         "success_looking": true,
-                        "result_regex": "({.*solde.*})",
+                        "result_regex": "^(\\s+solde)",
                         "error_message": "L'action <code>solde</code> ne respect pas la nomenclature."
                     },
                     {
                         "command": "-h",
                         "success_looking": true,
-                        "result_regex": "({.*titres.*})",
+                        "result_regex": "^(\\s+titres)",
                         "error_message": "L'action <code>titres</code> ne respect pas la nomenclature."
                     },
                     {
                         "command": "-h",
                         "success_looking": true,
-                        "result_regex": "({.*valeur.*})",
+                        "result_regex": "^(\\s+valeur)",
                         "error_message": "L'action <code>valeur</code> ne respect pas la nomenclature."
                     },
                     {
                         "command": "-h",
                         "success_looking": true,
-                        "result_regex": "({.*projection.*})",
+                        "result_regex": "^(\\s+projection)",
                         "error_message": "L'action <code>projection</code> ne respect pas la nomenclature."
                     },
                     {
@@ -130,19 +130,19 @@
                     {
                         "command": "déposer -h",
                         "success_looking": true,
-                        "result_regex": "(\\s-p)",
+                        "result_regex": "^(\\s+-p)",
                         "error_message": "L'argument <code>-p</code> de l'action <code>déposer</code> ne respect pas la nomenclature."
                     },
                     {
                         "command": "déposer -h",
                         "success_looking": true,
-                        "result_regex": "(\\s-q)",
+                        "result_regex": "^(\\s+-q)",
                         "error_message": "L'argument <code>-q</code> de l'action <code>déposer</code> ne respect pas la nomenclature."
                     },
                     {
                         "command": "déposer -h",
                         "success_looking": true,
-                        "result_regex": "(\\s-d)",
+                        "result_regex": "^(\\s+-d)",
                         "error_message": "L'argument <code>-d</code> de l'action <code>déposer</code> ne respect pas la nomenclature."
                     },
                     {
@@ -172,25 +172,25 @@
                     {
                         "command": "acheter -h",
                         "success_looking": true,
-                        "result_regex": "(\\s-p)",
+                        "result_regex": "^(\\s+-p)",
                         "error_message": "L'argument <code>-p</code> de l'action <code>acheter</code> ne respect pas la nomenclature."
                     },
                     {
                         "command": "acheter -h",
                         "success_looking": true,
-                        "result_regex": "(\\s-q)",
+                        "result_regex": "^(\\s+-q)",
                         "error_message": "L'argument <code>-q</code> de l'action <code>acheter</code> ne respect pas la nomenclature."
                     },
                     {
                         "command": "acheter -h",
                         "success_looking": true,
-                        "result_regex": "(\\s-t)",
+                        "result_regex": "^(\\s+-t)",
                         "error_message": "L'argument <code>-t</code> de l'action <code>acheter</code> ne respect pas la nomenclature."
                     },
                     {
                         "command": "acheter -h",
                         "success_looking": true,
-                        "result_regex": "(\\s-d)",
+                        "result_regex": "^(\\s+-d)",
                         "error_message": "L'argument <code>-d</code> de l'action <code>acheter</code> ne respect pas la nomenclature."
                     },
                     {
@@ -220,25 +220,25 @@
                     {
                         "command": "vendre -h",
                         "success_looking": true,
-                        "result_regex": "(\\s-p)",
+                        "result_regex": "^(\\s+-p)",
                         "error_message": "L'argument <code>-p</code> de l'action <code>vendre</code> ne respect pas la nomenclature."
                     },
                     {
                         "command": "vendre -h",
                         "success_looking": true,
-                        "result_regex": "(\\s-q)",
+                        "result_regex": "^(\\s+-q)",
                         "error_message": "L'argument <code>-q</code> de l'action <code>vendre</code> ne respect pas la nomenclature."
                     },
                     {
                         "command": "vendre -h",
                         "success_looking": true,
-                        "result_regex": "(\\s-t)",
+                        "result_regex": "^(\\s+-t)",
                         "error_message": "L'argument <code>-t</code> de l'action <code>vendre</code> ne respect pas la nomenclature."
                     },
                     {
                         "command": "vendre -h",
                         "success_looking": true,
-                        "result_regex": "(\\s-d)",
+                        "result_regex": "^(\\s+-d)",
                         "error_message": "L'argument <code>-d</code> de l'action <code>vendre</code> ne respect pas la nomenclature."
                     },
                     {
@@ -262,19 +262,19 @@
                     {
                         "command": "solde -h",
                         "success_looking": true,
-                        "result_regex": "(\\s-p)",
+                        "result_regex": "^(\\s+-p)",
                         "error_message": "L'argument <code>-p</code> de l'action <code>solde</code> ne respect pas la nomenclature."
                     },
                     {
                         "command": "solde -h",
                         "success_looking": true,
-                        "result_regex": "(\\s-d)",
+                        "result_regex": "^(\\s+-d)",
                         "error_message": "L'argument <code>-d</code> de l'action <code>solde</code> ne respect pas la nomenclature."
                     },
                     {
                         "command": "solde -h",
                         "success_looking": true,
-                        "result_regex": "(\\s-g)",
+                        "result_regex": "^(\\s+-g)",
                         "error_message": "L'argument <code>-g</code> de l'action <code>solde</code> ne respect pas la nomenclature."
                     },
                     {
@@ -304,25 +304,25 @@
                     {
                         "command": "titres -h",
                         "success_looking": true,
-                        "result_regex": "(\\s-p)",
+                        "result_regex": "^(\\s+-p)",
                         "error_message": "L'argument <code>-p</code> de l'action <code>titres</code> ne respect pas la nomenclature."
                     },
                     {
                         "command": "titres -h",
                         "success_looking": true,
-                        "result_regex": "(\\s-t)",
+                        "result_regex": "^(\\s+-t)",
                         "error_message": "L'argument <code>-t</code> de l'action <code>titres</code> ne respect pas la nomenclature."
                     },
                     {
                         "command": "titres -h",
                         "success_looking": true,
-                        "result_regex": "(\\s-d)",
+                        "result_regex": "^(\\s+-d)",
                         "error_message": "L'argument <code>-d</code> de l'action <code>titres</code> ne respect pas la nomenclature."
                     },
                     {
                         "command": "titres -h",
                         "success_looking": true,
-                        "result_regex": "(\\s-g)",
+                        "result_regex": "^(\\s+-g)",
                         "error_message": "L'argument <code>-g</code> de l'action <code>titres</code> ne respect pas la nomenclature."
                     },
                     {
@@ -352,25 +352,25 @@
                     {
                         "command": "valeur -h",
                         "success_looking": true,
-                        "result_regex": "(\\s-p)",
+                        "result_regex": "^(\\s+-p)",
                         "error_message": "L'argument <code>-p</code> de l'action <code>valeur</code> ne respect pas la nomenclature."
                     },
                     {
                         "command": "valeur -h",
                         "success_looking": true,
-                        "result_regex": "(\\s-t)",
+                        "result_regex": "^(\\s+-t)",
                         "error_message": "L'argument <code>-t</code> de l'action <code>valeur</code> ne respect pas la nomenclature."
                     },
                     {
                         "command": "valeur -h",
                         "success_looking": true,
-                        "result_regex": "(\\s-d)",
+                        "result_regex": "^(\\s+-d)",
                         "error_message": "L'argument <code>-d</code> de l'action <code>valeur</code> ne respect pas la nomenclature."
                     },
                     {
                         "command": "valeur -h",
                         "success_looking": true,
-                        "result_regex": "(\\s-g)",
+                        "result_regex": "^(\\s+-g)",
                         "error_message": "L'argument <code>-g</code> de l'action <code>valeur</code> ne respect pas la nomenclature."
                     },
                     {
@@ -412,37 +412,37 @@
                     {
                         "command": "projection -h",
                         "success_looking": true,
-                        "result_regex": "(\\s-p)",
+                        "result_regex": "^(\\s+-p)",
                         "error_message": "L'argument <code>-p</code> de l'action <code>projection</code> ne respect pas la nomenclature."
                     },
                     {
                         "command": "projection -h",
                         "success_looking": true,
-                        "result_regex": "(\\s-t)",
+                        "result_regex": "^(\\s+-t)",
                         "error_message": "L'argument <code>-t</code> de l'action <code>projection</code> ne respect pas la nomenclature."
                     },
                     {
                         "command": "projection -h",
                         "success_looking": true,
-                        "result_regex": "(\\s-d)",
+                        "result_regex": "^(\\s+-d)",
                         "error_message": "L'argument <code>-d</code> de l'action <code>projection</code> ne respect pas la nomenclature."
                     },
                     {
                         "command": "projection -h",
                         "success_looking": true,
-                        "result_regex": "(\\s-g)",
+                        "result_regex": "^(\\s+-g)",
                         "error_message": "L'argument <code>-g</code> de l'action <code>projection</code> ne respect pas la nomenclature."
                     },
                     {
                         "command": "projection -h",
                         "success_looking": true,
-                        "result_regex": "(\\s-r)",
+                        "result_regex": "^(\\s+-r)",
                         "error_message": "L'argument <code>-r</code> de l'action <code>projection</code> ne respect pas la nomenclature."
                     },
                     {
                         "command": "projection -h",
                         "success_looking": true,
-                        "result_regex": "(\\s-v)",
+                        "result_regex": "^(\\s+-v)",
                         "error_message": "L'argument <code>-v</code> de l'action <code>projection</code> ne respect pas la nomenclature."
                     }
                 ]
@@ -622,9 +622,9 @@
                         "error_message": "L'argument<code>--date</code> est manquante pour la commande <code>valeur</code>"
                     },
                     {
-                        "command": "valeur -graphique",
+                        "command": "valeur -g",
                         "success_looking": false,
-                        "result_regex": "(argument -graphique/--)",
+                        "result_regex": "(argument -g/--)",
                         "error_message": "L'argument<code>--g</code> est manquante pour la commande <code>valeur</code>"
                     },
                     {
@@ -880,7 +880,7 @@
                     {
                         "command": "acheter -h",
                         "success_looking": true,
-                        "result_regex": "^(\\s+-t\\s.?STRING\\s+[STRING)",
+                        "result_regex": "^(\\s+-t\\s.?STRING\\s+\\[STRING)",
                         "error_message": "L'argument <code>--titres</code> de l'action <code>acheter</code> devrait avoir le <strong>metavar</strong> <code>STRING [STRING ...]</code>"
                     },
                     {
@@ -892,7 +892,7 @@
                     {
                         "command": "solde -h",
                         "success_looking": true,
-                        "result_regex": "^(\\s+p-\\sSTRING,)",
+                        "result_regex": "^(\\s+-p\\sSTRING,)",
                         "error_message": "L'argument <code>--portefeuille</code> de l'action <code>solde</code> devrait avoir le <strong>metavar</strong> <code>STRING</code>"
                     },
                     {
@@ -916,7 +916,7 @@
                     {
                         "command": "titres -h",
                         "success_looking": true,
-                        "result_regex": "^(\\s+-t\\s.?STRING\\s+[STRING)",
+                        "result_regex": "^(\\s+-t\\s.?STRING\\s+\\[STRING)",
                         "error_message": "L'argument <code>--titres</code> de l'action <code>titres</code> devrait avoir le <strong>metavar</strong> <code>STRING [STRING ...]</code>"
                     },
                     {
@@ -940,7 +940,7 @@
                     {
                         "command": "valeur -h",
                         "success_looking": true,
-                        "result_regex": "^(\\s+-t\\s.?STRING\\s+[STRING)",
+                        "result_regex": "^(\\s+-t\\s.?STRING\\s+\\[STRING)",
                         "error_message": "L'argument <code>--titres</code> de l'action <code>valeur</code> devrait avoir le <strong>metavar</strong> <code>STRING [STRING ...]</code>"
                     },
                     {
@@ -964,7 +964,7 @@
                     {
                         "command": "projection -h",
                         "success_looking": true,
-                        "result_regex": "^(\\s+-t\\s.?STRING\\s+[STRING)",
+                        "result_regex": "^(\\s+-t\\s.?STRING\\s+\\[STRING)",
                         "error_message": "L'argument <code>--titres</code> de l'action <code>projection</code> devrait avoir le <strong>metavar</strong> <code>STRING [STRING ...]</code>"
                     },
                     {

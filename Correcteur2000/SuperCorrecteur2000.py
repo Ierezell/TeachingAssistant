@@ -133,6 +133,20 @@ class AssistantCorrection:
         for team in self.Teams.values():
             if team.main:
                 correcteur8000.corrige(team)
+        note_moy = 0
+        nb_team = len(self.Teams)
+        data = {}
+        for team in self.Teams.values():
+            note_moy += team.rapport["1"]
+        print_note(note_moy/nb_team, 100)
+
+    def makeJsonFromSavedReport(self, critere):
+        # self.loadAssistant()
+        data = []
+        for team in self.Teams.values():
+            data.append(team.rapport[f"{critere}"])
+        with open(f'{self.projectBasePath}/result/resultatCritere{critere}.json', 'w') as outfile:
+            json.dump(date, outfile, ensure_ascii=False)
 
     def corrigeFromModules(self, modules, classes):
         print_wtf("\n  Correction du fonctionnement\n")
@@ -323,4 +337,6 @@ if __name__ == "__main__":
     # Assistant.unbundle()
     Assistant.initialise_Teams("gesport.py")
     Assistant.corrige("./dictCritèreP3.json")
+    Assistant.makeJsonFromSavedReport(1)
+    makeJsonFromSavedReport(2)
     Assistant.saveAssistant()

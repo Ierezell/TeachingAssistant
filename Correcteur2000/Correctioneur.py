@@ -7,8 +7,7 @@ import tqdm
 import traceback
 import sys
 import inspect
-from Log import (print_barre, print_titre, print_passing, print_warning,
-                 print_command, print_equipe)
+from Log import *
 import time
 import importlib
 from subprocess import PIPE, Popen, TimeoutExpired
@@ -87,7 +86,7 @@ class CorrecteurTeam:
         try:
             result, err = proc.communicate(timeout=timeout)
         except TimeoutExpired:
-            print_failing("FAIL")
+            print_failing(f"""FAIL : Timeout""")
             team.testResult[dicCommand["command"]]["pass"] = False
             team.testResult[dicCommand["command"]]["error_message"] = \
                 """Votre code à mis trop de temps à s'executer.\n""" +\
@@ -101,9 +100,9 @@ class CorrecteurTeam:
             if reAttendu.findall(result):
                 team.testResult[dicCommand["command"]]["pass"] = True
                 b_res = True
-                print_passing("PASS")
+                # print_passing(f"""PASS : {dicCommand["result_regex"]}""")
             else:
-                print_failing("FAIL")
+                print_failing(f"""FAIL : {dicCommand["result_regex"]}""")
                 c_res = dicCommand["error_message"]
                 team.testResult[dicCommand["command"]]["pass"] = False
                 team.testResult[dicCommand["command"]]["error_message"] =\
@@ -111,11 +110,11 @@ class CorrecteurTeam:
         else:
             if reAttendu.findall(err):
                 b_res = True
-                print_passing("PASS")
+                # print_passing(f"""PASS : {dicCommand["result_regex"]}""")
                 team.testResult[dicCommand["command"]]["pass"] = True
             else:
-                print_failing("FAIL")
-                c_res = icCommand["error_message"]
+                print_failing(f"""FAIL : {dicCommand["result_regex"]}""")
+                c_res = dicCommand["error_message"]
                 team.testResult[dicCommand["command"]]["pass"] = False
                 team.testResult[dicCommand["command"]]["error_message"] =\
                     dicCommand["error_message"]
@@ -127,16 +126,16 @@ class CorrecteurTeam:
         print_equipe(team.noTeam)
         for critere in self.dictCritere:
             note = 0.0
-            critere = None
+            # crit = None
             commentaire = ""
             commentaire = f"""<h2>Critère {critere["criterion"]}</h2>"""
             commentaire += f"""<h3>{critere["criterion_title"]}</h3>"""
             commentaire += f"""<p>{critere["criterion_description"]}</p>"""
-            print_titre(f"""Critère {critere["criterion"]}""")
+            print_ok(f"""   CRITÈRE {critere["criterion"]}\n""")
             # nombreSousSection = len(critere["test_section"])
             for subSection in critere["test_section"]:
-                commentaire += f"""<h4>{critere["section_title"]}</h4>"""
-                commentaire += f"""<p><strong>{critere["section_description"]}</strong></p>"""
+                commentaire += f"""<h4>{subSection["section_title"]}</h4>"""
+                commentaire += f"""<p><strong>{subSection["section_description"]}</strong></p>"""
                 print_titre(subSection["section_title"])
                 # nombreTests = len(subSection["tests"])
                 commentaire += "<ul>"
@@ -146,7 +145,7 @@ class CorrecteurTeam:
                     print_command("gesport.py",f"""{test["command"]}""")
                     b_res, c_res = self.runCommand(team, test)
                     if not b_res:
-                        commentaire += f"""<li>{res}</li>"""
+                        commentaire += f"""<li>{c_res}</li>"""
                     else:
                         noteSubSec += 1
                 print_note(noteSubSec, lenSubSec)
