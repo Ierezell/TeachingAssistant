@@ -1,0 +1,206 @@
+[
+    {
+        "criterion": 1,
+        "criterion_title": "Ligne de commande",
+        "criterion_description": "Le programme respecte <strong>toutes</strong> les spécifications de l'énoncé concernant l'interface de la ligne de commande, dont notamment celle qui permet d'obtenir de <strong>l'aide</strong> quant au fonctionnement de cette interface.",
+        "test_section": 
+        [
+            {
+                "section_title": "Commande Help",
+                "section_description": "Vérification de l'existence de la commande <code>help</code>.",
+                "weight": 60,
+                "tests": 
+                [
+                    {
+                        "command": "-h",
+                        "success_looking": true,
+                        "result_regex": "usage:",
+                        "error_message": "<code>Help</code> inexistant pour la commande <code>gesport.py -h</code>"
+                    },
+                    {
+                        "command": "-h",
+                        "success_looking": true,
+                        "result_regex": "({.*déposer.*})",
+                        "error_message": "<code>Help</code> inexistant pour la commande <code>gesport.py déposer -h</code>"
+                    },
+                    {
+                        "command": "acheter -h",
+                        "success_looking": true,
+                        "result_regex": "({.*acheter.*})",
+                        "error_message": "<code>Help</code> inexistant pour la commande <code>gesport.py acheter -h</code>"
+                    },
+                    {
+                        "command": "vendre -h",
+                        "success_looking": true,
+                        "result_regex": "({.*vendre.*})",
+                        "error_message": "<code>Help</code> inexistant pour la commande <code>gesport.py vendre -h</code>"
+                    },
+                    {
+                        "command": "solde -h",
+                        "success_looking": true,
+                        "result_regex": "({.*solde.*})",
+                        "error_message": "<code>Help</code> inexistant pour la commande <code>gesport.py solde -h</code>"
+                    },
+                    {
+                        "command": "titres -h",
+                        "success_looking": true,
+                        "result_regex": "({.*titres.*})",
+                        "error_message": "<code>Help</code> inexistant pour la commande <code>gesport.py titres -h</code>"
+                    },
+                    {
+                        "command": "valeur -h",
+                        "success_looking": true,
+                        "result_regex": "({.*valeur.*})",
+                        "error_message": "<code>Help</code> inexistant pour la commande <code>gesport.py valeur -h</code>"
+                    },
+                    {
+                        "command": "projection -h",
+                        "success_looking": true,
+                        "result_regex": "({.*projection.*})",
+                        "error_message": "<code>Help</code> inexistant pour la commande <code>gesport.py projection -h</code>"
+                    }
+                ]
+            },
+            {
+                "section_title": "Nomenclature",
+                "section_description": "Vérification du respect de la nomenclature",
+                "weight": 10,
+                "tests":  
+                [
+                    {
+                        "command": "-h",
+                        "success_looking": true,
+                        "result_regex": "({.*déposer.*})",
+                        "error_message": "L'action <code>déposer</code> ne respect pas la nomenclature."
+                    },
+                    {
+                        "command": "-h",
+                        "success_looking": true,
+                        "result_regex": "({.*acheter.*})",
+                        "error_message": "L'action <code>acheter</code> ne respect pas la nomenclature."
+                    },
+                    {
+                        "command": "-h",
+                        "success_looking": true,
+                        "result_regex": "({.*vendre.*})",
+                        "error_message": "L'action <code>vendre</code> ne respect pas la nomenclature."
+                    },
+                    {
+                        "command": "-h",
+                        "success_looking": true,
+                        "result_regex": "({.*solde.*})",
+                        "error_message": "L'action <code>solde</code> ne respect pas la nomenclature."
+                    },
+                    {
+                        "command": "-h",
+                        "success_looking": true,
+                        "result_regex": "({.*titres.*})",
+                        "error_message": "L'action <code>titres</code> ne respect pas la nomenclature."
+                    },
+                    {
+                        "command": "-h",
+                        "success_looking": true,
+                        "result_regex": "({.*valeur.*})",
+                        "error_message": "L'action <code>valeur</code> ne respect pas la nomenclature."
+                    },
+                    {
+                        "command": "-h",
+                        "success_looking": true,
+                        "result_regex": "({.*projection.*})",
+                        "error_message": "L'action <code>projection</code> ne respect pas la nomenclature."
+                    },
+                    {
+                        "command": "déposer -h",
+                        "success_looking": true,
+                        "result_regex": "(--portefeuille)",
+                        "error_message": "L'argument <copde>--portefeuille</code> de l'action <code>déposer</code> ne respect pas la nomenclature."
+                    },
+                    {
+                        "command": "déposer -h",
+                        "success_looking": true,
+                        "result_regex": "(--quantité)",
+                        "error_message": "L'argument <copde>--quantité</code> de l'action <code>déposer</code> ne respect pas la nomenclature."
+                    },
+                    {
+                        "command": "déposer -h",
+                        "success_looking": true,
+                        "result_regex": "(--date)",
+                        "error_message": "L'argument <copde>--date</code> de l'action <code>déposer</code> ne respect pas la nomenclature."
+                    },
+                    {
+                        "command": "déposer -h",
+                        "success_looking": true,
+                        "result_regex": "(\\s-p)",
+                        "error_message": "L'argument <copde>-p</code> de l'action <code>déposer</code> ne respect pas la nomenclature."
+                    },
+                    {
+                        "command": "déposer -h",
+                        "success_looking": true,
+                        "result_regex": "(\\s-q)",
+                        "error_message": "L'argument <copde>-q</code> de l'action <code>déposer</code> ne respect pas la nomenclature."
+                    },
+                    {
+                        "command": "déposer -h",
+                        "success_looking": true,
+                        "result_regex": "(\\s-d)",
+                        "error_message": "L'argument <copde>-d</code> de l'action <code>déposer</code> ne respect pas la nomenclature."
+                    },
+                    {
+                        "command": "acheter -h",
+                        "success_looking": true,
+                        "result_regex": "(--portefeuille)",
+                        "error_message": "L'argument <copde>--portefeuille</code> de l'action <code>acheter</code> ne respect pas la nomenclature."
+                    },
+                    {
+                        "command": "acheter -h",
+                        "success_looking": true,
+                        "result_regex": "(--quantité)",
+                        "error_message": "L'argument <copde>--quantité</code> de l'action <code>acheter</code> ne respect pas la nomenclature."
+                    },
+                    {
+                        "command": "acheter -h",
+                        "success_looking": true,
+                        "result_regex": "(--titres)",
+                        "error_message": "L'argument <copde>--titres</code> de l'action <code>acheter</code> ne respect pas la nomenclature."
+                    },
+                    {
+                        "command": "acheter -h",
+                        "success_looking": true,
+                        "result_regex": "(--date)",
+                        "error_message": "L'argument <copde>--date</code> de l'action <code>acheter</code> ne respect pas la nomenclature."
+                    },
+                    {
+                        "command": "acheter -h",
+                        "success_looking": true,
+                        "result_regex": "(\\s-p)",
+                        "error_message": "L'argument <copde>-p</code> de l'action <code>acheter</code> ne respect pas la nomenclature."
+                    },
+                    {
+                        "command": "acheter -h",
+                        "success_looking": true,
+                        "result_regex": "(\\s-q)",
+                        "error_message": "L'argument <copde>-q</code> de l'action <code>acheter</code> ne respect pas la nomenclature."
+                    },
+                    {
+                        "command": "acheter -h",
+                        "success_looking": true,
+                        "result_regex": "(\\s-t)",
+                        "error_message": "L'argument <copde>-t</code> de l'action <code>acheter</code> ne respect pas la nomenclature."
+                    },
+                    {
+                        "command": "acheter -h",
+                        "success_looking": true,
+                        "result_regex": "(\\s-d)",
+                        "error_message": "L'argument <copde>-d</code> de l'action <code>acheter</code> ne respect pas la nomenclature."
+                    },
+                    {
+                        "command": "vendre -h",
+                        "success_looking": true,
+                        "result_regex": "(--)",
+                        "error_message": "L'argument <copde>--</code> de l'action <code>vendre</code> ne respect pas la nomenclature."
+                    }
+                ]
+            }
+        ]
+    }
+]
