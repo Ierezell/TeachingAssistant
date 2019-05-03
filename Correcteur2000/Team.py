@@ -66,7 +66,7 @@ class Team:
         self.BadMainFile = False
         self.NoMainFile = False
         self.penalites = None
-        self.sorties = {}
+        self.testResult = {}
         self.rapport = []
         self.functions = []
         self.classes = []

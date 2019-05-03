@@ -39,132 +39,85 @@ class CorrecteurTeam:
     def load_correction_dict(self, pathJson):
         """
         [
-            [
+            {
                 "criterion": 1,
-                "criterion_title": "Ligne de commande,
+                "criterion_title": "Ligne de commande",
                 "criterion_description": "Le programme respecte <strong>toutes</strong> les spécifications de l'énoncé concernant l'interface de la ligne de commande, dont notamment celle qui permet d'obtenir de <strong>l'aide</strong> quant au fonctionnement de cette interface."
-                "test_section": [
+                "test_section":
+                [
                     {
                         "section_title": "Commande Help",
-                        "section_description": "Vérifier l'existence de la commande <code>help</code>."
-                        "weight": 60
-                        "test_list": [
-                            "title": "Affichage d'aide pour la commande"
-                            "test": [
-                                {
-                                    "command": "-h",
-                                    "success_looking": true,
-                                    "result_regex": "usage:",
-                                    "error_message": "<code>Help</code> inexistant"
-                                },
-                                {
-                                    "command": "déposer -h",
-                                    "success_looking": true,
-                                    "result_regex": "usage:",
-                                    "error_message": "<code>Help</code> inexistant"
-                                }
-                            ]
-                        ]
-                    },
-                    {
-                        "section_title": "Nomenclature",
-                        "section_description": "Vérifier l'existence de la commande <code>help</code>."
-                        "weight": 60
-                        "test_list": [
-                            "title": "Affichage d'aide pour la commande"
-                            "test": [
-                                {
-                                    "command": "-h",
-                                    "success_looking": true,
-                                    "result_regex": "usage:",
-                                    "error_message": "<code>Help</code> inexistant"
-                                }
-                            ]
+                        "section_description": "Vérifier l'existence de la commande <code>help</code>.",
+                        "weight": 60,
+                        "tests":
+                        [
+                            {
+                                "command": "-h",
+                                "success_looking": true,
+                                "result_regex": "usage:",
+                                "error_message": "<code>Help</code> inexistant"
+                            },
+                            {
+                                "command": "déposer -h",
+                                "success_looking": true,
+                                "result_regex": "usage:",
+                                "error_message": "<code>Help</code> inexistant"
+                            }
                         ]
                     }
                 ]
-            ],
-            [
-                "criterion": 2,
-                "criterion_title": "Ligne de commande,
-                "criterion_description": "Le programme respecte <strong>toutes</strong> les spécifications de l'énoncé concernant l'interface de la ligne de commande, dont notamment celle qui permet d'obtenir de <strong>l'aide</strong> quant au fonctionnement de cette interface."
-                "test_section": [
-                    {
-                        "section_title": "Commande Help",
-                        "section_description": "Vérifier l'existence de la commande <code>help</code>."
-                        "weight": 60
-                        "test_list": [
-                            "title": "Affichage d'aide pour la commande"
-                            "test": [
-                                {
-                                    "command": "-h",
-                                    "success_looking": true,
-                                    "result_regex": "usage:",
-                                    "error_message": "<code>Help</code> inexistant"
-                                }
-                            ]
-                        ]
-                    }
-                ]
-            ]
-        ]
-        [
-        {"Critère1":
-            {"Nom Test1":
-                {"description " : str "Description du test pour le rapport"
-                 "commentaireEchec" : str "Description de l'echec"
-                 "arguments": list str [les arguments à faire en ligne de commandes]
-                 "resultatAttendu": str "Un mot que l'on veut matcher ou une regex"
-                 "erreurAttendu": str "Un mot que l'on veut matcher ou une regex"
-                 "pondération" : int ou float pour pondérer le resultat.
-                }
+            },
+            {
+                Critere2
             }
-            {"Nom Test2" :
-                ........
-            }
-        },
-        {"Critère2": ........
-        }
         ]
         """
+
         with open(pathJson) as jsonFile:
             self.dictCritere = json.load(jsonFile)
 
+    def runCommand(self, team, dicCommand, timeout=5):
+        reAttendu = re.compile(dicCommand["result_regex"],
+                               flags=re.MULTILINE)
+        command = [pyEnv, team.pathTeam+"/gesport.py"] + dicCommand["command"].split(" ")
+        proc = Popen(command, stdout=PIPE, stderr=PIPE, encoding='utf-8')
+        team.testResult[dicCommand["command"]] = {}
+        try:
+            result, err = proc.communicate(timeout=5)
+        except TimeoutExpired:
+            team.testResult[dicCommand["command"]]["pass"] = False
+            team.testResult[dicCommand["command"]]["error_message"] = \
+                """Votre code à mis trop de temps à s'executer.\n""" +\
+                """Pour ne pas bloquer la correction automatique""" +\
+                """nous avons limité à 5s pour ce critère"""
+        finally:
+            team.testResult[dicCommand["command"]]["resultat"] = result
+            team.testResult[dicCommand["command"]]["erreur"] = err
+        if dicCommand["success_looking"]:
+            if reAttendu.findall(result):
+                team.testResult[dicCommand["command"]]["pass"] = True
+            else:
+                team.testResult[dicCommand["command"]]["pass"] = False
+                team.testResult[dicCommand["command"]]["error_message"] =\
+                    dicCommand["error_message"]
+        else:
+            if reAttendu.findall(err):
+                team.testResult[dicCommand["command"]]["pass"] = True
+            else:
+                team.testResult[dicCommand["command"]]["pass"] = False
+                team.testResult[dicCommand["command"]]["error_message"] =\
+                    dicCommand["error_message"]
+
     def corrige(self, team):
+        # note = 0
+        # critere = None
+        # commentaire = ""
         for critere in self.dictCritere:
-            commandesToTest = critere["command"]
-            reAttendu = [re.compile(resAtt, flags=re.MULTILINE)
-                         for resAtt in critere["resultatAttendu"]]
-            reErrAttendu = [re.compile(errAtt, flags=re.MULTILINE)
-                            for errAtt in critere["erreurAttendu"]]
-
-            nomCommandeTeam = team.sorties[critere["critere"]][critere["nom"]]
-            nomCommandeTeam["ponderation"] = critere["ponderation"]
-            nomCommandeTeam["description"] = critere["description"]
-
-            for command in commandesToTest:
-                options = [pyEnv, team.main] + command.strip().split(" ")
-
-                proc = Popen(options, stdout=PIPE, stderr=PIPE,
-                             encoding='utf-8')
-                try:
-                    result, err = proc.communicate(timeout=5)
-                except TimeoutExpired:
-                    nomCommandeTeam[command]["estReussi"] = False
-                    nomCommandeTeam["commentaireEchec"] = \
-                        """Votre code à mis trop de temps à s'executer.\n""" +\
-                        """Pour ne pas bloquer la correction automatique""" +\
-                        """nous avons limité à 5s pour ce critère"""
-                finally:
-                    nomCommandeTeam[command]["resultat"] = result
-                    nomCommandeTeam[command]["erreur"] = err
-                # TODO La logique de si le test est réussi ou pas
-                if reAttendu.findall(result) or reErrAttendu.findall(result):
-                    nomCommandeTeam[command]["estReussi"] = True
-                else:
-                    nomCommandeTeam[command]["estReussi"] = False
-                    nomCommandeTeam["commentaireEchec"] =\
-                        critere["commentaireEchec"]
+            # nombreSousSection = len(critere["test_section"])
+            for subSection in critere["test_section"]:
+                # nombreTests = len(subSection["tests"])
+                for test in subSection["tests"]:
+                    self.runCommand(team, test)
             team.saveTeamState()
 
     def correction_commit(self, team, no_critere):

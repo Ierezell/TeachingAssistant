@@ -1,0 +1,64 @@
+[
+    {
+        "criterion": 1,
+        "criterion_title": "Ligne de commande",
+        "criterion_description": "Le programme respecte <strong>toutes</strong> les spécifications de l'énoncé concernant l'interface de la ligne de commande, dont notamment celle qui permet d'obtenir de <strong>l'aide</strong> quant au fonctionnement de cette interface.",
+        "test_section": [
+            {
+                "section_title": "Commande Help",
+                "section_description": "Vérification de l'existence de la commande <code>help</code>.",
+                "weight": 60,
+                "tests": [
+                    {
+                        "command": "-h",
+                        "success_looking": true,
+                        "result_regex": "usage:",
+                        "error_message": "<code>Help</code> inexistant pour la commande <code>gesport.py -h</code>"
+                    },
+                    {
+                        "command": "déposer -h",
+                        "success_looking": true,
+                        "result_regex": "usage:",
+                        "error_message": "<code>Help</code> inexistant pour la commande <code>gesport.py déposer -h</code>"
+                    },
+                    {
+                        "command": "acheter -h",
+                        "success_looking": true,
+                        "result_regex": "usage:",
+                        "error_message": "<code>Help</code> inexistant pour la commande <code>gesport.py acheter -h</code>"
+                    },
+                    {
+                        "command": "vendre -h",
+                        "success_looking": true,
+                        "result_regex": "usage:",
+                        "error_message": "<code>Help</code> inexistant pour la commande <code>gesport.py vendre -h</code>"
+                    },
+                    {
+                        "command": "solde -h",
+                        "success_looking": true,
+                        "result_regex": "usage:",
+                        "error_message": "<code>Help</code> inexistant pour la commande <code>gesport.py solde -h</code>"
+                    },
+                    {
+                        "command": "titres -h",
+                        "success_looking": true,
+                        "result_regex": "usage:",
+                        "error_message": "<code>Help</code> inexistant pour la commande <code>gesport.py titres -h</code>"
+                    },
+                    {
+                        "command": "valeur -h",
+                        "success_looking": true,
+                        "result_regex": "usage:",
+                        "error_message": "<code>Help</code> inexistant pour la commande <code>gesport.py valeur -h</code>"
+                    },
+                    {
+                        "command": "projection -h",
+                        "success_looking": true,
+                        "result_regex": "usage:",
+                        "error_message": "<code>Help</code> inexistant pour la commande <code>gesport.py projection -h</code>"
+                    }
+                ]
+            }
+        ]
+    }
+]

@@ -67,6 +67,7 @@ UNDERLINE = '\033[4m'
 PYENVNAME = "python3.7"  # ex : py, python, python3.7
 EQUIPE = 22
 
+
 class AssistantCorrection:
     # Modifier le nom utilisé par votre environnement pour python
 
@@ -169,7 +170,8 @@ class AssistantCorrection:
                         commentaire += f"<p><strong><span style='color: #ff0000;'>Votre projet n'avait pas le bon nom, 10% on été retiré de la note.</span><strong></p>"
                     commentaire += f"<h4>Résultat: {note}%</h4>"
                     commentaire += f"<p><strong>La correction ainsi que la composition des messages est automatisé, pour toutes questions ou révision veuillez commenter ce fil.</strong></p>"
-                    resultat.append({'équipe': team.noTeam, 'score': note, 'commentaires': commentaire})
+                    resultat.append({'équipe': team.noTeam, 'score': note,
+                                     'commentaires': commentaire})
             tqdm.tqdm.write(" ")
         print_wtf(badTeam)
         with open('./ResultatsCritère4.json', 'w') as outfile:
@@ -230,6 +232,13 @@ class AssistantCorrection:
                 # input("")
         with open('./ResultatsNomencatureP3.json', 'w') as outfile:
             json.dump(list_ready_to_publish, outfile, ensure_ascii=False)
+
+    def corrige(self, pathJson):
+        correcteur8000 = CorrecteurTeam(self.projectBasePath)
+        correcteur8000.load_correction_dict(pathJson)
+        for team in tqdm.tqdm(self.Teams.values()):
+            tqdm.tqdm.write(f"Doing team {team.noTeam}")
+            correcteur8000.corrige(team)
 
     def get_functions(self):
         correcteur8000 = CorrecteurTeam(self.projectBasePath)
@@ -312,27 +321,5 @@ if __name__ == "__main__":
     # Assistant.initialize_Directory()
     # Assistant.unbundle()
     Assistant.initialise_Teams("gesport.py")
-    Assistant.corrigeNoms("./dicNomP3.json")
-    # Assistant.corrigeHelp()
-    # Assistant.get_commits()
-    # Assistant.corrigeCommit(1)
-    # Assistant.get_functions()
-
-    # Assistant.corrigeNoms("./dicNom.json")
-    # Assistant.not_show_commits()
-    # Assistant.corrigeCommit(1)
-    # Assistant.corrigeFromModules()
-    # Assistant.show_functions()
-    # Assistant.show_commits()
-    # Assistant.corrigeCommit(1)
-    # Assistant.corrigeFromModules(modules=["marche_boursier", "portefeuille"],
-    #                              classes=[["MarchéBoursier"], ["Portefeuille"]])
-    # Assistant.show_functions()
-    # Assistant.show_similarity("gesport.py", 40)
-    # Assistant.show_similarity("portefeuille.py")
-    # Assistant.corrige("./dictCritere.json")
-    # Assistant.makeRapport()
-    # Assistant.groupAndJsonize()
-    # Assistant.sendToWebsite()
-    # Assistant.saveAssistant()
-    # Assistant.loadAssistant()
+    Assistant.corrige("./testTp3.json")
+    Assistant.saveAssistant()
