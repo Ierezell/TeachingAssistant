@@ -38,6 +38,76 @@ class CorrecteurTeam:
     def load_correction_dict(self, pathJson):
         """
         [
+            [
+                "criterion": 1,
+                "criterion_title": "Ligne de commande,
+                "criterion_description": "Le programme respecte <strong>toutes</strong> les spécifications de l'énoncé concernant l'interface de la ligne de commande, dont notamment celle qui permet d'obtenir de <strong>l'aide</strong> quant au fonctionnement de cette interface."
+                "test_section": [
+                    {
+                        "section_title": "Commande Help",
+                        "section_description": "Vérifier l'existence de la commande <code>help</code>."
+                        "weight": 60
+                        "test_list": [
+                            "title": "Affichage d'aide pour la commande"
+                            "test": [
+                                {
+                                    "command": "-h",
+                                    "success_looking": true,
+                                    "result_regex": "usage:",
+                                    "error_message": "<code>Help</code> inexistant"
+                                },
+                                {
+                                    "command": "déposer -h",
+                                    "success_looking": true,
+                                    "result_regex": "usage:",
+                                    "error_message": "<code>Help</code> inexistant"
+                                }
+                            ]
+                        ]
+                    },
+                    {
+                        "section_title": "Nomenclature",
+                        "section_description": "Vérifier l'existence de la commande <code>help</code>."
+                        "weight": 60
+                        "test_list": [
+                            "title": "Affichage d'aide pour la commande"
+                            "test": [
+                                {
+                                    "command": "-h",
+                                    "success_looking": true,
+                                    "result_regex": "usage:",
+                                    "error_message": "<code>Help</code> inexistant"
+                                }
+                            ]
+                        ]
+                    }
+                ]
+            ],
+            [
+                "criterion": 2,
+                "criterion_title": "Ligne de commande,
+                "criterion_description": "Le programme respecte <strong>toutes</strong> les spécifications de l'énoncé concernant l'interface de la ligne de commande, dont notamment celle qui permet d'obtenir de <strong>l'aide</strong> quant au fonctionnement de cette interface."
+                "test_section": [
+                    {
+                        "section_title": "Commande Help",
+                        "section_description": "Vérifier l'existence de la commande <code>help</code>."
+                        "weight": 60
+                        "test_list": [
+                            "title": "Affichage d'aide pour la commande"
+                            "test": [
+                                {
+                                    "command": "-h",
+                                    "success_looking": true,
+                                    "result_regex": "usage:",
+                                    "error_message": "<code>Help</code> inexistant"
+                                }
+                            ]
+                        ]
+                    }
+                ]
+            ]
+        ]
+        [
         {"Critère1":
             {"Nom Test1":
                 {"description " : "Description du test pour le rapport"
