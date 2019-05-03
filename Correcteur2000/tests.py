@@ -28,12 +28,12 @@ class Tests:
                 self.loaded_modules[i] = importlib.import_module(module)
                 self.loaded_modules[i] = importlib.reload(self.loaded_modules[i])
             except ModuleNotFoundError:
-                #print(f"No module {module} for team {team.noTeam}")
+                print(f"No module {module} for team {team.noTeam}")
                 self.equipeOk = False
             except ImportError:
                 missing_module_name = traceback.format_exc().split('\n')[-2].split()[6][1:-1]
                 if missing_module_name == module:
-                    #print("Import circulaire !")
+                    print("Import circulaire !")
                     self.equipeOk = False
                 else:
                     self.modules_to_remove.append(missing_module_name)
@@ -43,6 +43,7 @@ class Tests:
                     self.loaded_modules[i] = importlib.reload(self.loaded_modules[i])
             except Exception as e:
                 print(e)
+                print_failing("Magical Error with unicorn 1!")
                 self.equipeOk = False
         # A PARTIE DICI LES MODULES SONT CHARGÉ DANS loaded_modules
         # OU ALORS LEQUIPE A UN PROBLEME ET ON NE PEUT PAS CHARGER LEURS
@@ -68,17 +69,13 @@ class Tests:
             # ICI ON CHERCHE LES CLASSES DES ELEVES EN FONCTION DE CELLES QUON
             # VEUT DEPUIS LES STRING DONNEES DANS SUPERCORRECTEUR ET PASSEE
             # DANS TA MOULINETTE DE RECHERCHE DE NOMS
-            if self.team.noTeam == 15:
-                print(classes_team)
-                print(f"{self.team.dictNomenclature}")
-                input()
             for i, mod in enumerate(self.loaded_modules):
                 for cl in self.classes[i]:
                     classes_team.append(getattr(mod, self.team.dictNomenclature[cl]))
             try:
                 self.marche = classes_team[0]()
             except Exception as e:
-                print(e)
+                print_failing("Magical Error with unicorn 2!")
             try:
                 # self.portefeuille = classes_team[1]()
                 # Ou bien
@@ -86,25 +83,28 @@ class Tests:
                 # Pour initialiser le portefeuille avec un marché
 
             except Exception as e:
-                print(e)
-
+                print_failing("Magical Error with unicorn 3!")
+            
     def test_2_prix(self):
         command = "prix"
         arg = "'goog', datetime.date(2019, 3, 28)"
         print_command(f"{command}", f"{arg}")
         res = True
-        comments = f"<li>{command}({arg})</li>"
+        comments = f"<li><code>{command}({arg})</code></li>"
         attendu = 1168.685
         try:
             assert(getattr(self.marche, self.team.dictNomenclature[command])(
-                str("goog"), datetime.date(2019, 3, 28)) == attendu)
-
+                str('goog'), datetime.date(2019, 3, 28)) == attendu)
+            
+            print_passing('PASS')
         except AssertionError as e:
             res = False
             comments += f"<ul><li>La valeur retournée devrait être <code>{attendu}</code>.</li></ul>"
             print_failing(f'FAIL')
         except Exception as e:
             exc_type, exc_obj, exc_tb = sys.exc_info()
+            if f"{exc_obj}"[1:6] == 'Tests':
+                exc_obj = 'Une de vos classes semble mal conçue'
             fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
             res = False
             comments += f"<ul><li>Votre programme retourne l'erreur  <code>{e.__class__.__name__}: {exc_obj}</code> à la ligne {exc_tb.tb_lineno} du fichier {fname}.</li></ul>"
@@ -117,16 +117,19 @@ class Tests:
         arg = "1000000.01"
         print_command(f"{command}", f"{arg}")
         res = True
-        comments = f"<li>{command}({arg})</li>"
+        comments = f"<li><code>{command}({arg})</code></li>"
         attendu = None
         try:
             assert(getattr(self.portefeuille, self.team.dictNomenclature[command])(
                 1000000.01) == attendu)
-
+            
+            print_passing('PASS')
         except AssertionError as e:
             print_warning(f'        WARNING')
         except Exception as e:
             exc_type, exc_obj, exc_tb = sys.exc_info()
+            if f"{exc_obj}"[1:6] == 'Tests':
+                exc_obj = 'Une de vos classes semble mal conçue'
             fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
             res = False
             comments += f"<ul><li>Votre programme retourne l'erreur  <code>{e.__class__.__name__}: {exc_obj}</code> à la ligne {exc_tb.tb_lineno} du fichier {fname}.</li></ul>"
@@ -139,16 +142,19 @@ class Tests:
         arg = "2000000.02, datetime.date(2019, 3, 28)"
         print_command(f"{command}", f"{arg}")
         res = True
-        comments = f"<li>{command}({arg})</li>"
+        comments = f"<li><code>{command}({arg})</code></li>"
         attendu = None
         try:
             assert(getattr(self.portefeuille, self.team.dictNomenclature[command])(
                 2000000.02, datetime.date(2019, 3, 28)) == attendu)
-
+            
+            print_passing('PASS')
         except AssertionError as e:
             print_warning(f'        WARNING')
         except Exception as e:
             exc_type, exc_obj, exc_tb = sys.exc_info()
+            if f"{exc_obj}"[1:6] == 'Tests':
+                exc_obj = 'Une de vos classes semble mal conçue'
             fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
             res = False
             comments += f"<ul><li>Votre programme retourne l'erreur  <code>{e.__class__.__name__}: {exc_obj}</code> à la ligne {exc_tb.tb_lineno} du fichier {fname}.</li></ul>"
@@ -161,11 +167,12 @@ class Tests:
         arg = ""
         print_command(f"{command}", f"{arg}")
         res = True
-        comments = f"<li>{command}({arg})</li>"
-        attendu = 3000000.03
+        comments = f"<li><code>{command}({arg})</code></li>"
+        attendu = 1000000.01
         try:
             assert(round(getattr(self.portefeuille, self.team.dictNomenclature[command])()) == round(attendu))
-
+            
+            print_passing('PASS')
         except AssertionError as e:
             res = False
             test = getattr(self.portefeuille,
@@ -175,6 +182,8 @@ class Tests:
             comments += f"<ul><li>La valeur retournée devrait être <code>{attendu}</code>, vous retournez <code>{test}</code>. Prenez-vous en considération que l'argent déposé dans le passé restera dans le futur?</li></ul>"
         except Exception as e:
             exc_type, exc_obj, exc_tb = sys.exc_info()
+            if f"{exc_obj}"[1:6] == 'Tests':
+                exc_obj = 'Une de vos classes semble mal conçue'
             fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
             res = False
             comments += f"<ul><li>Votre programme retourne l'erreur  <code>{e.__class__.__name__}: {exc_obj}</code> à la ligne {exc_tb.tb_lineno} du fichier {fname}.</li></ul>"
@@ -187,12 +196,13 @@ class Tests:
         arg = "datetime.date(2019, 3, 28)"
         print_command(f"{command}", f"{arg}")
         res = True
-        comments = f"<li>{command}({arg})</li>"
+        comments = f"<li><code>{command}({arg})</code></li>"
         attendu = 2000000.02
         try:
             assert(getattr(self.portefeuille,
                            self.team.dictNomenclature[command])(datetime.date(2019, 3, 28)) == attendu)
-
+            
+            print_passing('PASS')
         except AssertionError as e:
             res = False
             test = getattr(self.portefeuille,
@@ -202,6 +212,8 @@ class Tests:
             comments += f"<ul><li>La valeur retournée devrait être <code>{attendu}</code>, vous retournez <code>{test}</code>.</li></ul>"
         except Exception as e:
             exc_type, exc_obj, exc_tb = sys.exc_info()
+            if f"{exc_obj}"[1:6] == 'Tests':
+                exc_obj = 'Une de vos classes semble mal conçue'
             fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
             res = False
             comments += f"<ul><li>Votre programme retourne l'erreur  <code>{e.__class__.__name__}: {exc_obj}</code> à la ligne {exc_tb.tb_lineno} du fichier {fname}.</li></ul>"
@@ -214,16 +226,19 @@ class Tests:
         arg = "'goog', 10"
         print_command(f"{command}", f"{arg}")
         res = True
-        comments = f"<li>{command}({arg})</li>"
+        comments = f"<li><code>{command}({arg})</code></li>"
         attendu = None
         try:
             assert(getattr(self.portefeuille,
                            self.team.dictNomenclature[command])('goog', 10) == attendu)
-
+            
+            print_passing('PASS')
         except AssertionError as e:
             print_warning(f'        WARNING')
         except Exception as e:
             exc_type, exc_obj, exc_tb = sys.exc_info()
+            if f"{exc_obj}"[1:6] == 'Tests':
+                exc_obj = 'Une de vos classes semble mal conçue'
             fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
             res = False
             comments += f"<ul><li>Votre programme retourne l'erreur  <code>{e.__class__.__name__}: {exc_obj}</code> à la ligne {exc_tb.tb_lineno} du fichier {fname}.</li></ul>"
@@ -236,16 +251,19 @@ class Tests:
         arg = "'aapl', 10"
         print_command(f"{command}", f"{arg}")
         res = True
-        comments = f"<li>{command}({arg})</li>"
+        comments = f"<li><code>{command}({arg})</code></li>"
         attendu = None
         try:
             assert(getattr(self.portefeuille,
                            self.team.dictNomenclature[command])('aapl', 10) == attendu)
-
+            
+            print_passing('PASS')
         except AssertionError as e:
             print_warning(f'        WARNING')
         except Exception as e:
             exc_type, exc_obj, exc_tb = sys.exc_info()
+            if f"{exc_obj}"[1:6] == 'Tests':
+                exc_obj = 'Une de vos classes semble mal conçue'
             fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
             res = False
             comments += f"<ul><li>Votre programme retourne l'erreur  <code>{e.__class__.__name__}: {exc_obj}</code> à la ligne {exc_tb.tb_lineno} du fichier {fname}.</li></ul>"
@@ -258,14 +276,17 @@ class Tests:
         arg = "'aapl', 10, datetime.date(2019, 3, 28)"
         print_command(f"{command}", f"{arg}")
         res = True
-        comments = f"<li>{command}({arg})</li>"
+        comments = f"<li><code>{command}({arg})</code></li>"
         attendu = None
         try:
             assert(getattr(self.portefeuille, self.team.dictNomenclature[command])('aapl', 10, datetime.date(2019, 3, 28)) == attendu)
+            print_passing('PASS')
         except AssertionError as e:
             print_warning(f'        WARNING')
         except Exception as e:
             exc_type, exc_obj, exc_tb = sys.exc_info()
+            if f"{exc_obj}"[1:6] == 'Tests':
+                exc_obj = 'Une de vos classes semble mal conçue'
             fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
             res = False
             comments += f"<ul><li>Votre programme retourne l'erreur  <code>{e.__class__.__name__}: {exc_obj}</code> à la ligne {exc_tb.tb_lineno} du fichier {fname}.</li></ul>"
@@ -278,16 +299,19 @@ class Tests:
         arg = "'goog', 5"
         print_command(f"{command}", f"{arg}")
         res = True
-        comments = f"<li>{command}({arg})</li>"
+        comments = f"<li><code>{command}({arg})</code></li>"
         attendu = None
         try:
             assert(getattr(self.portefeuille,
                            self.team.dictNomenclature[command])('goog', 5) == attendu)
-
+            
+            print_passing('PASS')
         except AssertionError as e:
             print_warning(f'        WARNING')
         except Exception as e:
             exc_type, exc_obj, exc_tb = sys.exc_info()
+            if f"{exc_obj}"[1:6] == 'Tests':
+                exc_obj = 'Une de vos classes semble mal conçue'
             fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
             res = False
             comments += f"<ul><li>Votre programme retourne l'erreur  <code>{e.__class__.__name__}: {exc_obj}</code> à la ligne {exc_tb.tb_lineno} du fichier {fname}.</li></ul>"
@@ -300,16 +324,19 @@ class Tests:
         arg = "'aapl', 5, datetime.date(2019, 3, 28)"
         print_command(f"{command}", f"{arg}")
         res = True
-        comments = f"<li>{command}({arg})</li>"
+        comments = f"<li><code>{command}({arg})</code></li>"
         attendu = None
         try:
             assert(getattr(self.portefeuille,
                            self.team.dictNomenclature[command])('aapl', 5, datetime.date(2019, 3, 28)) == attendu)
-
+            
+            print_passing('PASS')
         except AssertionError as e:
             print_warning(f'        WARNING')
         except Exception as e:
             exc_type, exc_obj, exc_tb = sys.exc_info()
+            if f"{exc_obj}"[1:6] == 'Tests':
+                exc_obj = 'Une de vos classes semble mal conçue'
             fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
             res = False
             comments += f"<ul><li>Votre programme retourne l'erreur  <code>{e.__class__.__name__}: {exc_obj}</code> à la ligne {exc_tb.tb_lineno} du fichier {fname}.</li></ul>"
@@ -322,12 +349,13 @@ class Tests:
         arg = ""
         print_command(f"{command}", f"{arg}")
         res = True
-        comments = f"<li>{command}({arg})</li>"
-        attendu = 3000000.03
+        comments = f"<li><code>{command}({arg})</code></li>"
+        attendu = 1000000.01
         try:
             assert(round(getattr(self.portefeuille,
                            self.team.dictNomenclature[command])()) == round(attendu))
-
+            
+            print_passing('PASS')
         except AssertionError as e:
             res = False
             test = getattr(self.portefeuille,
@@ -337,6 +365,8 @@ class Tests:
             comments += f"<ul><li>La valeur retournée devrait être <code>{attendu}</code>, vous retournez <code>{test}</code>.</li></ul>"
         except Exception as e:
             exc_type, exc_obj, exc_tb = sys.exc_info()
+            if f"{exc_obj}"[1:6] == 'Tests':
+                exc_obj = 'Une de vos classes semble mal conçue'
             fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
             res = False
             comments += f"<ul><li>Votre programme retourne l'erreur  <code>{e.__class__.__name__}: {exc_obj}</code> à la ligne {exc_tb.tb_lineno} du fichier {fname}.</li></ul>"
@@ -349,12 +379,13 @@ class Tests:
         arg = "datetime.date(2019, 3, 28)"
         print_command(f"{command}", f"{arg}")
         res = True
-        comments = f"<li>{command}({arg})</li>"
+        comments = f"<li><code>{command}({arg})</code></li>"
         attendu = 2000000.02
         try:
             assert(getattr(self.portefeuille,
                            self.team.dictNomenclature[command])(datetime.date(2019, 3, 28)) == attendu)
-
+            
+            print_passing('PASS')
         except AssertionError as e:
             res = False
             test = getattr(self.portefeuille,
@@ -364,6 +395,8 @@ class Tests:
             comments += f"<ul><li>La valeur retournée devrait être <code>{attendu}</code>, vous retournez <code>{test}</code>.</li></ul>"
         except Exception as e:
             exc_type, exc_obj, exc_tb = sys.exc_info()
+            if f"{exc_obj}"[1:6] == 'Tests':
+                exc_obj = 'Une de vos classes semble mal conçue'
             fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
             res = False
             comments += f"<ul><li>Votre programme retourne l'erreur  <code>{e.__class__.__name__}: {exc_obj}</code> à la ligne {exc_tb.tb_lineno} du fichier {fname}.</li></ul>"
@@ -376,21 +409,24 @@ class Tests:
         arg = "['goog']"
         print_command(f"{command}", f"{arg}")
         res = True
-        comments = f"<li>{command}({arg})</li>"
-        attendu = 6360.9
+        comments = f"<li><code>{command}({arg})</code></li>"
+        attendu = 6348.575
         try:
             assert(round(getattr(self.portefeuille,
-                                 self.team.dictNomenclature[command])(['aapl', 'goog'])) == round(attendu))
-
+                                 self.team.dictNomenclature[command])(['goog'])) == round(attendu))
+            
+            print_passing('PASS')
         except AssertionError as e:
             res = False
             test = getattr(self.portefeuille,
-                           self.team.dictNomenclature[command])(['aapl', 'goog'])
+                           self.team.dictNomenclature[command])(['goog'])
             print_warning(f"        Résultat attendu: {attendu}")
             print_failing(f"Résultat de l'équipe: {test}")
             comments += f"<ul><li>La valeur retournée devrait être <code>{attendu}</code>, vous retournez <code>{test}</code>.</li></ul>"
         except Exception as e:
             exc_type, exc_obj, exc_tb = sys.exc_info()
+            if f"{exc_obj}"[1:6] == 'Tests':
+                exc_obj = 'Une de vos classes semble mal conçue'
             fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
             res = False
             comments += f"<ul><li>Votre programme retourne l'erreur  <code>{e.__class__.__name__}: {exc_obj}</code> à la ligne {exc_tb.tb_lineno} du fichier {fname}.</li></ul>"
@@ -403,12 +439,13 @@ class Tests:
         arg = "['aapl', 'goog']"
         print_command(f"{command}", f"{arg}")
         res = True
-        comments = f"<li>{command}({arg})</li>"
-        attendu = 9345.769
+        comments = f"<li><code>{command}({arg})</code></li>"
+        attendu = 8403.475
         try:
             assert(round(getattr(self.portefeuille,
                            self.team.dictNomenclature[command])(['aapl', 'goog'])) == round(attendu))
-
+            
+            print_passing('PASS')
         except AssertionError as e:
             res = False
             test = getattr(self.portefeuille,
@@ -418,6 +455,8 @@ class Tests:
             comments += f"<ul><li>La valeur retournée devrait être <code>{attendu}</code>, vous retournez <code>{test}</code>. Prenez-vous en considération que la valeur de titre acheté dans le passé restera dans le futur?</li></ul>"
         except Exception as e:
             exc_type, exc_obj, exc_tb = sys.exc_info()
+            if f"{exc_obj}"[1:6] == 'Tests':
+                exc_obj = 'Une de vos classes semble mal conçue'
             fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
             res = False
             comments += f"<ul><li>Votre programme retourne l'erreur  <code>{e.__class__.__name__}: {exc_obj}</code> à la ligne {exc_tb.tb_lineno} du fichier {fname}.</li></ul>"
@@ -430,12 +469,13 @@ class Tests:
         arg = "['aapl'], datetime.date(2019, 3, 28)"
         print_command(f"{command}", f"{arg}")
         res = True
-        comments = f"<li>{command}({arg})</li>"
+        comments = f"<li><code>{command}({arg})</code></li>"
         attendu = 941.869
         try:
             assert(round(getattr(self.portefeuille,
                            self.team.dictNomenclature[command])(['aapl'], datetime.date(2019, 3, 28))) == round(attendu))
-
+            
+            print_passing('PASS')
         except AssertionError as e:
             res = False
             test = getattr(self.portefeuille,
@@ -445,6 +485,8 @@ class Tests:
             comments += f"<ul><li>La valeur retournée devrait être <code>{attendu}</code>, vous retournez <code>{test}</code>.</li></ul>"
         except Exception as e:
             exc_type, exc_obj, exc_tb = sys.exc_info()
+            if f"{exc_obj}"[1:6] == 'Tests':
+                exc_obj = 'Une de vos classes semble mal conçue'
             fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
             res = False
             comments += f"<ul><li>Votre programme retourne l'erreur  <code>{e.__class__.__name__}: {exc_obj}</code> à la ligne {exc_tb.tb_lineno} du fichier {fname}.</li></ul>"
@@ -457,12 +499,13 @@ class Tests:
         arg = ""
         print_command(f"{command}", f"{arg}")
         res = True
-        comments = f"<li>{command}({arg})</li>"
-        attendu = {'goog': 5, 'aapl': 15}
+        comments = f"<li><code>{command}({arg})</code></li>"
+        attendu = {'goog': 5, 'aapl': 10}
         try:
             assert(getattr(self.portefeuille,
                            self.team.dictNomenclature[command])() == attendu)
-
+            
+            print_passing('PASS')
         except AssertionError as e:
             res = False
             test = getattr(self.portefeuille,
@@ -472,6 +515,8 @@ class Tests:
             comments += f"<ul><li>La valeur retournée devrait être <code>{attendu}</code>, vous retournez <code>{test}</code>. Avez-vous considéré que les actions achetés dans le passé reste dans le futur?</li></ul>"
         except Exception as e:
             exc_type, exc_obj, exc_tb = sys.exc_info()
+            if f"{exc_obj}"[1:6] == 'Tests':
+                exc_obj = 'Une de vos classes semble mal conçue'
             fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
             res = False
             comments += f"<ul><li>Votre programme retourne l'erreur  <code>{e.__class__.__name__}: {exc_obj}</code> à la ligne {exc_tb.tb_lineno} du fichier {fname}.</li></ul>"
@@ -484,12 +529,13 @@ class Tests:
         arg = "datetime.date(2019, 3, 28)"
         print_command(f"{command}", f"{arg}")
         res = True
-        comments = f"<li>{command}({arg})</li>"
+        comments = f"<li><code>{command}({arg})</code></li>"
         attendu = {'aapl': 5}
         try:
             assert(getattr(self.portefeuille,
                            self.team.dictNomenclature[command])(datetime.date(2019, 3, 28))['aapl'] == 5)
-
+            
+            print_passing('PASS')
         except AssertionError as e:
             res = False
             test = getattr(self.portefeuille,
@@ -499,6 +545,8 @@ class Tests:
             comments += f"<ul><li>La valeur retournée devrait être <code>{attendu}</code>, vous retournez <code>{test}</code>.</li></ul>"
         except Exception as e:
             exc_type, exc_obj, exc_tb = sys.exc_info()
+            if f"{exc_obj}"[1:6] == 'Tests':
+                exc_obj = 'Une de vos classes semble mal conçue'
             fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
             res = False
             comments += f"<ul><li>Votre programme retourne l'erreur <code>{e.__class__.__name__}: {exc_obj}</code> à la ligne {exc_tb.tb_lineno} du fichier {fname}.</li></ul>"
@@ -511,21 +559,22 @@ class Tests:
         arg = "datetime.date(2021, 3, 28), 5.5"
         print_command(f"{command}", f"{arg}")
         res = True
-        comments = f"<li>{command}({arg})</li>"
-        attendu = 3000727.488
+        comments = f"<li><code>{command}({arg})</code></li>"
+        attendu = 2000103.7675154659
         try:
-            assert(round(getattr(self.portefeuille,
-                           self.team.dictNomenclature[command])(datetime.date(2021, 3, 28), 5.5)) == round(attendu))
-
+            assert(round(getattr(self.portefeuille, self.team.dictNomenclature[command])(datetime.date(2021, 3, 28), 5.5)) == round(attendu))
+            print_passing('PASS')
         except AssertionError as e:
             res = False
-            test = getattr(self.portefeuille,
-                           self.team.dictNomenclature[command])(datetime.date(2021, 3, 28))
+            test = getattr(self.portefeuille, self.team.dictNomenclature[command])(
+                datetime.date(2021, 3, 28), 5.5)
             print_warning(f"        Résultat attendu: {attendu}")
             print_failing(f"Résultat de l'équipe: {test}")
             comments += f"<ul><li>La valeur retournée devrait être <code>{attendu}</code>, vous retournez <code>{test}</code>.</li></ul>"
         except Exception as e:
             exc_type, exc_obj, exc_tb = sys.exc_info()
+            if f"{exc_obj}"[1:6] == 'Tests':
+                exc_obj = 'Une de vos classes semble mal conçue'
             fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
             res = False
             comments += f"<ul><li>Votre programme retourne l'erreur <code>{e.__class__.__name__}: {exc_obj}</code> à la ligne {exc_tb.tb_lineno} du fichier {fname}.</li></ul>"
@@ -535,24 +584,24 @@ class Tests:
 
     def test_20_valeur_projetee(self):
         command = "valeur_projetée"
-        arg = """datetime.date(2021, 3, 28), {"goog": 5.0}"""
+        arg = """datetime.date(2021, 3, 28), {'goog': 5.0}"""
         print_command(f"{command}", f"{arg}")
         res = True
-        comments = f"<li>{command}({arg})</li>"
-        attendu = 3000495.832
+        comments = f"<li><code>{command}({arg})</code></li>"
+        attendu = 1000668.6975777396
         try:
-            assert(round(getattr(self.portefeuille,
-                           self.team.dictNomenclature[command])(datetime.date(2021, 3, 28), {"goog": 5.0})) == round(attendu))
-
+            assert(round(getattr(self.portefeuille, self.team.dictNomenclature[command])(datetime.date(2021, 3, 28), {'goog': 5.0})) == round(attendu))
+            print_passing('PASS')
         except AssertionError as e:
             res = False
-            test = getattr(self.portefeuille,
-                           self.team.dictNomenclature[command])(datetime.date(2021, 3, 28))
+            test = getattr(self.portefeuille, self.team.dictNomenclature[command])(datetime.date(2021, 3, 28), {'goog': 5.0})
             print_warning(f"        Résultat attendu: {attendu}")
             print_failing(f"Résultat de l'équipe: {test}")
             comments += f"<ul><li>La valeur retournée devrait être <code>{attendu}</code>, vous retournez <code>{test}</code>.</li></ul>"
         except Exception as e:
             exc_type, exc_obj, exc_tb = sys.exc_info()
+            if f"{exc_obj}"[1:6] == 'Tests':
+                exc_obj = 'Une de vos classes semble mal conçue'
             fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
             res = False
             comments += f"<ul><li>Votre programme retourne l'erreur <code>{e.__class__.__name__}: {exc_obj}</code> à la ligne {exc_tb.tb_lineno} du fichier {fname}.</li></ul>"
@@ -563,12 +612,14 @@ class Tests:
     def erreur_0_1_depot(self):
         command = "déposer"
         arg = """1"""
-        print_command(f"{command}", f"{arg}")
-        comments = f"<li>{command}({arg})</li>"
+        # print_command(f"{command}", f"{arg}")
+        comments = f"<li><code>{command}({arg})</code></li>"
         try:
             getattr(self.portefeuille, self.team.dictNomenclature[command])(1)
         except Exception as e:
             exc_type, exc_obj, exc_tb = sys.exc_info()
+            if f"{exc_obj}"[1:6] == 'Tests':
+                exc_obj = 'Une de vos classes semble mal conçue'
             fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
             print_failing(f"{e.__class__.__name__}: {exc_obj}")
 
@@ -577,7 +628,7 @@ class Tests:
         arg = """'goog', 100"""
         print_command(f"{command}", f"{arg}")
         res = False
-        comments = f"<li>{command}({arg})</li>"
+        comments = f"<li><code>{command}({arg})</code></li>"
         attendu = "LiquiditéInsuffisante"
         try:
             getattr(self.portefeuille, self.team.dictNomenclature[command])('goog', 100)
@@ -585,8 +636,11 @@ class Tests:
             print_failing(f"FAIL")
         except Exception as e:
             exc_type, exc_obj, exc_tb = sys.exc_info()
+            if f"{exc_obj}"[1:6] == 'Tests':
+                exc_obj = 'Une de vos classes semble mal conçue'
             fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
             if e.__class__.__name__ == self.team.dictNomenclature[attendu]:
+                print_passing('PASS')
                 res = True
             else:
                 res = False
@@ -600,7 +654,7 @@ class Tests:
         arg = """'goog', datetime.date(2022, 3, 28)"""
         print_command(f"{command}", f"{arg}")
         res = False
-        comments = f"<li>{command}({arg})</li>"
+        comments = f"<li><code>{command}({arg})</code></li>"
         attendu = "ErreurDate"
         try:
             getattr(self.marche, self.team.dictNomenclature[command])('goog', datetime.date(2022, 3, 28))
@@ -608,8 +662,11 @@ class Tests:
             print_failing(f"FAIL")
         except Exception as e:
             exc_type, exc_obj, exc_tb = sys.exc_info()
+            if f"{exc_obj}"[1:6] == 'Tests':
+                exc_obj = 'Une de vos classes semble mal conçue'
             fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
             if e.__class__.__name__ == self.team.dictNomenclature[attendu]:
+                print_passing('PASS')
                 res = True
             else:
                 res = False
@@ -623,7 +680,7 @@ class Tests:
         arg = """20000.02, datetime.date(2022, 3, 28)"""
         print_command(f"{command}", f"{arg}")
         res = False
-        comments = f"<li>{command}({arg})</li>"
+        comments = f"<li><code>{command}({arg})</code></li>"
         attendu = "ErreurDate"
         try:
             getattr(self.portefeuille, self.team.dictNomenclature[command])(
@@ -632,8 +689,11 @@ class Tests:
             print_failing(f"FAIL")
         except Exception as e:
             exc_type, exc_obj, exc_tb = sys.exc_info()
+            if f"{exc_obj}"[1:6] == 'Tests':
+                exc_obj = 'Une de vos classes semble mal conçue'
             fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
             if e.__class__.__name__ == self.team.dictNomenclature[attendu]:
+                print_passing('PASS')
                 res = True
             else:
                 res = False
@@ -647,7 +707,7 @@ class Tests:
         arg = """datetime.date(2022, 3, 28)"""
         print_command(f"{command}", f"{arg}")
         res = False
-        comments = f"<li>{command}({arg})</li>"
+        comments = f"<li><code>{command}({arg})</code></li>"
         attendu = "ErreurDate"
         try:
             getattr(self.portefeuille, self.team.dictNomenclature[command])(datetime.date(2022, 3, 28))
@@ -655,8 +715,11 @@ class Tests:
             print_failing(f"FAIL")
         except Exception as e:
             exc_type, exc_obj, exc_tb = sys.exc_info()
+            if f"{exc_obj}"[1:6] == 'Tests':
+                exc_obj = 'Une de vos classes semble mal conçue'
             fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
             if e.__class__.__name__ == self.team.dictNomenclature[attendu]:
+                print_passing('PASS')
                 res = True
             else:
                 res = False
@@ -670,7 +733,7 @@ class Tests:
         arg = """'goog', 1, datetime.date(2022, 3, 28)"""
         print_command(f"{command}", f"{arg}")
         res = False
-        comments = f"<li>{command}({arg})</li>"
+        comments = f"<li><code>{command}({arg})</code></li>"
         attendu = "ErreurDate"
         try:
             getattr(self.portefeuille, self.team.dictNomenclature[command])(
@@ -679,8 +742,11 @@ class Tests:
             print_failing(f"FAIL")
         except Exception as e:
             exc_type, exc_obj, exc_tb = sys.exc_info()
+            if f"{exc_obj}"[1:6] == 'Tests':
+                exc_obj = 'Une de vos classes semble mal conçue'
             fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
             if e.__class__.__name__ == self.team.dictNomenclature[attendu]:
+                print_passing('PASS')
                 res = True
             else:
                 res = False
@@ -692,25 +758,29 @@ class Tests:
     def erreur_4_1_depot(self):
         command = "déposer"
         arg = """1000000"""
-        print_command(f"{command}", f"{arg}")
-        comments = f"<li>{command}({arg})</li>"
+        # print_command(f"{command}", f"{arg}")
+        comments = f"<li><code>{command}({arg})</code></li>"
         try:
             getattr(self.portefeuille, self.team.dictNomenclature[command])(1000000)
         except Exception as e:
             exc_type, exc_obj, exc_tb = sys.exc_info()
+            if f"{exc_obj}"[1:6] == 'Tests':
+                exc_obj = 'Une de vos classes semble mal conçue'
             fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
             print_failing(f"{e.__class__.__name__}: {exc_obj}")
 
     def erreur_4_2_achat(self):
         command = "acheter"
         arg = """'goog', 2"""
-        print_command(f"{command}", f"{arg}")
-        comments = f"<li>{command}({arg})</li>"
+        # print_command(f"{command}", f"{arg}")
+        comments = f"<li><code>{command}({arg})</code></li>"
         try:
             getattr(self.portefeuille,
                     self.team.dictNomenclature[command])('goog', 2)
         except Exception as e:
             exc_type, exc_obj, exc_tb = sys.exc_info()
+            if f"{exc_obj}"[1:6] == 'Tests':
+                exc_obj = 'Une de vos classes semble mal conçue'
             fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
             print_failing(f"{e.__class__.__name__}: {exc_obj}")
 
@@ -719,7 +789,7 @@ class Tests:
         arg = """'goog', 1, datetime.date(2022, 3, 28)"""
         print_command(f"{command}", f"{arg}")
         res = False
-        comments = f"<li>{command}({arg})</li>"
+        comments = f"<li><code>{command}({arg})</code></li>"
         attendu = "ErreurDate"
         try:
             getattr(self.portefeuille, self.team.dictNomenclature[command])(
@@ -728,8 +798,11 @@ class Tests:
             print_failing(f"FAIL")
         except Exception as e:
             exc_type, exc_obj, exc_tb = sys.exc_info()
+            if f"{exc_obj}"[1:6] == 'Tests':
+                exc_obj = 'Une de vos classes semble mal conçue'
             fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
             if e.__class__.__name__ == self.team.dictNomenclature[attendu]:
+                print_passing('PASS')
                 res = True
             else:
                 res = False
@@ -743,7 +816,7 @@ class Tests:
         arg = """datetime.date(2022, 3, 28)"""
         print_command(f"{command}", f"{arg}")
         res = False
-        comments = f"<li>{command}({arg})</li>"
+        comments = f"<li><code>{command}({arg})</code></li>"
         attendu = "ErreurDate"
         try:
             getattr(self.portefeuille, self.team.dictNomenclature[command])(datetime.date(2022, 3, 28))
@@ -751,8 +824,11 @@ class Tests:
             print_failing(f"FAIL")
         except Exception as e:
             exc_type, exc_obj, exc_tb = sys.exc_info()
+            if f"{exc_obj}"[1:6] == 'Tests':
+                exc_obj = 'Une de vos classes semble mal conçue'
             fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
             if e.__class__.__name__ == self.team.dictNomenclature[attendu]:
+                print_passing('PASS')
                 res = True
             else:
                 res = False
@@ -763,19 +839,22 @@ class Tests:
 
     def erreur_7_date_valeur_titres(self):
         command = "valeur_des_titres"
-        arg = """["goog"], datetime.date(2022, 3, 28)"""
+        arg = """['goog'], datetime.date(2022, 3, 28)"""
         print_command(f"{command}", f"{arg}")
         res = False
-        comments = f"<li>{command}({arg})</li>"
+        comments = f"<li><code>{command}({arg})</code></li>"
         attendu = "ErreurDate"
         try:
-            getattr(self.portefeuille, self.team.dictNomenclature[command])(["goog"], datetime.date(2022, 3, 28))
+            getattr(self.portefeuille, self.team.dictNomenclature[command])(['goog'], datetime.date(2022, 3, 28))
             comments += f"<ul><li>Votre programme ne retourne aucune erreur alors que nous aurions du avoir une erreur de type <code>{attendu}</code>.</li></ul>"
             print_failing(f"FAIL")
         except Exception as e:
             exc_type, exc_obj, exc_tb = sys.exc_info()
+            if f"{exc_obj}"[1:6] == 'Tests':
+                exc_obj = 'Une de vos classes semble mal conçue'
             fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
             if e.__class__.__name__ == self.team.dictNomenclature[attendu]:
+                print_passing('PASS')
                 res = True
             else:
                 res = False
@@ -789,7 +868,7 @@ class Tests:
         arg = """datetime.date(2022, 3, 28)"""
         print_command(f"{command}", f"{arg}")
         res = False
-        comments = f"<li>{command}({arg})</li>"
+        comments = f"<li><code>{command}({arg})</code></li>"
         attendu = "ErreurDate"
         try:
             getattr(self.portefeuille, self.team.dictNomenclature[command])(datetime.date(2022, 3, 28))
@@ -797,8 +876,11 @@ class Tests:
             print_failing(f"FAIL")
         except Exception as e:
             exc_type, exc_obj, exc_tb = sys.exc_info()
+            if f"{exc_obj}"[1:6] == 'Tests':
+                exc_obj = 'Une de vos classes semble mal conçue'
             fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
             if e.__class__.__name__ == self.team.dictNomenclature[attendu]:
+                print_passing('PASS')
                 res = True
             else:
                 res = False
@@ -812,7 +894,7 @@ class Tests:
         arg = """'goog', 10000"""
         print_command(f"{command}", f"{arg}")
         res = False
-        comments = f"<li>{command}({arg})</li>"
+        comments = f"<li><code>{command}({arg})</code></li>"
         attendu = "ErreurQuantité"
         try:
             getattr(self.portefeuille, self.team.dictNomenclature[command])(
@@ -821,8 +903,11 @@ class Tests:
             print_failing(f"FAIL")
         except Exception as e:
             exc_type, exc_obj, exc_tb = sys.exc_info()
+            if f"{exc_obj}"[1:6] == 'Tests':
+                exc_obj = 'Une de vos classes semble mal conçue'
             fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
             if e.__class__.__name__ == self.team.dictNomenclature[attendu]:
+                print_passing('PASS')
                 res = True
             else:
                 res = False
@@ -832,15 +917,5 @@ class Tests:
             return (res, comments)
     # CLEANUP TRES IMPORTANT, IL DOIT ETRE APELLE DANS LE CORRECTIONEUR
 
-    def cleanUp(self):
-        for module in self.modules_to_remove:
-            del sys.modules[module]
-        for module in self.modules:
-            if module in sys.modules:
-                del sys.modules[module]
-        for modulilou in sys.modules.keys():
-            if modulilou not in self.init_modules:
-                del(sys.modules[modulilou])
-        sys.path.remove(os.getcwd())
-        os.chdir('../../../')
+
 

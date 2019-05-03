@@ -35,8 +35,11 @@ def print_note(resultat, ponderation):
         tqdm.tqdm.write(f'{show("    Note :", f=WHITE)} {show(resultat, f=YELLOW)}{show("/", f=WHITE)}{show(ponderation, f=GREEN)}\n')
 
 
-def print_failing(msg):
-    tqdm.tqdm.write(f'        {show(msg, f=RED)}')
+def print_failing(msg, *, limit=1000):
+    if len(msg) > limit:
+        tqdm.tqdm.write(f'        {show(" Message trop long ", b=MAGENTA, f=WHITE)}')
+    else:
+        tqdm.tqdm.write(f'        {show(msg, f=RED)}')
 
 
 def print_passing(msg, *, limit=1000):

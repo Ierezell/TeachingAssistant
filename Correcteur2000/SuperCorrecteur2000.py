@@ -12,6 +12,7 @@ import pickle
 from Correctioneur import CorrecteurTeam
 from WebJsonizer import WebJsonizer
 from Team import Team
+from Log import *
 from Unbundler import Unbundler
 from WebJsonizer import WebJsonizer
 from subprocess import PIPE, Popen
@@ -64,7 +65,7 @@ UNDERLINE = '\033[4m'
 """
 
 PYENVNAME = "python3.7"  # ex : py, python, python3.7
-
+EQUIPE = 22
 
 class AssistantCorrection:
     # Modifier le nom utilisé par votre environnement pour python
@@ -133,18 +134,49 @@ class AssistantCorrection:
                 correcteur8000.corrige(team)
 
     def corrigeFromModules(self, modules, classes):
+        print_wtf("\n  Correction du fonctionnement\n")
         resultat = []
+        badTeam = "  Bad Team are : "
         correcteurModules = CorrecteurTeam(self.projectBasePath)
-        print(modules)
         for team in tqdm.tqdm(self.Teams.values()):
-            if not team.NoMainFile:
-                test = correcteurModules.corrigeFromModules(team, modules, classes)
-                resultat.append({'équipe': team.noTeam, 'score': test[0], 'commentaires': test[1]})
+            commentaire = ""
+            if True:
+                if team.NoMainFile:
+                    print_barre()
+                    print_equipe(team.noTeam)
+                    print_warning(f"  FAIL : Programme non fonctionnel 2")
+                    commentaire = "<h2>Évaluation du critère 3</h2>"
+                    commentaire += "<h3>Fonctionnement général</h3>"
+                    commentaire += "<p>Votre code n'est pas fonctionnel, voici la liste de vos fichiers trouvé:</p><ul>"
+                    for file in team.files:
+                        commentaire += f"<li>{file}</li>"
+                    commentaire += "</ul>"
+                    commentaire += f"<h4>Résultat: 0%</h4>"
+                    commentaire += f"<p><strong>La correction ainsi que la composition des message est automatisé, pour toute question ou révision veuillez commenter ce fil.</strong></p>"
+                    resultat.append(
+                        {'équipe': team.noTeam, 'score': 0, 'commentaires': commentaire})
+                    print_final(3, 0, 100)
+                else:
+                    test = correcteurModules.corrigeFromModules(team, modules, classes)
+                    note = test[0]
+                    commentaire = test[1]
+                    if note == 0:
+                        badTeam += f"{team.noTeam}, "
+                    if team.BadMainFile:
+                        note = note - 10
+                        if note < 0:
+                            note = 0
+                        commentaire += f"<p><strong><span style='color: #ff0000;'>Votre projet n'avait pas le bon nom, 10% on été retiré de la note.</span><strong></p>"
+                    commentaire += f"<h4>Résultat: {note}%</h4>"
+                    commentaire += f"<p><strong>La correction ainsi que la composition des messages est automatisé, pour toutes questions ou révision veuillez commenter ce fil.</strong></p>"
+                    resultat.append({'équipe': team.noTeam, 'score': note, 'commentaires': commentaire})
             tqdm.tqdm.write(" ")
+        print_wtf(badTeam)
         with open('./ResultatsCritère4.json', 'w') as outfile:
             json.dump(resultat, outfile, ensure_ascii=False)
 
     def corrigeCommit(self, noCritere, pathJson="", pathFolder=""):
+        print_wtf("\n  Correction du nombre de commit\n")
         list_ready_to_publish = []
         if pathFolder != "":
             correcteur8000 = CorrecteurTeam(pathFolder)
@@ -157,9 +189,12 @@ class AssistantCorrection:
         for team in tqdm.tqdm(self.Teams.values()):
             if not team.NoMainFile:
                 list_ready_to_publish.append(correcteur8000.correction_commit(team, noCritere))
+        with open('./ResultatsCommit.json', 'w') as outfile:
+            json.dump(list_ready_to_publish, outfile, ensure_ascii=False)
         print(f'{list_ready_to_publish}')
 
     def corrigeNoms(self, pathDicNom, pathFolder=""):
+        print_wtf("\n  Correction de la nomenclature\n")
         jsonD = {}
         with open(pathDicNom) as jsonFile:
             jsonD = json.load(jsonFile)
@@ -169,12 +204,30 @@ class AssistantCorrection:
         else:
             correcteur8000 = CorrecteurTeam(self.projectBasePath)
         for team in tqdm.tqdm(self.Teams.values()):
-            if not team.NoMainFile:
-                list_ready_to_publish.append(correcteur8000.corrige_nomenclature(
-                    jsonD["classe"], jsonD["fonction"], jsonD["arg"], team))
+            if True:
+                if not team.NoMainFile:
+                    list_ready_to_publish.append(correcteur8000.corrige_nomenclature(
+                        jsonD["action"], jsonD["arg"], team))
                 # tqdm.tqdm.write("Enter pour continuer", end='')
                 # input("")
         with open('./ResultatsNomencature.json', 'w') as outfile:
+            json.dump(list_ready_to_publish, outfile, ensure_ascii=False)
+
+    def corrigeHelp(self, pathFolder=""):
+        print_wtf("\n  Correction de la nomenclature\n")
+        list_ready_to_publish = []
+        if pathFolder != "":
+            correcteur8000 = CorrecteurTeam(pathFolder)
+        else:
+            correcteur8000 = CorrecteurTeam(self.projectBasePath)
+        for team in tqdm.tqdm(self.Teams.values()):
+            if True:
+                if not team.NoMainFile:
+                    list_ready_to_publish.append(correcteur8000.corrigeHelp(team))
+                    print(list_ready_to_publish)
+                # tqdm.tqdm.write("Enter pour continuer", end='')
+                # input("")
+        with open('./ResultatsNomencatureP3.json', 'w') as outfile:
             json.dump(list_ready_to_publish, outfile, ensure_ascii=False)
 
     def get_functions(self):
@@ -216,6 +269,7 @@ class AssistantCorrection:
     def show_similarity(self, fileName, percent=80):
         list_Teams = list(self.goodTeams.copy().items())
         for noTeam1, group1 in tqdm.tqdm(list_Teams):
+            print_equipe(f"\n{noTeam1}")
             file_group1 = f"{group1.pathTeam}/{fileName}"
             for noTeam2, group2 in list_Teams:
                 file_group2 = f"{group2.pathTeam}/{fileName}"
@@ -230,7 +284,7 @@ class AssistantCorrection:
                 if r >= percent and noTeam1 != noTeam2:
                     tqdm.tqdm.write(
                         f"{BOLD}ÉQUIPE{ENDC} {PASS}{noTeam1}{ENDC} {BOLD}Et{ENDC} {PASS}{noTeam2}{ENDC} {FAIL} {r} %{ENDC}")
-            list_Teams.remove((noTeam1, group1))
+            # list_Teams.remove((noTeam1, group1))
 
     def get_commits(self):
         for noTeam, team in self.Teams.items():
@@ -253,16 +307,16 @@ class AssistantCorrection:
 
 
 if __name__ == "__main__":
-    Assistant = AssistantCorrection("H", 19, 2)
+    Assistant = AssistantCorrection("H", 19, 3)
     # Assistant.initialize_Directory()
     # Assistant.unbundle()
-    Assistant.initialise_Teams("marche_boursier.py", "portefeuille.py")
-    Assistant.corrigeNoms("./dicNom.json")    # Assistant.get_commits()
-    # Assistant.corrigeCommit(1)
-    # Assistant.corrigeNoms("./dicNom.json")
+    Assistant.initialise_Teams("gesport.py")
+    # Assistant.corrigeNoms("./dicNomP3.json")
+    Assistant.corrigeHelp()
     # Assistant.get_commits()
     # Assistant.corrigeCommit(1)
-    Assistant.get_functions()
+    # Assistant.get_functions()
+
     # Assistant.corrigeNoms("./dicNom.json")
     # Assistant.not_show_commits()
     # Assistant.corrigeCommit(1)
@@ -273,7 +327,7 @@ if __name__ == "__main__":
     # Assistant.corrigeFromModules(modules=["marche_boursier", "portefeuille"],
     #                              classes=[["MarchéBoursier"], ["Portefeuille"]])
     # Assistant.show_functions()
-    # Assistant.show_similarity("marche_boursier.py")
+    # Assistant.show_similarity("gesport.py", 40)
     # Assistant.show_similarity("portefeuille.py")
     # Assistant.corrige("./dictCritere.json")
     # Assistant.makeRapport()
