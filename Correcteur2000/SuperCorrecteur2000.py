@@ -319,8 +319,8 @@ class AssistantCorrection:
 
 if __name__ == "__main__":
     Assistant = AssistantCorrection("H", 19, 3)
-    Assistant.initialize_Directory()
-    Assistant.unbundle()
+    # Assistant.initialize_Directory()
+    # Assistant.unbundle()
     Assistant.initialise_Teams("gesport.py")
-    Assistant.corrige("./testTp3.json")
+    Assistant.corrige("./dictCritèreP3.json")
     Assistant.saveAssistant()
