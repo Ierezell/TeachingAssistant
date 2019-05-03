@@ -39,6 +39,76 @@ class CorrecteurTeam:
     def load_correction_dict(self, pathJson):
         """
         [
+            [
+                "criterion": 1,
+                "criterion_title": "Ligne de commande,
+                "criterion_description": "Le programme respecte <strong>toutes</strong> les spécifications de l'énoncé concernant l'interface de la ligne de commande, dont notamment celle qui permet d'obtenir de <strong>l'aide</strong> quant au fonctionnement de cette interface."
+                "test_section": [
+                    {
+                        "section_title": "Commande Help",
+                        "section_description": "Vérifier l'existence de la commande <code>help</code>."
+                        "weight": 60
+                        "test_list": [
+                            "title": "Affichage d'aide pour la commande"
+                            "test": [
+                                {
+                                    "command": "-h",
+                                    "success_looking": true,
+                                    "result_regex": "usage:",
+                                    "error_message": "<code>Help</code> inexistant"
+                                },
+                                {
+                                    "command": "déposer -h",
+                                    "success_looking": true,
+                                    "result_regex": "usage:",
+                                    "error_message": "<code>Help</code> inexistant"
+                                }
+                            ]
+                        ]
+                    },
+                    {
+                        "section_title": "Nomenclature",
+                        "section_description": "Vérifier l'existence de la commande <code>help</code>."
+                        "weight": 60
+                        "test_list": [
+                            "title": "Affichage d'aide pour la commande"
+                            "test": [
+                                {
+                                    "command": "-h",
+                                    "success_looking": true,
+                                    "result_regex": "usage:",
+                                    "error_message": "<code>Help</code> inexistant"
+                                }
+                            ]
+                        ]
+                    }
+                ]
+            ],
+            [
+                "criterion": 2,
+                "criterion_title": "Ligne de commande,
+                "criterion_description": "Le programme respecte <strong>toutes</strong> les spécifications de l'énoncé concernant l'interface de la ligne de commande, dont notamment celle qui permet d'obtenir de <strong>l'aide</strong> quant au fonctionnement de cette interface."
+                "test_section": [
+                    {
+                        "section_title": "Commande Help",
+                        "section_description": "Vérifier l'existence de la commande <code>help</code>."
+                        "weight": 60
+                        "test_list": [
+                            "title": "Affichage d'aide pour la commande"
+                            "test": [
+                                {
+                                    "command": "-h",
+                                    "success_looking": true,
+                                    "result_regex": "usage:",
+                                    "error_message": "<code>Help</code> inexistant"
+                                }
+                            ]
+                        ]
+                    }
+                ]
+            ]
+        ]
+        [
         {"Critère1":
             {"Nom Test1":
                 {"description " : str "Description du test pour le rapport"
@@ -437,14 +507,15 @@ class CorrecteurTeam:
             tns, tnp = 0, 0
             if data:
                 tns = int(data)
+                ns += tns
                 data = input("Nomenclature Pondération?: ")
                 if data:
                     tnp = int(data)
+                    np += tnp
                 else:
                     tnp = tns
+                    np += tnp
             if tnp > 0 and tns < tnp:
-                ns += tns
-                np += tnp
                 commentBool = True
                 while commentBool:
                     tempComment = input("Commentaire?: ")
@@ -456,14 +527,15 @@ class CorrecteurTeam:
             data = input("Nb argument Score?: ")
             if data:
                 tnbas += int(data)
+                nbas += tnbas
                 data = input("Nb argument Pondération?: ")
                 if data:
                     tnbap += int(data)
+                    nbap += tnbap
                 else:
                     tnbap = tnbas
+                    nbap += tnbap
             if tnbap > 0 and tnbas < tnbap:
-                nbas += tnbas
-                nbap += tnbap
                 commentBool = True
                 while commentBool:
                     tempComment = input("Commentaire?: ")
@@ -475,14 +547,15 @@ class CorrecteurTeam:
             data = input("Metavar Score?: ")
             if data:
                 tms = int(data)
+                ms += tms
                 data = input("Metavar Pondération?: ")
                 if data:
                     tmp = int(data)
+                    mp += tmp
                 else:
                     tmp = tms
+                    mp += tmp
             if tmp > 0 and tms < tmp:
-                mp += tmp
-                ms += tms
                 commentBool = True
                 while commentBool:
                     tempComment = input("Commentaire?: ")
@@ -490,13 +563,13 @@ class CorrecteurTeam:
                         mc += "<li>"+tempComment+"</>"
                     else:
                         commentBool = False
-            print_note(((ns+nbas+ms)/(np+nbap+mp))*100, 100)
+            print_note(((tns+tnbas+tms)/(tnp+tnbap+tmp))*100, 100)
             tempCommand = input("Next Command?: ")
             if tempCommand:
                 command = tempCommand+" -h"
             else:
                 commandToTest = False
-        note = ((ns+nbas+ms)/(np+nbap+mp))*100
+        note = ((tns+tnbas+tms)/(tnp+tnbap+tmp))*100
         print_final(note, 100)
         return {'équipe': team.noTeam, 'score': note, 'commentaires': "<h3>Évaluation du critère 1</h3>"+nEntete+"<ul>"+nc+"</ul>"+nbaEntete+"<ul>"+nbac+"</ul>"+mEntete+"<ul>"+mc+"</ul>"+f"<h4>Résultat: {note}%</h4><p>Commenter le fil pour toutes questions.</p>"}
 

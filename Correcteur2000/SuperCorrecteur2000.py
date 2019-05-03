@@ -206,8 +206,9 @@ class AssistantCorrection:
         for team in tqdm.tqdm(self.Teams.values()):
             if True:
                 if not team.NoMainFile:
-                    list_ready_to_publish.append(correcteur8000.corrige_nomenclature(
-                        jsonD["action"], jsonD["arg"], team))
+                    correcteur8000.show_argparse(team)
+                    # list_ready_to_publish.append(correcteur8000.corrige_nomenclature(
+                    #     jsonD["action"], jsonD["arg"], team))
                 # tqdm.tqdm.write("Enter pour continuer", end='')
                 # input("")
         with open('./ResultatsNomencature.json', 'w') as outfile:
@@ -311,8 +312,8 @@ if __name__ == "__main__":
     # Assistant.initialize_Directory()
     # Assistant.unbundle()
     Assistant.initialise_Teams("gesport.py")
-    # Assistant.corrigeNoms("./dicNomP3.json")
-    Assistant.corrigeHelp()
+    Assistant.corrigeNoms("./dicNomP3.json")
+    # Assistant.corrigeHelp()
     # Assistant.get_commits()
     # Assistant.corrigeCommit(1)
     # Assistant.get_functions()
