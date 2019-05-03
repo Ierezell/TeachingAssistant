@@ -67,10 +67,10 @@ class Team:
         self.NoMainFile = False
         self.penalites = None
         self.testResult = {}
-        self.rapport = []
+        self.rapport = {}
         self.functions = []
         self.classes = []
-        self.rapport = {"équipe": self.noTeam, "score": None, "commentaires": None}
+        # self.rapport = [{"1":{"équipe": self.noTeam, "score": None, "commentaires": None}}]
 
     def saveTeamState(self):
         with open(f'{self.pathTeam}/{self.noTeam}.save', 'wb') as save_team_file:

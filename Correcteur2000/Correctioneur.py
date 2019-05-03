@@ -77,48 +77,87 @@ class CorrecteurTeam:
             self.dictCritere = json.load(jsonFile)
 
     def runCommand(self, team, dicCommand, timeout=5):
+        b_res = False
+        c_res = ""
         reAttendu = re.compile(dicCommand["result_regex"],
                                flags=re.MULTILINE)
         command = [pyEnv, team.pathTeam+"/gesport.py"] + dicCommand["command"].split(" ")
         proc = Popen(command, stdout=PIPE, stderr=PIPE, encoding='utf-8')
         team.testResult[dicCommand["command"]] = {}
         try:
-            result, err = proc.communicate(timeout=5)
+            result, err = proc.communicate(timeout=timeout)
         except TimeoutExpired:
+            print_failing("FAIL")
             team.testResult[dicCommand["command"]]["pass"] = False
             team.testResult[dicCommand["command"]]["error_message"] = \
                 """Votre code à mis trop de temps à s'executer.\n""" +\
                 """Pour ne pas bloquer la correction automatique""" +\
-                """nous avons limité à 5s pour ce critère"""
+                f"""nous avons limité à {timeout}s pour ce critère"""
+            c_res = """Votre code n'a pas été en mesure de s'exécuter dans un délai raisonnable."""
         finally:
             team.testResult[dicCommand["command"]]["resultat"] = result
             team.testResult[dicCommand["command"]]["erreur"] = err
         if dicCommand["success_looking"]:
             if reAttendu.findall(result):
                 team.testResult[dicCommand["command"]]["pass"] = True
+                b_res = True
+                print_passing("PASS")
             else:
+                print_failing("FAIL")
+                c_res = dicCommand["error_message"]
                 team.testResult[dicCommand["command"]]["pass"] = False
                 team.testResult[dicCommand["command"]]["error_message"] =\
                     dicCommand["error_message"]
         else:
             if reAttendu.findall(err):
+                b_res = True
+                print_passing("PASS")
                 team.testResult[dicCommand["command"]]["pass"] = True
             else:
+                print_failing("FAIL")
+                c_res = icCommand["error_message"]
                 team.testResult[dicCommand["command"]]["pass"] = False
                 team.testResult[dicCommand["command"]]["error_message"] =\
                     dicCommand["error_message"]
+        return b_res, c_res
 
     def corrige(self, team):
-        # note = 0
-        # critere = None
-        # commentaire = ""
+        dic = {}
+        print_barre()
+        print_equipe(team.noTeam)
         for critere in self.dictCritere:
+            note = 0.0
+            critere = None
+            commentaire = ""
+            commentaire = f"""<h2>Critère {critere["criterion"]}</h2>"""
+            commentaire += f"""<h3>{critere["criterion_title"]}</h3>"""
+            commentaire += f"""<p>{critere["criterion_description"]}</p>"""
+            print_titre(f"""Critère {critere["criterion"]}""")
             # nombreSousSection = len(critere["test_section"])
             for subSection in critere["test_section"]:
+                commentaire += f"""<h4>{critere["section_title"]}</h4>"""
+                commentaire += f"""<p><strong>{critere["section_description"]}</strong></p>"""
+                print_titre(subSection["section_title"])
                 # nombreTests = len(subSection["tests"])
+                commentaire += "<ul>"
+                noteSubSec = 0
+                lenSubSec = len(subSection["tests"])
                 for test in subSection["tests"]:
-                    self.runCommand(team, test)
+                    print_command("gesport.py",f"""{test["command"]}""")
+                    b_res, c_res = self.runCommand(team, test)
+                    if not b_res:
+                        commentaire += f"""<li>{res}</li>"""
+                    else:
+                        noteSubSec += 1
+                print_note(noteSubSec, lenSubSec)
+                commentaire += "</ul>"
+                note += (noteSubSec/lenSubSec)*subSection["weight"]
+            commentaire += f"""<h3>Résultat: {round(note, 1)}</h3>"""
+            commentaire += f"""<p><strong>La correction ainsi que la composition des messages sont automatisés, pour toutes questions ou révision veuillez commenter ce fil.</strong></p>"""
+            print_final(critere["criterion"],round(note, 1),100)
+            team.rapport[f"""critere["criterion"]"""] = {"équipe": team.noTeam, "score": round(note, 1), "commentaires": commentaire}
             team.saveTeamState()
+        return team.rapport
 
     def correction_commit(self, team, no_critere):
         nb_commits = team.nbCommits

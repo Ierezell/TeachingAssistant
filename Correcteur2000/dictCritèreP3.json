@@ -312,7 +312,7 @@
                         "success_looking": true,
                         "result_regex": "(\\s-t)",
                         "error_message": "L'argument <code>-t</code> de l'action <code>titres</code> ne respect pas la nomenclature."
-                    }
+                    },
                     {
                         "command": "titres -h",
                         "success_looking": true,
