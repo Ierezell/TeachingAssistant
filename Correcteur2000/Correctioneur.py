@@ -7,10 +7,11 @@ import tqdm
 import traceback
 import sys
 import inspect
-from Log import *
+from Log import (print_barre, print_titre, print_passing, print_warning,
+                 print_command, print_equipe)
 import time
 import importlib
-from subprocess import PIPE, Popen
+from subprocess import PIPE, Popen, TimeoutExpired
 from difflib import SequenceMatcher
 import datetime
 from tests import Tests
@@ -40,15 +41,12 @@ class CorrecteurTeam:
         [
         {"Critère1":
             {"Nom Test1":
-                {"description " : "Description du test pour le rapport"
-                 "commentaireEchec" : "Description de l'echec"
-                 "Arguments":
-                    {
-                    [Liste d'arguments à faire en ligne de commandes]
-                    }
-                 "resultatAttendu": "Un mot que l'on veut matcher ou une regex"
-                 "erreurAttendu": "Un mot que l'on veut matcher ou une regex"
-                 "pondération" : int ou [int] pour pondérer le resultat.
+                {"description " : str "Description du test pour le rapport"
+                 "commentaireEchec" : str "Description de l'echec"
+                 "arguments": list str [les arguments à faire en ligne de commandes]
+                 "resultatAttendu": str "Un mot que l'on veut matcher ou une regex"
+                 "erreurAttendu": str "Un mot que l'on veut matcher ou une regex"
+                 "pondération" : int ou float pour pondérer le resultat.
                 }
             }
             {"Nom Test2" :
@@ -79,17 +77,25 @@ class CorrecteurTeam:
 
                 proc = Popen(options, stdout=PIPE, stderr=PIPE,
                              encoding='utf-8')
-                result, err = proc.communicate(timeout=10)
-                nomCommandeTeam[command]["resultat"] = result
-                nomCommandeTeam[command]["erreur"] = err
-                #
+                try:
+                    result, err = proc.communicate(timeout=5)
+                except TimeoutExpired:
+                    nomCommandeTeam[command]["estReussi"] = False
+                    nomCommandeTeam["commentaireEchec"] = \
+                        """Votre code à mis trop de temps à s'executer.\n""" +\
+                        """Pour ne pas bloquer la correction automatique""" +\
+                        """nous avons limité à 5s pour ce critère"""
+                finally:
+                    nomCommandeTeam[command]["resultat"] = result
+                    nomCommandeTeam[command]["erreur"] = err
                 # TODO La logique de si le test est réussi ou pas
-                #
-                if "reussi":
+                if reAttendu.findall(result) or reErrAttendu.findall(result):
                     nomCommandeTeam[command]["estReussi"] = True
                 else:
                     nomCommandeTeam[command]["estReussi"] = False
-                    nomCommandeTeam["commentaireEchec"] = critere["commentaireEchec"]
+                    nomCommandeTeam["commentaireEchec"] =\
+                        critere["commentaireEchec"]
+            team.saveTeamState()
 
     def correction_commit(self, team, no_critere):
         nb_commits = team.nbCommits
@@ -413,7 +419,7 @@ class CorrecteurTeam:
             print_command("gesport.py", command)
             tqdm.tqdm.write(" ")
             res, err = self.popenStart(team.pathTeam+"/gesport.py", command)
-            ns , np, nbas, nbap, ms, mp = 0, 0, 0, 0, 0, 0
+            ns, np, nbas, nbap, ms, mp = 0, 0, 0, 0, 0, 0
             print_passing("RESULT")
             tqdm.tqdm.write(" ")
             tqdm.tqdm.write(res)
@@ -493,7 +499,6 @@ class CorrecteurTeam:
         note = ((ns+nbas+ms)/(np+nbap+mp))*100
         print_final(note, 100)
         return {'équipe': team.noTeam, 'score': note, 'commentaires': "<h3>Évaluation du critère 1</h3>"+nEntete+"<ul>"+nc+"</ul>"+nbaEntete+"<ul>"+nbac+"</ul>"+mEntete+"<ul>"+mc+"</ul>"+f"<h4>Résultat: {note}%</h4><p>Commenter le fil pour toutes questions.</p>"}
-        
 
     def corrige_nomenclature(self, listAction, listArg, team):
         print_barre()
@@ -650,7 +655,7 @@ class CorrecteurTeam:
                                 arg = arg.split("'")[-2]
                                 print(arg)
                             list_arg.append(arg)
-                            
+
         input()
         return list_action, list_arg
 
