@@ -22,14 +22,14 @@ pyEnv = "python3.7"
 class CorrecteurTeam:
     def __init__(self, projectPath):
         self.projectPath = projectPath
-        self.filesCorrecteur = glob.iglob(self.projectPath)
+        self.filesCorrecteur = glob.glob("./*")
         self.dictCritere = None
 
     def cleanAvantNouvelEleve(self):
         """ Supprime les fichiers crées par le code de l'élève
             afin de ne pas interferer avec le suivant
         """
-        for files in glob.iglob(self.projectPath):
+        for files in glob.glob("./*"):
             if files not in self.filesCorrecteur:
                 try:
                     os.remove(files)
@@ -43,37 +43,12 @@ class CorrecteurTeam:
                 "criterion": 1,
                 "criterion_title": "Ligne de commande",
                 "criterion_description": "Le programme respecte <strong>toutes</strong> les spécifications de l'énoncé concernant l'interface de la ligne de commande, dont notamment celle qui permet d'obtenir de <strong>l'aide</strong> quant au fonctionnement de cette interface."
-<<<<<<< HEAD
-                "test_section": 
-=======
                 "test_section":
->>>>>>> 7c2d6bc183157d5298ed2677002324b5cb1462b3
                 [
                     {
                         "section_title": "Commande Help",
                         "section_description": "Vérifier l'existence de la commande <code>help</code>.",
                         "weight": 60,
-<<<<<<< HEAD
-                        "test_list": 
-                        [
-                            {
-                                "title": "Affichage d'aide pour la commande",
-                                "test": 
-                                [
-                                    {
-                                        "command": "-h",
-                                        "success_looking": true,
-                                        "result_regex": "usage:",
-                                        "error_message": "<code>Help</code> inexistant"
-                                    },
-                                    {
-                                        "command": "déposer -h",
-                                        "success_looking": true,
-                                        "result_regex": "usage:",
-                                        "error_message": "<code>Help</code> inexistant"
-                                    }
-                                ]
-=======
                         "tests":
                         [
                             {
@@ -87,17 +62,13 @@ class CorrecteurTeam:
                                 "success_looking": true,
                                 "result_regex": "usage:",
                                 "error_message": "<code>Help</code> inexistant"
->>>>>>> 7c2d6bc183157d5298ed2677002324b5cb1462b3
                             }
                         ]
                     }
                 ]
-<<<<<<< HEAD
-=======
             },
             {
                 Critere2
->>>>>>> 7c2d6bc183157d5298ed2677002324b5cb1462b3
             }
         ]
         """
