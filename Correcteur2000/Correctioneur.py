@@ -431,14 +431,15 @@ class CorrecteurTeam:
             tns, tnp = 0, 0
             if data:
                 tns = int(data)
+                ns += tns
                 data = input("Nomenclature Pondération?: ")
                 if data:
                     tnp = int(data)
+                    np += tnp
                 else:
                     tnp = tns
+                    np += tnp
             if tnp > 0 and tns < tnp:
-                ns += tns
-                np += tnp
                 commentBool = True
                 while commentBool:
                     tempComment = input("Commentaire?: ")
@@ -450,14 +451,15 @@ class CorrecteurTeam:
             data = input("Nb argument Score?: ")
             if data:
                 tnbas += int(data)
+                nbas += tnbas
                 data = input("Nb argument Pondération?: ")
                 if data:
                     tnbap += int(data)
+                    nbap += tnbap
                 else:
                     tnbap = tnbas
+                    nbap += tnbap
             if tnbap > 0 and tnbas < tnbap:
-                nbas += tnbas
-                nbap += tnbap
                 commentBool = True
                 while commentBool:
                     tempComment = input("Commentaire?: ")
@@ -469,14 +471,15 @@ class CorrecteurTeam:
             data = input("Metavar Score?: ")
             if data:
                 tms = int(data)
+                ms += tms
                 data = input("Metavar Pondération?: ")
                 if data:
                     tmp = int(data)
+                    mp += tmp
                 else:
                     tmp = tms
+                    mp += tmp
             if tmp > 0 and tms < tmp:
-                mp += tmp
-                ms += tms
                 commentBool = True
                 while commentBool:
                     tempComment = input("Commentaire?: ")
@@ -484,13 +487,13 @@ class CorrecteurTeam:
                         mc += "<li>"+tempComment+"</>"
                     else:
                         commentBool = False
-            print_note(((ns+nbas+ms)/(np+nbap+mp))*100, 100)
+            print_note(((tns+tnbas+tms)/(tnp+tnbap+tmp))*100, 100)
             tempCommand = input("Next Command?: ")
             if tempCommand:
                 command = tempCommand+" -h"
             else:
                 commandToTest = False
-        note = ((ns+nbas+ms)/(np+nbap+mp))*100
+        note = ((tns+tnbas+tms)/(tnp+tnbap+tmp))*100
         print_final(note, 100)
         return {'équipe': team.noTeam, 'score': note, 'commentaires': "<h3>Évaluation du critère 1</h3>"+nEntete+"<ul>"+nc+"</ul>"+nbaEntete+"<ul>"+nbac+"</ul>"+mEntete+"<ul>"+mc+"</ul>"+f"<h4>Résultat: {note}%</h4><p>Commenter le fil pour toutes questions.</p>"}
         
