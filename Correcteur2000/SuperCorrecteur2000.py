@@ -239,6 +239,7 @@ class AssistantCorrection:
         for team in tqdm.tqdm(self.Teams.values()):
             tqdm.tqdm.write(f"Doing team {team.noTeam}")
             correcteur8000.corrige(team)
+            correcteur8000.cleanAvantNouvelEleve()
 
     def get_functions(self):
         correcteur8000 = CorrecteurTeam(self.projectBasePath)
@@ -318,8 +319,8 @@ class AssistantCorrection:
 
 if __name__ == "__main__":
     Assistant = AssistantCorrection("H", 19, 3)
-    # Assistant.initialize_Directory()
-    # Assistant.unbundle()
+    Assistant.initialize_Directory()
+    Assistant.unbundle()
     Assistant.initialise_Teams("gesport.py")
     Assistant.corrige("./testTp3.json")
     Assistant.saveAssistant()
