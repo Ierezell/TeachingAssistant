@@ -232,25 +232,35 @@ class AssistantCorrection:
 
     def get_functions(self):
         correcteur8000 = CorrecteurTeam(self.projectBasePath)
-        result = []
+        temp = []
+        with open("./temp.json", 'r')as jsonfile:
+            json.loads(temp, jsonfile, ensure_ascii=False)
+
+        try:
+            lastTeam = temp[-1]["équipe"]
+        except KeyError:
+            lastTeam = 0
+
         for noTeam in self.goodTeams.keys():
-            # print(f"Fonctions du groupe : {PASS}{noTeam}{ENDC}\n")
-            for file in self.goodTeams[noTeam].files:
-                if file[-3:] == ".py":
-                    # print(f"\tFichier : {WARNING}{file.split('/')[-1]}{ENDC}\n")
-                    with open(file) as buff:
-                        print(" ".join(x for x in buff.readlines()))
-                    with open(file) as file_Python:
-                        for lineNb, line in enumerate(file_Python):
-                            if re.compile(r"def\s").findall(line):
-                                # print(f"Line {lineNb}: {BOLD}{line}{ENDC}")
-                                self.Teams[noTeam].functions.append((file, line, lineNb))
-                            if re.compile(r"class\s").findall(line):
-                                self.Teams[noTeam].classes.append((file, line, lineNb))
-                                # print(f"Line {lineNb}: {BOLD}{line}{ENDC}")
-            result.append(
+            if noTeam > lastTeam:
+                # print(f"Fonctions du groupe : {PASS}{noTeam}{ENDC}\n")
+                for file in self.goodTeams[noTeam].files:
+                    if file[-3:] == ".py":
+                        # print(f"\tFichier : {WARNING}{file.split('/')[-1]}{ENDC}\n")
+                        with open(file) as buff:
+                            print(" ".join(x for x in buff.readlines()))
+                        with open(file) as file_Python:
+                            for lineNb, line in enumerate(file_Python):
+                                if re.compile(r"def\s").findall(line):
+                                    # print(f"Line {lineNb}: {BOLD}{line}{ENDC}")
+                                    self.Teams[noTeam].functions.append((file, line, lineNb))
+                                if re.compile(r"class\s").findall(line):
+                                    self.Teams[noTeam].classes.append((file, line, lineNb))
+                                    # print(f"Line {lineNb}: {BOLD}{line}{ENDC}")
+            temp.append(
                 correcteur8000.correction_qualite(self.Teams[noTeam])
             )
+        result = temp
         with open("./outCritere4.json", 'w')as jsonfile:
             json.dump(result, jsonfile, ensure_ascii=False)
             # input("Press any key for next group")
