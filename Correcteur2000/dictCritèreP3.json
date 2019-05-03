@@ -63,7 +63,7 @@
             },
             {
                 "section_title": "Nomenclature",
-                "section_description": "Vérification du respect de la nomenclature",
+                "section_description": "Vérification du respect de la nomenclature.",
                 "weight": 10,
                 "tests":  
                 [
@@ -113,91 +113,883 @@
                         "command": "déposer -h",
                         "success_looking": true,
                         "result_regex": "(--portefeuille)",
-                        "error_message": "L'argument <copde>--portefeuille</code> de l'action <code>déposer</code> ne respect pas la nomenclature."
+                        "error_message": "L'argument <code>--portefeuille</code> de l'action <code>déposer</code> ne respect pas la nomenclature."
                     },
                     {
                         "command": "déposer -h",
                         "success_looking": true,
                         "result_regex": "(--quantité)",
-                        "error_message": "L'argument <copde>--quantité</code> de l'action <code>déposer</code> ne respect pas la nomenclature."
+                        "error_message": "L'argument <code>--quantité</code> de l'action <code>déposer</code> ne respect pas la nomenclature."
                     },
                     {
                         "command": "déposer -h",
                         "success_looking": true,
                         "result_regex": "(--date)",
-                        "error_message": "L'argument <copde>--date</code> de l'action <code>déposer</code> ne respect pas la nomenclature."
+                        "error_message": "L'argument <code>--date</code> de l'action <code>déposer</code> ne respect pas la nomenclature."
                     },
                     {
                         "command": "déposer -h",
                         "success_looking": true,
                         "result_regex": "(\\s-p)",
-                        "error_message": "L'argument <copde>-p</code> de l'action <code>déposer</code> ne respect pas la nomenclature."
+                        "error_message": "L'argument <code>-p</code> de l'action <code>déposer</code> ne respect pas la nomenclature."
                     },
                     {
                         "command": "déposer -h",
                         "success_looking": true,
                         "result_regex": "(\\s-q)",
-                        "error_message": "L'argument <copde>-q</code> de l'action <code>déposer</code> ne respect pas la nomenclature."
+                        "error_message": "L'argument <code>-q</code> de l'action <code>déposer</code> ne respect pas la nomenclature."
                     },
                     {
                         "command": "déposer -h",
                         "success_looking": true,
                         "result_regex": "(\\s-d)",
-                        "error_message": "L'argument <copde>-d</code> de l'action <code>déposer</code> ne respect pas la nomenclature."
+                        "error_message": "L'argument <code>-d</code> de l'action <code>déposer</code> ne respect pas la nomenclature."
                     },
                     {
                         "command": "acheter -h",
                         "success_looking": true,
                         "result_regex": "(--portefeuille)",
-                        "error_message": "L'argument <copde>--portefeuille</code> de l'action <code>acheter</code> ne respect pas la nomenclature."
+                        "error_message": "L'argument <code>--portefeuille</code> de l'action <code>acheter</code> ne respect pas la nomenclature."
                     },
                     {
                         "command": "acheter -h",
                         "success_looking": true,
                         "result_regex": "(--quantité)",
-                        "error_message": "L'argument <copde>--quantité</code> de l'action <code>acheter</code> ne respect pas la nomenclature."
+                        "error_message": "L'argument <code>--quantité</code> de l'action <code>acheter</code> ne respect pas la nomenclature."
                     },
                     {
                         "command": "acheter -h",
                         "success_looking": true,
                         "result_regex": "(--titres)",
-                        "error_message": "L'argument <copde>--titres</code> de l'action <code>acheter</code> ne respect pas la nomenclature."
+                        "error_message": "L'argument <code>--titres</code> de l'action <code>acheter</code> ne respect pas la nomenclature."
                     },
                     {
                         "command": "acheter -h",
                         "success_looking": true,
                         "result_regex": "(--date)",
-                        "error_message": "L'argument <copde>--date</code> de l'action <code>acheter</code> ne respect pas la nomenclature."
+                        "error_message": "L'argument <code>--date</code> de l'action <code>acheter</code> ne respect pas la nomenclature."
                     },
                     {
                         "command": "acheter -h",
                         "success_looking": true,
                         "result_regex": "(\\s-p)",
-                        "error_message": "L'argument <copde>-p</code> de l'action <code>acheter</code> ne respect pas la nomenclature."
+                        "error_message": "L'argument <code>-p</code> de l'action <code>acheter</code> ne respect pas la nomenclature."
                     },
                     {
                         "command": "acheter -h",
                         "success_looking": true,
                         "result_regex": "(\\s-q)",
-                        "error_message": "L'argument <copde>-q</code> de l'action <code>acheter</code> ne respect pas la nomenclature."
+                        "error_message": "L'argument <code>-q</code> de l'action <code>acheter</code> ne respect pas la nomenclature."
                     },
                     {
                         "command": "acheter -h",
                         "success_looking": true,
                         "result_regex": "(\\s-t)",
-                        "error_message": "L'argument <copde>-t</code> de l'action <code>acheter</code> ne respect pas la nomenclature."
+                        "error_message": "L'argument <code>-t</code> de l'action <code>acheter</code> ne respect pas la nomenclature."
                     },
                     {
                         "command": "acheter -h",
                         "success_looking": true,
                         "result_regex": "(\\s-d)",
-                        "error_message": "L'argument <copde>-d</code> de l'action <code>acheter</code> ne respect pas la nomenclature."
+                        "error_message": "L'argument <code>-d</code> de l'action <code>acheter</code> ne respect pas la nomenclature."
                     },
                     {
                         "command": "vendre -h",
                         "success_looking": true,
-                        "result_regex": "(--)",
-                        "error_message": "L'argument <copde>--</code> de l'action <code>vendre</code> ne respect pas la nomenclature."
+                        "result_regex": "(--portefeuille)",
+                        "error_message": "L'argument <code>--portefeuille</code> de l'action <code>vendre</code> ne respect pas la nomenclature."
+                    },
+                    {
+                        "command": "vendre -h",
+                        "success_looking": true,
+                        "result_regex": "(--quantité)",
+                        "error_message": "L'argument <code>--quantité</code> de l'action <code>vendre</code> ne respect pas la nomenclature."
+                    },
+                    {
+                        "command": "vendre -h",
+                        "success_looking": true,
+                        "result_regex": "(--titres)",
+                        "error_message": "L'argument <code>--titres</code> de l'action <code>vendre</code> ne respect pas la nomenclature."
+                    },
+                    {
+                        "command": "vendre -h",
+                        "success_looking": true,
+                        "result_regex": "(--date)",
+                        "error_message": "L'argument <code>--date</code> de l'action <code>vendre</code> ne respect pas la nomenclature."
+                    },
+                    {
+                        "command": "vendre -h",
+                        "success_looking": true,
+                        "result_regex": "(\\s-p)",
+                        "error_message": "L'argument <code>-p</code> de l'action <code>vendre</code> ne respect pas la nomenclature."
+                    },
+                    {
+                        "command": "vendre -h",
+                        "success_looking": true,
+                        "result_regex": "(\\s-q)",
+                        "error_message": "L'argument <code>-q</code> de l'action <code>vendre</code> ne respect pas la nomenclature."
+                    },
+                    {
+                        "command": "vendre -h",
+                        "success_looking": true,
+                        "result_regex": "(\\s-t)",
+                        "error_message": "L'argument <code>-t</code> de l'action <code>vendre</code> ne respect pas la nomenclature."
+                    },
+                    {
+                        "command": "vendre -h",
+                        "success_looking": true,
+                        "result_regex": "(\\s-d)",
+                        "error_message": "L'argument <code>-d</code> de l'action <code>vendre</code> ne respect pas la nomenclature."
+                    },
+                    {
+                        "command": "solde -h",
+                        "success_looking": true,
+                        "result_regex": "(--portefeuille)",
+                        "error_message": "L'argument <code>--portefeuille</code> de l'action <code>solde</code> ne respect pas la nomenclature."
+                    },
+                    {
+                        "command": "solde -h",
+                        "success_looking": true,
+                        "result_regex": "(--date)",
+                        "error_message": "L'argument <code>--date</code> de l'action <code>solde</code> ne respect pas la nomenclature."
+                    },
+                    {
+                        "command": "solde -h",
+                        "success_looking": true,
+                        "result_regex": "(--graphique)",
+                        "error_message": "L'argument <code>--graphique</code> de l'action <code>solde</code> ne respect pas la nomenclature."
+                    },
+                    {
+                        "command": "solde -h",
+                        "success_looking": true,
+                        "result_regex": "(\\s-p)",
+                        "error_message": "L'argument <code>-p</code> de l'action <code>solde</code> ne respect pas la nomenclature."
+                    },
+                    {
+                        "command": "solde -h",
+                        "success_looking": true,
+                        "result_regex": "(\\s-d)",
+                        "error_message": "L'argument <code>-d</code> de l'action <code>solde</code> ne respect pas la nomenclature."
+                    },
+                    {
+                        "command": "solde -h",
+                        "success_looking": true,
+                        "result_regex": "(\\s-g)",
+                        "error_message": "L'argument <code>-g</code> de l'action <code>solde</code> ne respect pas la nomenclature."
+                    },
+                    {
+                        "command": "titres -h",
+                        "success_looking": true,
+                        "result_regex": "(--portefeuille)",
+                        "error_message": "L'argument <code>--portefeuille</code> de l'action <code>titres</code> ne respect pas la nomenclature."
+                    },
+                    {
+                        "command": "titres -h",
+                        "success_looking": true,
+                        "result_regex": "(--titres)",
+                        "error_message": "L'argument <code>--titres</code> de l'action <code>titres</code> ne respect pas la nomenclature."
+                    },
+                    {
+                        "command": "titres -h",
+                        "success_looking": true,
+                        "result_regex": "(--date)",
+                        "error_message": "L'argument <code>--date</code> de l'action <code>titres</code> ne respect pas la nomenclature."
+                    },
+                    {
+                        "command": "titres -h",
+                        "success_looking": true,
+                        "result_regex": "(--graphique)",
+                        "error_message": "L'argument <code>--graphique</code> de l'action <code>titres</code> ne respect pas la nomenclature."
+                    },
+                    {
+                        "command": "titres -h",
+                        "success_looking": true,
+                        "result_regex": "(\\s-p)",
+                        "error_message": "L'argument <code>-p</code> de l'action <code>titres</code> ne respect pas la nomenclature."
+                    },
+                    {
+                        "command": "titres -h",
+                        "success_looking": true,
+                        "result_regex": "(\\s-t)",
+                        "error_message": "L'argument <code>-t</code> de l'action <code>titres</code> ne respect pas la nomenclature."
+                    }
+                    {
+                        "command": "titres -h",
+                        "success_looking": true,
+                        "result_regex": "(\\s-d)",
+                        "error_message": "L'argument <code>-d</code> de l'action <code>titres</code> ne respect pas la nomenclature."
+                    },
+                    {
+                        "command": "titres -h",
+                        "success_looking": true,
+                        "result_regex": "(\\s-g)",
+                        "error_message": "L'argument <code>-g</code> de l'action <code>titres</code> ne respect pas la nomenclature."
+                    },
+                    {
+                        "command": "valeur -h",
+                        "success_looking": true,
+                        "result_regex": "(--portefeuille)",
+                        "error_message": "L'argument <code>--portefeuille</code> de l'action <code>valeur</code> ne respect pas la nomenclature."
+                    },
+                    {
+                        "command": "valeur -h",
+                        "success_looking": true,
+                        "result_regex": "(--titres)",
+                        "error_message": "L'argument <code>--titres</code> de l'action <code>valeur</code> ne respect pas la nomenclature."
+                    },
+                    {
+                        "command": "valeur -h",
+                        "success_looking": true,
+                        "result_regex": "(--date)",
+                        "error_message": "L'argument <code>--date</code> de l'action <code>valeur</code> ne respect pas la nomenclature."
+                    },
+                    {
+                        "command": "valeur -h",
+                        "success_looking": true,
+                        "result_regex": "(--graphique)",
+                        "error_message": "L'argument <code>--graphique</code> de l'action <code>valeur</code> ne respect pas la nomenclature."
+                    },
+                    {
+                        "command": "valeur -h",
+                        "success_looking": true,
+                        "result_regex": "(\\s-p)",
+                        "error_message": "L'argument <code>-p</code> de l'action <code>valeur</code> ne respect pas la nomenclature."
+                    },
+                    {
+                        "command": "valeur -h",
+                        "success_looking": true,
+                        "result_regex": "(\\s-t)",
+                        "error_message": "L'argument <code>-t</code> de l'action <code>valeur</code> ne respect pas la nomenclature."
+                    },
+                    {
+                        "command": "valeur -h",
+                        "success_looking": true,
+                        "result_regex": "(\\s-d)",
+                        "error_message": "L'argument <code>-d</code> de l'action <code>valeur</code> ne respect pas la nomenclature."
+                    },
+                    {
+                        "command": "valeur -h",
+                        "success_looking": true,
+                        "result_regex": "(\\s-g)",
+                        "error_message": "L'argument <code>-g</code> de l'action <code>valeur</code> ne respect pas la nomenclature."
+                    },
+                    {
+                        "command": "projection -h",
+                        "success_looking": true,
+                        "result_regex": "(--portefeuille)",
+                        "error_message": "L'argument <code>--portefeuille</code> de l'action <code>projection</code> ne respect pas la nomenclature."
+                    },
+                    {
+                        "command": "projection -h",
+                        "success_looking": true,
+                        "result_regex": "(--titres)",
+                        "error_message": "L'argument <code>--titres</code> de l'action <code>projection</code> ne respect pas la nomenclature."
+                    },
+                    {
+                        "command": "projection -h",
+                        "success_looking": true,
+                        "result_regex": "(--date)",
+                        "error_message": "L'argument <code>--date</code> de l'action <code>projection</code> ne respect pas la nomenclature."
+                    },
+                    {
+                        "command": "projection -h",
+                        "success_looking": true,
+                        "result_regex": "(--graphique)",
+                        "error_message": "L'argument <code>--graphique</code> de l'action <code>projection</code> ne respect pas la nomenclature."
+                    },
+                    {
+                        "command": "projection -h",
+                        "success_looking": true,
+                        "result_regex": "(--rendement)",
+                        "error_message": "L'argument <code>--rendement</code> de l'action <code>projection</code> ne respect pas la nomenclature."
+                    },
+                    {
+                        "command": "projection -h",
+                        "success_looking": true,
+                        "result_regex": "(--volatilité)",
+                        "error_message": "L'argument <code>--volatilité</code> de l'action <code>projection</code> ne respect pas la nomenclature."
+                    },
+                    {
+                        "command": "projection -h",
+                        "success_looking": true,
+                        "result_regex": "(\\s-p)",
+                        "error_message": "L'argument <code>-p</code> de l'action <code>projection</code> ne respect pas la nomenclature."
+                    },
+                    {
+                        "command": "projection -h",
+                        "success_looking": true,
+                        "result_regex": "(\\s-t)",
+                        "error_message": "L'argument <code>-t</code> de l'action <code>projection</code> ne respect pas la nomenclature."
+                    },
+                    {
+                        "command": "projection -h",
+                        "success_looking": true,
+                        "result_regex": "(\\s-d)",
+                        "error_message": "L'argument <code>-d</code> de l'action <code>projection</code> ne respect pas la nomenclature."
+                    },
+                    {
+                        "command": "projection -h",
+                        "success_looking": true,
+                        "result_regex": "(\\s-g)",
+                        "error_message": "L'argument <code>-g</code> de l'action <code>projection</code> ne respect pas la nomenclature."
+                    },
+                    {
+                        "command": "projection -h",
+                        "success_looking": true,
+                        "result_regex": "(\\s-r)",
+                        "error_message": "L'argument <code>-r</code> de l'action <code>projection</code> ne respect pas la nomenclature."
+                    },
+                    {
+                        "command": "projection -h",
+                        "success_looking": true,
+                        "result_regex": "(\\s-v)",
+                        "error_message": "L'argument <code>-v</code> de l'action <code>projection</code> ne respect pas la nomenclature."
+                    }
+                ]
+            },
+            {
+                "section_title": "Arguments manquants",
+                "section_description": "Vérification de la présence de tous les arguments.",
+                "weight": 10,
+                "tests": 
+                [
+                    {
+                        "command": "-h",
+                        "success_looking": true,
+                        "result_regex": "^(\\s+(dépos|depos))",
+                        "error_message": "L'action <code>déposer</code> est manquante pour la commande <code>gesport.py -h</code>"
+                    },
+                    {
+                        "command": "-h",
+                        "success_looking": true,
+                        "result_regex": "^(\\s+achet)",
+                        "error_message": "L'action <code>acheter</code> est manquante pour la commande <code>gesport.py -h</code>"
+                    },
+                    {
+                        "command": "-h",
+                        "success_looking": true,
+                        "result_regex": "^(\\s+vendre)",
+                        "error_message": "L'action <code>vendre</code> est manquante pour la commande <code>gesport.py -h</code>"
+                    },
+                    {
+                        "command": "-h",
+                        "success_looking": true,
+                        "result_regex": "^(\\s+solde)",
+                        "error_message": "L'action <code>solde</code> est manquante pour la commande <code>gesport.py -h</code>"
+                    },
+                    {
+                        "command": "-h",
+                        "success_looking": true,
+                        "result_regex": "^(\\s+titre)",
+                        "error_message": "L'action <code>titres</code> est manquante pour la commande <code>gesport.py -h</code>"
+                    },
+                    {
+                        "command": "-h",
+                        "success_looking": true,
+                        "result_regex": "^(\\s+valeur)",
+                        "error_message": "L'action <code>valeur</code> est manquante pour la commande <code>gesport.py -h</code>"
+                    },
+                    {
+                        "command": "-h",
+                        "success_looking": true,
+                        "result_regex": "^(\\s+proje)",
+                        "error_message": "L'action <code>projection</code> est manquante pour la commande <code>gesport.py -h</code>"
+                    },
+                    {
+                        "command": "déposer -p",
+                        "success_looking": false,
+                        "result_regex": "(argument -p/--)",
+                        "error_message": "L'argument<code>--portefeuille</code> est manquante pour l'action <code>déposer</code>"
+                    },
+                    {
+                        "command": "déposer -q",
+                        "success_looking": false,
+                        "result_regex": "(argument -q/--)",
+                        "error_message": "L'argument<code>--quantité</code> est manquante pour la commande <code>déposer</code>"
+                    },
+                    {
+                        "command": "déposer -d",
+                        "success_looking": false,
+                        "result_regex": "(argument -d/--)",
+                        "error_message": "L'argument<code>--date</code> est manquante pour la commande <code>déposer</code>"
+                    },
+                    {
+                        "command": "acheter -p",
+                        "success_looking": false,
+                        "result_regex": "(argument -p/--)",
+                        "error_message": "L'argument<code>--portefeuille</code> est manquante pour la commande <code>acheter</code>"
+                    },
+                    {
+                        "command": "acheter -q",
+                        "success_looking": false,
+                        "result_regex": "(argument -q/--)",
+                        "error_message": "L'argument<code>--quantité</code> est manquante pour la commande <code>acheter</code>"
+                    },
+                    {
+                        "command": "acheter -t",
+                        "success_looking": false,
+                        "result_regex": "(argument -t/--)",
+                        "error_message": "L'argument<code>--titres</code> est manquante pour la commande <code>acheter</code>"
+                    },
+                    {
+                        "command": "acheter -d",
+                        "success_looking": false,
+                        "result_regex": "(argument -d/--)",
+                        "error_message": "L'argument<code>--date</code> est manquante pour la commande <code>acheter</code>"
+                    },
+                    {
+                        "command": "vendre -p",
+                        "success_looking": false,
+                        "result_regex": "(argument -p/--)",
+                        "error_message": "L'argument<code>--portefeuille</code> est manquante pour la commande <code>vendre</code>"
+                    },
+                    {
+                        "command": "vendre -q",
+                        "success_looking": false,
+                        "result_regex": "(argument -q/--)",
+                        "error_message": "L'argument<code>--quantité</code> est manquante pour la commande <code>vendre</code>"
+                    },
+                    {
+                        "command": "vendre -t",
+                        "success_looking": false,
+                        "result_regex": "(argument -t/--)",
+                        "error_message": "L'argument<code>--titres</code> est manquante pour la commande <code>vendre</code>"
+                    },
+                    {
+                        "command": "vendre -d",
+                        "success_looking": false,
+                        "result_regex": "(argument -d/--)",
+                        "error_message": "L'argument<code>--date</code> est manquante pour la commande <code>vendre</code>"
+                    },
+                    {
+                        "command": "solde -p",
+                        "success_looking": false,
+                        "result_regex": "(argument -p/--)",
+                        "error_message": "L'argument<code>--portefeuille</code> est manquante pour la commande <code>solde</code>"
+                    },
+                    {
+                        "command": "solde -d",
+                        "success_looking": false,
+                        "result_regex": "(argument -d/--)",
+                        "error_message": "L'argument<code>--date</code> est manquante pour la commande <code>solde</code>"
+                    },
+                    {
+                        "command": "solde -g",
+                        "success_looking": false,
+                        "result_regex": "(argument -g/--)",
+                        "error_message": "L'argument<code>--graphique</code> est manquante pour la commande <code>solde</code>"
+                    },
+                    {
+                        "command": "titres -p",
+                        "success_looking": false,
+                        "result_regex": "(argument -p/--)",
+                        "error_message": "L'argument<code>--portefeuille</code> est manquante pour la commande <code>titres</code>"
+                    },
+                    {
+                        "command": "titres -t",
+                        "success_looking": false,
+                        "result_regex": "(argument -t/--)",
+                        "error_message": "L'argument<code>--titres</code> est manquante pour la commande <code>titres</code>"
+                    },
+                    {
+                        "command": "titres -d",
+                        "success_looking": false,
+                        "result_regex": "(argument -d/--)",
+                        "error_message": "L'argument<code>--date</code> est manquante pour la commande <code>titres</code>"
+                    },
+                    {
+                        "command": "titres -g",
+                        "success_looking": false,
+                        "result_regex": "(argument -g/--)",
+                        "error_message": "L'argument<code>--graphique</code> est manquante pour la commande <code>titres</code>"
+                    },
+                    {
+                        "command": "valeur -p",
+                        "success_looking": false,
+                        "result_regex": "(argument -p/--)",
+                        "error_message": "L'argument<code>--portefeuille</code> est manquante pour la commande <code>valeur</code>"
+                    },
+                    {
+                        "command": "valeur -t",
+                        "success_looking": false,
+                        "result_regex": "(argument -t/--)",
+                        "error_message": "L'argument<code>--titres</code> est manquante pour la commande <code>valeur</code>"
+                    },
+                    {
+                        "command": "valeur -d",
+                        "success_looking": false,
+                        "result_regex": "(argument -d/--)",
+                        "error_message": "L'argument<code>--date</code> est manquante pour la commande <code>valeur</code>"
+                    },
+                    {
+                        "command": "valeur -graphique",
+                        "success_looking": false,
+                        "result_regex": "(argument -graphique/--)",
+                        "error_message": "L'argument<code>--g</code> est manquante pour la commande <code>valeur</code>"
+                    },
+                    {
+                        "command": "projection -p",
+                        "success_looking": false,
+                        "result_regex": "(argument -p/--)",
+                        "error_message": "L'argument<code>--portefeuille</code> est manquante pour la commande <code>projection</code>"
+                    },
+                    {
+                        "command": "projection -t",
+                        "success_looking": false,
+                        "result_regex": "(argument -t/--)",
+                        "error_message": "L'argument<code>--titres</code> est manquante pour la commande <code>projection</code>"
+                    },
+                    {
+                        "command": "projection -d",
+                        "success_looking": false,
+                        "result_regex": "(argument -d/--)",
+                        "error_message": "L'argument<code>--date</code> est manquante pour la commande <code>projection</code>"
+                    },
+                    {
+                        "command": "projection -g",
+                        "success_looking": false,
+                        "result_regex": "(argument -g/--)",
+                        "error_message": "L'argument<code>--graphique</code> est manquante pour la commande <code>projection</code>"
+                    },
+                    {
+                        "command": "projection -r",
+                        "success_looking": false,
+                        "result_regex": "(argument -r/--)",
+                        "error_message": "L'argument<code>--rendement</code> est manquante pour la commande <code>projection</code>"
+                    },
+                    {
+                        "command": "projection -v",
+                        "success_looking": false,
+                        "result_regex": "(argument -v/--)",
+                        "error_message": "L'argument<code>--volatilité</code> est manquante pour la commande <code>projection</code>"
+                    }
+                ]
+            },
+            {
+                "section_title": "Arguments superflus",
+                "section_description": "Vérification de la présence d'arguements superflus.",
+                "weight": 10,
+                "tests": 
+                [
+                    {
+                        "command": "-p",
+                        "success_looking": false,
+                        "result_regex": "(unrecognized arguments: -p)",
+                        "error_message": "La racine <code>gesport.py</code> ne devrait pas avoir l'argument <code>--portefeuille</code>"
+                    },
+                    {
+                        "command": "-q",
+                        "success_looking": false,
+                        "result_regex": "(unrecognized arguments: -q)",
+                        "error_message": "La racine <code>gesport.py</code> ne devrait pas avoir l'argument <code>--quantité</code>"
+                    },
+                    {
+                        "command": "-t",
+                        "success_looking": false,
+                        "result_regex": "(unrecognized arguments: -t)",
+                        "error_message": "La racine <code>gesport.py</code> ne devrait pas avoir l'argument <code>--titres</code>"
+                    },
+                    {
+                        "command": "-d",
+                        "success_looking": false,
+                        "result_regex": "(unrecognized arguments: -d)",
+                        "error_message": "La racine <code>gesport.py</code> ne devrait pas avoir l'argument <code>--date</code>"
+                    },
+                    {
+                        "command": "-g",
+                        "success_looking": false,
+                        "result_regex": "(unrecognized arguments: -g)",
+                        "error_message": "La racine <code>gesport.py</code> ne devrait pas avoir l'argument <code>--graphique</code>"
+                    },
+                    {
+                        "command": "-r",
+                        "success_looking": false,
+                        "result_regex": "(unrecognized arguments: -r)",
+                        "error_message": "La racine <code>gesport.py</code> ne devrait pas avoir l'argument <code>--rendement</code>"
+                    },
+                    {
+                        "command": "-v",
+                        "success_looking": false,
+                        "result_regex": "(unrecognized arguments: -v)",
+                        "error_message": "La racine <code>gesport.py</code> ne devrait pas avoir l'argument <code>--volatilité</code>"
+                    },
+                    {
+                        "command": "déposer -t",
+                        "success_looking": false,
+                        "result_regex": "(unrecognized arguments: -t)",
+                        "error_message": "L'action <code>déposer</code> ne devrait pas avoir l'argument <code>--titres</code>"
+                    },
+                    {
+                        "command": "déposer -g",
+                        "success_looking": false,
+                        "result_regex": "(unrecognized arguments: -g)",
+                        "error_message": "L'action <code>déposer</code> ne devrait pas avoir l'argument <code>--graphique</code>"
+                    },
+                    {
+                        "command": "déposer -r",
+                        "success_looking": false,
+                        "result_regex": "(unrecognized arguments: -r)",
+                        "error_message": "L'action <code>déposer</code> ne devrait pas avoir l'argument <code>--rendement</code>"
+                    },
+                    {
+                        "command": "déposer -v",
+                        "success_looking": false,
+                        "result_regex": "(unrecognized arguments: -v)",
+                        "error_message": "L'action <code>déposer</code> ne devrait pas avoir l'argument <code>--volatilité</code>"
+                    },
+                    {
+                        "command": "acheter -g",
+                        "success_looking": false,
+                        "result_regex": "(unrecognized arguments: -g)",
+                        "error_message": "L'action <code>acheter</code> ne devrait pas avoir l'argument <code>--graphique</code>"
+                    },
+                    {
+                        "command": "acheter -r",
+                        "success_looking": false,
+                        "result_regex": "(unrecognized arguments: -r)",
+                        "error_message": "L'action <code>acheter</code> ne devrait pas avoir l'argument <code>--rendement</code>"
+                    },
+                    {
+                        "command": "acheter -v",
+                        "success_looking": false,
+                        "result_regex": "(unrecognized arguments: -v)",
+                        "error_message": "L'action <code>acheter</code> ne devrait pas avoir l'argument <code>--volatilité</code>"
+                    },
+                    {
+                        "command": "vendre -g",
+                        "success_looking": false,
+                        "result_regex": "(unrecognized arguments: -g)",
+                        "error_message": "L'action <code>vendre</code> ne devrait pas avoir l'argument <code>--graphique</code>"
+                    },
+                    {
+                        "command": "vendre -r",
+                        "success_looking": false,
+                        "result_regex": "(unrecognized arguments: -r)",
+                        "error_message": "L'action <code>vendre</code> ne devrait pas avoir l'argument <code>--rendement</code>"
+                    },
+                    {
+                        "command": "vendre -v",
+                        "success_looking": false,
+                        "result_regex": "(unrecognized arguments: -v)",
+                        "error_message": "L'action <code>vendre</code> ne devrait pas avoir l'argument <code>--volatilité</code>"
+                    },
+                    {
+                        "command": "solde -q",
+                        "success_looking": false,
+                        "result_regex": "(unrecognized arguments: -q)",
+                        "error_message": "L'action <code>solde</code> ne devrait pas avoir l'argument <code>--quantité</code>"
+                    },
+                    {
+                        "command": "solde -t",
+                        "success_looking": false,
+                        "result_regex": "(unrecognized arguments: -t)",
+                        "error_message": "L'action <code>solde</code> ne devrait pas avoir l'argument <code>--titres</code>"
+                    },
+                    {
+                        "command": "solde -r",
+                        "success_looking": false,
+                        "result_regex": "(unrecognized arguments: -r)",
+                        "error_message": "L'action <code>solde</code> ne devrait pas avoir l'argument <code>--rendement</code>"
+                    },
+                    {
+                        "command": "solde -v",
+                        "success_looking": false,
+                        "result_regex": "(unrecognized arguments: -v)",
+                        "error_message": "L'action <code>solde</code> ne devrait pas avoir l'argument <code>--volatilité</code>"
+                    },
+                    {
+                        "command": "titres -q",
+                        "success_looking": false,
+                        "result_regex": "(unrecognized arguments: -q)",
+                        "error_message": "L'action <code>titres</code> ne devrait pas avoir l'argument <code>--quantité</code>"
+                    },
+                    {
+                        "command": "titres -r",
+                        "success_looking": false,
+                        "result_regex": "(unrecognized arguments: -r)",
+                        "error_message": "L'action <code>titres</code> ne devrait pas avoir l'argument <code>--rendement</code>"
+                    },
+                    {
+                        "command": "titres -v",
+                        "success_looking": false,
+                        "result_regex": "(unrecognized arguments: -v)",
+                        "error_message": "L'action <code>titres</code> ne devrait pas avoir l'argument <code>--volatilité</code>"
+                    },
+                    {
+                        "command": "valeur -q",
+                        "success_looking": false,
+                        "result_regex": "(unrecognized arguments: -q)",
+                        "error_message": "L'action <code>valeur</code> ne devrait pas avoir l'argument <code>--quantité</code>"
+                    },
+                    {
+                        "command": "valeur -r",
+                        "success_looking": false,
+                        "result_regex": "(unrecognized arguments: -r)",
+                        "error_message": "L'action <code>valeur</code> ne devrait pas avoir l'argument <code>--rendement</code>"
+                    },
+                    {
+                        "command": "valeur -v",
+                        "success_looking": false,
+                        "result_regex": "(unrecognized arguments: -v)",
+                        "error_message": "L'action <code>valeur</code> ne devrait pas avoir l'argument <code>--volatilité</code>"
+                    },
+                    {
+                        "command": "projection -q",
+                        "success_looking": false,
+                        "result_regex": "(unrecognized arguments: -q)",
+                        "error_message": "L'action <code>projection</code> ne devrait pas avoir l'argument <code>--quantité</code>"
+                    }
+                ]
+            },
+            {
+                "section_title": "Metavar",
+                "section_description": "Vérification des metavar.",
+                "weight": 10,
+                "tests": 
+                [
+                    {
+                        "command": "déposer -h",
+                        "success_looking": true,
+                        "result_regex": "^(\\s+-p\\sSTRING,)",
+                        "error_message": "L'argument <code>--portefeuille</code> de l'action <code>déposer</code> devrait avoir le <strong>metavar</strong> <code>STRING</code>"
+                    },
+                    {
+                        "command": "déposer -h",
+                        "success_looking": true,
+                        "result_regex": "^(\\s+-q\\sINT,)",
+                        "error_message": "L'argument <code>--quantité</code> de l'action <code>déposer</code> devrait avoir le <strong>metavar</strong> <code>INT</code>"
+                    },
+                    {
+                        "command": "déposer -h",
+                        "success_looking": true,
+                        "result_regex": "^(\\s+-d\\sDATE,)",
+                        "error_message": "L'argument <code>--date</code> de l'action <code>déposer</code> devrait avoir le <strong>metavar</strong> <code>DATE</code>"
+                    },
+                    {
+                        "command": "acheter -h",
+                        "success_looking": true,
+                        "result_regex": "^(\\s+-p\\sSTRING,)",
+                        "error_message": "L'argument <code>--portefeuille</code> de l'action <code>acheter</code> devrait avoir le <strong>metavar</strong> <code>STRING</code>"
+                    },
+                    {
+                        "command": "acheter -h",
+                        "success_looking": true,
+                        "result_regex": "^(\\s+-q\\sINT,)",
+                        "error_message": "L'argument <code>--quantité</code> de l'action <code>acheter</code> devrait avoir le <strong>metavar</strong> <code></code>"
+                    },
+                    {
+                        "command": "acheter -h",
+                        "success_looking": true,
+                        "result_regex": "^(\\s+-t\\s.?STRING\\s+[STRING)",
+                        "error_message": "L'argument <code>--titres</code> de l'action <code>acheter</code> devrait avoir le <strong>metavar</strong> <code>STRING [STRING ...]</code>"
+                    },
+                    {
+                        "command": "acheter -h",
+                        "success_looking": true,
+                        "result_regex": "^(\\s+-d\\sDATE,)",
+                        "error_message": "L'argument <code>--date</code> de l'action <code>acheter</code> devrait avoir le <strong>metavar</strong> <code>DATE</code>"
+                    },
+                    {
+                        "command": "solde -h",
+                        "success_looking": true,
+                        "result_regex": "^(\\s+p-\\sSTRING,)",
+                        "error_message": "L'argument <code>--portefeuille</code> de l'action <code>solde</code> devrait avoir le <strong>metavar</strong> <code>STRING</code>"
+                    },
+                    {
+                        "command": "solde -h",
+                        "success_looking": true,
+                        "result_regex": "^(\\s+-d\\sDATE,)",
+                        "error_message": "L'argument <code>--date</code> de l'action <code>solde</code> devrait avoir le <strong>metavar</strong> <code>DATE</code>"
+                    },
+                    {
+                        "command": "solde -h",
+                        "success_looking": true,
+                        "result_regex": "^(\\s+-g\\sBOOL,)",
+                        "error_message": "L'argument <code>--graphique</code> de l'action <code>solde</code> devrait avoir le <strong>metavar</strong> <code>BOOL</code>"
+                    },
+                    {
+                        "command": "titres -h",
+                        "success_looking": true,
+                        "result_regex": "^(\\s+-p\\sSTRING,)",
+                        "error_message": "L'argument <code>--portefeuille</code> de l'action <code>titres</code> devrait avoir le <strong>metavar</strong> <code>STRING</code>"
+                    },
+                    {
+                        "command": "titres -h",
+                        "success_looking": true,
+                        "result_regex": "^(\\s+-t\\s.?STRING\\s+[STRING)",
+                        "error_message": "L'argument <code>--titres</code> de l'action <code>titres</code> devrait avoir le <strong>metavar</strong> <code>STRING [STRING ...]</code>"
+                    },
+                    {
+                        "command": "titres -h",
+                        "success_looking": true,
+                        "result_regex": "^(\\s+-d\\sDATE,)",
+                        "error_message": "L'argument <code>--date</code> de l'action <code>titres</code> devrait avoir le <strong>metavar</strong> <code>DATE</code>"
+                    },
+                    {
+                        "command": "titres -h",
+                        "success_looking": true,
+                        "result_regex": "^(\\s+-g\\sBOOL,)",
+                        "error_message": "L'argument <code>--graphique</code> de l'action <code>titres</code> devrait avoir le <strong>metavar</strong> <code>BOOL</code>"
+                    },
+                    {
+                        "command": "valeur -h",
+                        "success_looking": true,
+                        "result_regex": "^(\\s+-p\\sSTRING,)",
+                        "error_message": "L'argument <code>--portefeuille</code> de l'action <code>valeur</code> devrait avoir le <strong>metavar</strong> <code>STRING</code>"
+                    },
+                    {
+                        "command": "valeur -h",
+                        "success_looking": true,
+                        "result_regex": "^(\\s+-t\\s.?STRING\\s+[STRING)",
+                        "error_message": "L'argument <code>--titres</code> de l'action <code>valeur</code> devrait avoir le <strong>metavar</strong> <code>STRING [STRING ...]</code>"
+                    },
+                    {
+                        "command": "valeur -h",
+                        "success_looking": true,
+                        "result_regex": "^(\\s+-d\\sDATE,)",
+                        "error_message": "L'argument <code>--date</code> de l'action <code>valeur</code> devrait avoir le <strong>metavar</strong> <code>DATE</code>"
+                    },
+                    {
+                        "command": "valeur -h",
+                        "success_looking": true,
+                        "result_regex": "^(\\s+-g\\sBOOL,)",
+                        "error_message": "L'argument <code>--graphique</code> de l'action <code>valeur</code> devrait avoir le <strong>metavar</strong> <code>BOOL</code>"
+                    },
+                    {
+                        "command": "projection -h",
+                        "success_looking": true,
+                        "result_regex": "^(\\s+-p\\sSTRING,)",
+                        "error_message": "L'argument <code>--portefeuille</code> de l'action <code>projection</code> devrait avoir le <strong>metavar</strong> <code>STRING</code>"
+                    },
+                    {
+                        "command": "projection -h",
+                        "success_looking": true,
+                        "result_regex": "^(\\s+-t\\s.?STRING\\s+[STRING)",
+                        "error_message": "L'argument <code>--titres</code> de l'action <code>projection</code> devrait avoir le <strong>metavar</strong> <code>STRING [STRING ...]</code>"
+                    },
+                    {
+                        "command": "projection -h",
+                        "success_looking": true,
+                        "result_regex": "^(\\s+-d\\sDATE,)",
+                        "error_message": "L'argument <code>--date</code> de l'action <code>projection</code> devrait avoir le <strong>metavar</strong> <code>DATE</code>"
+                    },
+                    {
+                        "command": "projection -h",
+                        "success_looking": true,
+                        "result_regex": "^(\\s+-g\\sBOOL,)",
+                        "error_message": "L'argument <code>--graphique</code> de l'action <code>projection</code> devrait avoir le <strong>metavar</strong> <code>BOOL</code>"
+                    },
+                    {
+                        "command": "projection -h",
+                        "success_looking": true,
+                        "result_regex": "^(\\s+-r\\sFLOAT,)",
+                        "error_message": "L'argument <code>--rendement</code> de l'action <code>projection</code> devrait avoir le <strong>metavar</strong> <code>FLOAT</code>"
+                    },
+                    {
+                        "command": "projection -h",
+                        "success_looking": true,
+                        "result_regex": "^(\\s+-v\\sFLOAT,)",
+                        "error_message": "L'argument <code>--volatilité</code> de l'action <code>projection</code> devrait avoir le <strong>metavar</strong> <code>FLOAT</code>"
                     }
                 ]
             }
