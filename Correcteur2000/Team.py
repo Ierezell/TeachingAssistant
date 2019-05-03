@@ -108,10 +108,10 @@ class Team:
                 exactNameBool = True
                 break
             # TODO: Les 3 ligne suivante sont du a l'erreur du prof dans l'énoncé
-            elif f.split('/')[-1] == "marcheboursier.py":
-                self.dictNomenclature[projectName[:-3]] = f.split('/')[-1][:-3]
-                exactNameBool = True
-                break
+            # elif projectName == 'marche_boursier.py' and f.split('/')[-1] == "marcheboursier.py":
+            #     self.dictNomenclature[projectName[:-3]] = f.split('/')[-1][:-3]
+            #     exactNameBool = True
+            #     break
             else:
                 if self.similar_name(projectName, f.split('/')[-1]):
                     self.dictNomenclature[projectName[:-3]] = f.split('/')[-1][:-3]
@@ -119,7 +119,6 @@ class Team:
                     break
                 else:
                     similarFound = False
-
         if not similarFound and not exactNameBool:
             print(f"""\tNo working files found for team :""",
                   f"""{FAIL}{self.noTeam}{ENDC}\n""")

@@ -143,7 +143,6 @@ class CorrecteurTeam:
         team_dico["nb_commit"] = nb_commits
         team_dico["score"] = round(note, 1)
         team_dico["commentaires"] = comment
-        print(f"{team_dico}")
         team.saveTeamState(False)
         return team_dico
 
@@ -202,8 +201,8 @@ class CorrecteurTeam:
         return team_dico
 
     def corrigeFromModules(self, team, modules, classes):
-        if team.noTeam == 15:
-            return 0
+        # if team.noTeam == 15:
+        #     return 0
         note = 0
         print_barre()
         print_equipe(team.noTeam)
@@ -213,29 +212,71 @@ class CorrecteurTeam:
         if test.equipeOk:
             # FAIRE TOUT LES TESTS
             test.loadClassObject()
+            comment += "<h3>Fonctionnement MarchéBoursier</h3>"
             print_titre("Prix")
             comment += "<h4>Vérification de la méthode prix</h4><ul>"
             res = test.test_2_prix()
             if res[0]:
                 note += 1
             comment += res[1]
+            comment += "<h3>Fonctionnement Portefeuille Date: 2019-03-28</h3>"
+            print_titre("Déposer")
+            comment += "</ul><h4>Vérification de la méthode déposer</h4><ul>"
+            res = test.test_4_deposer()
+            if res[0]:
+                note += 1
+            comment += res[1]
+            print_titre("Solde")
+            comment += "</ul><h4>Vérification de la méthode solde</h4><ul>"
+            res = test.test_6_solde()
+            if res[0]:
+                note += 1
+            comment += res[1]
+            print_titre("Acheter")
+            comment += "</ul><h4>Vérification de la méthode acheter</h4><ul>"
+            res = test.test_9_acheter()
+            if res[0]:
+                note += 1
+            comment += res[1]
+            print_titre("Vendre")
+            comment += "</ul><h4>Vérification de la méthode vendre</h4><ul>"
+            res = test.test_11_vendre()
+            if res[0]:
+                note += 1
+            comment += res[1]
+            print_titre("Valeur totale")
+            comment += "</ul><h4>Vérification de la méthode valeur totale</h4><ul>"
+            res = test.test_13_valeur_totale()
+            if res[0]:
+                note += 1
+            comment += res[1]
+            res = test.test_16_valeur_des_titres()
+            if res[0]:
+                note += 1
+            comment += res[1]
+            print_titre("Titre")
+            comment += "</ul><h4>Vérification de la méthode titre</h4><ul>"
+            res = test.test_18_titres()
+            if res[0]:
+                note += 1
+            comment += res[1]
+            print_titre("Valeur projetée")
+            comment += "</ul><h4>Vérification de la méthode valeur projetée</h4><ul>"
+            res = test.test_19_valeur_projetee()
+            if res[0]:
+                note += 1
+            comment += res[1]
+            test.loadClassObject()
+            comment += "<h3>Fonctionnement Portefeuille Date: Par défaut</h3><p>Notez que le portefeuille à été réinitialisé complètement</p>"
             print_titre("Déposer")
             comment += "</ul><h4>Vérification de la méthode déposer</h4><ul>"
             res = test.test_3_deposer()
             if res[0]:
                 note += 1
             comment += res[1]
-            res = test.test_4_deposer()
-            if res[0]:
-                note += 1
-            comment += res[1]
             print_titre("Solde")
-            comment += "</ul><h4>Vérification de la méthode solde</h4<ul>>"
+            comment += "</ul><h4>Vérification de la méthode solde</h4><ul>"
             res = test.test_5_solde()
-            if res[0]:
-                note += 1
-            comment += res[1]
-            res = test.test_6_solde()
             if res[0]:
                 note += 1
             comment += res[1]
@@ -249,27 +290,15 @@ class CorrecteurTeam:
             if res[0]:
                 note += 1
             comment += res[1]
-            res = test.test_9_acheter()
-            if res[0]:
-                note += 1
-            comment += res[1]
             print_titre("Vendre")
             comment += "</ul><h4>Vérification de la méthode vendre</h4><ul>"
             res = test.test_10_vendre()
             if res[0]:
                 note += 1
             comment += res[1]
-            res = test.test_11_vendre()
-            if res[0]:
-                note += 1
-            comment += res[1]
             print_titre("Valeur totale")
             comment += "</ul><h4>Vérification de la méthode valeur totale</h4><ul>"
             res = test.test_12_valeur_totale()
-            if res[0]:
-                note += 1
-            comment += res[1]
-            res = test.test_13_valeur_totale()
             if res[0]:
                 note += 1
             comment += res[1]
@@ -283,26 +312,14 @@ class CorrecteurTeam:
             if res[0]:
                 note += 1
             comment += res[1]
-            res = test.test_16_valeur_des_titres()
-            if res[0]:
-                note += 1
-            comment += res[1]
             print_titre("Titre")
             comment += "</ul><h4>Vérification de la méthode titre</h4><ul>"
             res = test.test_17_titres()
             if res[0]:
                 note += 1
             comment += res[1]
-            res = test.test_18_titres()
-            if res[0]:
-                note += 1
-            comment += res[1]
             print_titre("Valeur projetée")
             comment += "</ul><h4>Vérification de la méthode valeur projetée</h4><ul>"
-            res = test.test_19_valeur_projetee()
-            if res[0]:
-                note += 1
-            comment += res[1]
             res = test.test_20_valeur_projetee()
             if res[0]:
                 note += 1
@@ -310,9 +327,8 @@ class CorrecteurTeam:
             # FIN DE TESTS
             print_note(note, 19)
             note_temp = note
-            test.cleanUp()
+            # test.cleanUp()
             test.loadClassObject()
-            tqdm.tqdm.write("\n")
             print_titre("LiquiditéInsuffisante")
             comment += "</ul><h4>Vérification de l'erreur LiquiditéInsuffisante</h4><ul>"
             test.erreur_0_1_depot()
@@ -364,10 +380,11 @@ class CorrecteurTeam:
             comment += res[1]
             comment += "</ul>"
             print_note(note-note_temp, 10)
-            print_final(3, note, 29)
+            note = round(note*100/29, 1)
+            print_final(3, note, 100)
             test.cleanUp()
         else:
-            print_warning(f"FAIL : Programme non fonctionnel")
+            print_warning(f"  FAIL : Programme non fonctionnel 1")
             comment += "<p>Votre code n'est pas fonctionnel</p>"
             test.cleanUp()
         return (note, comment)
@@ -375,72 +392,141 @@ class CorrecteurTeam:
         # team.saveTeamState()
         # print()
 
-    def corrige_nomenclature(self, listClass, listFunc, listArg, team):
-        liste_fonc_team, liste_classe_team, list_arg_team = self.show_functions(team)
+    def popenStart(self, path, command):
+        options = [pyEnv, path] + command.strip().split(" ")
+        proc = Popen(options, stdout=PIPE, stderr=PIPE, encoding='utf-8')
+        return proc.communicate(timeout=10)
+
+    def corrigeHelp(self, team):
+        commandToTest = True
+        command = "-h"
+        ns = 0
+        np = 0
+        nc = ''
+        nbas = 0
+        nbap = 0
+        nbac = ''
         print_barre()
         print_equipe(team.noTeam)
-        comment = "<h3>Nomenclature: </h3>"
-        print_titre("Nomenclature des classes")
-        comment = "<h4>Vérification de la nomenclature des classe</h4>"
-        base = float(len(listClass) + len(listFunc) + len(listArg))
+        print_titre("Command d'aide\n")
+        while commandToTest:
+            print_command("gesport.py", command)
+            tqdm.tqdm.write(" ")
+            res, err = self.popenStart(team.pathTeam+"/gesport.py", command)
+            ns , np, nbas, nbap, ms, mp = 0, 0, 0, 0, 0, 0
+            print_passing("RESULT")
+            tqdm.tqdm.write(" ")
+            tqdm.tqdm.write(res)
+            print_failing("ERROR")
+            tqdm.tqdm.write(" ")
+            tqdm.tqdm.write(err)
+            note = 0
+            nEntete = "<h4>Nomenclature</h4>"
+            nbaEntete = "<h4>Nombre d'argument</h4>"
+            mEntete = "<h4>Metavar</h4>"
+            nc = ""
+            nbac = ""
+            mc = ""
+            data = input("Nomenclature Score?: ")
+            tns, tnp = 0, 0
+            if data:
+                tns += int(data)
+                data = input("Nomenclature Pondération?: ")
+                if data:
+                    tnp += int(data)
+            if tnp > 0 and tns < tnp:
+                ns += tns
+                np += tnp
+                commentBool = True
+                while commentBool:
+                    tempComment = input("Commentaire?: ")
+                    if tempComment:
+                        nc += "<li>"+tempComment+"</li>"
+                    else:
+                        commentBool = False
+            tnbas, tnbap = 0, 0
+            data = input("Nb argument Score?: ")
+            if data:
+                tnbas += int(data)
+                data = input("Nb argument Pondération?: ")
+                if data:
+                    tnbap += int(data)
+            if tnbap > 0 and tnbas < tnbap:
+                nbas += tnbas
+                nbap += tnbap
+                commentBool = True
+                while commentBool:
+                    tempComment = input("Commentaire?: ")
+                    if tempComment:
+                        nbac += "<li>"+tempComment+"</>"
+                    else:
+                        commentBool = False
+            tms, tmp = 0, 0
+            data = input("Metavar Score?: ")
+            if data:
+                tms = int(data)
+                data = input("Metavar Pondération?: ")
+                if data:
+                    tmp = int(data)
+            if tmp > 0 and tms < tmp:
+                mp += tmp
+                ms += tms
+                commentBool = True
+                while commentBool:
+                    tempComment = input("Commentaire?: ")
+                    if tempComment:
+                        mc += "<li>"+tempComment+"</>"
+                    else:
+                        commentBool = False
+            print_note(((ns+nbas+ms)/(np+nbap+mp))*100, 100)
+            tempCommand = input("Next Command?: ")
+            if tempCommand:
+                command = tempCommand+" -h"
+            else:
+                commandToTest = False
+        note = ((ns+nbas+ms)/(np+nbap+mp))*100
+        print_final(note, 100)
+        return {'équipe': team.noTeam, 'score': note, 'commentaires': "<h3>Évaluation du critère 1</h3>"+nEntete+"<ul>"+nc+"</ul>"+nbaEntete+"<ul>"+nbac+"</ul>"+mEntete+"<ul>"+mc+"</ul>"+f"<h4>Résultat: {note}%</h4><p>Commenter le fil pour toutes questions.</p>"}
+        
+
+    def corrige_nomenclature(self, listAction, listArg, team):
+        print_barre()
+        print_equipe(team.noTeam)
+        liste_action_team, list_arg_team = self.show_functions(team)
+        comment = "<h4>Nomenclature: </h4>"
+        print_titre("Nomenclature des actions")
+        comment = "<h5>Vérification de la nomenclature des actions</h5>"
+        base = float(len(listAction) + len(listArg))
         compteur = 0
         first = True
-        for classe in listClass:
+        for action in listAction:
             find = False
             index = 0
-            for i, classe_team in enumerate(liste_classe_team):
-                ratio = SequenceMatcher(None, classe, classe_team).ratio()
+            for i, action_team in enumerate(liste_action_team):
+                ratio = SequenceMatcher(None, action, action_team).ratio()
                 if ratio == 1:
-                    print_command(f"{classe}", f"{classe_team}")
-                    team.dictNomenclature[classe] = classe_team
+                    print_command(f"{action}", f"{action_team}")
+                    team.dictNomenclature[action] = action_team
                     compteur += 1
                     find = True
                     index = i
                     break
                 elif 0.75 <= ratio < 1:
-                    team.dictNomenclature[classe] = classe_team
-                    print_command(f"{classe}", f"{classe_team}")
+                    team.dictNomenclature[action] = action_team
+                    print_command(f"{action}", f"{action_team}")
                     print_failing(f"FAIL ratio: {round(ratio, 1)}")
             if not find:
                 if first:
                     first = False
-                    comment += "<p>Les classes suivantes sont mal nommée.</p><ul>"
-                comment += f"<li><code>{classe}</code></li>"
+                    comment += "<p>Les actions suivantes sont mal nommée.</p><ul>"
+                comment += f"<li><code>{action}</code></li>"
             else:
-                del liste_classe_team[index]
-        if not first:
-            comment += "</ul>"
-            first = True
-        print_titre("Nomenclature des fonctions")
-        comment = "<h4>Vérification de la nomenclature des fonctions</h4>"
-        for fonc in listFunc:
-            find = False
-            index = 0
-            for i, fonc_team in enumerate(liste_fonc_team):
-                ratio = SequenceMatcher(None, fonc, fonc_team).ratio()
-                if ratio == 1:
-                    team.dictNomenclature[fonc] = fonc_team
-                    print_command(f"{fonc}", f"{fonc_team}")
-                    compteur += 1
-                    find = True
-                    index = i
-                    break
-                elif 0.75 <= ratio < 1:
-                    team.dictNomenclature[fonc] = fonc_team
-                    print_command(f"{fonc}", f"{fonc_team}")
-                    print_failing(f"FAIL ratio: {round(ratio, 1)}")
-            if not find:
-                if first:
-                    first = False
-                    comment += "<p>Les fonctions suivantes sont mal nommée.</p><ul>"
-                comment += f"<li><code>{fonc}</code></li>"
-            elif 0.75 <= ratio < 1:
-                del liste_fonc_team[index]
+                del liste_action_team[index]
         if not first:
             comment += "</ul>"
             first = True
         print_titre("Nomenclature des arguments")
-        comment = "<h4>Vérification de la nomenclature des arguments</h4>"
+        comment = "<h5>Vérification de la nomenclature des arguments</h5>"
         for arg in listArg:
             find = False
             index = 0
@@ -498,6 +584,69 @@ class CorrecteurTeam:
                                 classe = line.split('(')[0].split()[1]
                                 list_class.append(classe)
         return (list_func, list_class, list_arg)
+
+    def show_argparse(self, team):
+        list_action = []
+        list_arg = []
+        for file in team.files:
+            if file[-10:] == "gesport.py":
+                with open(file) as file_Python:
+                    actionBool = False
+                    argBool = False
+                    for lineNb, line in enumerate(file_Python):
+                        if actionBool:
+                            actionBool = False
+                            if re.compile("""(\\s*['|"]\\w+['|"])""").findall(line):
+                                action = re.search(
+                                    """(\\s*['|"]\\w+['|"])""", line).group(0)
+                                if len(action.split('"')) > 1:
+                                    action = action.split('"')[-2]
+                                    print(action)
+                                else:
+                                    action = action.split("'")[-2]
+                                    print(action)
+                                list_action.append(action)
+                        if re.compile("""(add_parser)""").findall(line):
+                            actionBool = True
+                        if re.compile("""(add_parser\\(\\s*['|"]\\w+['|"])""").findall(line):
+                            actionBool = False
+                            action = re.search(
+                                """(add_parser\\(\\s*['|"]\\w+['|"])""", line).group(0)
+                            if len(action.split('"')) > 1:
+                                action = action.split('"')[-2]
+                                print(action)
+                            else:
+                                action = action.split("'")[-2]
+                                print(action)
+                            list_action.append(action)
+                        if argBool:
+                            argBool = False
+                            if re.compile("""(\\s*['|"]-\\w+['|"]\\s*,\\s*['|"]--\\w+['|"])""").findall(line):
+                                action = re.search(
+                                    """(\\s*['|"]-\\w+['|"]\\s*,\\s*['|"]--\\w+['|"])""", line).group(0)
+                                if len(action.split('"')) > 1:
+                                    action = action.split('"')[-2]
+                                    print(action)
+                                else:
+                                    action = action.split("'")[-2]
+                                    print(action)
+                                list_action.append(action)
+                        if re.compile("""(add_argument)""").findall(line):
+                            argBool = True
+                        if re.compile("""(add_argument\\(\\s*['|"]-\\w+['|"]\\s*,\\s*['|"]--\\w+['|"])""").findall(line):
+                            arg = re.search(
+                                """(add_argument\\(\\s*['|"]-\\w+['|"]\\s*,\\s*['|"]--\\w+['|"])""", line).group(0)
+                            arg = arg.split(",")[-1]
+                            if len(arg.split('"')) > 1:
+                                arg = arg.split('"')[-2]
+                                print(arg)
+                            else:
+                                arg = arg.split("'")[-2]
+                                print(arg)
+                            list_arg.append(arg)
+                            
+        input()
+        return list_action, list_arg
 
     def similar_name(self, string1, string2, percent=1):
         # print(f'Équipe {self.noTeam} {string1} {string2}')
