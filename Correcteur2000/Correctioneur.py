@@ -85,6 +85,7 @@ class CorrecteurTeam:
         team.testResult[dicCommand["command"]] = {}
         try:
             result, err = proc.communicate(timeout=timeout)
+            print(f"Team {team.noTeam} : {dicCommand['command']} res : {result} /")
         except TimeoutExpired:
             print_failing(f"""FAIL : Timeout""")
             team.testResult[dicCommand["command"]]["pass"] = False
@@ -142,7 +143,7 @@ class CorrecteurTeam:
                 noteSubSec = 0
                 lenSubSec = len(subSection["tests"])
                 for test in subSection["tests"]:
-                    print_command("gesport.py",f"""{test["command"]}""")
+                    print_command("gesport.py", f"""{test["command"]}""")
                     b_res, c_res = self.runCommand(team, test)
                     if not b_res:
                         commentaire += f"""<li>{c_res}</li>"""
@@ -153,8 +154,9 @@ class CorrecteurTeam:
                 note += (noteSubSec/lenSubSec)*subSection["weight"]
             commentaire += f"""<h3>Résultat: {round(note, 1)}</h3>"""
             commentaire += f"""<p><strong>La correction ainsi que la composition des messages sont automatisés, pour toutes questions ou révision veuillez commenter ce fil.</strong></p>"""
-            print_final(critere["criterion"],round(note, 1),100)
-            team.rapport[f"""critere["criterion"]"""] = {"équipe": team.noTeam, "score": round(note, 1), "commentaires": commentaire}
+            print_final(critere["criterion"], round(note, 1), 100)
+            team.rapport[f"""critere["criterion"]"""] = {
+                "équipe": team.noTeam, "score": round(note, 1), "commentaires": commentaire}
             team.saveTeamState()
         return team.rapport
 
