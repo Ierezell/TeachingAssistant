@@ -8,6 +8,8 @@ import re
 import numpy
 import tqdm
 import pickle
+import _thread
+import time
 
 from Correctioneur import CorrecteurTeam
 from WebJsonizer import WebJsonizer
@@ -144,7 +146,11 @@ class AssistantCorrection:
         # self.loadAssistant()
         data = []
         for team in self.Teams.values():
-            data.append(team.rapport[f"{critere}"])
+            try:
+                data.append(team.rapport[critere])
+                print_passing("PASS")
+            except:
+                print_failing("FAIL")
         with open(f'{self.projectBasePath}/result/resultatCritere{critere}.json', 'w') as outfile:
             json.dump(date, outfile, ensure_ascii=False)
 
@@ -247,13 +253,33 @@ class AssistantCorrection:
         with open('./ResultatsNomencatureP3.json', 'w') as outfile:
             json.dump(list_ready_to_publish, outfile, ensure_ascii=False)
 
-    def corrige(self, pathJson):
-        correcteur8000 = CorrecteurTeam(self.projectBasePath)
-        correcteur8000.load_correction_dict(pathJson)
+    def corrige(self, pathJson, X=0):
+        lastTeam = X
+        b_bug = False
         for team in tqdm.tqdm(self.Teams.values()):
-            tqdm.tqdm.write(f"Doing team {team.noTeam}")
-            correcteur8000.corrige(team)
-            correcteur8000.cleanAvantNouvelEleve()
+            if not b_bug:
+                correcteur8000 = CorrecteurTeam(self.projectBasePath)
+                correcteur8000.load_correction_dict(pathJson)
+                # tqdm.tqdm.write(f"Doing team {team.noTeam}")
+                # try:
+                    # print_ok(f"THREAD : {team.noTeam}")
+                if team.noTeam > X:
+                    try:
+                        data = correcteur8000.corrige(team)
+                        # data = team.rapport["1"]
+                        with open(f'{self.projectBasePath}/result/team{team.noTeam}-resultatCritere.json', 'w') as outfile:
+                            json.dump(data, outfile, ensure_ascii=False)
+                        lastTeam = team.noTeam
+                    except:
+                        b_bug = True
+                        self.corrige(pathJson, X=lastTeam)
+            else:
+                break
+
+            # except:
+            #     print("Error: unable to start thread")
+            # correcteur8000.corrige(team)
+            # correcteur8000.cleanAvantNouvelEleve()
 
     def get_functions(self):
         correcteur8000 = CorrecteurTeam(self.projectBasePath)
@@ -323,6 +349,19 @@ class AssistantCorrection:
         for noTeam, pathTeam in zip(self.Teams.keys(), self.pathTeams):
             self.Teams[noTeam] = Team(noTeam, pathTeam).loadTeamState()
 
+    def fusionJson(self, critère):
+        path = self.projectBasePath+"/result/"
+        files = glob.glob(path+"*")
+        data = []
+        for file in files:
+            if file[16:20] == "team":
+                # temp = ""
+                with open(file) as jsonFile:
+                    data.append(json.load(jsonFile)[f"{critère}"])
+                # print(temp)
+        with open(f"{path}jsonResultCrit1.json", 'w') as jsonfile:
+            json.dump(data, jsonfile, ensure_ascii=False)
+
     def saveAssistant(self):
         savePath = f'{self.projectBasePath}{self.projectBasePath[1:]}.save'
         for no, team in self.Teams.items():
@@ -335,8 +374,12 @@ if __name__ == "__main__":
     Assistant = AssistantCorrection("H", 19, 3)
     # Assistant.initialize_Directory()
     # Assistant.unbundle()
-    Assistant.initialise_Teams("gesport.py")
-    Assistant.corrige("./dictCritèreP3.json")
-    Assistant.makeJsonFromSavedReport(1)
-    makeJsonFromSavedReport(2)
-    Assistant.saveAssistant()
+    # Assistant.initialise_Teams("gesport.py")
+    # Assistant.fusionJson(1)
+    # Assistant.corrige("./dictCritèreP3.json", 28)
+    # Assistant.makeJsonFromSavedReport(1)
+    # Assistant.makeJsonFromSavedReport(2)
+    # Assistant.saveAssistant()
+    # Assistant.loadAssistant()
+    # Assistant.makeJsonFromSavedReport("1")
+    

@@ -78,6 +78,7 @@ class CorrecteurTeam:
     def runCommand(self, team, dicCommand, timeout=5):
         b_res = False
         c_res = ""
+        result, err = "", ""
         reAttendu = re.compile(dicCommand["result_regex"],
                                flags=re.MULTILINE)
         command = [pyEnv, team.pathTeam+"/gesport.py"] + dicCommand["command"].split(" ")
@@ -94,8 +95,8 @@ class CorrecteurTeam:
                 f"""nous avons limité à {timeout}s pour ce critère"""
             c_res = """Votre code n'a pas été en mesure de s'exécuter dans un délai raisonnable."""
         finally:
-            team.testResult[dicCommand["command"]]["resultat"] = result
-            team.testResult[dicCommand["command"]]["erreur"] = err
+            team.testResult[dicCommand["command"]]["resultat"] = "TimeOut"
+            team.testResult[dicCommand["command"]]["erreur"] = "TimeOut"
         if dicCommand["success_looking"]:
             if reAttendu.findall(result):
                 team.testResult[dicCommand["command"]]["pass"] = True
@@ -154,7 +155,7 @@ class CorrecteurTeam:
             commentaire += f"""<h3>Résultat: {round(note, 1)}</h3>"""
             commentaire += f"""<p><strong>La correction ainsi que la composition des messages sont automatisés, pour toutes questions ou révision veuillez commenter ce fil.</strong></p>"""
             print_final(critere["criterion"],round(note, 1),100)
-            team.rapport[f"""critere["criterion"]"""] = {"équipe": team.noTeam, "score": round(note, 1), "commentaires": commentaire}
+            team.rapport[f"""{critere["criterion"]}"""] = {"équipe": team.noTeam, "score": round(note, 1), "commentaires": commentaire}
             team.saveTeamState()
         return team.rapport
 
