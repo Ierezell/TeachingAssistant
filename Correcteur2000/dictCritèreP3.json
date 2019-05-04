@@ -12,49 +12,49 @@
                     {
                         "command": "-h",
                         "success_looking": true,
-                        "result_regex": "^(usage: gesport\\.py \\[-h\\])",
+                        "result_regex": "^(usage: gesport.py)",
                         "error_message": "<code>Help</code> inexistant pour la commande <code>gesport.py -h</code>"
                     },
                     {
                         "command": "déposer -h",
                         "success_looking": true,
-                        "result_regex": "^(usage: gesport\\.py déposer \\[-h\\])",
+                        "result_regex": "^(usage: gesport.py)",
                         "error_message": "<code>Help</code> inexistant pour la commande <code>gesport.py déposer -h</code>"
                     },
                     {
                         "command": "acheter -h",
                         "success_looking": true,
-                        "result_regex": "^(usage: gesport\\.py acheter \\[-h\\])",
+                        "result_regex": "^(usage: gesport.py)",
                         "error_message": "<code>Help</code> inexistant pour la commande <code>gesport.py acheter -h</code>"
                     },
                     {
                         "command": "vendre -h",
                         "success_looking": true,
-                        "result_regex": "^(usage: gesport\\.py vendre \\[-h\\])",
+                        "result_regex": "^(usage: gesport.py)",
                         "error_message": "<code>Help</code> inexistant pour la commande <code>gesport.py vendre -h</code>"
                     },
                     {
                         "command": "solde -h",
                         "success_looking": true,
-                        "result_regex": "^(usage: gesport\\.py solde \\[-h\\])",
+                        "result_regex": "^(usage: gesport.py)",
                         "error_message": "<code>Help</code> inexistant pour la commande <code>gesport.py solde -h</code>"
                     },
                     {
                         "command": "titres -h",
                         "success_looking": true,
-                        "result_regex": "^(usage: gesport\\.py titres \\[-h\\])",
+                        "result_regex": "^(usage: gesport.py)",
                         "error_message": "<code>Help</code> inexistant pour la commande <code>gesport.py titres -h</code>"
                     },
                     {
                         "command": "valeur -h",
                         "success_looking": true,
-                        "result_regex": "^(usage: gesport\\.py valeur \\[-h\\])",
+                        "result_regex": "^(usage: gesport.py)",
                         "error_message": "<code>Help</code> inexistant pour la commande <code>gesport.py valeur -h</code>"
                     },
                     {
                         "command": "projection -h",
                         "success_looking": true,
-                        "result_regex": "^(usage: gesport\\.py projection \\[-h\\])",
+                        "result_regex": "^(usage: gesport.py)",
                         "error_message": "<code>Help</code> inexistant pour la commande <code>gesport.py projection -h</code>"
                     }
                 ]
@@ -958,7 +958,7 @@
                     {
                         "command": "projection -h",
                         "success_looking": true,
-                        "result_regex": "^(\\s+-t\\s.?STRING\\s+\\[STRING)",
+                        "result_regex": "^(\\s+-t\\s.?STRING\\s*\\[STRING)",
                         "error_message": "L'argument <code>--titres</code> de l'action <code>projection</code> devrait avoir le <strong>metavar</strong> <code>STRING [STRING ...]</code>"
                     },
                     {
