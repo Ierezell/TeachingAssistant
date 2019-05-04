@@ -85,7 +85,7 @@ class CorrecteurTeam:
         team.testResult[dicCommand["command"]] = {}
         try:
             result, err = proc.communicate(timeout=timeout)
-            print(f"Team {team.noTeam} : {dicCommand['command']} res : {result} /")
+            #print( f"Team {team.noTeam} : {dicCommand['command']}\n  res : {result} / err : {err} !!")
         except TimeoutExpired:
             print_failing(f"""FAIL : Timeout""")
             team.testResult[dicCommand["command"]]["pass"] = False
@@ -94,6 +94,7 @@ class CorrecteurTeam:
                 """Pour ne pas bloquer la correction automatique""" +\
                 f"""nous avons limité à {timeout}s pour ce critère"""
             c_res = """Votre code n'a pas été en mesure de s'exécuter dans un délai raisonnable."""
+            result = err = "Code Timeout"
         finally:
             team.testResult[dicCommand["command"]]["resultat"] = result
             team.testResult[dicCommand["command"]]["erreur"] = err
@@ -103,7 +104,7 @@ class CorrecteurTeam:
                 b_res = True
                 # print_passing(f"""PASS : {dicCommand["result_regex"]}""")
             else:
-                print_failing(f"""FAIL : {dicCommand["result_regex"]}""")
+                print_failing(f"""FAIL : {dicCommand["result_regex"]} // {result}""")
                 c_res = dicCommand["error_message"]
                 team.testResult[dicCommand["command"]]["pass"] = False
                 team.testResult[dicCommand["command"]]["error_message"] =\

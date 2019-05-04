@@ -336,7 +336,7 @@ if __name__ == "__main__":
     # Assistant.initialize_Directory()
     # Assistant.unbundle()
     Assistant.initialise_Teams("gesport.py")
-    Assistant.corrige("./test.json")
+    Assistant.corrige("./dictCritèreP3.json")
     Assistant.makeJsonFromSavedReport(1)
     makeJsonFromSavedReport(2)
     Assistant.saveAssistant()

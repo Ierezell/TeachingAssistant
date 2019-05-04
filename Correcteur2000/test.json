@@ -42,8 +42,8 @@
                 "tests": [
                     {
                         "command": "acheter -q 10000 -t goog -d 2018-09-17 -p PF1",
-                        "success_looking": false,
-                        "result_regex": "LiquiditéInsuffisante",
+                        "success_looking": true,
+                        "result_regex": "",
                         "error_message": "La commande : <code>acheter -q 10000 -t goog -d 2018-09-17 -p PF1</code> n'est pas fonctionelle"
                     },
                     {
@@ -54,8 +54,8 @@
                     },
                     {
                         "command": "acheter -t goog -d 2018-09-17 -p PF0",
-                        "success_looking": true,
-                        "result_regex": "",
+                        "success_looking": false,
+                        "result_regex": "LiquiditéInsuffisante",
                         "error_message": "La commande : <code>acheter -t goog -d 2018-09-17 -p PF0</code> n'est pas fonctionelle"
                     },
                     {
@@ -73,8 +73,8 @@
                 "tests": [
                     {
                         "command": "vendre -q 500 -t goog -d 2018-09-17 -p PF1",
-                        "success_looking": false,
-                        "result_regex": "ErreurQuantité",
+                        "success_looking": true,
+                        "result_regex": "",
                         "error_message": "La commande : <code>vendre -q 500 -t goog -d 2018-09-17 -p PF1</code> n'est pas fonctionelle"
                     },
                     {
@@ -84,15 +84,9 @@
                         "error_message": "La commande : <code>vendre -q 2 -t goog -d 2018-09-17</code> n'est pas fonctionelle"
                     },
                     {
-                        "command": "vendre -q 500 -d 2018-09-17 -p PF1",
-                        "success_looking": true,
-                        "result_regex": "",
-                        "error_message": "La commande : <code>vendre -q 500 -d 2018-09-17 -p PF1</code> n'est pas fonctionelle"
-                    },
-                    {
                         "command": "vendre -t goog -d 2018-09-17 -p PF0",
-                        "success_looking": true,
-                        "result_regex": "",
+                        "success_looking": false,
+                        "result_regex": "ErreurQuantité",
                         "error_message": "La commande : <code>vendre -t goog -d 2018-09-17 -p PF0</code> n'est pas fonctionelle"
                     },
                     {
@@ -111,7 +105,7 @@
                     {
                         "command": "solde -d 2018-09-17 -p PF1",
                         "success_looking": true,
-                        "result_regex": "989595550.00",
+                        "result_regex": "989595550.0",
                         "error_message": "La commande : <code>solde -d 2018-09-17 -p PF1</code> n'est pas fonctionelle"
                     },
                     {
@@ -123,13 +117,13 @@
                     {
                         "command": "solde -p PF0",
                         "success_looking": true,
-                        "result_regex": "1.00",
+                        "result_regex": "1",
                         "error_message": "La commande : <code>solde -p PF0</code> n'est pas fonctionelle"
                     },
                     {
                         "command": "solde -p PF2",
                         "success_looking": true,
-                        "result_regex": "6971.77",
+                        "result_regex": "6455.74",
                         "error_message": "La commande : <code>solde -p PF2</code> n'est pas fonctionelle"
                     }
                 ]
@@ -185,13 +179,13 @@
                     {
                         "command": "valeur -t goog -p PF0",
                         "success_looking": true,
-                        "result_regex": "0.00",
+                        "result_regex": "0.0",
                         "error_message": "La commande : <code>valeur -t goog -p PF0</code> n'est pas fonctionelle"
                     },
                     {
                         "command": "valeur -d 2018-09-17 -p PF2",
                         "success_looking": true,
-                        "result_regex": "0.00",
+                        "result_regex": "0.0",
                         "error_message": "La commande : <code>valeur -d 2018-09-17 -p PF2</code> n'est pas fonctionelle"
                     }
                 ]
@@ -204,19 +198,19 @@
                     {
                         "command": "projection --rendement 5 --date 2019-12-1",
                         "success_looking": true,
-                        "result_regex": "10404450.00",
+                        "result_regex": "(3646.7, 3646.7, 3646.7)",
                         "error_message": "La commande : <code>projection --rendement 5 --date 2019-12-1</code> n'est pas fonctionelle"
                     },
                     {
                         "command": "projection --rendement 6 --volatilité 3 --date 2019-12-5",
                         "success_looking": true,
-                        "result_regex": "3468.15",
+                        "result_regex": "(3629.75, 3671.53, 3713.14)",
                         "error_message": "La commande : <code>projection --rendement 5 --date 2019-12-1</code> n'est pas fonctionelle"
                     },
                     {
                         "command": "projection --titre goog --rendement 6 --volatilité 3 --date 2019-12-5",
                         "success_looking": true,
-                        "result_regex": "3468.15",
+                        "result_regex": "(3626.29, 3669.23, 3712.77)",
                         "error_message": "La commande : <code>projection --rendement 5 --date 2019-12-1</code> n'est pas fonctionelle"
                     },
                     {
