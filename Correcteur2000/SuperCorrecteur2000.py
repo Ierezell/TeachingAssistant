@@ -382,4 +382,3 @@ if __name__ == "__main__":
     # Assistant.saveAssistant()
     # Assistant.loadAssistant()
     # Assistant.makeJsonFromSavedReport("1")
-    

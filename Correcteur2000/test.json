@@ -1,0 +1,232 @@
+[
+    {
+        "criterion": 2,
+        "criterion_title": "Fonctionnement des actions de base",
+        "criterion_description": "Le programme respecte <strong>toutes</strong>les spécifications de l'énoncé quant au <strong>fonctionnement</strong>du portefeuille, notamment au niveau de sa capacité à <strong>acheter</strong>ou <strong>vendre</strong>des titres, à déposer des <strong>liquidités</strong>, à interroger le portefeuille pour connaître les <strong>quantités</strong> de titres ou la <strong>valeur</strong>de ceux-ci.",
+        "test_section": [
+            {
+                "section_title": "Déposer",
+                "section_description": "Vérifier l'action <code>déposer</code>.",
+                "weight": 60,
+                "tests": [
+                    {
+                        "command": "déposer -q 1000000000 -d 2018-09-17 -p PF1",
+                        "success_looking": true,
+                        "result_regex": "",
+                        "error_message": "La commande : <code>déposer -q 1000000000 -d 2018-09-17 -p PF1</code> n'est pas fonctionelle"
+                    },
+                    {
+                        "command": "déposer -q 10000 -d 2018-09-17",
+                        "success_looking": true,
+                        "result_regex": "",
+                        "error_message": "La commande : <code>déposer -q 10000 -d 2018-09-17</code> n'est pas fonctionelle"
+                    },
+                    {
+                        "command": "déposer -d 2018-09-17 -p PF0",
+                        "success_looking": true,
+                        "result_regex": "",
+                        "error_message": "La commande : <code>déposer -d 2018-09-17 -p PF0</code> n'est pas fonctionelle"
+                    },
+                    {
+                        "command": "déposer -q 10000 -p PF2",
+                        "success_looking": true,
+                        "result_regex": "",
+                        "error_message": "La commande : <code>déposer -q 10000 -p PF2</code> n'est pas fonctionelle"
+                    }
+                ]
+            },
+            {
+                "section_title": "Acheter",
+                "section_description": "Vérifier l'action <code>acheter</code>.",
+                "weight": 60,
+                "tests": [
+                    {
+                        "command": "acheter -q 10000 -t goog -d 2018-09-17 -p PF1",
+                        "success_looking": false,
+                        "result_regex": "LiquiditéInsuffisante",
+                        "error_message": "La commande : <code>acheter -q 10000 -t goog -d 2018-09-17 -p PF1</code> n'est pas fonctionelle"
+                    },
+                    {
+                        "command": "acheter -q 5 -t goog -d 2018-09-17",
+                        "success_looking": true,
+                        "result_regex": "",
+                        "error_message": "La commande : <code>acheter -q 5 -t goog -d 2018-09-17</code> n'est pas fonctionelle"
+                    },
+                    {
+                        "command": "acheter -t goog -d 2018-09-17 -p PF0",
+                        "success_looking": true,
+                        "result_regex": "",
+                        "error_message": "La commande : <code>acheter -t goog -d 2018-09-17 -p PF0</code> n'est pas fonctionelle"
+                    },
+                    {
+                        "command": "acheter -q 5 -t goog -p PF2",
+                        "success_looking": true,
+                        "result_regex": "",
+                        "error_message": "La commande : <code>acheter -q 5 -t goog -p PF2</code> n'est pas fonctionelle"
+                    }
+                ]
+            },
+            {
+                "section_title": "Vendre",
+                "section_description": "Vérifier l'action <code>vendre</code>.",
+                "weight": 60,
+                "tests": [
+                    {
+                        "command": "vendre -q 500 -t goog -d 2018-09-17 -p PF1",
+                        "success_looking": false,
+                        "result_regex": "ErreurQuantité",
+                        "error_message": "La commande : <code>vendre -q 500 -t goog -d 2018-09-17 -p PF1</code> n'est pas fonctionelle"
+                    },
+                    {
+                        "command": "vendre -q 2 -t goog -d 2018-09-17",
+                        "success_looking": true,
+                        "result_regex": "",
+                        "error_message": "La commande : <code>vendre -q 2 -t goog -d 2018-09-17</code> n'est pas fonctionelle"
+                    },
+                    {
+                        "command": "vendre -q 500 -d 2018-09-17 -p PF1",
+                        "success_looking": true,
+                        "result_regex": "",
+                        "error_message": "La commande : <code>vendre -q 500 -d 2018-09-17 -p PF1</code> n'est pas fonctionelle"
+                    },
+                    {
+                        "command": "vendre -t goog -d 2018-09-17 -p PF0",
+                        "success_looking": true,
+                        "result_regex": "",
+                        "error_message": "La commande : <code>vendre -t goog -d 2018-09-17 -p PF0</code> n'est pas fonctionelle"
+                    },
+                    {
+                        "command": "vendre -q 2 -t goog -p PF2",
+                        "success_looking": true,
+                        "result_regex": "",
+                        "error_message": "La commande : <code>vendre -q 2 -t goog -p PF2</code> n'est pas fonctionelle"
+                    }
+                ]
+            },
+            {
+                "section_title": "Solde",
+                "section_description": "Vérifier l'action <code>solde</code>.",
+                "weight": 60,
+                "tests": [
+                    {
+                        "command": "solde -d 2018-09-17 -p PF1",
+                        "success_looking": true,
+                        "result_regex": "989595550.00",
+                        "error_message": "La commande : <code>solde -d 2018-09-17 -p PF1</code> n'est pas fonctionelle"
+                    },
+                    {
+                        "command": "solde -d 2018-09-17",
+                        "success_looking": true,
+                        "result_regex": "6531.85",
+                        "error_message": "La commande : <code>solde -d 2018-09-17</code> n'est pas fonctionelle"
+                    },
+                    {
+                        "command": "solde -p PF0",
+                        "success_looking": true,
+                        "result_regex": "1.00",
+                        "error_message": "La commande : <code>solde -p PF0</code> n'est pas fonctionelle"
+                    },
+                    {
+                        "command": "solde -p PF2",
+                        "success_looking": true,
+                        "result_regex": "6971.77",
+                        "error_message": "La commande : <code>solde -p PF2</code> n'est pas fonctionelle"
+                    }
+                ]
+            },
+            {
+                "section_title": "Titres",
+                "section_description": "Vérifier l'action <code>titres</code>.",
+                "weight": 60,
+                "tests": [
+                    {
+                        "command": "titres -t goog -d 2018-09-17 -p PF1",
+                        "success_looking": true,
+                        "result_regex": "[G|g][O|o][O|o][G|g]=9000",
+                        "error_message": "La commande : <code>titres -t goog -d 2018-09-17 -p PF1</code> n'est pas fonctionelle"
+                    },
+                    {
+                        "command": "titres -t goog -d 2018-09-17",
+                        "success_looking": true,
+                        "result_regex": "[G|g][O|o][O|o][G|g]=3",
+                        "error_message": "La commande : <code>titres -t goog -d 2018-09-17</code> n'est pas fonctionelle"
+                    },
+                    {
+                        "command": "titres -d 2018-09-17 -p PF0",
+                        "success_looking": true,
+                        "result_regex": "[G|g][O|o][O|o][G|g]=3",
+                        "error_message": "La commande : <code>titres -d 2018-09-17 -p PF0</code> n'est pas fonctionelle"
+                    },
+                    {
+                        "command": "titres -t goog -p PF2",
+                        "success_looking": true,
+                        "result_regex": "[G|g][O|o][O|o][G|g]=3",
+                        "error_message": "La commande : <code>titres -t goog -p PF2</code> n'est pas fonctionelle"
+                    }
+                ]
+            },
+            {
+                "section_title": "Valeur",
+                "section_description": "Vérifier l'action <code>valeur</code>.",
+                "weight": 60,
+                "tests": [
+                    {
+                        "command": "valeur -t goog -d 2018-09-17 -p PF1",
+                        "success_looking": true,
+                        "result_regex": "10404450.00",
+                        "error_message": "La commande : <code>valeur -t goog -d 2018-09-17 -p PF1</code> n'est pas fonctionelle"
+                    },
+                    {
+                        "command": "valeur -t goog -d 2018-09-17",
+                        "success_looking": true,
+                        "result_regex": "3468.15",
+                        "error_message": "La commande : <code>valeur -t goog -d 2018-09-17</code> n'est pas fonctionelle"
+                    },
+                    {
+                        "command": "valeur -t goog -p PF0",
+                        "success_looking": true,
+                        "result_regex": "0.00",
+                        "error_message": "La commande : <code>valeur -t goog -p PF0</code> n'est pas fonctionelle"
+                    },
+                    {
+                        "command": "valeur -d 2018-09-17 -p PF2",
+                        "success_looking": true,
+                        "result_regex": "0.00",
+                        "error_message": "La commande : <code>valeur -d 2018-09-17 -p PF2</code> n'est pas fonctionelle"
+                    }
+                ]
+            },
+            {
+                "section_title": "Projection",
+                "section_description": "Vérifier l'action <code>projection</code>.",
+                "weight": 60,
+                "tests": [
+                    {
+                        "command": "projection --rendement 5 --date 2019-12-1",
+                        "success_looking": true,
+                        "result_regex": "10404450.00",
+                        "error_message": "La commande : <code>projection --rendement 5 --date 2019-12-1</code> n'est pas fonctionelle"
+                    },
+                    {
+                        "command": "projection --rendement 6 --volatilité 3 --date 2019-12-5",
+                        "success_looking": true,
+                        "result_regex": "3468.15",
+                        "error_message": "La commande : <code>projection --rendement 5 --date 2019-12-1</code> n'est pas fonctionelle"
+                    },
+                    {
+                        "command": "projection --titre goog --rendement 6 --volatilité 3 --date 2019-12-5",
+                        "success_looking": true,
+                        "result_regex": "3468.15",
+                        "error_message": "La commande : <code>projection --rendement 5 --date 2019-12-1</code> n'est pas fonctionelle"
+                    },
+                    {
+                        "command": "projection goog(6,3)",
+                        "success_looking": true,
+                        "result_regex": "3468.15",
+                        "error_message": "La commande : <code>projection --rendement 5 --date 2019-12-1</code> n'est pas fonctionelle"
+                    }
+                ]
+            }
+        ]
+    }
+]

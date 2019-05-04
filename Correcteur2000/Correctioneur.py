@@ -86,6 +86,7 @@ class CorrecteurTeam:
         team.testResult[dicCommand["command"]] = {}
         try:
             result, err = proc.communicate(timeout=timeout)
+            print(f"Team {team.noTeam} : {dicCommand['command']} res : {result} /")
         except TimeoutExpired:
             print_failing(f"""FAIL : Timeout""")
             team.testResult[dicCommand["command"]]["pass"] = False
@@ -143,7 +144,7 @@ class CorrecteurTeam:
                 noteSubSec = 0
                 lenSubSec = len(subSection["tests"])
                 for test in subSection["tests"]:
-                    print_command("gesport.py",f"""{test["command"]}""")
+                    print_command("gesport.py", f"""{test["command"]}""")
                     b_res, c_res = self.runCommand(team, test)
                     if not b_res:
                         commentaire += f"""<li>{c_res}</li>"""
