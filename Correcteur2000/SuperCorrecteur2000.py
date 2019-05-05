@@ -152,7 +152,7 @@ class AssistantCorrection:
             except:
                 print_failing("FAIL")
         with open(f'{self.projectBasePath}/result/resultatCritere{critere}.json', 'w') as outfile:
-            json.dump(date, outfile, ensure_ascii=False)
+            json.dump(data, outfile, ensure_ascii=False)
 
     def corrigeFromModules(self, modules, classes):
         print_wtf("\n  Correction du fonctionnement\n")
@@ -266,6 +266,7 @@ class AssistantCorrection:
                 if team.noTeam > X:
                     try:
                         data = correcteur8000.corrige(team)
+                        correcteur8000.cleanAvantNouvelEleve()
                         # data = team.rapport["1"]
                         with open(f'{self.projectBasePath}/result/team{team.noTeam}-resultatCritere.json', 'w') as outfile:
                             json.dump(data, outfile, ensure_ascii=False)
